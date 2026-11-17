@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><!-- Почта знаком, в пару к Telegram и MAX: серый круг (#6B6A64, как ink-2), белый конверт. Нарисован нами -->
+<circle cx="50" cy="50" r="50" fill="#6B6A64"/>
+<rect x="25" y="32" width="50" height="36" rx="6" fill="#fff"/>
+<path d="M28 36.5 50 52l22-15.5" fill="none" stroke="#6B6A64" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
