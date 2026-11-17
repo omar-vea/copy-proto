@@ -8,9 +8,11 @@
 <script>if(matchMedia('(max-width:600px)').matches)location.replace('home.html')</script>
 <style>
 html,body{margin:0;height:100%}
-body{background:#E9E7E2;display:grid;place-items:center;font:14px/1.4 system-ui,-apple-system,sans-serif;color:#6b6a66}
+body{background:#E9E7E2;display:grid;place-items:center;overflow:hidden;font:14px/1.4 system-ui,-apple-system,sans-serif;color:#6b6a66}
 /* рамка iPhone 402×874: статус-бар, страница, панель Safari. Цвет полос берётся из фона страницы, как в Safari */
-.ph{--bar:#fff;--on:#000;width:402px;height:874px;max-height:calc(100vh - 56px);border:10px solid #1b1a1f;border-radius:62px;overflow:hidden;background:var(--bar);box-shadow:0 30px 80px -30px rgba(0,0,0,.35);display:flex;flex-direction:column;position:relative}
+/* экран 402×874 как у iPhone; на низком окне телефон уменьшается целиком (--k), а не сплющивается */
+.box{position:fixed;left:50%;top:50%;translate:-50% -50%;scale:var(--k,1)}
+.ph{--bar:#fff;--on:#000;width:402px;height:874px;border:10px solid #1b1a1f;border-radius:62px;overflow:hidden;background:var(--bar);box-shadow:0 30px 80px -30px rgba(0,0,0,.35);display:flex;flex-direction:column;position:relative}
 .ph iframe{display:block;flex:1;width:100%;border:0;min-height:0}
 .sb,.tb{background:var(--bar);color:var(--on);transition:background .2s,color .2s}
 .sb{height:54px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:4px 30px 0 44px;font:600 17px/1 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;position:relative}
@@ -28,7 +30,7 @@ p{margin:12px 0 0;text-align:center}
 </style>
 </head>
 <body>
-<div>
+<div class="box" id="box">
 <div class="ph" id="ph">
   <div class="sb" aria-hidden="true"><span>9:41</span><i></i><span class="ic">
     <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
@@ -51,5 +53,6 @@ const p=new URLSearchParams(location.search).get("p");if(p&&/^[\w.-]+\.html([?#]
 // цвет полос = фон body страницы (его же Safari красит в статус-бар), текст — по яркости
 let last="";const sync=()=>{try{const d=fr.contentDocument;if(d&&d.body){const c=getComputedStyle(d.body).backgroundColor;if(c!==last){last=c;const m=c.match(/[\d.]+/g)||[255,255,255];const l=(.299*m[0]+.587*m[1]+.114*m[2])/255;ph.style.setProperty("--bar",c);ph.style.setProperty("--on",l>.55?"#000":"#fff")}}}catch(e){}requestAnimationFrame(sync)};sync()}
 </script>
+<script>{const b=document.getElementById("box"),f=()=>b.style.setProperty("--k",Math.min(1,(innerHeight-24)/b.offsetHeight,(innerWidth-24)/b.offsetWidth));addEventListener("resize",f);f()}</script>
 </body>
 </html>
