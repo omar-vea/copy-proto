@@ -15,6 +15,7 @@ p{margin:12px 0 0;text-align:center}
 </style>
 </head>
 <body>
-<div><div class="ph"><iframe src="home.html" title="COPY.RU, мобильная версия"></iframe></div><p>Мобильная версия. С телефона: omar-vea.github.io/copy-proto</p></div>
+<div><div class="ph"><iframe id="fr" src="home.html" title="COPY.RU, мобильная версия"></iframe></div><p>Мобильная версия. С телефона: omar-vea.github.io/copy-proto</p></div>
+<script>{const p=new URLSearchParams(location.search).get("p");if(p&&/^[\w.-]+\.html([?#].*)?$/.test(p))document.getElementById("fr").src=p}</script>
 </body>
 </html>
