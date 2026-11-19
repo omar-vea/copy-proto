@@ -4,348 +4,140 @@
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>/* демо: на компьютере только мобильная версия в рамке */if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
+<script>if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1B20" media="(prefers-color-scheme: dark)">
-<script>/* тема до отрисовки (Safari iOS 26 берёт цвет статус-бара с body при загрузке). По умолчанию — как в системе.
-   Выбор вручную (copy-theme) живёт, пока система не переключилась сама: copy-theme-sys — какой была система при выборе */
+<script>
 try{const L=localStorage,t=L.getItem('copy-theme'),s=L.getItem('copy-theme-sys'),now=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
 if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>COPY.RU — главная (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=11">
 <style>
-:root{
-  --v:#4844D7;--v-hover:#3934B1;--v-900:#1B1C5A;--v-200:#CBD3FE;--v-100:#E5E9FE;--v-50:#F3F5FE;
-  --bg:#F8F7F4;--surface:#fff;--ink:#222220;--ink-2:#6B6A64;--line:#E8E6E1;--stage:#EFEDE8;
-  --r-xs:6px;--r-s:8px;--r-m:12px;--r-l:20px;--r-xl:28px;
-  --sans:Onest,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
-}
-*{box-sizing:border-box}
-/* цвет фона body = цвет шапки: из него Safari iOS 26 красит статус-бар при загрузке (theme-color не читает).
-   Видимый фон страницы (--bg) рисует заливка поверх */
-body{margin:0;background:linear-gradient(var(--bg),var(--bg)) var(--surface);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-svg.wm{display:block;height:auto;fill:currentColor}
-.mono{font-family:var(--mono);font-weight:500}
-.muted{color:var(--ink-2)}
+.ct{margin-top:16px} 
+
+
+
 .ht{position:absolute;inset:0;pointer-events:none}.ht svg{width:100%;height:100%;display:block}
-.btn{font:600 16px/1 var(--sans);border-radius:var(--r-m);height:48px;box-sizing:border-box;padding:0 22px;border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .15s,transform .1s;white-space:nowrap;cursor:pointer}
-.btn:active{transform:scale(.98)}
-.btn-p{background:var(--v);color:#fff}@media (hover:hover){.btn-p:hover{background:var(--v-hover)}}
-.btn-s{background:var(--v-50);color:var(--v-text)}@media (hover:hover){.btn-s:hover{background:var(--v-100)}}
-@media (hover:none){.btn:active{transform:none;opacity:.5}} /* ui-kit 04: на телефоне ховера нет (iPhone оставляет его залипшим), отклик на нажатие — бледнеет до 50 % */
-.btn-w{background:#fff;color:var(--v-text)}
-.btn-g{box-shadow:inset 0 0 0 1px var(--line);background:transparent}
-.btn-sm{font-size:14px;height:40px;box-sizing:border-box;padding:0 16px;border-radius:var(--r-s)}
-.badge{font:600 12px/1 var(--sans);padding:6px 9px;border-radius:var(--r-xs);display:inline-block}
-.b-v{background:var(--v);color:#fff}.b-soft{background:var(--v-50);color:var(--v-text)}.b-ok{background:color-mix(in srgb,var(--success) 12%,transparent);color:var(--success)} /* ui-kit «Готово»: зелёная метка */
-.b-ic{display:inline-flex;align-items:center;gap:4px}.b-ic svg{width:12px;height:12px;flex:none} /* метка со значком: Lucide 12 по кеглю текста, линия 2 (на 12 px 1.8 бледнее текста), отступ 4 */
-.ico{width:22px;height:22px;display:block}
 
-/* header */
+ 
 
-/* hero */
-/* херо: обещание «при вас» + приоритетные услуги заказчика + копицентры сейчас (2026-11-16; делали под телефон, ПК не проверялся) */
+ 
+ 
+
+
+
+
+
 .hero{padding:32px 0 0}
 .hero h1{font:800 68px/.95 var(--sans);letter-spacing:-.04em;margin:0 0 24px;text-wrap:balance}
-/* плитка = предмет на светлом столе (--stage, как сцены карточек); акцент на названии и сроке, не на плашке. Фиолетовые плитки отвергнуты: «акцент на коробку, а не контент» (2026-11-16) */
-.hs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-/* компьютер: плитка 160, чтобы предмет на фото читался; ховер фоном, на касание содержимое бледнеет до 50 % (ui-kit §кнопки) */
-.hs a{position:relative;overflow:hidden;background:var(--stage);color:var(--ink);border-radius:var(--r-l);height:160px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:background .15s;-webkit-tap-highlight-color:transparent}
-@media (hover:hover){.hs a:hover{background:color-mix(in srgb,var(--ink) 5%,var(--stage))}}
-.hs a:active>*{opacity:.5}
-.hs b{font:600 16px/1.2 var(--sans);position:relative;z-index:1}
-/* срок — тёмный текст со значком часов Lucide 16, без плашки: все метки здесь про время, часы это и говорят; так же срок выглядит в карточке товара. Выбор пользователя, 2026-11-16 (Б давал рябь, Ж — запасной) */
-.hs .tg{font:500 14px/1 var(--sans);color:var(--ink-2);display:flex;align-items:center;gap:6px;position:relative;z-index:1}
-.hs .tg::before{content:"";flex:none;width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>") center/contain no-repeat}
-/* обложка товара: вырезка кадра 1 Семёна на прозрачном фоне (briefs/semyon.md); заменяет CSS-предмет по мере появления фото */
-.ob-img{position:absolute;right:-12px;bottom:-20px;width:144px;height:144px;object-fit:contain}
-/* под плитками строки списка, не карточки: открытые копицентры и весь каталог */
-/* под плитками: «Изготовим, пока вы в пути» — сервисный блок в духе Дринкит/Додо: шаги со временем, ближайшая точка, отправка файла. С главной на телефоне пишут и звонят в 5 раз чаще, чем оплачивают (Метрика, 90 дн.: 1 423 против 285). Выбор пользователя, 2026-11-16 */
-/* связь сразу под плитками: с телефона с главной звонят и пишут 1 423 раза за 90 дн. — второе действие после поиска (оплат 285). Одна строка: «Позвонить» + мессенджеры; почта — в «Связаться». Номер и ссылка по городу (hdr.js, data-ct) */
-.ct{margin-top:16px;display:flex;align-items:center;gap:8px}
-.ct .btn svg{width:20px;height:20px;flex:none} /* трубка контуром 1,8, как все значки (2026-11-17: «в кнопку херо тоже такую иконку»; залитая и скрытая — отменено) */
-.ct .btn .n{display:none}
-.ct-l{display:flex;gap:8px}
-/* мессенджеры: серая кнопка 48 (--stage), радиус 12 как у кнопки M, знак мессенджера его фирменным цветом */
-.ct-l a{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--r-m);background:var(--stage);transition:background .15s}
-.ct-l svg{width:26px;height:26px}
-.m-tg{color:#26A5E4}.m-wa{color:#25D366}.m-wa svg{width:24px;height:24px}
-@media (hover:hover){.ct-l a:hover{background:color-mix(in srgb,var(--ink) 8%,var(--stage))}}
-.ct-l a:active>*{opacity:.5}
-@media (min-width:561px){.ct .btn .w{display:none} .ct .btn .n{display:inline}}
-@media (max-width:560px){.ct .btn{flex:1}}
-@media (max-width:359px){.ct .btn svg{display:none}} /* 320: трубка + «Позвонить» + 3 мессенджера не влезают (вылезало на 20 px) — на самых узких без трубки */
 
-/* section heads */
-section{padding:72px 0 0}
-.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px}
-h2{font:700 36px/1.05 var(--sans);letter-spacing:-.02em;margin:0}
-.sh p{margin:8px 0 0;color:var(--ink-2);max-width:560px}
+
+
+
+
+
 .h-eco{text-wrap:balance}
 .sh a{color:var(--v-text);font-weight:600;white-space:nowrap}
-.sh .sh-link{color:inherit;font-weight:inherit;display:inline-flex;align-items:center;padding:8px 0;margin:-8px 0} /* заголовок секции ссылкой: «Статьи ›» — серый шеврон = переход, как у плиток экосистемы */
-.sh-link svg{width:.8em;height:.8em;margin-left:.08em;color:var(--ink-2)}
 
-/* popular */
 
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.stp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);padding:24px;display:flex;flex-direction:column;margin:0;min-width:0}
-.stp .n{font:600 12px var(--mono);color:var(--v-text);margin-bottom:28px}
-.stp b{font:600 20px/1.2 var(--sans);margin-bottom:6px}
-.stp p{margin:0;color:var(--ink-2);font-size:16px}
-/* способы заказа — чипы S в ряд с горизонтальной прокруткой (ui-kit «Выбор и метки»): фон ink 6 %, выбранный --ink; переключают шаги ниже */
+
+
+
 .how-t{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 24px;padding:0 16px}
 .how-t::-webkit-scrollbar{display:none}
 .how-t button{all:unset;cursor:pointer;flex:none;display:flex;align-items:center;height:40px;box-sizing:border-box;padding:0 16px;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,transparent);font:400 14px var(--sans);color:var(--ink);white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s}
 .how-t button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.how-t button{gap:6px}.how-d{padding:4px 6px} /* выгода в чипе — зелёная метка b-ok (ui-kit: зелёный = хорошее для юзера); на выбранном тёмном чипе сплошная, иначе теряется */
+.how-t button{gap:6px}.how-d{padding:4px 6px} 
 .how-t button[aria-pressed="true"] .how-d{background:var(--success);color:#fff}
 .how-t button:focus-visible{outline:2px solid var(--v);outline-offset:2px}
-/* один акцент в блоке — кнопка способа (btn-p; вторичная btn-s была бледной — «сделай как было фиолетовой»); номера шагов серые, названия 500, «Найти» в статусе второстепенная (белая на плашке) — «много акцента подряд», 2026-11-17 */
+
 .steps[id] .stp .n{color:var(--ink-2)}.steps[id] .stp b{font-weight:500}
-.how-a{grid-column:1/-1;justify-self:start;margin-top:8px} /* одно действие под шагами выбранного способа */
+.how-a{grid-column:1/-1;justify-self:start;margin-top:8px} 
 @media (max-width:560px){.how-a{justify-self:stretch}}
 .steps>.ct{grid-column:1/-1;margin-top:8px}
-.how-a .ico,.steps>.ct .btn svg{display:block;width:20px;height:20px;flex:none} /* значок 20 в кнопке M (ui-kit): каталог — как у «Каталог» в шапке, быстрый заказ — молния как в меню, копицентры — карта как в чипе шапки, трубка контуром, как остальные (залитая — исключение только под плитками херо; «иконки разные, где-то заливка, а где-то контур») */
+.how-a .ico,.steps>.ct .btn svg{display:block;width:20px;height:20px;flex:none} 
 @media (prefers-reduced-motion:no-preference){.steps[id]:not([hidden]) .stp{animation:cat-row .3s cubic-bezier(.2,.8,.2,1) both}.steps[id] .stp:nth-child(2){animation-delay:.05s}.steps[id] .stp:nth-child(3){animation-delay:.1s}.steps[id] .stp:nth-child(4){animation-delay:.15s}}
 #status{scroll-margin-top:72px}
-/* на телефоне закреплены полоса и шапка, 90px */
-@media (max-width:980px){:is(#status,#ctr,#cat){scroll-margin-top:98px}} /* ряд ссылок при переходе вниз прячется — отступ без него */
-/* промо-полоса над шапкой во всю ширину (плашкой пробовали — вернули полосу): фиолетовая (промо = фиолетовый, ui-kit), 40 px, одна строка 14/500 по центру, крестик 40 справа с зоной 44 */
-.pbar{position:relative;z-index:22;display:flex;align-items:center;justify-content:center;height:40px;padding:0 48px;background:var(--v);color:#fff;font:500 14px/1.2 var(--sans)}
-.pbar a{display:flex;align-items:center;gap:4px;min-width:0;color:inherit;white-space:nowrap}
-.pbar a .ico,.pbar-i{width:16px;height:16px;flex:none}
-.pbar a span{overflow:hidden;text-overflow:ellipsis} /* значок необязательный (Lucide из списка админки), 16 слева; текст режется многоточием, значки остаются */
-.pbar-i{margin-right:4px}
-.pbar button{all:unset;cursor:pointer;position:absolute;right:4px;top:0;display:grid;place-items:center;width:40px;height:40px;color:inherit}
-.pbar button::after{content:"";position:absolute;inset:-2px}
-.pbar button svg{width:18px;height:18px}
-.pbar :focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:var(--r-s)}
-@media (hover:none){.pbar a:active,.pbar button:active{opacity:.5}}
+
+@media (max-width:980px){:is(#status,#ctr,#cat){scroll-margin-top:98px}} 
+
 .st{max-width:560px;display:flex;flex-direction:column}
-.st input{font:400 16px var(--sans);height:48px;box-sizing:border-box;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--surface);color:var(--ink);margin-bottom:16px} /* поле M как в форме быстрого заказа; поля друг под другом, шаг 16, кнопка M */
+.st input{font:400 16px var(--sans);height:48px;box-sizing:border-box;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--surface);color:var(--ink);margin-bottom:16px} 
+#stNum{font-family:var(--sans);font-weight:500} 
+#stNum::placeholder{font-family:var(--sans);font-weight:400} 
 .st .btn{margin-top:8px}
 @media (min-width:561px){.st .btn{align-self:flex-start}}
-.st-l{display:block;font:500 14px var(--sans);margin-bottom:8px} /* подпись поля — как в форме быстрого заказа (.ff label 500/14); вместо подсказки в плейсхолдере («текст не под заголовком, а как лейбл») */
-.sres{display:block;font-size:14px;color:var(--ink-2);margin-top:8px}.sres:empty{margin:0} /* поле и кнопка M 48 в одном ряду (ui-kit) */
+.st-l{display:block;font:500 14px var(--sans);margin-bottom:8px} 
+.sres{display:block;font-size:14px;color:var(--ink-2);margin-top:8px}.sres:empty{margin:0} 
 
-/* catalog index */
-/* каталог без коробки и без линий (пользователь, 2026-11-17: «UI без линий»). Компьютер — 4 колонки, всё открыто */
+
+
 .cat{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px}
 .cat-t{display:none}
-/* раскрытие чипов каталога: чипы, подпись, фон и блок ниже едут одним движением 0,45 с, мягкий разгон и торможение; строки проявляются после старта, при закрытии гаснут */
+
 ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.45,0,.2,1)}
 ::view-transition-old(*.ctp){animation:ctp-out .15s both}
-::view-transition-new(*.ctp){animation:none} /* новая панель — живой снимок: строки анимируются сами, по очереди */
+::view-transition-new(*.ctp){animation:none} 
 @keyframes ctp-out{to{opacity:0}}
-@media (max-width:560px){#cat+section{view-transition-name:ct-after}} /* телефон: блок под каталогом едет вместе с чипами, а не перескакивает */
-@media (min-width:561px){.cat a:nth-of-type(n+6):not(.more){display:none}} /* компьютер: 5 групп + «Весь раздел» */
+@media (max-width:560px){#cat+section{view-transition-name:ct-after}} 
+@media (min-width:561px){.cat a:nth-of-type(n+6):not(.more){display:none}} 
 .cat a.more{color:var(--v-text);font-weight:600}
 .cat b{display:block;font-weight:600;font-size:16px;margin-bottom:10px}
 .cat a{display:block;color:var(--ink-2);font-size:16px;padding:3px 0}
 .cat a:hover{color:var(--v-text)}
 
-/* season promo */
+
 .promo{border-radius:var(--r-xl);overflow:hidden;position:relative;background:var(--inverse);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;min-height:300px}
 .promo .l{padding:44px;position:relative;z-index:2;display:flex;flex-direction:column}
 .promo h3{font:800 44px/.98 var(--sans);letter-spacing:-.03em;margin:0}
 .promo p{color:#C9C7C1;max-width:420px;margin:14px 0 26px}
 .promo .r{position:relative}
-.promo .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:right bottom} /* предметы без фона (зелёный ключ), тень в файле */
+.promo .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:right bottom} 
 .pr-b{display:flex;gap:10px;flex-wrap:wrap}
-/* крупный отсчёт — главный признак промо: срочность (2026-11-17) */
+
 .pr-c{margin:0 0 16px;font:800 56px/1 var(--sans);letter-spacing:-.03em;color:#fff}
 .pr-c small{display:block;margin-bottom:6px;font:600 14px/1.2 var(--sans);letter-spacing:0}
 
-/* копицентры: карта и список, переключатель вида. Данные data/copycenters.js (с copy.ru/contacts/).
-   Прототип: MapLibre + векторные плитки OpenFreeMap, перекрашены в палитру страницы (без ключа). В бою — Яндекс Карты API, ключ у заказчика (живой /contacts/ уже на нём). */
-#ctr .sh{align-items:flex-end}
-.cc-sum{margin:6px 0 0;color:var(--ink-2)}
-.seg{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:var(--r-m);flex:none}
-.seg button{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;height:40px;padding:0 18px;border-radius:var(--r-s);font:500 14px var(--sans);color:var(--ink)}
-.seg button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 3px rgba(20,19,22,.14),0 0 0 .5px rgba(20,19,22,.06)}
-:root[data-theme="dark"] .seg button[aria-pressed="true"]{background:color-mix(in srgb,var(--ink) 16%,var(--surface));box-shadow:none}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button[aria-pressed="true"]{background:color-mix(in srgb,var(--ink) 16%,var(--surface));box-shadow:none}}
-.seg button:focus-visible{outline:2px solid var(--v);outline-offset:2px}
-/* компактный сегмент S (ui-kit 04): дорожка 40 как кнопка S, сегмент 32, радиусы 8/6 — рядом с заголовком */
-.seg-s{padding:4px;gap:2px;border-radius:var(--r-s)}
-.seg-s button{height:32px;width:40px;padding:0;border-radius:6px}.seg-s svg{width:18px;height:18px} /* значки Lucide map / list; подпись в aria-label */
-.cc[data-view="map"] .cc-list,.cc[data-view="list"] .cc-map{display:none}
-.cc{--cc-h:520px} /* высота блока: карта и список одной высоты, при переключении видов ничего не скачет */
-.cc-map{position:relative;height:var(--cc-h);border-radius:var(--r-l);overflow:hidden;background:var(--map);isolation:isolate}
-#ccMap{position:absolute;inset:0;background:var(--map)}
-.cc-map .maplibregl-ctrl-top-left .maplibregl-ctrl{margin:12px 0 0 12px}
-/* кнопки на карте — плашки шапки (ui-kit 06 «Поверх карты»): цвет текста 6 % без подложки, под ней лёгкое размытие 4 px — как верх шапки, карта проступает; радиус 8, без тени и обводки; разделитель — текст 14 % */
-.cc-map .maplibregl-ctrl-group:not(:empty),.cc-loc,.cc-map .maplibregl-ctrl-attrib.maplibregl-compact{background:color-mix(in srgb,var(--ink) 6%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border-radius:var(--r-s);box-shadow:none;overflow:hidden}
-.cc-map .maplibregl-ctrl-group button{width:40px;height:40px}
-.cc-map .maplibregl-ctrl-group button+button{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
-/* значки на карте — Lucide, контур 1,8, цвет текста (ui-kit 03), вместо значков библиотеки */
-.cc-map .maplibregl-ctrl button .maplibregl-ctrl-icon{background:currentColor;color:var(--ink)}
-.cc-map .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M12 5v14'/></svg>") center/20px no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M12 5v14'/></svg>") center/20px no-repeat}
-.cc-map .maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/></svg>") center/20px no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/></svg>") center/20px no-repeat}
-.cc-map .maplibregl-ctrl-attrib-button{background:currentColor;color:var(--ink-2);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 16v-4M12 8h.01'/></svg>") center/20px no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 16v-4M12 8h.01'/></svg>") center/20px no-repeat}
-.cc-map .maplibregl-ctrl-attrib{font-size:10px;background:color-mix(in srgb,var(--surface) 80%,transparent);color:var(--ink-2)}
-.cc-map .maplibregl-ctrl-attrib a{color:inherit}
-.cc-map:has(.cc-card:not([hidden])) .maplibregl-ctrl-bottom-right{display:none}
-/* подсказка «двумя пальцами»: без серого затемнения, маленькой плашкой сверху по центру */
-.cc-map .maplibregl-cooperative-gesture-screen{background:none;align-items:flex-start;justify-content:center;padding:12px;z-index:600}
-/* алерты карты — одно правило для всех (подсказка жеста MapLibre и сообщения .cc-msg): плашка карты (ui-kit 06 «Поверх карты»), одно место, одно время (2026-11-17) */
-.cc-msg,.cc-map .maplibregl-cooperative-gesture-screen>div{font:500 14px/1.3 var(--sans);color:var(--bg);background:color-mix(in srgb,var(--ink) 80%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:var(--r-s);padding:10px 14px} /* графитовое матовое стекло (выбор пользователя 2026-11-17; серое было незаметным, жёлтый запрещён): фон --ink 80 % + blur 8, текст --bg — в тёмной теме само инвертируется в светлое стекло */
-/* маркер копицентра — капля с «CO» из логотипа (рисунок пользователя, выровнен симметрично). Издалека 28×35, вблизи (zoom ≥ 13, .near) 34×42 и рядом название станции с цветом ветки. Выбранный крупнее и поверх, закрытый серый. Остриё — точный адрес */
-.cc-pin{all:unset;cursor:pointer;display:block;position:relative;width:28px;height:35px;color:var(--v);filter:drop-shadow(0 2px 3px rgba(20,19,22,.3));transition:transform .15s;transform-origin:50% 100%}
-.cc-pin>svg{display:block;width:100%;height:100%;overflow:visible}
-.cc-pin.off{color:#A9A59B}
-.cc-pin>svg{transition:transform .15s;transform-origin:50% 100%}.cc-pin.sel>svg{transform:scale(1.25)} /* крупнее только капля, подпись своего размера */
-.cc-map .maplibregl-marker:has(.sel){z-index:2}
-.cc-pin .ln{width:8px;height:8px;border-radius:50%;flex:none}
-/* капля → карточка: карточка растёт из острия капли (масштаб и цвет от фиолетового к белому), капля в это время уходит в хвостик. 350 мс, без движения при «уменьшить движение» */
-.cc-mk{display:grid;justify-items:center}
-.cc-mk .cc-pin{transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s}
-.cc-mk.open .cc-pin{transform:scale(.3);opacity:0;pointer-events:none}
-.maplibregl-marker.open{z-index:3}
-.cc-pop{position:absolute;left:50%;bottom:6px;width:288px;margin-left:-144px;box-sizing:border-box;padding:16px;border-radius:var(--r-l);background:var(--v);color:var(--ink);box-shadow:0 12px 32px -12px rgba(20,19,22,.4);transform-origin:50% calc(100% + 6px);transform:scale(.1);opacity:0;pointer-events:none;cursor:default;
-  transition:transform .35s cubic-bezier(.2,.9,.3,1.12),opacity .15s,background-color .3s}
-.cc-pop::after{content:"";position:absolute;left:50%;bottom:-6px;width:14px;height:14px;margin-left:-7px;background:inherit;transform:rotate(45deg);border-radius:0 0 3px 0}
-.cc-pop>*{opacity:0;transition:opacity .15s}
-.cc-mk.open .cc-pop{transform:none;opacity:1;pointer-events:auto;background:var(--surface)}
-.cc-mk.open .cc-pop>*{opacity:1;transition-delay:.15s}
-.cc-pop .x{all:unset;cursor:pointer;position:absolute;top:8px;right:8px;width:40px;height:40px;display:grid;place-items:center;color:var(--ink-2);border-radius:var(--r-s)}
-.cc-pop .x svg{width:18px;height:18px}
-.cc-pop .cc-n{font-size:16px}
-@media (prefers-reduced-motion:reduce){.cc-pop,.cc-pop>*,.cc-mk .cc-pin{transition:none}}
-/* группа: та же капля, вместо «CO» число точек */
-.cc-grp b{position:absolute;left:0;right:0;top:calc(40.3% - .62em);text-align:center;color:#fff;font:700 14px/1.2 var(--sans)}
-.cc-map.near .cc-grp b{font-size:16px}
-/* вблизи (zoom ≥ 13) капля превращается в мини-карточку того же вида, что открытая: ветка, станция, часы; тап — разворачивается в полную. Издалека — снова капля */
-.cc-pin>svg,.cc-pin .tg{transition:transform .3s cubic-bezier(.2,.9,.3,1.12),opacity .2s}
-.cc-pin .tg{position:absolute;left:50%;bottom:6px;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:10px;background:var(--surface);color:var(--ink);font:600 13px/1.2 var(--sans);white-space:nowrap;box-shadow:0 6px 16px -6px rgba(20,19,22,.35);transform:translateX(-50%) scale(.2);transform-origin:50% calc(100% + 6px);opacity:0;pointer-events:none}
-.cc-pin .tg::after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;margin-left:-5px;background:inherit;transform:rotate(45deg);border-radius:0 0 2px 0}
-.cc-pin .tg small{font:500 12px/1.2 var(--sans);color:var(--ink-2)}
-.cc-pin .tg small{color:var(--danger)}.cc-pin .tg small.on{color:var(--success)}
-.cc-pin.off .tg{color:var(--ink-2)}
-.cc-map.near .cc-pin:not(.cc-grp)>svg{transform:scale(.3);opacity:0}
-.cc-map.near .cc-pin .tg{transform:translateX(-50%);opacity:1;pointer-events:auto}
-.cc-mk.open .cc-pin .tg{opacity:0;transform:translateX(-50%) scale(.6)}
-@media (prefers-reduced-motion:reduce){.cc-pin>svg,.cc-pin .tg{transition:none}}
-/* карточка точки: режим, телефон с добавочным (набирается сам), почта, «Маршрут» + мессенджеры, переход на страницу точки текстом */
-.cc-pop{width:304px;margin-left:-152px}
-.cc-map :is(.maplibregl-ctrl-top-left,.maplibregl-ctrl-bottom-right,.cc-loc){transition:opacity .2s}
-.cc-map:has(.maplibregl-marker.open) :is(.maplibregl-ctrl-top-left,.maplibregl-ctrl-bottom-right,.cc-loc){opacity:0;pointer-events:none} /* пока открыта карточка, кнопки карты не мешают; закрыл — вернулись */
-.cc-hr{margin:4px 0 0;font-size:14px;color:var(--ink-2)}
-.cc-ct{margin:12px 0 0;display:grid;gap:6px;font-size:14px}
-.cc-ct a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;width:max-content}
-.cc-ct svg{width:16px;height:16px;color:var(--ink-2);flex:none}
-.cc-pop .cc-act{align-items:center}
-.cc-ms{display:flex;gap:8px}
-.cc-ms a{display:grid;place-items:center;width:40px;height:40px;border-radius:var(--r-s);background:var(--stage)}
-.cc-ms svg{width:22px;height:22px}.cc-ms .m-wa svg{width:20px;height:20px}
-/* 2026-11-16 сводка «26 копицентров… открыто N» и переключатель скрыты по просьбе. Сообщения про местоположение — плашка .cc-msg на карте (как подсказка про жест) */
-.cc-sum{display:none}
-.cc-short{display:none}
-.cc-msg{position:absolute;z-index:600;top:12px;left:50%;translate:-50% 0;max-width:calc(100% - 32px);width:max-content;box-sizing:border-box;text-align:center;opacity:0;pointer-events:none;transition:opacity 1s ease 1s} /* исчезает как подсказка жеста в MapLibre: держится 1 с, гаснет 1 с */
-.cc-msg.on{opacity:1;transition:opacity .05s}
-/* телефон: все алерты внизу слева от колонки кнопок, нижняя кромка вровень с «Где я» (вызывает ошибки местоположения); сверху липли к переключателю «Карта/Список» и читались как часть заголовка */
-@media (max-width:560px){.cc-msg{top:auto;bottom:56px;left:16px;right:64px;width:auto;max-width:none;translate:none;text-align:left}
-  .cc-map .maplibregl-cooperative-gesture-screen{align-items:flex-end;justify-content:flex-start;padding:0 64px 56px 16px}.cc-map .maplibregl-cooperative-gesture-screen>div{flex:1}}
 
-.cc-link{display:inline-block;margin-top:20px;font:500 14px/1.3 var(--sans);color:var(--v-text,var(--v));text-decoration:none}
-@media (hover:hover){.cc-ct a:hover,.cc-link:hover{text-decoration:underline}.cc-ms a:hover{background:color-mix(in srgb,var(--ink) 8%,var(--stage))}}
-.cc-me{display:block;width:16px;height:16px;border-radius:50%;background:#2F80ED;border:3px solid #fff;box-sizing:border-box;box-shadow:0 0 0 8px rgba(47,128,237,.2)}
-.cc-loc{position:absolute;z-index:500;top:12px;right:12px;color:var(--ink)}
-.cc-loc{width:40px;padding:0;justify-content:center} /* кнопка местоположения: только значок, плашка 40×40 как +/− */
-.cc-loc svg{width:20px;height:20px}
-.cc-loc[aria-busy="true"] svg{animation:ccSpin 1s linear infinite}@keyframes ccSpin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){.cc-loc[aria-busy="true"] svg{animation:none;opacity:.5}}
-.cc-loc[aria-pressed="true"]{color:var(--v-text,var(--v))} /* местоположение найдено — значок в цвет бренда */
-.cc-card{position:absolute;z-index:500;left:12px;bottom:12px;width:min(360px,calc(100% - 24px));box-sizing:border-box;background:var(--surface);border-radius:var(--r-l);padding:16px;box-shadow:0 12px 32px -12px rgba(20,19,22,.35)}
-.cc-card[hidden]{display:none}
-.cc-card .x{all:unset;cursor:pointer;position:absolute;top:8px;right:8px;width:40px;height:40px;display:grid;place-items:center;color:var(--ink-2);border-radius:var(--r-s)}
-.cc-card .x svg{width:18px;height:18px}
-.cc-n{display:flex;align-items:center;gap:8px;font:600 18px/1.25 var(--sans);padding-right:36px}
-.ln{flex:none;width:10px;height:10px;border-radius:50%}
-/* цвет ветки — по data-c из data/copycenters.js (палитра data/metro.js), без инлайн-стилей. Новый цвет в данных → строка здесь. TODO(бэк): класс/цвет ветки отдаёт CMS */
-.ln[data-c="#0072BA"]{background:#0072BA}.ln[data-c="#1EBCEF"]{background:#1EBCEF}.ln[data-c="#4FB04F"]{background:#4FB04F}.ln[data-c="#915133"]{background:#915133}.ln[data-c="#943E90"]{background:#943E90}.ln[data-c="#BED12C"]{background:#BED12C}.ln[data-c="#E42313"]{background:#E42313}.ln[data-c="#F07E24"]{background:#F07E24}.ln[data-c="#FDC305"]{background:#FDC305}.ln[data-c="#FFCD1C"]{background:#FFCD1C}.ln[data-c="#FFD702"]{background:#FFD702}
-.cc-mk.in-cl{visibility:hidden} /* точка внутри кластера */
-.cc-st{margin:6px 0 0;font-size:14px;color:var(--ink-2)}
-.cc-st>span:first-child{color:var(--danger);font-weight:500}.cc-st .on{color:var(--success)}
-.cc-ad{margin:4px 0 0;font-size:14px;color:var(--ink-2)}
-.cc-act{display:flex;gap:8px;margin-top:14px}
-.cc-act .btn{flex:1}
-.cc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.cc-list{min-height:var(--cc-h);align-content:start}
-/* строка списка, высота 64 (задана явно), шаг 72: «станция · N мин» и часы в первой строке, адрес во второй (с многоточием), стрелка справа. Слева у каждой строки метка: цвет ветки или значок места — названия на одной линии */
-.pt{background:var(--stage);border-radius:var(--r-m);height:64px;padding:0 8px 0 16px;align-content:center;display:grid;grid-template-columns:10px minmax(0,1fr) auto 24px;grid-template-areas:"d n s g" ". a a g";column-gap:8px;row-gap:4px;align-items:center;color:inherit;text-decoration:none;cursor:pointer;text-align:left;font:inherit;border:0;width:100%;box-sizing:border-box}
-.pt .ln{grid-area:d;justify-self:center}
-.ln-x{width:9px;height:9px;border-radius:2px;background:var(--ink)}.cc-pin .ln-x{width:7px;height:7px} /* площадь как у кружка (10 → 9, 8 → 7 в мини-карточке) */ /* точка без метро: квадрат цвета текста — фигура не круглая, чёрных веток в наших городах нет */
-.pt-n{grid-area:n;display:flex;min-width:0;font:600 16px/1.3 var(--sans);white-space:nowrap}.pt-n>span:first-child{overflow:hidden;text-overflow:ellipsis} /* длинное название обрезается, минуты видны всегда */
-.pt-s{grid-area:s;font:500 14px/1.3 var(--sans);color:var(--danger);white-space:nowrap}.pt-s.on{color:var(--success)} /* закрыто сейчас — красным, открыто — зелёным */
-.pt-s.badge{font:600 12px/1 var(--sans);justify-self:end;color:var(--success)} /* «24/7» — метка ui-kit (как «Готово»), а не текст: круглосуточность — особенность точки */
-.pt-a{grid-area:a;font-size:14px;line-height:1.3;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pt-m{flex:none;font-weight:500;color:var(--ink-2);white-space:pre} /* «Академическая · 2 мин»: минуты пешком от метро сразу после станции; «от метро» в каждой строке не повторяем, для читалок оно в .vh */
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.pt-g{grid-area:g;width:20px;height:20px;color:var(--ink-2);justify-self:center}
-.pt.off .pt-n{color:var(--ink-2)} /* закрытые сейчас — в конце списка и бледнее */
-@media (hover:hover){.pt:hover{background:color-mix(in srgb,var(--ink) 6%,var(--stage))}}
-.pt:active{opacity:.5}
-.pt .km{flex:none;font-size:14px;color:var(--ink-2)}
-.cc-more{grid-column:1/-1;justify-self:start} /* отступ сверху — общий шаг сетки 8; иначе список длиннее карты и блок скачет */
-@media (max-width:760px){.cc-list{grid-template-columns:1fr}}
-@media (max-width:560px){#ctr .sh{flex-direction:row;align-items:flex-end;gap:12px}#ctr .sh>div:first-child{min-width:0}#ccH>span{display:block}.cc-full{display:none}.cc-short{display:inline} /* телефон: переключатель справа от заголовка, город переносится на вторую строку */
-  /* длинное растворение (160) почти пустое в первых ~40 px — подтягиваем карту под заголовок и следующий блок на карту, чтобы не было лишней пустоты. Заголовок и след. блок выше карты по слоям */
-  #ctr .sh{position:relative;z-index:3;margin-top:24px}#ctr:has(.cc[data-view="map"]) .sh{margin-bottom:-40px} /* отступ сверху одинаковый в обоих видах — заголовок и переключатель не скачут */#ctr .cc[data-view="map"]{margin-bottom:-56px} /* заход на карту — только в виде «карта»; в списке обычные отступы */#ctr+section{position:relative;z-index:3}
-.cc{--cc-h:max(520px,min(72svh,600px))} /* не ниже 520: в списке 5 строк + «Показать все» (на айфоне при 72svh было 4); 600 давало пустую карту сверху и снизу */.cc-map{height:var(--cc-h);margin:0 -16px;border-radius:0}.cc-list{min-height:calc(var(--cc-h) - 120px)} /* в виде «карта» заголовок заходит на карту (−40 вместо +24) и следующий блок поднят на 56 — список короче на эти 120, итог по высоте тот же */
-  /* края карты: размытие самой карты (::after, сила убывает к центру по маске) + растворение в цвет фона (::before) по кривой smootherstep (24 шага); сверху/снизу 160, по бокам без растворения и размытия; размытие 10. Шва нет: под размытием непрозрачная карта. Кнопки (z 2) и карточка (z 500) поверх */
-  .cc-map::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
-    linear-gradient(180deg,color-mix(in srgb,var(--bg) 100.0%,transparent) 0.0px,color-mix(in srgb,var(--bg) 99.9%,transparent) 6.7px,color-mix(in srgb,var(--bg) 99.5%,transparent) 13.3px,color-mix(in srgb,var(--bg) 98.4%,transparent) 20.0px,color-mix(in srgb,var(--bg) 96.5%,transparent) 26.7px,color-mix(in srgb,var(--bg) 93.5%,transparent) 33.3px,color-mix(in srgb,var(--bg) 89.6%,transparent) 40.0px,color-mix(in srgb,var(--bg) 84.8%,transparent) 46.7px,color-mix(in srgb,var(--bg) 79.0%,transparent) 53.3px,color-mix(in srgb,var(--bg) 72.5%,transparent) 60.0px,color-mix(in srgb,var(--bg) 65.3%,transparent) 66.7px,color-mix(in srgb,var(--bg) 57.8%,transparent) 73.3px,color-mix(in srgb,var(--bg) 50.0%,transparent) 80.0px,color-mix(in srgb,var(--bg) 42.2%,transparent) 86.7px,color-mix(in srgb,var(--bg) 34.7%,transparent) 93.3px,color-mix(in srgb,var(--bg) 27.5%,transparent) 100.0px,color-mix(in srgb,var(--bg) 21.0%,transparent) 106.7px,color-mix(in srgb,var(--bg) 15.2%,transparent) 113.3px,color-mix(in srgb,var(--bg) 10.4%,transparent) 120.0px,color-mix(in srgb,var(--bg) 6.5%,transparent) 126.7px,color-mix(in srgb,var(--bg) 3.5%,transparent) 133.3px,color-mix(in srgb,var(--bg) 1.6%,transparent) 140.0px,color-mix(in srgb,var(--bg) 0.5%,transparent) 146.7px,color-mix(in srgb,var(--bg) 0.1%,transparent) 153.3px,color-mix(in srgb,var(--bg) 0.0%,transparent) 160.0px) top/100% 160px no-repeat,
-    linear-gradient(0deg,color-mix(in srgb,var(--bg) 100.0%,transparent) 0.0px,color-mix(in srgb,var(--bg) 99.9%,transparent) 6.7px,color-mix(in srgb,var(--bg) 99.5%,transparent) 13.3px,color-mix(in srgb,var(--bg) 98.4%,transparent) 20.0px,color-mix(in srgb,var(--bg) 96.5%,transparent) 26.7px,color-mix(in srgb,var(--bg) 93.5%,transparent) 33.3px,color-mix(in srgb,var(--bg) 89.6%,transparent) 40.0px,color-mix(in srgb,var(--bg) 84.8%,transparent) 46.7px,color-mix(in srgb,var(--bg) 79.0%,transparent) 53.3px,color-mix(in srgb,var(--bg) 72.5%,transparent) 60.0px,color-mix(in srgb,var(--bg) 65.3%,transparent) 66.7px,color-mix(in srgb,var(--bg) 57.8%,transparent) 73.3px,color-mix(in srgb,var(--bg) 50.0%,transparent) 80.0px,color-mix(in srgb,var(--bg) 42.2%,transparent) 86.7px,color-mix(in srgb,var(--bg) 34.7%,transparent) 93.3px,color-mix(in srgb,var(--bg) 27.5%,transparent) 100.0px,color-mix(in srgb,var(--bg) 21.0%,transparent) 106.7px,color-mix(in srgb,var(--bg) 15.2%,transparent) 113.3px,color-mix(in srgb,var(--bg) 10.4%,transparent) 120.0px,color-mix(in srgb,var(--bg) 6.5%,transparent) 126.7px,color-mix(in srgb,var(--bg) 3.5%,transparent) 133.3px,color-mix(in srgb,var(--bg) 1.6%,transparent) 140.0px,color-mix(in srgb,var(--bg) 0.5%,transparent) 146.7px,color-mix(in srgb,var(--bg) 0.1%,transparent) 153.3px,color-mix(in srgb,var(--bg) 0.0%,transparent) 160.0px) bottom/100% 160px no-repeat}
-  .cc-map::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-mask:linear-gradient(#000,transparent 160px,transparent calc(100% - 160px),#000);mask:linear-gradient(#000,transparent 160px,transparent calc(100% - 160px),#000)}
-  /* все кнопки карты одной колонкой справа внизу, на чистой карте (растворение 48/12): снизу вверх «Ближайший», +/−, «i»; шаг 8 */
-  .cc-map .maplibregl-ctrl-top-left{top:auto;left:auto;right:16px;bottom:104px}.cc-map .maplibregl-ctrl-top-left .maplibregl-ctrl{margin:0}
-  .cc-map .maplibregl-ctrl-bottom-right{bottom:192px;right:16px}.cc-map .maplibregl-ctrl-bottom-right .maplibregl-ctrl{margin:0}.cc-loc{bottom:56px}.cc-loc{top:auto;bottom:56px;right:16px;left:auto}.cc-card:not([hidden])~.cc-loc{display:none}}
 
-/* ecosystem */
-/* «Ещё от COPY.RU» (2026-11-17, «давай плитками»): бенто по рефам Pinterest — плитки сервисов, в каждой короткое название и крупный предмет.
-   Телефон: ИИ-фото широкой плиткой сверху, остальные 2 × 2. Плитка — фон --stage, радиус --r-l, без обводки. Пока нет картинок — значок Lucide 1.5 в .tl-v;
-   картинка встанет туда же (<img>, без фона, 1:1). Название до 2 строк, подпись — 1 строка с многоточием (≈ 20 символов в узкой плитке) */
 .eco-t{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .tl{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:220px;padding:16px;border-radius:var(--r-l);background:var(--stage);color:inherit;text-decoration:none;overflow:hidden}
 .tl b{font:600 16px/1.3 var(--sans);max-width:100%}
-.tl-nw{white-space:nowrap}.tl-go{display:inline-block;width:1.1em;height:1.1em;margin-left:.1em;vertical-align:-.2em;color:var(--ink-2)} /* «обозначим, что плитка — переход»: шеврон Lucide сразу после названия, как у строк списка; склеен с последним словом (.tl-nw), чтобы не уезжал на строку один */
-.tl-s{font-size:14px;line-height:1.3;color:var(--ink-2);max-width:100%;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;text-wrap:balance} /* подпись до 2 строк, дальше многоточие */
+.tl-nw{white-space:nowrap}.tl-go{display:inline-block;width:1.1em;height:1.1em;margin-left:.1em;vertical-align:-.2em;color:var(--ink-2)} 
+.tl-s{font-size:14px;line-height:1.3;color:var(--ink-2);max-width:100%;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;text-wrap:balance} 
 .tl .badge{margin-top:8px;position:relative;z-index:3}
-.tl b,.tl .tl-s{position:relative;z-index:3} /* текст и метка всегда поверх картинки: картинка — задний план («на всякий случай») */ /* метка сразу под подписью, а не внизу («бейдж наверх под текст»): не налезает на картинку */
+.tl b,.tl .tl-s{position:relative;z-index:3}  
 .tl-v{position:absolute;right:8px;bottom:8px;width:104px;height:104px;display:grid;place-items:center;color:var(--v-text)}
 .tl-v svg{width:48px;height:48px}.tl-v img{width:100%;height:100%;object-fit:contain}
-.tl-v:has(img){width:min(140px,78%);height:auto;aspect-ratio:1;right:-14px;bottom:-20px} /* картинка крупнее значка и уходит за край плитки, как в плитке ИИ */
-.tl .b-ok{background:color-mix(in srgb,var(--success) 12%,var(--stage))} /* плотная, того же оттенка: метка лежит поверх картинки и не должна просвечивать */
+.tl-v:has(img){width:min(140px,78%);height:auto;aspect-ratio:1;right:-14px;bottom:-20px} 
+.tl .b-ok{background:color-mix(in srgb,var(--success) 12%,var(--stage))} 
 .tl-w{grid-column:span 2;grid-row:span 2}
 .tl-w b{font-size:20px}
-/* ИИ-фото «было → стало», как на ai.copy.ru (рука с рисунком → футболка с тем же рисунком; обе сгенерированы и вырезаны по зелёному): между ними стрелка */
-/* композиция (2026-11-17, «пустоты убери… видно что крупнее что мельче»): текст слева, справа «было → стало» по диагонали — рука мельче вверху, футболка крупнее внизу у края; стрелка от руки между ними */
+
+
 .tl-w{min-height:176px}
 .tl-w>b,.tl-w>.tl-s{max-width:56%;white-space:normal;position:relative;z-index:3}
 .tl-w .badge{margin-top:8px}
 .tl-ba{position:absolute;top:0;right:0;bottom:0;width:52%;pointer-events:none}
-.tl-f{position:absolute}.tl-f img{display:block;width:100%;height:auto} /* бледность и зелёная кайма убраны в самих файлах (уровни + despill), без CSS-фильтров */
-.tl-f:first-child img{filter:drop-shadow(6px 6px 10px rgb(0 0 0/.22))} /* тень рисунку */
-.tl-f:first-child{left:5%;bottom:0;width:62%;z-index:2} /* рисунок крупнее, слегка заезжает на футболку */ /* «было» мельче; рука входит из нижнего края плитки, а не висит в воздухе («нелогично, что рука висит») */
-.tl-f.on{right:-6%;top:0;width:72%;z-index:1} /* крупнее от правого верхнего угла («потяни за левый нижний угол») */ /* «стало» крупнее — главный предмет, вверху справа */
-/* стрелка «от руки» (ui-kit, «Значки»): своя кривая, но толщина 1.8 и круглые концы как у Lucide, цвет действия --v-text */
-.tl-ar{position:absolute;left:49%;top:71%;transform:rotate(18deg);width:22%;max-width:56px;aspect-ratio:1;color:var(--v-text);z-index:2} /* ниже футболки: от правого края рисунка вверх к её низу; кистью, неаккуратно («стрелку кистью неаккуратной»): от рисунка вверх-вправо к футболке */
+.tl-f{position:absolute}.tl-f img{display:block;width:100%;height:auto} 
+.tl-f:first-child img{filter:drop-shadow(6px 6px 10px rgb(0 0 0/.22))} 
+.tl-f:first-child{left:5%;bottom:0;width:62%;z-index:2}  
+.tl-f.on{right:-6%;top:0;width:72%;z-index:1}  
+
+.tl-ar{position:absolute;left:49%;top:71%;transform:rotate(18deg);width:22%;max-width:56px;aspect-ratio:1;color:var(--v-text);z-index:2} 
 @media (hover:hover){.tl:hover{background:color-mix(in srgb,var(--ink) 6%,var(--stage))}}
 .tl:active{opacity:.5}
-.eco-r{display:contents} /* обёртка четырёх малых плиток: в сетке не участвует, нужна бенто для nth-child */
-@media (max-width:359px){.tl:not(.tl-w){padding-inline:12px}.tl:not(.tl-w) b{font-size:15px}} /* 320: в узкой плитке «с логотипом >», «интеграции >», «калькулятор >» не влезали — поля 12 и заголовок 15 */
+.eco-r{display:contents} 
+@media (max-width:359px){.tl:not(.tl-w){padding-inline:12px}.tl:not(.tl-w) b{font-size:15px}} 
 
-/* club + app */
-/* клуб + приложение (2026-11-17): одна карточка — текст, две цифры выгоды, значки сторов; справа iPhone с картой в Wallet (img/club.webp, вырезка с родной тенью) */
-.club{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center} /* без карточки-рамки и плашек под цифрами («без коробки», «иишно») — обычная секция */
+
+
+.club{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center} 
 .club-h{margin:0 0 8px}
 .club-t>p{margin:0;color:var(--ink-2);max-width:420px}
-.club-f{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:420px}
+.club-f{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:420px}
 .club-f li{display:flex;flex-direction:column;gap:2px}
 .club-f b{font:700 24px/1.1 var(--sans);letter-spacing:-.01em;color:var(--v-text)}
 .club-f span{font-size:14px;line-height:1.3;color:var(--ink-2)}
@@ -354,35 +146,15 @@ h2{font:700 36px/1.05 var(--sans);letter-spacing:-.02em;margin:0}
 .stores img{display:block;height:40px;width:auto}
 .club-v img{display:block;width:100%;height:auto}
 
-/* blog */
+
 .blog{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
-.post{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:16px 0} /* статьи строками, как пункты FAQ (линия-разделитель, 18/600): без обложек — у блога они разношёрстные */
-.post .k{display:block;margin-top:4px;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2)} /* служебная метка ui-kit (.t-m): время чтения — считается в CMS из текста (≈180 слов/мин) */
+.post{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:16px 0} 
+.post .k{display:block;margin-top:4px;font:500 12px var(--sans);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2)} 
 .post h3{font:600 18px/1.3 var(--sans);margin:0}
 .post>svg{flex:none;width:20px;height:20px;color:var(--ink-2)}
 
-/* faq + seo */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.faq details{border-bottom:1px solid var(--line);padding:16px 0}
-.faq summary{font:600 18px/1.3 var(--sans);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
-.faq-h{margin-bottom:12px}.seo-h{margin-bottom:16px;color:var(--ink)}
-.faq summary::-webkit-details-marker{display:none}
-/* «+»/«−» значками Lucide (plus/minus) вместо символов шрифта — значки интерфейса только из Lucide; серые, как шевроны строк и плиток */
-.faq summary::after{content:"";flex:none;width:20px;height:20px;margin-top:2px;background:var(--ink-2);-webkit-mask:var(--i-plus) center/contain no-repeat;mask:var(--i-plus) center/contain no-repeat}
-.faq details[open] summary::after{-webkit-mask-image:var(--i-minus);mask-image:var(--i-minus)}
-.faq{--i-plus:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 12h14M12 5v14'/%3E%3C/svg%3E");--i-minus:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E")}
-.faq p{margin:10px 0 0;color:var(--ink-2)}
-.seo{color:var(--ink-2);font-size:16px}
-.seo h3{font:600 18px var(--sans);color:var(--ink);margin:0 0 6px}
-.seo p{margin:0 0 16px}
-.seo a{color:var(--v-text)}
-.seo-more summary{display:inline-flex;align-items:center;gap:2px;color:var(--v-text);font-weight:600;cursor:pointer;list-style:none;padding:10px 0;margin:-10px 0} /* «Подробнее»: текст с шевроном вниз, как раскрытие; после раскрытия прячется — сворачивать SEO-текст обратно незачем */
-.seo-more summary::-webkit-details-marker{display:none}
-.seo-more summary::after{content:"";width:18px;height:18px;background:currentColor;-webkit-mask:var(--i-down) center/contain no-repeat;mask:var(--i-down) center/contain no-repeat}
-.seo-more[open] summary{display:none}
-.seo{--i-down:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")}
 
-/* футер на токенах --f-*: три варианта на сравнение (?foot=dark|brand|light → :root[data-foot]), 2026-11-18. После выбора лишние удалить */
+
 :root{--f-bg:var(--inverse);--f-ink:#F3F2EF;--f-ink-2:#8F8D86;--f-txt:#C9C7C1;--f-line:#3A3A38;--f-wm:var(--v);--f-on-bg:#fff;--f-on-ink:#222220}
 footer{background:var(--f-bg);color:var(--f-txt);padding:48px 0 0;font-size:14px;margin-top:88px;overflow:hidden;--line:var(--f-line)}
 footer .svcs{display:flex;gap:8px;flex-wrap:wrap}
@@ -392,7 +164,11 @@ footer .fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 footer .flegal{border-top:1px solid var(--f-line);margin-top:32px;padding-top:18px;color:var(--f-ink-2);font-size:12px}
 footer .docs{display:flex;flex-wrap:wrap;gap:4px 20px}
 footer .docs a{display:inline-flex;align-items:center;min-height:32px;margin:0;color:var(--f-txt)}
-footer .req{margin:8px 0 0}
+
+.freq{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-top:16px}
+footer .req{margin:0;line-height:1.6}
+footer .req>span{display:block}
+footer .req .nw{white-space:nowrap} 
 footer .flegal .fbot{border:0;margin-top:12px;padding-top:0}
 .ck{position:fixed;left:24px;bottom:24px;z-index:50;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:0 16px 40px -14px rgba(34,34,32,.28);padding:14px 14px 14px 18px;display:flex;gap:14px;align-items:center;max-width:420px;font-size:14px}
 .ck p{margin:0;flex:1}.ck a{color:var(--v-text);font-weight:600}
@@ -402,27 +178,35 @@ footer a{display:block;margin:6px 0}
 .fapp{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:32px}
 footer .stores{margin:0}
 footer .stores a{margin:0}
-/* финал: вордмарк на всю ширину экрана, низ за краем */
+
+.fsv{margin-top:32px;padding-top:24px;border-top:1px solid var(--f-line)}
+.fsv ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px 24px}
+footer .fsv a{display:block;margin:0;padding:6px 0;color:var(--f-ink);font-weight:500}
+.fsv-n{display:flex;align-items:center;gap:6px} 
+.fsv small{display:block;margin-top:2px;font-size:12px;line-height:1.35;font-weight:400;color:var(--f-ink-2)}
+.fsv-i{flex:none;width:16px;height:16px;color:var(--f-ink-2);transition:translate .15s}
+@media (hover:hover){footer .fsv a:hover .fsv-i{color:var(--f-ink);translate:2px -2px}}
+.fapp:has(.stores:only-child){justify-content:flex-start}
+
 .fbig{position:relative;margin-top:32px;padding:0 8px;line-height:0}
 .fbig-w{display:block;width:100%;height:auto;fill:var(--f-wm);margin-bottom:-9%}
-/* ==== сравнение структур футера (?foot=a|b|c), 2026-11-18; после выбора лишнее удалить ==== */
-.fx-k{margin:0 0 8px;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--f-ink-2)}
-/* А: плита-аккордеон */
+
+.fx-k{margin:0 0 8px;font:500 12px var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--f-ink-2)}
+
 :root[data-foot="a"]{--f-bg:var(--v);--f-ink:#fff;--f-ink-2:rgba(255,255,255,.66);--f-txt:rgba(255,255,255,.9);--f-line:rgba(255,255,255,.24);--f-wm:#fff;--f-on-bg:#fff;--f-on-ink:var(--v)}
 @media (prefers-color-scheme:dark){:root[data-foot="a"]:not([data-theme="light"]){--f-bg:var(--v-900)}}
 :root[data-foot="a"][data-theme="dark"]{--f-bg:var(--v-900)}
 .fa-tel{margin:0;font:700 32px/1.1 var(--sans);letter-spacing:-.01em}
 footer .fa-tel a,footer .fa-sub a{display:inline;margin:0;color:var(--f-ink)}
 .fa-sub{margin:10px 0 28px;font-size:16px}
-.fa-acc details{border-top:1px solid var(--f-line)}
-.fa-acc details:last-child{border-bottom:1px solid var(--f-line)}
+.fa-acc details{border-bottom:1px solid var(--f-line)} 
 .fa-acc summary{list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:56px;font:600 18px var(--sans);color:var(--f-ink);cursor:pointer}
 .fa-acc summary::-webkit-details-marker{display:none}
-.fa-acc summary::after{content:"+";font:400 24px/1 var(--sans);color:var(--f-ink-2)}
-.fa-acc details[open] summary::after{content:"−"}
+.fa-acc summary::after{content:"";flex:none;width:20px;height:20px;background:var(--f-ink-2);-webkit-mask:var(--i-plus) center/contain no-repeat;mask:var(--i-plus) center/contain no-repeat} 
+.fa-acc details[open] summary::after{-webkit-mask-image:var(--i-minus);mask-image:var(--i-minus)}
 .fa-acc nav{padding:0 0 16px}
 footer .fa-acc nav a{font-size:16px;margin:0;padding:8px 0;color:var(--f-txt)}
-/* Б: список со стрелками */
+
 :root[data-foot="b"]{--f-bg:var(--bg);--f-ink:var(--ink);--f-ink-2:var(--ink-2);--f-txt:var(--ink);--f-line:var(--line);--f-wm:var(--ink);--f-on-bg:var(--ink);--f-on-ink:var(--bg)}
 :root[data-foot="b"] footer{border-top:1px solid var(--line);margin-top:64px}
 .fb-tel{margin:0;font:700 32px/1.1 var(--sans);letter-spacing:-.01em}
@@ -435,183 +219,128 @@ footer .fb-cols a{display:flex;justify-content:space-between;align-items:center;
 footer .fb-cells a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:56px;margin:0;font-weight:600;color:var(--f-ink);border-left:1px solid var(--f-line)}
 footer .fb-cells a:first-child{border-left:0}
 .fb-cells img{width:18px;height:18px}
-/* В: компактный */
+
 :root[data-foot="c"]{--f-wm:#F3F2EF}
 :root[data-foot="c"] footer{padding-bottom:40px}
+:root[data-foot="0"] footer{padding-bottom:40px}
+:root[data-foot="0"] footer .flegal{border-top:0;padding-top:0} 
 .fc-wm{display:block;width:100%;height:auto;fill:var(--f-wm)}
 .fc-ct{margin:20px 0 20px;font:600 18px var(--sans)}
 footer .fc-ct a{display:inline;margin:0;color:var(--f-ink)}
 .fc-links{display:flex;flex-wrap:wrap;gap:4px 18px}
 footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
 
-@media (max-width:1080px){
-  .hs{grid-template-columns:repeat(3,1fr)}
-}
 @media (max-width:980px){
   .hero h1{font-size:44px}
-  .steps{grid-template-columns:1fr 1fr}
   .cat{grid-template-columns:1fr 1fr}
   .promo{grid-template-columns:1fr}.promo .r{height:200px}
-  .ctr,.two{grid-template-columns:1fr}
+  .ctr{grid-template-columns:1fr}
   footer .cols{grid-template-columns:1fr 1fr}
+  .fsv ul{grid-template-columns:repeat(3,1fr)}
   .fb-cols{grid-template-columns:1fr 1fr}.fb-cols>:nth-child(3){grid-column:1/-1}.fb-cells{grid-template-columns:1fr 1fr}footer .fb-cells a:nth-child(3){border-left:0}footer .fb-cells a:nth-child(n+3){border-top:1px solid var(--f-line)}
-  h2{font-size:28px} section{padding-top:56px}
   .sh{flex-direction:column;align-items:flex-start;gap:8px}
   .blog{grid-template-columns:1fr}
 }
-@media (max-width:560px){
-  .wrap{padding:0 16px}
-  .hero{padding-top:20px}
+@media (max-width:560px){  .hero{padding-top:20px}
   .hero h1{font-size:36px;margin-bottom:16px}
-  .hs{grid-template-columns:1fr 1fr;gap:8px}
-  .hs a{height:96px;padding:12px 14px;gap:6px}
-  .ob-img{width:96px;height:96px;right:-10px;bottom:-14px}
-  /* «Как заказать» на телефоне (2026-11-17): шаги — строки на фоне страницы, без карточек и обводок («UI без линий»): номер слева колонкой 28, заголовок 16/600, строка текста 14.
-     Было ~600 px карточек на три очевидных шага. Статус заказа — одна плашка --v-50 (поле без обводки, белое на тонированном) */
-  .steps{grid-template-columns:1fr;gap:16px}
-  .stp{display:grid;grid-template-columns:28px 1fr;align-items:baseline;background:none;border:0;border-radius:0;padding:0}
-  .stp .n{grid-row:span 2;margin:0}
-  .stp b{font-size:16px;margin-bottom:2px}
-  .stp p{grid-column:2;font-size:14px}
+  
   .ck{left:12px;right:12px;bottom:12px;max-width:none}
+  footer .cols a{display:flex;align-items:center;min-height:32px;margin:0} 
+  .fsv ul{grid-template-columns:1fr 1fr;gap:8px 16px} 
+  footer .docs{flex-direction:column;gap:0} 
+  footer .fsv a{min-height:48px}
   .eco-t{grid-template-columns:1fr 1fr}
   .tl{min-height:0;aspect-ratio:1/1.1}
-  .tl-w{grid-row:auto;aspect-ratio:auto;min-height:176px} /* «компактнее, высоту коробки уменьшить» */
-  /* бенто (.eco-t.v-bento): плитки разной ширины зигзагом — «Сувениры» широкая + «Бизнес» узкая (у «Бизнеса» короче текст), ниже «Интеграции и API» узкая + «PRO» широкая
-     («бенто ровный, надо разного формата»; высокая плитка давала огромную картинку и пустоты). Сетка 5 колонок: широкая 3, узкая 2.
-     Широкая: текст сверху, предмет снизу справа, срезан краем. Узкая: предмет полосой сверху, текст под ним. Предмет и текст не пересекаются */
+  .tl-w{grid-row:auto;aspect-ratio:auto;min-height:176px} 
+  
   .eco-t.v-bento{grid-template-columns:repeat(5,1fr)}
   .v-bento .tl-w{grid-column:1/-1;grid-row:1}
   .v-bento .eco-r>.tl:nth-child(1){grid-column:1/span 3;grid-row:2}
   .v-bento .eco-r>.tl:nth-child(2){grid-column:4/span 2;grid-row:2}
   .v-bento .eco-r>.tl:nth-child(3){grid-column:1/span 2;grid-row:3}
   .v-bento .eco-r>.tl:nth-child(4){grid-column:3/span 3;grid-row:3}
-  .v-bento .tl:not(.tl-w){aspect-ratio:auto;gap:2px;padding:16px} /* высота по содержимому; отступ текста до краёв как у ИИ */
+  .v-bento .tl:not(.tl-w){aspect-ratio:auto;gap:2px;padding:16px} 
   .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)){justify-content:flex-start}
   .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)) .tl-v:has(img){position:absolute;margin:0;width:64%;height:auto;aspect-ratio:1;right:-12px;left:auto;bottom:-16px;top:auto;pointer-events:none}
   .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)) .tl-v img{width:100%;height:100%}
-  .v-bento .eco-r>.tl:nth-child(1) .tl-v:has(img){width:80%;left:50%;right:auto;bottom:-34px;transform:translateX(-50%)} /* коробка по центру, низ уходит за край */
-  .v-bento .eco-r>.tl:nth-child(4) .tl-v:has(img){width:70%;right:16px;bottom:-8px} /* у PRO текст короче — веер забирает всю плитку под ним */
+  .v-bento .eco-r>.tl:nth-child(1) .tl-v:has(img){width:80%;left:50%;right:auto;bottom:-34px;transform:translateX(-50%)} 
+  .v-bento .eco-r>.tl:nth-child(4) .tl-v:has(img){width:70%;right:16px;bottom:-8px} 
   .v-bento .eco-r>.tl:is(:nth-child(2),:nth-child(3)) .tl-v:has(img){position:relative;order:-1;right:auto;bottom:auto;aspect-ratio:auto;height:92px;margin:-8px -8px 4px;width:calc(100% + 16px)}
   .v-bento .eco-r>.tl:is(:nth-child(2),:nth-child(3)) .tl-v img{width:100%;height:92px;object-fit:cover}
-  .v-bento .eco-r>.tl:nth-child(3) .tl-v img{transform:scale(1.35)} /* «картинку у апи увеличить»: в вырезке много поля вокруг планшета и принтера */
-  .v-bento .eco-r>.tl:nth-child(2) .tl-v img{object-position:50% 72%;transform:scale(1.2);transform-origin:50% 100%} /* документы: в полосе видна середина с подписью и печатью */
-  @media (max-width:359px){ /* 320: узкая 2/5 = 111 px — шеврон вылезал, подпись резалась; колонки поровну, зигзаг остаётся за счёт вида плиток */
+  .v-bento .eco-r>.tl:nth-child(3) .tl-v img{transform:scale(1.35)} 
+  .v-bento .eco-r>.tl:nth-child(2) .tl-v img{object-position:50% 72%;transform:scale(1.2);transform-origin:50% 100%} 
+  @media (max-width:359px){ 
     .eco-t.v-bento{grid-template-columns:1fr 1fr}
-    .v-bento .tl:not(.tl-w){padding:12px} /* как общее правило ≤359 для плиток: 12 со всех сторон */
+    .v-bento .tl:not(.tl-w){padding:12px} 
     .v-bento .eco-r>.tl:nth-child(1),.v-bento .eco-r>.tl:nth-child(3){grid-column:1}
     .v-bento .eco-r>.tl:nth-child(2),.v-bento .eco-r>.tl:nth-child(4){grid-column:2}
     .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)) .tl-v:has(img){width:96%;right:-14px;bottom:-26px}
     .v-bento .eco-r>.tl:nth-child(1) .tl-v:has(img){width:76%;bottom:-28px}
-    .v-bento .eco-r>.tl:nth-child(4) .tl-v:has(img){width:74%;right:8px;bottom:-12px} /* заголовок сувениров в 3 строки — коробка ниже подписи */
+    .v-bento .eco-r>.tl:nth-child(4) .tl-v:has(img){width:74%;right:8px;bottom:-12px} 
   }
   .promo .l{padding:28px}.promo h3{font-size:28px}
-  /* промо на телефоне (2026-11-17): светло-фиолетовая полоса --v-50 во всю ширину, верх и низ растворяются в фон страницы по smootherstep 80 px —
-     переход светлое→светлое без серой мути (тёмная полоса была «грязновато», фон страницы — «нет ощущения, что это промо»); в тёмной теме — тёмно-фиолетовая. Отсчёт крупно фиолетовым */
+  
   #promo{padding-top:24px}
   .promo{margin:0 -16px;border-radius:0;overflow:visible;color:var(--ink);background:linear-gradient(180deg,color-mix(in srgb,var(--v-50) 0.0%,var(--bg)) 0.0px,color-mix(in srgb,var(--v-50) 0.1%,var(--bg)) 3.3px,color-mix(in srgb,var(--v-50) 0.5%,var(--bg)) 6.7px,color-mix(in srgb,var(--v-50) 1.6%,var(--bg)) 10.0px,color-mix(in srgb,var(--v-50) 3.5%,var(--bg)) 13.3px,color-mix(in srgb,var(--v-50) 6.5%,var(--bg)) 16.7px,color-mix(in srgb,var(--v-50) 10.4%,var(--bg)) 20.0px,color-mix(in srgb,var(--v-50) 15.2%,var(--bg)) 23.3px,color-mix(in srgb,var(--v-50) 21.0%,var(--bg)) 26.7px,color-mix(in srgb,var(--v-50) 27.5%,var(--bg)) 30.0px,color-mix(in srgb,var(--v-50) 34.7%,var(--bg)) 33.3px,color-mix(in srgb,var(--v-50) 42.2%,var(--bg)) 36.7px,color-mix(in srgb,var(--v-50) 50.0%,var(--bg)) 40.0px,color-mix(in srgb,var(--v-50) 57.8%,var(--bg)) 43.3px,color-mix(in srgb,var(--v-50) 65.3%,var(--bg)) 46.7px,color-mix(in srgb,var(--v-50) 72.5%,var(--bg)) 50.0px,color-mix(in srgb,var(--v-50) 79.0%,var(--bg)) 53.3px,color-mix(in srgb,var(--v-50) 84.8%,var(--bg)) 56.7px,color-mix(in srgb,var(--v-50) 89.6%,var(--bg)) 60.0px,color-mix(in srgb,var(--v-50) 93.5%,var(--bg)) 63.3px,color-mix(in srgb,var(--v-50) 96.5%,var(--bg)) 66.7px,color-mix(in srgb,var(--v-50) 98.4%,var(--bg)) 70.0px,color-mix(in srgb,var(--v-50) 99.5%,var(--bg)) 73.3px,color-mix(in srgb,var(--v-50) 99.9%,var(--bg)) 76.7px,color-mix(in srgb,var(--v-50) 100.0%,var(--bg)) 80.0px,var(--v-50) 80px calc(100% - 80px),color-mix(in srgb,var(--v-50) 100.0%,var(--bg)) calc(100% - 80.0px),color-mix(in srgb,var(--v-50) 99.9%,var(--bg)) calc(100% - 76.7px),color-mix(in srgb,var(--v-50) 99.5%,var(--bg)) calc(100% - 73.3px),color-mix(in srgb,var(--v-50) 98.4%,var(--bg)) calc(100% - 70.0px),color-mix(in srgb,var(--v-50) 96.5%,var(--bg)) calc(100% - 66.7px),color-mix(in srgb,var(--v-50) 93.5%,var(--bg)) calc(100% - 63.3px),color-mix(in srgb,var(--v-50) 89.6%,var(--bg)) calc(100% - 60.0px),color-mix(in srgb,var(--v-50) 84.8%,var(--bg)) calc(100% - 56.7px),color-mix(in srgb,var(--v-50) 79.0%,var(--bg)) calc(100% - 53.3px),color-mix(in srgb,var(--v-50) 72.5%,var(--bg)) calc(100% - 50.0px),color-mix(in srgb,var(--v-50) 65.3%,var(--bg)) calc(100% - 46.7px),color-mix(in srgb,var(--v-50) 57.8%,var(--bg)) calc(100% - 43.3px),color-mix(in srgb,var(--v-50) 50.0%,var(--bg)) calc(100% - 40.0px),color-mix(in srgb,var(--v-50) 42.2%,var(--bg)) calc(100% - 36.7px),color-mix(in srgb,var(--v-50) 34.7%,var(--bg)) calc(100% - 33.3px),color-mix(in srgb,var(--v-50) 27.5%,var(--bg)) calc(100% - 30.0px),color-mix(in srgb,var(--v-50) 21.0%,var(--bg)) calc(100% - 26.7px),color-mix(in srgb,var(--v-50) 15.2%,var(--bg)) calc(100% - 23.3px),color-mix(in srgb,var(--v-50) 10.4%,var(--bg)) calc(100% - 20.0px),color-mix(in srgb,var(--v-50) 6.5%,var(--bg)) calc(100% - 16.7px),color-mix(in srgb,var(--v-50) 3.5%,var(--bg)) calc(100% - 13.3px),color-mix(in srgb,var(--v-50) 1.6%,var(--bg)) calc(100% - 10.0px),color-mix(in srgb,var(--v-50) 0.5%,var(--bg)) calc(100% - 6.7px),color-mix(in srgb,var(--v-50) 0.1%,var(--bg)) calc(100% - 3.3px),color-mix(in srgb,var(--v-50) 0.0%,var(--bg)) calc(100% - 0.0px))}
   .promo .l{padding:64px 16px 0}
   .promo h3{color:var(--ink)}
   .promo p{color:var(--ink-2)}
   .promo .pr-c{color:var(--v-text)}.pr-c small{color:var(--ink)}
-  .promo .btn-s{background:var(--surface)} /* вторичная на полосе --v-50 сливалась (тот же фон) — подложка цветом карточки */
-  /* компактно (2026-11-17, «высокий блок»): предметы справа рядом с отсчётом и заголовком, текст и кнопки под ними во всю ширину. Было 737 px */
+  .promo .btn-s{background:transparent;box-shadow:inset 0 0 0 1.5px var(--v);color:var(--v-text)} 
+  
   .promo{position:relative}
   .promo .r{position:absolute;top:56px;right:0;width:48%;height:auto;z-index:2}.promo .r img{position:static;height:auto}
   .promo .pr-c{font-size:clamp(34px,11vw,44px);white-space:nowrap}
   .promo h3{max-width:54%;font-size:clamp(22px,7vw,28px);text-wrap:balance}.promo h3 br{display:none}
   .promo .pr-b .btn{flex:1}
-  .promo .l{padding-bottom:56px} /* кнопки не в растворении */
-  .promo .ht{display:none} /* точки рядом с фото и под текстом — шум */
-  /* телефон: верх парой — заголовок и описание слева, рука с телефоном справа (уходит за край экрана, низ растворяется); цифры и сторы ниже на всю ширину («заголовок одиноко висит») */
-  .club{grid-template-columns:1fr 150px;grid-template-areas:"h v" "p v" "f f" "s s";column-gap:8px;gap:0 8px}
+  .promo .l{padding-bottom:56px} 
+  .promo .ht{display:none} 
+  
+  .club{grid-template-columns:minmax(0,1fr) 150px;grid-template-areas:"h v" "p v" "f f" "s s";column-gap:8px;gap:0 8px}
   .club-t{display:contents}
   .club-h{grid-area:h;align-self:end}
   .club-t>p{grid-area:p;align-self:start}
   .club-f{grid-area:f}.stores{grid-area:s}
-  .club-v{grid-area:v;height:230px;margin:16px -16px 0 0;overflow:hidden;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)} /* рука уходит вниз и растворяется */
+  .club-v{grid-area:v;height:230px;margin:16px -16px 0 0;overflow:hidden;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)} 
   .club-v img{width:250px;max-width:none;margin-left:-58px}
-  /* телефон: только разделы — чипы S из ui-kit (40/14, r-s, фон ink 6 %, как «Часто ищут» в поиске) с переносом, каждый — ссылка на раздел.
-     Строки групп скрыты («скрой строки, сделай чипы по врапу», 2026-11-17); группы остаются в разметке для компьютера */
-  .cat-t{display:flex;flex-wrap:wrap;gap:8px;overflow-anchor:none} /* сдвиг страницы при раскрытии считаем сами — браузерная привязка прокрутки не вмешивается */
+  @media (max-width:360px){.club{grid-template-areas:"h h" "p v" "f f" "s s"}} 
+  
+  .cat-t{display:flex;flex-wrap:wrap;gap:8px;overflow-anchor:none} 
   .cat{display:none}
-  /* раскрывающийся чип (2026-11-17; все разделы, аккордеон, по умолчанию открыт первый): шеврон в чипе, по нажатию чип растягивается на всю ширину, внутри строки групп + «Все N услуг».
-     Плавность — View Transition: чипы перестраиваются, чип-фон и подпись морфятся, строки проявляются. Без поддержки или при reduce motion — сразу */
+  
   .cat-x{border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,transparent)}
-  /* раскрытый чип: поля 16 со всех сторон (верх: 5 + 11 от кнопки 40, низ: 7 + 9 от строки 36); снаружи 8, как между всеми чипами — группу держит свой фон (общая область),
-     24 рвало сетку и двигало блок («почему отступы сверху и снизу у раскрытого чипа больше», 2026-11-17) */
+  
   .cat-x.open{flex-basis:100%;padding-top:5px}
   .cat-x>button{all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;height:40px;box-sizing:border-box;padding:0 12px 0 16px;font:400 14px var(--sans);color:var(--ink);white-space:nowrap;-webkit-tap-highlight-color:transparent}
   .cat-x>button:focus-visible{outline:2px solid var(--v);outline-offset:2px;border-radius:var(--r-s)}
   .cat-x>button svg{width:16px;height:16px;color:var(--ink-2);transition:rotate .3s}
-  .cat-x.open{cursor:pointer} /* тап в пустое место раскрытого чипа закрывает его */
-  .cat-x.open>button{font-size:16px;font-weight:600;width:100%;justify-content:space-between;padding-right:16px} /* шеврон к правому краю, поле 16 как слева */
+  .cat-x.open{cursor:pointer} 
+  .cat-x.open>button{font-size:16px;font-weight:600;width:100%;justify-content:space-between;padding-right:16px} 
   .cat-x.open>button svg{rotate:180deg}
   .cat-xp{display:flex;flex-direction:column;align-items:flex-start;padding:0 16px 7px}
-  .cat-xp a{display:flex;align-items:center;min-height:36px;font-size:14px;color:var(--ink)} /* строки плотнее (шаг текста 18), заголовок раскрытого чипа 16/600 — иерархия «название → пункты» (2026-11-17) */
+  .cat-xp a{display:flex;align-items:center;min-height:36px;font-size:14px;color:var(--ink)} 
   .cat-xp a:active{opacity:.5}
-  @media (prefers-reduced-motion:no-preference){ /* появление списка: строки по очереди сверху вниз — выплывают на 6 px и проявляются, шаг 50 мс после начала раскрытия */
+  @media (prefers-reduced-motion:no-preference){ 
     .cat-x.open .cat-xp a{animation:cat-row .3s cubic-bezier(.2,.8,.2,1) both}
     .cat-x.open .cat-xp a:nth-child(1){animation-delay:.15s}.cat-x.open .cat-xp a:nth-child(2){animation-delay:.2s}.cat-x.open .cat-xp a:nth-child(3){animation-delay:.25s}
     .cat-x.open .cat-xp a:nth-child(4){animation-delay:.3s}.cat-x.open .cat-xp a:nth-child(n+5){animation-delay:.35s}}
   @keyframes cat-row{from{opacity:0;translate:0 -6px}}
-  .cat-xp a.more{gap:4px;color:var(--v-text);font-weight:500} /* «Все N услуг» — акцент цветом ссылки (--v-text) и шевроном ›, кегль как у строк; жирный 600 был тяжелее пунктов (отвергнут) */
+  .cat-xp a.more{gap:4px;color:var(--v-text);font-weight:500} 
   .cat-xp a.more svg{width:16px;height:16px;color:inherit}
   .cat-t>:nth-child(1){view-transition-name:ct1}.cat-t>:nth-child(2){view-transition-name:ct2}.cat-t>:nth-child(3){view-transition-name:ct3}.cat-t>:nth-child(4){view-transition-name:ct4}.cat-t>:nth-child(5){view-transition-name:ct5}
   .cat-t>:nth-child(6){view-transition-name:ct6}.cat-t>:nth-child(7){view-transition-name:ct7}.cat-t>:nth-child(8){view-transition-name:ct8}.cat-t>:nth-child(9){view-transition-name:ct9}.cat-t>:nth-child(10){view-transition-name:ct10}
-  /* у каждого чипа свои имена подписи и панели (одинаковые имена у 10 видимых элементов отменяют переход); панели — один класс ctp для анимации */
+  
   .cat-t>:nth-child(1) span{view-transition-name:ctl1}.cat-t>:nth-child(1) .cat-xp{view-transition-name:ctp1}.cat-t>:nth-child(2) span{view-transition-name:ctl2}.cat-t>:nth-child(2) .cat-xp{view-transition-name:ctp2}.cat-t>:nth-child(3) span{view-transition-name:ctl3}.cat-t>:nth-child(3) .cat-xp{view-transition-name:ctp3}.cat-t>:nth-child(4) span{view-transition-name:ctl4}.cat-t>:nth-child(4) .cat-xp{view-transition-name:ctp4}.cat-t>:nth-child(5) span{view-transition-name:ctl5}.cat-t>:nth-child(5) .cat-xp{view-transition-name:ctp5}.cat-t>:nth-child(6) span{view-transition-name:ctl6}.cat-t>:nth-child(6) .cat-xp{view-transition-name:ctp6}.cat-t>:nth-child(7) span{view-transition-name:ctl7}.cat-t>:nth-child(7) .cat-xp{view-transition-name:ctp7}.cat-t>:nth-child(8) span{view-transition-name:ctl8}.cat-t>:nth-child(8) .cat-xp{view-transition-name:ctp8}.cat-t>:nth-child(9) span{view-transition-name:ctl9}.cat-t>:nth-child(9) .cat-xp{view-transition-name:ctp9}.cat-t>:nth-child(10) span{view-transition-name:ctl10}.cat-t>:nth-child(10) .cat-xp{view-transition-name:ctp10}
   .cat-xp{view-transition-class:ctp}
 }
 
-:root{--v-text:#4844D7;--success:#1F8A55;--danger:#D63B30;--stage:#EFEDE8;--inverse:#222220;--map:#ECEAE4;--road:#fff;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141316;--surface:#1C1B20;--ink:#F3F2EF;--ink-2:#9A9890;--line:#2C2B31;--stage:#232227;
-  --v:#5F64F3;--v-hover:#5354E5;--v-text:#7E8BFF;--v-50:#1D1F3B;--v-100:#272852;--inverse:#0E0D10;
-  --map:#1F1E23;--road:#2A2930;--success:#3BB57A;--danger:#F0675C;color-scheme:dark;}}
-:root[data-theme="dark"]{--bg:#141316;--surface:#1C1B20;--ink:#F3F2EF;--ink-2:#9A9890;--line:#2C2B31;--stage:#232227;
-  --v:#5F64F3;--v-hover:#5354E5;--v-text:#7E8BFF;--v-50:#1D1F3B;--v-100:#272852;--inverse:#0E0D10;
-  --map:#1F1E23;--road:#2A2930;--success:#3BB57A;--danger:#F0675C;color-scheme:dark;}
-[hidden]{display:none!important}
-:focus-visible{outline:2px solid var(--v-text);outline-offset:2px;border-radius:4px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
-
-/* НГ-гирлянда CMYK под шапкой (2026-11-17, вариант 3, прототип): провод провисает пролётами, огоньки печатных цветов по кругу C-M-Y-K, мягкое свечение. Статично (анимация — моветон), нажатия проходят сквозь. Включается по датам, как промо-полоса. */
-.qlinks.ny-on{padding-bottom:24px;height:66px} /* НГ-гирлянда обвивает чипы; снизу место под огоньки */
-/* НГ-знак (2026-11-17, вариант 2, прототип, телефон): «CO» белым в красном ёлочном шаре, «PY.RU» уменьшено до высоты букв в шаре и стоит по центру шара. Контуры — из того же символа #wm (не перерисованы). Обычный знак на время праздника скрыт. */
-.eco .elogo.ny-logo>svg.wm{display:none}
-.eco .elogo .wm-ny{display:block;height:38px;width:auto;margin-block:-5px;overflow:visible}
-.wm-ny .ball{fill:url(#nyBallV)}.wm-ny.red .ball{fill:url(#nyBallR)} /* по умолчанию фиолетовый, тап — красный */
-.wm-ny .ny-ball{cursor:pointer;transform-box:fill-box;transform-origin:50% 0;transition:transform .15s}.wm-ny .ny-ball:active{transform:rotate(6deg)} /* шар чуть качнётся на нитке при нажатии */
-/* НГ-украшения: выбор в меню под «Тёмной темой» — шар / гирлянда / оба / ничего (2026-11-17, прототип). Состояние в html[data-ny], запоминается в браузере (copy-ny). */
-:root[data-ny="garland"] .eco .elogo.ny-logo>svg.wm,:root[data-ny="none"] .eco .elogo.ny-logo>svg.wm{display:block}
-:root:is([data-ny="garland"],[data-ny="none"]) .eco .elogo .wm-ny{display:none}
-:root:is([data-ny="ball"],[data-ny="none"]) .hdr>.ny-g{display:none}
-:root:is([data-ny="ball"],[data-ny="none"]) .qlinks.ny-on{padding-bottom:6px;height:48px}
-.ny-set{padding:6px 0 12px}
-.ny-set>p{display:flex;align-items:center;gap:12px;margin:0;min-height:44px;font:400 14px var(--sans);color:var(--ink-2)}
-.ny-set>p svg{width:20px;height:20px;flex:none}
-.mpop .ny-set>p>span{flex:1;margin:0;padding:0;font-size:14px;text-align:left} /* сильнее .mpop li>* span (подпись справа) */
-.ny-set>p small{font-size:12px;opacity:.8;white-space:nowrap;display:block}
-.ny-set .seg{display:grid;width:100%;box-sizing:border-box}
-.ny-set .seg button{padding:0 8px}
-.hdr>.ny-g,.ny-g{position:absolute;left:0;right:0;pointer-events:none;z-index:3;transition:opacity .2s,visibility .2s}
-.ny-g svg{display:block;overflow:visible}
-.hdr:is(.qhide:not(.mopen,.sopen),.mopen,.sopen) .ny-g{opacity:0;visibility:hidden} /* прячется вместе со строкой чипов; .hdr>.ny-g — сильнее правила шапки .hdr>*{pointer-events:auto}, иначе гирлянда перехватывает свайп чипов («плашки не скролятся») */
-.ny-g .w.bk{opacity:.22} /* задние витки — в просветах между плашками, бледнее передних */
-.ny-g .w{fill:none;stroke:var(--ink);stroke-width:1.3;opacity:.35;filter:blur(.4px)}.ny-g .w2{stroke-width:.9;opacity:.25} /* две мягкие жилы, не чёткая линия */
-.ny-g .cap{fill:var(--ink-2)}
-.ny-g .c{--b:#00AEEF}.ny-g .m{--b:#EC008C}.ny-g .y{--b:#FFD400}.ny-g .k{--b:#2A2A2E}
-.ny-g .bulb{fill:var(--b)}.ny-g .glow{fill:var(--b);opacity:.28}
-.ny-g .k .glow{opacity:.12}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ny-g .k{--b:#55555C}}
-:root[data-theme="dark"] .ny-g .k{--b:#55555C}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
-<script>/* сравнение вариантов футера (?foot=a|b|c), временно: оставляем один <footer>, до hdr.js */{let f="0";try{f=new URLSearchParams(location.search).get("foot")||"0"}catch(e){}document.documentElement.dataset.foot=f;document.addEventListener("DOMContentLoaded",()=>document.querySelectorAll("footer[data-fv]").forEach(x=>x.dataset.fv!==f&&x.remove()))}</script>
-<link rel="stylesheet" href="hdr.css?v=188">
+<link rel="stylesheet" href="cc.css?v=1">
+<script>{let f="0";try{f=new URLSearchParams(location.search).get("foot")||"0"}catch(e){}document.documentElement.dataset.foot=f;document.addEventListener("DOMContentLoaded",()=>document.querySelectorAll("footer[data-fv]").forEach(x=>x.dataset.fv!==f&&x.remove()))}</script>
+<link rel="stylesheet" href="hdr.css?v=201">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ccpin" viewBox="0 0 54 67"><path d="M27 0C12.09 0 0 12.09 0 27c0 9.1 4.5 17.15 11.42 22.05 8.08 4.45 11.78 10.75 13.68 15.85.5 1.4 1.2 2.1 1.9 2.1s1.4-.7 1.9-2.1c1.9-5.1 5.6-11.4 13.68-15.85C49.5 44.15 54 36.1 54 27 54 12.09 41.91 0 27 0Z" fill="currentColor"/><path d="M209.04,69.43v57.15c0,6.82-1.31,12.91-4.07,18.42-2.76,5.51-6.53,9.72-11.47,12.76-4.94,3.05-10.74,4.64-17.13,4.64s-12.05-1.6-17.13-4.64c-4.94-3.05-8.86-7.4-11.47-12.76-2.32-4.5-3.63-9.57-3.92-14.94,0-.29,0-.58.14-.87l20.62-43.22c.29-.44,1.02-.29,1.02.29v39.89c0,4.79,1.02,8.56,2.9,11.31,1.89,2.9,4.65,4.21,7.98,4.21s6.24-1.45,8.13-4.21c1.89-2.9,2.76-6.67,2.76-11.31v-56.13c0-4.79-.87-8.56-2.76-11.31-1.89-2.9-4.5-4.35-8.13-4.35-3.34,0-6.1,1.45-7.98,4.35-.73,1.16-1.45,2.47-1.89,3.92l-22.79,48.15-14.23,29.88-3.77,7.98v.14c-2.32,3.63-5.37,6.67-8.86,8.99-4.79,3.05-10.31,4.64-16.55,4.64s-11.76-1.6-16.41-4.64c-4.79-3.05-8.42-7.25-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42v-57.15c0-6.96,1.31-13.05,3.92-18.42,2.61-5.37,6.24-9.57,11.03-12.76,4.79-3.05,10.31-4.64,16.41-4.64s11.61,1.6,16.26,4.79c4.65,3.19,8.28,7.4,10.89,12.76,2.61,5.37,3.77,11.46,3.77,18.27v5.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-5.22c0-4.93-.73-8.85-2.32-11.6-1.45-2.76-3.77-4.06-6.82-4.06s-5.52,1.45-7.11,4.21c-1.6,2.76-2.47,6.67-2.47,11.46v55.99c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.06,4.21,7.11,4.21s5.52-1.45,7.11-4.21c.44-.73.73-1.45,1.02-2.32l8.42-17.84,29.91-64.11,1.02-2.18c2.76-5.51,6.53-9.72,11.47-12.76,4.94-3.05,10.6-4.64,17.13-4.64s12.2,1.6,17.13,4.64c4.94,3.05,8.86,7.4,11.47,12.76,2.61,5.51,3.92,11.6,3.92,18.42Z" fill="#fff" transform="translate(-4.79 4.59) scale(0.2286)"/></symbol><symbol id="ccpin0" viewBox="0 0 54 67"><path d="M27 0C12.09 0 0 12.09 0 27c0 9.1 4.5 17.15 11.42 22.05 8.08 4.45 11.78 10.75 13.68 15.85.5 1.4 1.2 2.1 1.9 2.1s1.4-.7 1.9-2.1c1.9-5.1 5.6-11.4 13.68-15.85C49.5 44.15 54 36.1 54 27 54 12.09 41.91 0 27 0Z" fill="currentColor"/></symbol></svg>
 <svg width="0" height="0" style="position:absolute">
   <symbol id="wm" viewBox="0 0 618 196"><path d="M227.34,36.79c0-.87.73-1.6,1.6-1.6h25.7c6.24,0,11.62,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.77,10.01,3.77,15.66v20.02c0,5.66-1.31,10.88-3.77,15.66-2.47,4.79-6.1,8.41-10.89,11.31-4.79,2.76-10.16,4.21-16.41,4.21h-5.52v42.06c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6V36.79ZM254.05,96.55c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-18.86c0-3.34-.73-5.95-2.32-7.98-1.6-2.03-4.07-3.05-7.26-3.05h-4.94v40.76h4.94v.15Z"></path><path d="M364.24,36.21l-25.99,69.91v53.08c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-53.08l-25.99-69.91c-.15-.58.15-1.16.87-1.16h21.63c.73,0,1.45.44,1.6,1.16l12.78,41.92,12.78-41.92c.15-.73.87-1.16,1.6-1.16h21.63c.58,0,1.02.73.87,1.16Z"></path><path d="M366.13,134.7h21.78c.87,0,1.6.72,1.6,1.6v22.92c0,.87-.73,1.6-1.6,1.6h-21.78c-.87,0-1.6-.72-1.6-1.6v-22.92c0-.87.73-1.6,1.6-1.6Z"></path><path d="M448.74,159.79l-14.95-44.38h-3.05v43.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.72-1.6-1.6V36.79c0-.87.73-1.6,1.6-1.6h26.57c6.24,0,11.61,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.78,10.01,3.78,15.66v18.13c0,5.8-1.31,11.17-3.92,15.95-2.61,4.79-6.24,8.56-11.03,11.31l19.6,48.01c.29.58-.15,1.16-.87,1.16h-21.49c-.87,0-1.6-.44-1.74-1.16ZM430.73,94.66h5.81c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-16.97c0-3.34-.73-5.95-2.32-7.98s-4.07-3.05-7.26-3.05h-5.81v39.02Z"></path><path d="M487.5,35.05h18.58c.87,0,1.6.73,1.6,1.6v89.2c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.07,4.21,7.26,4.21s5.52-1.45,7.26-4.21c1.6-2.76,2.47-6.67,2.47-11.46V36.79c0-.87.73-1.6,1.6-1.6h18.58c.87,0,1.6.73,1.6,1.6v89.78c0,6.96-1.31,13.05-3.92,18.42-2.61,5.37-6.24,9.57-11.03,12.76-4.79,3.05-10.31,4.64-16.55,4.64s-11.61-1.6-16.41-4.64c-4.79-3.05-8.42-7.4-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42V36.79c-.15-1.02.58-1.74,1.45-1.74Z"></path><path d="M209.04,69.43v57.15c0,6.82-1.31,12.91-4.07,18.42-2.76,5.51-6.53,9.72-11.47,12.76-4.94,3.05-10.74,4.64-17.13,4.64s-12.05-1.6-17.13-4.64c-4.94-3.05-8.86-7.4-11.47-12.76-2.32-4.5-3.63-9.57-3.92-14.94,0-.29,0-.58.14-.87l20.62-43.22c.29-.44,1.02-.29,1.02.29v39.89c0,4.79,1.02,8.56,2.9,11.31,1.89,2.9,4.65,4.21,7.98,4.21s6.24-1.45,8.13-4.21c1.89-2.9,2.76-6.67,2.76-11.31v-56.13c0-4.79-.87-8.56-2.76-11.31-1.89-2.9-4.5-4.35-8.13-4.35-3.34,0-6.1,1.45-7.98,4.35-.73,1.16-1.45,2.47-1.89,3.92l-22.79,48.15-14.23,29.88-3.77,7.98v.14c-2.32,3.63-5.37,6.67-8.86,8.99-4.79,3.05-10.31,4.64-16.55,4.64s-11.76-1.6-16.41-4.64c-4.79-3.05-8.42-7.25-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42v-57.15c0-6.96,1.31-13.05,3.92-18.42,2.61-5.37,6.24-9.57,11.03-12.76,4.79-3.05,10.31-4.64,16.41-4.64s11.61,1.6,16.26,4.79c4.65,3.19,8.28,7.4,10.89,12.76,2.61,5.37,3.77,11.46,3.77,18.27v5.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-5.22c0-4.93-.73-8.85-2.32-11.6-1.45-2.76-3.77-4.06-6.82-4.06s-5.52,1.45-7.11,4.21c-1.6,2.76-2.47,6.67-2.47,11.46v55.99c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.06,4.21,7.11,4.21s5.52-1.45,7.11-4.21c.44-.73.73-1.45,1.02-2.32l8.42-17.84,29.91-64.11,1.02-2.18c2.76-5.51,6.53-9.72,11.47-12.76,4.94-3.05,10.6-4.64,17.13-4.64s12.2,1.6,17.13,4.64c4.94,3.05,8.86,7.4,11.47,12.76,2.61,5.51,3.92,11.6,3.92,18.42Z"></path></symbol>
   <symbol id="reg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="5" fill="currentColor"/><path d="M20 0v40M0 20h40" stroke="currentColor" stroke-width="2.5"/></symbol>
@@ -620,83 +349,24 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
   <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="chr" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ext" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="up" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-
-<div class="pbar" id="pbar" data-id="ny-calendars" hidden>
-  <a href="#promo"><svg class="pbar-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg><span>Календари 2027 с логотипом</span><svg class="ico" aria-hidden="true"><use href="#chr"/></svg></a>
-  <button type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-</div>
-<script>(()=>{const b=document.getElementById('pbar'),k='pbar:'+b.dataset.id;let off=false;try{if(/[?&]promo\b/.test(location.search))localStorage.removeItem(k);off=localStorage.getItem(k)==='1'}catch(e){}b.hidden=off; /* прототип: ?promo в адресе — снова показать закрытую полосу */
-b.querySelector('button').onclick=()=>{b.hidden=true;try{localStorage.setItem(k,'1')}catch(e){}}})();</script>
-<script src="hdr.js?v=119" data-svc="copy"></script>
-<script>/* НГ-украшения: выбор в меню. Меню рисуется заново при каждом открытии — вставляем строку, когда появляется кнопка темы. */
-(()=>{const K='copy-ny',V=['ball','garland','both','none'],L={ball:'Шар',garland:'Гирлянда',both:'Оба',none:'Нет'};
-let v='garland';try{const x=localStorage.getItem(K);if(V.includes(x))v=x}catch(e){}
-const set=n=>{v=n;document.documentElement.dataset.ny=n;try{localStorage.setItem(K,n)}catch(e){}
-  document.querySelectorAll('.ny-set button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.ny===n))};
-document.documentElement.dataset.ny=v;
-addEventListener('DOMContentLoaded',()=>{const mp=document.querySelector('.mpop');if(!mp)return;
-  const add=()=>{const t=mp.querySelector('[data-theme]');if(!t||mp.querySelector('.ny-set'))return;
-    t.closest('li').insertAdjacentHTML('afterend',`<li class="ny-set"><p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M10.5 6h3"/><circle cx="12" cy="14" r="7"/><path d="M8.5 12.5c1.2-1.4 2.2-1.6 3.5-.5s2.3.9 3.5-.5"/></svg><span>Новогоднее украшение <small>(демо, переключателя не&nbsp;будет)</small></span></p><div class="seg" role="group" aria-label="Новогоднее украшение">${V.map(n=>`<button type="button" data-ny="${n}" aria-pressed="${n===v}">${L[n]}</button>`).join('')}</div></li>`)};
-  new MutationObserver(add).observe(mp,{childList:true,subtree:true});add();
-  mp.addEventListener('click',e=>{const b=e.target.closest('.ny-set button');if(b)set(b.dataset.ny)})})})();</script>
-<script>/* НГ-знак: собирает шар из контуров #wm — путь 5 = «CO», пути 0–4 = «PY.RU». Нитка кверху растворяется — без промо-полосы не обрывается в воздухе */
-addEventListener('DOMContentLoaded',()=>{const l=document.querySelector('.eco .elogo'),ps=[...document.querySelectorAll('#wm path')];if(!l||ps.length<6)return;
-const d=i=>ps[i].getAttribute('d'),S=.78,cx=100,cy=112,r=96,rx=cx+r+22;
-l.insertAdjacentHTML('beforeend',`<svg class="wm-ny" viewBox="0 -14 ${Math.round(rx+(549-227)*S+4)} 222" aria-hidden="true">
-<defs><radialGradient id="nyBallR" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#FF6A5C"/><stop offset=".55" stop-color="#E02A20"/><stop offset="1" stop-color="#9C1410"/></radialGradient><radialGradient id="nyBallV" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#8F89FF"/><stop offset=".55" stop-color="#4844D7"/><stop offset="1" stop-color="#2A2490"/></radialGradient>
-<linearGradient id="nyThr" gradientUnits="userSpaceOnUse" x1="0" y1="-48" x2="0" y2="2"><stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".75" stop-color="currentColor" stop-opacity=".45"/></linearGradient>
-<linearGradient id="nyCap" x1="0" x2="1"><stop offset="0" stop-color="#8b8b90"/><stop offset=".45" stop-color="#e2e2e6"/><stop offset="1" stop-color="#7d7d82"/></linearGradient></defs>
-<path d="M${cx} -48V2" stroke="url(#nyThr)" stroke-width="6"/>
-<circle cx="${cx}" cy="4" r="7" fill="none" stroke="url(#nyCap)" stroke-width="4"/>
-<rect x="${cx-16}" y="9" width="32" height="12" rx="3" fill="url(#nyCap)"/>
-<g class="ny-ball"><circle class="ball" cx="${cx}" cy="${cy}" r="${r}"/>
-<ellipse cx="${cx-52}" cy="${cy-56}" rx="17" ry="8" transform="rotate(-40 ${cx-52} ${cy-56})" fill="#fff" opacity=".4"/>
-<path d="${d(5)}" fill="#fff" transform="translate(${cx} ${cy}) scale(${S}) translate(-139 -98.5)"/></g>
-<g fill="currentColor" transform="translate(${rx} ${cy}) scale(${S}) translate(-227 -98.5)">${[0,1,2,3,4].map(i=>`<path d="${d(i)}"/>`).join('')}</g></svg>`);
-l.classList.add('ny-logo');const sv=l.querySelector('.wm-ny');
-/* тап по шару — фиолетовый ↔ красный (цвет не выбран, «по тапу менять»); остальной знак и зона вокруг ведут на главную как обычно */
-l.addEventListener('click',e=>{const b=sv.querySelector('.ball').getBoundingClientRect(),dx=e.clientX-(b.left+b.width/2),dy=e.clientY-(b.top+b.height/2),R=b.width/2+6; /* по координатам: поверх знака лежит расширенная зона нажатия (::after), цель клика — сама ссылка; +6 px к радиусу — палец */
-if(dx*dx+dy*dy>R*R)return;e.preventDefault();sv.classList.toggle('red')})});</script>
-<script>/* НГ-гирлянда (прототип, вариант «обвивает чипы»): провод спиралью вокруг строки чипов. Передние витки поверх плашек; задние видны только в просветах — за плашками вырезаны маской по их контуру («за плашками совсем не видно»), маска обновляется при прокрутке. Висит в шапке неподвижно, чипы едут под ней. Витки неровные; разброс случайный, но одинаковый при каждой загрузке. */
-addEventListener('DOMContentLoaded',()=>{const q=document.querySelector('.qlinks'),hd=document.querySelector('.hdr');if(!q||!hd)return;q.classList.add('ny-on');
-const F=document.createElement('div');F.className='ny-g';F.setAttribute('aria-hidden','true');hd.append(F);
-const C=['c','m','y','k'];let mk=null;
-const holes=()=>{if(!mk)return;const o=F.getBoundingClientRect(),r=parseFloat(getComputedStyle(q.querySelector('a')).borderRadius)||8;
-mk.innerHTML='<rect width="100%" height="100%" fill="#fff"/>'+[...q.querySelectorAll('a')].map(a=>{const b=a.getBoundingClientRect();return b.right<o.left||b.left>o.right?'':`<rect x="${(b.left-o.left).toFixed(1)}" y="${(b.top-o.top).toFixed(1)}" width="${b.width.toFixed(1)}" height="${b.height.toFixed(1)}" rx="${r}"/>`}).join('')};
-const draw=()=>{let z=20261231;const R=()=>(z=(z*1664525+1013904223)>>>0)/4294967296;
-const W=hd.clientWidth,H=q.offsetHeight,top=3,bot=45;F.style.top=q.offsetTop+'px';F.style.height=H+'px';
-const T=[];let x=-10;while(x<W+80){const u=R(),P=u<.3?30+R()*22:u<.8?58+R()*44:108+R()*44; /* шаг намотки случайный: где плотно, где растянуто */
-T.push({x,P,f:.42+R()*.2,y0:-1+R()*6,y1:43+R()*6,sg:R()*7});x+=P}
-let fr='',bk='',b='',k=0;const bulb=(px,py,L,ang)=>{const cl=C[k++%4];L=Math.max(0,Math.min(L,H-13-py));
-return `<g class="${cl}" transform="translate(${px.toFixed(1)} ${py.toFixed(1)}) rotate(${ang.toFixed(0)})">${L>2?`<path class="w" d="M0 0q${(R()-.5)*3} ${L/2} 0 ${L.toFixed(1)}"/>`:''}<g transform="translate(0 ${L.toFixed(1)})"><circle class="glow" cy="8" r="7.5"/><rect class="cap" x="-2" y="-.5" width="4" height="3.2" rx="1"/><ellipse class="bulb" cy="7.4" rx="3.4" ry="4.8"/></g></g>`};
-T.forEach((t,i)=>{const n=T[i+1]||{x:t.x+t.P,y0:t.y0},ex=t.x+t.P*t.f,dx=ex-t.x;
-/* передний пролёт: сверху вниз, провисает под своим весом (sg), на поворотах огибает край */
-const c1x=t.x+dx*(.25+R()*.2),c1y=t.y0+3+t.sg*.4,c2x=ex-dx*(.15+R()*.2),c2y=t.y1+t.sg*.6;
-fr+=`M${t.x.toFixed(1)} ${t.y0.toFixed(1)}C${c1x.toFixed(1)} ${c1y.toFixed(1)} ${c2x.toFixed(1)} ${c2y.toFixed(1)} ${ex.toFixed(1)} ${t.y1.toFixed(1)}`;
-const bx=n.x-ex;bk+=`M${ex.toFixed(1)} ${t.y1.toFixed(1)}C${(ex+bx*(.2+R()*.2)).toFixed(1)} ${(t.y1+2).toFixed(1)} ${(n.x-bx*(.3+R()*.2)).toFixed(1)} ${(n.y0+4).toFixed(1)} ${n.x.toFixed(1)} ${n.y0.toFixed(1)}`;
-/* огоньки: не на каждом повороте; на длинных пролётах иногда висит прямо на проводе */
-if(R()<.72)b+=bulb(ex,t.y1,R()*7,(R()-.5)*26);
-if(t.P>90&&R()<.5){const q2=.45+R()*.2,v=1-q2,px=v*v*v*t.x+3*v*v*q2*c1x+3*v*q2*q2*c2x+q2*q2*q2*ex,py=v*v*v*t.y0+3*v*v*q2*c1y+3*v*q2*q2*c2y+q2*q2*q2*t.y1;b+=bulb(px,py,4+R()*8,(R()-.5)*14)}});
-F.innerHTML=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs><mask id="nyM" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}"></mask></defs><path class="w bk" d="${bk}" mask="url(#nyM)"/><path class="w" d="${fr}"/>${b}</svg>`;
-mk=F.querySelector('#nyM');holes()};
-draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(holes)},{passive:true})});</script>
-
+<script src="hdr.js?v=127" data-svc="copy"></script>
 
 <main>
 <div class="hero"><div class="wrap">
   <h1>Печатаем при&nbsp;вас в&nbsp;ближайшем копицентре</h1>
   
   <nav class="hs" aria-label="Популярные услуги">
-    <a href="vizitki.html"><b>Визитки</b><span class="tg" data-todo>при вас</span><img class="ob-img" src="img/vizitki.webp?v=1" alt="" width="144" height="144"></a>
-    <a href="#"><b>Плакаты</b><span class="tg" data-todo>сегодня</span><img class="ob-img" src="img/plakaty.webp?v=1" alt="" width="144" height="144"></a>
-    <a href="#"><b>Футболки</b><span class="tg" data-todo>за 1 день</span><img class="ob-img" src="img/futbolki.webp?v=3" alt="" width="144" height="144"></a>
-    <a href="#"><b>Наклейки</b><span class="tg" data-todo>сегодня</span><img class="ob-img" src="img/naklejki.webp?v=2" alt="" width="144" height="144"></a>
-    <a href="#"><b>Кружки</b><span class="tg" data-todo>за 1 день</span><img class="ob-img" src="img/kruzhki.webp?v=2" alt="" width="144" height="144"></a>
-    <a href="#"><b>Документы</b><span class="tg" data-todo>при вас</span><img class="ob-img" src="img/dokumenty.webp?v=1" alt="" width="144" height="144"></a>
+    <a href="vizitki.html"><b>Визитки</b><span class="tg" data-todo>При вас</span><img class="ob-img" src="img/vizitki.webp?v=1" alt="" width="144" height="144"></a>
+    <a href="#"><b>Плакаты</b><span class="tg" data-todo>Сегодня</span><img class="ob-img" src="img/plakaty.webp?v=1" alt="" width="144" height="144"></a>
+    <a href="#"><b>Футболки</b><span class="tg" data-todo>За 1 день</span><img class="ob-img" src="img/futbolki.webp?v=3" alt="" width="144" height="144"></a>
+    <a href="#"><b>Наклейки</b><span class="tg" data-todo>Сегодня</span><img class="ob-img" src="img/naklejki.webp?v=2" alt="" width="144" height="144"></a>
+    <a href="#"><b>Кружки</b><span class="tg" data-todo>За 1 день</span><img class="ob-img" src="img/kruzhki.webp?v=2" alt="" width="144" height="144"></a>
+    <a href="#"><b>Документы</b><span class="tg" data-todo>При вас</span><img class="ob-img" src="img/dokumenty.webp?v=1" alt="" width="144" height="144"></a>
   </nav>
   
   <div class="ct">
@@ -741,7 +411,7 @@ draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=
   <div class="sh"><div><h2>Как заказать</h2></div></div>
   
   <div class="how-t" role="group" aria-label="Способ заказа"><button type="button" aria-pressed="true" aria-controls="hw1">На сайте<span class="badge b-ok how-d">−5%</span></button><button type="button" aria-pressed="false" aria-controls="hw2">Быстрый заказ</button><button type="button" aria-pressed="false" aria-controls="hw3">В копицентре</button><button type="button" aria-pressed="false" aria-controls="hw4">Написать</button></div>
-  <div class="steps" id="hw1"><div class="stp"><span class="n">01</span><b>Посчитайте и загрузите макет</b><p>На странице услуги. Онлайн дешевле на 5%.</p></div><div class="stp"><span class="n">02</span><b>Оформите заказ</b><p>Через корзину или в 1 клик.</p></div><div class="stp"><span class="n">03</span><b>Выберите получение и оплату</b><p>Самовывоз бесплатно, доставка от 375 ₽.</p></div><div class="stp"><span class="n">04</span><b>Менеджер подтвердит</b><p>Проверит макет и сроки, после этого оплата.</p></div><div class="stp"><span class="n">05</span><b>Заберите</b><p>Обычно на следующий день.</p></div><a class="btn btn-p how-a" href="#cat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-menu"/></svg>В каталог</a></div>
+  <div class="steps" id="hw1"><div class="stp"><span class="n">01</span><b>Посчитайте и загрузите макет</b><p>На странице услуги. Онлайн дешевле на 5%.</p></div><div class="stp"><span class="n">02</span><b>Оформите заказ</b><p>Контакты и способ получения. Платить пока не нужно.</p></div><div class="stp"><span class="n">03</span><b>Менеджер проверит макет</b><p>И подтвердит срок. После этого оплата.</p></div><div class="stp"><span class="n">04</span><b>Заберите или получите</b><p>Самовывоз бесплатно, доставка от 375 ₽.</p></div><a class="btn btn-p how-a" href="#cat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-menu"/></svg>В каталог</a></div>
   <div class="steps" id="hw2" hidden><div class="stp"><span class="n">01</span><b>Опишите задачу</b><p>Имя, телефон и файл, если есть.</p></div><div class="stp"><span class="n">02</span><b>Выберите, как связаться</b><p>Звонок, Telegram, WhatsApp или MAX.</p></div><div class="stp"><span class="n">03</span><b>Менеджер ответит</b><p>Посчитает цену и проверит макет.</p></div><div class="stp"><span class="n">04</span><b>Оплатите и заберите</b><p>Самовывоз бесплатно или доставка.</p></div><a class="btn btn-p how-a" href="fast-order.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>Оставить заявку</a></div>
   <div class="steps" id="hw3" hidden><div class="stp"><span class="n">01</span><b>Найдите ближайший</b><p>На карте выше.</p></div><div class="stp"><span class="n">02</span><b>Приходите с файлом</b><p>Часть услуг сделаем при вас.</p></div><div class="stp"><span class="n">03</span><b>Оплатите на месте</b><p>Наличными, картой или по QR. Студентам −10%.</p></div><a class="btn btn-p how-a" href="#ctr"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>Копицентры на карте</a></div>
   <div class="steps" id="hw4" hidden><div class="stp"><span class="n">01</span><b>Напишите или позвоните</b><p>Telegram, WhatsApp, MAX или почта.</p></div><div class="stp"><span class="n">02</span><b>Менеджер посчитает</b><p>И проверит макет до печати.</p></div><div class="stp"><span class="n">03</span><b>Оплатите и заберите</b><p>Самовывоз бесплатно или доставка.</p></div><div class="ct"> <a class="btn btn-p" data-ct="tel" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="w">Позвонить</span><span class="n" data-ct="tel-t">+7 495 156-10-00</span></a> <div class="ct-l"> <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div> </div></div>
@@ -779,9 +449,9 @@ draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=
 <section><div class="wrap">
   <div class="sh"><div><h2 class="h-eco">Больше, чем копицентр&nbsp;— экосистема наших сервисов</h2></div></div>
   <nav class="eco-t v-bento" aria-label="Сервисы COPY.RU">
-    <a class="tl tl-w" href="#"><b>Фото или рисунок <span class="tl-nw">в&nbsp;любимые&nbsp;вещи<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">ИИ сделает из него макет для печати</span><span class="badge b-ok b-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>макет 0 ₽</span><span class="tl-ba"><span class="tl-f"><img src="img/eco-ai-before.webp?v=9" width="480" height="480" alt="Ребёнок держит свой рисунок" loading="lazy" decoding="async"></span><svg class="tl-ar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><filter id="brush" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5" result="a"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="a" in2="n" scale="2" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.8 2.1" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#brush)"><g transform="matrix(0 -1 -1 0 48.5 48.5)"><path d="M6.5 42c.6-2.8 1.1-4.9 2.3-7.6 1.4-3.3 2.6-5.6 4.9-8.6 2.1-2.7 3.6-4.2 6.7-6.6 2.6-2 5.4-3.3 8.4-4.2 2.9-.9 5.1-1.2 8.3-1.6" stroke-width="3.6"/><path d="M9.2 37.6c1.2-3.6 2.9-7.2 5.6-10.3 1.7-2 3.4-3.6 6.4-5.6" stroke-width="2" opacity=".75"/><path d="M26.4 7.2c2.2.5 4.7 1.7 7.2 3 2.1 1.1 3.6 2 5.6 3.5" stroke-width="3.4"/><path d="M39.8 12.4c-1.4 1.6-2.7 3.9-3.6 6-.8 1.8-1.2 3.6-1.7 5.9" stroke-width="3"/></g></g></svg><span class="tl-f on"><img src="img/eco-ai-after.webp?v=7" width="480" height="480" alt="Футболка с этим рисунком" loading="lazy" decoding="async"></span></span></a>
+    <a class="tl tl-w" href="#"><b>Фото или рисунок <span class="tl-nw">в&nbsp;любимые&nbsp;вещи<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">ИИ сделает из него макет для печати</span><span class="badge b-ok b-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Макет 0 ₽</span><span class="tl-ba"><span class="tl-f"><img src="img/eco-ai-before.webp?v=9" width="480" height="480" alt="Ребёнок держит свой рисунок" loading="lazy" decoding="async"></span><svg class="tl-ar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><filter id="brush" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5" result="a"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="a" in2="n" scale="2" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.8 2.1" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#brush)"><g transform="matrix(0 -1 -1 0 48.5 48.5)"><path d="M6.5 42c.6-2.8 1.1-4.9 2.3-7.6 1.4-3.3 2.6-5.6 4.9-8.6 2.1-2.7 3.6-4.2 6.7-6.6 2.6-2 5.4-3.3 8.4-4.2 2.9-.9 5.1-1.2 8.3-1.6" stroke-width="3.6"/><path d="M9.2 37.6c1.2-3.6 2.9-7.2 5.6-10.3 1.7-2 3.4-3.6 6.4-5.6" stroke-width="2" opacity=".75"/><path d="M26.4 7.2c2.2.5 4.7 1.7 7.2 3 2.1 1.1 3.6 2 5.6 3.5" stroke-width="3.4"/><path d="M39.8 12.4c-1.4 1.6-2.7 3.9-3.6 6-.8 1.8-1.2 3.6-1.7 5.9" stroke-width="3"/></g></g></svg><span class="tl-f on"><img src="img/eco-ai-after.webp?v=7" width="480" height="480" alt="Футболка с этим рисунком" loading="lazy" decoding="async"></span></span></a>
     <div class="eco-r"><a class="tl" href="#"><b>Сувениры и мерч с&nbsp;вашим <span class="tl-nw">логотипом<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для команды и&nbsp;клиентов</span><span class="tl-v"><img src="img/eco-gifts.webp?v=4" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
-    <a class="tl" href="#"><b>Для <span class="tl-nw">бизнеса<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Договор и НДС</span><span class="badge b-ok">до −15%</span><span class="tl-v"><img src="img/eco-b2b.webp?v=1" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
+    <a class="tl" href="#"><b>Для <span class="tl-nw">бизнеса<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Договор и НДС</span><span class="badge b-ok">До −15%</span><span class="tl-v"><img src="img/eco-b2b.webp?v=1" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
     <a class="tl" href="#"><b>Интеграции <span class="tl-nw">и&nbsp;API<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Печать для своего сайта</span><span class="tl-v"><img src="img/eco-api.webp?v=3" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
     <a class="tl" href="#"><b>PRO-<span class="tl-nw">калькулятор<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для агентств и&nbsp;дизайнеров</span><span class="tl-v"><img src="img/eco-pro.webp?v=2" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a></div>
   </nav>
@@ -828,7 +498,7 @@ draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=
   </div>
   <div class="seo">
     
-    <h2 class="seo-h">Сеть копицентров и типографий</h2>
+    <h2 class="seo-h">Федеральная сеть копицентров и типографий</h2>
     <h3>Копицентр рядом с домом и офисом</h3><p>У COPY.RU 36 копицентров в&nbsp;Москве, Екатеринбурге, Нижнем Новгороде, Сочи, Тюмени и&nbsp;Ярославле. В&nbsp;Москве они стоят у&nbsp;метро, пять открыты круглосуточно, остальные работают без выходных.</p>
     <details class="seo-more"><summary>Подробнее</summary>
       <h3>Что печатаем</h3><p>Документы, чертежи, фото, в&nbsp;том числе фото на&nbsp;документы. Сканируем и&nbsp;ламинируем. Отчёты и&nbsp;брошюры скрепим на&nbsp;скобу или пружину, дипломы и&nbsp;диссертации переплетём.</p><p>Визитки, календари и&nbsp;каталоги напечатаем по&nbsp;вашему макету или сделаем дизайн сами. Большой формат тоже здесь: афиши, баннеры, плакаты, фотообои, печать на&nbsp;пенокартоне. Логотип нанесём на&nbsp;сувениры, текстиль и&nbsp;канцелярию.</p>
@@ -849,8 +519,15 @@ draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=
     <div><b>Клиентам</b><a href="https://copy.ru/club/">Клуб привилегий</a><a href="#">Генератор QR</a><a href="https://copy.ru/blog/">Статьи</a></div>
     <div><b>Связь</b><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a><a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a><a href="https://vk.com/copyru">ВКонтакте</a><a href="https://t.me/copyru">Telegram-канал</a></div>
   </div>
+  
+  <nav class="fsv" aria-label="Сервисы COPY.RU"><b>Сервисы COPY.RU</b><ul>
+    <li><a href="https://ai.copy.ru/"><span class="fsv-n">Нейродизайн<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>стикерпаки, футболки, кружки</small></a></li>
+    <li><a href="https://gifts.copy.ru/"><span class="fsv-n">Сувениры<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>с логотипом компании</small></a></li>
+    <li><a href="https://pro.copy.ru/"><span class="fsv-n">Дизайнерам<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>калькулятор и требования</small></a></li>
+    <li><a href="https://b2b.copy.ru/"><span class="fsv-n">Бизнесу<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>договор, НДС, скидки</small></a></li>
+    <li><a href="https://bridge.copy.ru/"><span class="fsv-n">Разработчикам<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>API и интеграции</small></a></li>
+  </ul></nav>
   <div class="fapp">
-    <nav class="svcs" aria-label="Сервисы COPY.RU"><a class="on" href="#">Печать</a><a href="#">AI</a><a href="#">Подарки</a><a href="#">PRO</a><a href="#">Для бизнеса</a><a href="#">API</a></nav>
     <div class="stores">
       <a href="https://apps.apple.com/ru/app/copy-ru/id6764291912"><img src="img/badge-appstore.svg?v=1" width="120" height="40" alt="Загрузите в App Store" loading="lazy"></a>
       <a href="https://play.google.com/store/apps/details?id=com.copyru.loyaltyapp"><img src="img/badge-gplay.webp?v=1" width="135" height="40" alt="Доступно в Google Play" loading="lazy"></a>
@@ -859,20 +536,16 @@ draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=
   
   <div class="flegal">
     <nav class="docs" aria-label="Документы">
+      
       <a href="https://copy.ru/terms/">Публичная оферта</a>
+      <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
       <a href="https://copy.ru/politika-konfidenczialnosti/">Политика обработки персональных данных</a>
       <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
-      <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Cookie</a>
-      <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
+      <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Файлы cookie</a>
       <a href="https://copy.ru/rekomendatelnye-tehnologii/">Рекомендательные технологии</a>
     </nav>
-    <p class="req">ООО «ДЖЕНЕРАЛ МЕНЕДЖМЕНТ КОПИ.РУ» · ИНН 7707283363 · ОГРН 1027739654469 · 109428, Москва, Рязанский пр-кт, д. 10, стр. 18, оф. 8.3/866, пом. 10/8</p>
-    <div class="fbot"><span>© 2012–2026 COPY.RU</span><span>Разработка сайта: vea</span></div>
+    <div class="freq"><p class="req"><span>© 2012–2026 COPY.RU</span><span>ООО «ДЖЕНЕРАЛ МЕНЕДЖМЕНТ КОПИ.РУ»</span><span>ИНН&nbsp;7707283363</span><span>ОГРН&nbsp;1027739654469</span><span>109428, Москва, Рязанский пр-кт, <span class="nw">д.&nbsp;10, стр.&nbsp;18, оф.&nbsp;8.3/866, пом.&nbsp;10/8</span></span></p><span class="fdev">Разработка сайта: vea</span></div>
   </div>
-  </div>
-  
-  <div class="fbig" aria-hidden="true">
-    <svg class="fbig-w" viewBox="0 0 618 196"><use href="#wm"/></svg>
   </div>
 </footer>
 <footer class="f-a" data-fv="a">
@@ -972,14 +645,11 @@ draw();addEventListener('resize',draw);let raf=0;q.addEventListener('scroll',()=
 <div class="ck" id="ck"><p>Используем cookie, чтобы сайт работал и запоминал город. <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Подробнее</a></p><button class="btn btn-s btn-sm" id="ckOk">Принять</button></div>
 
 <script>
-// дни в календарях
 
-// способы заказа: чип показывает свои шаги
 (()=>{const B=[...document.querySelectorAll('.how-t button')];B.forEach(b=>b.onclick=()=>{const t=b.parentNode;t.scrollTo({left:b.offsetLeft-t.offsetLeft-16,behavior:'smooth'});B.forEach(x=>{const on=x===b;x.setAttribute('aria-pressed',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on})})})();
 stForm.onsubmit=e=>{e.preventDefault();const t=stTel.value.replace(/\D/g,'').length>=10,n=stNum.value.trim();stRes.textContent=!t&&!n?'Введите телефон и номер заказа.':!t?'Проверьте телефон: нужен тот, что указали при заказе.':!n?'Введите номер заказа из СМС или письма.':'В прототипе статус не приходит. На сайте здесь будет этап заказа и копицентр выдачи.'};
 try{if(localStorage.getItem('copy-ck'))ck.hidden=true}catch(e){}
 ckOk.onclick=()=>{ck.hidden=true;try{localStorage.setItem('copy-ck','1')}catch(e){}};
-// метки реза и растр
 function halftone(el){const r=el.getBoundingClientRect(),w=Math.max(1,r.width),h=Math.max(1,r.height),step=+el.dataset.step||14,mode=el.dataset.ht,col=el.dataset.color,op=el.dataset.op;let c='';for(let y=step/2;y<h+step;y+=step)for(let x=step/2;x<w+step;x+=step){let t;if(mode==='lr')t=x/w;else if(mode==='bottom')t=Math.pow(y/h,1.6);else{const dx=(x-w)/w,dy=(y-h)/h;t=1-Math.min(1,Math.hypot(dx*1.1,dy*1.4))}t=Math.max(0,Math.min(1,t));const rad=step*.5*Math.pow(t,1.15);if(rad>.35)c+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(2)}"/>`}el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><g fill="${col}" fill-opacity="${op}">${c}</g></svg>`}
 window.draw=()=>document.querySelectorAll('[data-ht]').forEach(halftone);window.draw();addEventListener('resize',()=>{clearTimeout(window._t);window._t=setTimeout(window.draw,150)});
 
@@ -988,243 +658,20 @@ if(t)r.dataset.theme=t;const cur=()=>r.dataset.theme||(matchMedia('(prefers-colo
 const lbl=()=>{b.textContent=cur()==='dark'?'Светлая тема':'Тёмная тема'};lbl();
 b.onclick=()=>{r.dataset.theme=cur()==='dark'?'light':'dark';try{localStorage.setItem('copy-theme',r.dataset.theme)}catch(e){}lbl();if(window.draw)draw()}})();
 </script>
-<script src="catalog-data.js?v=2"></script><script src="data/copycenters.js?v=3"></script><script src="data/metro.js?v=3"></script>
+<script src="catalog-data.js?v=2"></script><script src="data/copycenters.js?v=4"></script><script src="data/metro.js?v=3"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
+<script src="cc.js?v=1"></script>
 <script>
-// копицентры: карта и список. Часы считаются по часовому поясу города точки (cityNow)
-(()=>{
-const cc=document.getElementById('cc'),list=document.getElementById('ccList'),card=document.getElementById('ccCard'),sum=document.getElementById('ccSum'),loc=document.getElementById('ccLoc');
-const IN={'Москва':'в Москве','Екатеринбург':'в Екатеринбурге','Нижний Новгород':'в Нижнем Новгороде','Сочи':'в Сочи','Тюмень':'в Тюмени','Ярославль':'в Ярославле'};
-// короткое название города для заголовка на телефоне, как в шапке («Н. Новгород»): полное рядом с переключателем вставало в 3 строки
-const IN_S={'Нижний Новгород':'в Н. Новгороде'};
-const DAY=['в пн','во вт','в ср','в чт','в пт','в сб','в вс'];
-const plural=(n,a,b,c)=>n%10===1&&n%100!==11?a:n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?b:c;
-let city='Москва';try{const c=localStorage.getItem('copy-city');if(IN[c])city=c}catch(e){}
-let me=null,sel=null,all=false,map=null,meMk=null;const mk={};
-const box=card.parentElement;
-
-const fmt=h=>{const H=Math.floor(h),M=Math.round((h-H)*60);return H+':'+String(M).padStart(2,'0')};
-// часы работы считаем по времени города точки, а не устройства: человек в другом поясе видит, открыт ли копицентр сейчас
-const TZ={'Екатеринбург':'Asia/Yekaterinburg','Тюмень':'Asia/Yekaterinburg'},WD={Mon:0,Tue:1,Wed:2,Thu:3,Fri:4,Sat:5,Sun:6};
-function cityNow(c){const o={};for(const x of new Intl.DateTimeFormat('en-GB',{timeZone:TZ[c]||'Europe/Moscow',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()))o[x.type]=x.value;return{wd:WD[o.weekday],t:+o.hour+o.minute/60}}
-// «до 22:00» для закрытой сейчас точки: время закрытия сегодня или в ближайший рабочий день — цвет (красный) говорит, что сейчас закрыто
-function until(p){const {wd}=cityNow(p.c);for(let i=0;i<7;i++){const x=p.h[(wd+i)%7];if(x)return 'до '+fmt(x[1])}return ''}
-function st(p){
-  const {wd,t}=cityNow(p.c),h=p.h[wd];
-  if(h&&h[0]===0&&h[1]===24)return{on:1,t:'Круглосуточно'};
-  if(h&&t>=h[0]&&t<h[1])return{on:1,t:'Открыто до '+fmt(h[1])};
-  if(h&&t<h[0])return{on:0,t:'Откроется в '+fmt(h[0])};
-  for(let i=1;i<8;i++){const x=p.h[(wd+i)%7];if(x)return{on:0,t:'Откроется '+(i===1?'завтра':DAY[(wd+i)%7])+' в '+fmt(x[0])}}
-  return{on:0,t:'Закрыто'};
-}
-const km=p=>{if(!me)return null;const R=6371,r=Math.PI/180,[a,b]=me,[c,d]=p.ll,x=Math.sin((c-a)*r/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin((d-b)*r/2)**2;return 2*R*Math.asin(Math.sqrt(x))};
-const kmT=p=>{const k=km(p);return k==null?'':k<1?Math.round(k*10)*100+' м':k.toFixed(1).replace('.',',')+' км'};
-// без местоположения: по алфавиту, закрытые сейчас — в конце (ночью наверху окажутся круглосуточные); с местоположением — по расстоянию
-const pts=()=>CC.filter(p=>p.c===city).sort((a,b)=>me?km(a)-km(b):(st(b).on-st(a).on)||a.n.localeCompare(b.n,'ru'));
-// метка точки: кружок цвета ветки метро; где метро нет (Балашиха, другие города) — тёмный квадрат: другая фигура, чтобы не читался как ветка (знак автобуса путал — будто остановка «Балашиха»)
-const line=p=>city==='Москва'&&p.w?`<i class="ln" data-c="${p.line}" aria-hidden="true"></i>`:'<i class="ln ln-x" aria-hidden="true"></i>';
-// минуты пешком от метро показываем, только если это правда «рядом» (до 20): в данных у «Исети» 70 — похоже на номер дома (ул. Мамина-Сибиряка, 70), вопрос в ROLLOUT
-const walk=p=>p.w&&p.w<=20?p.w:0;
-const meta=p=>{const s=st(p);return `<span class="${s.on?'on':''}">${s.t}</span>${walk(p)?' · '+walk(p)+' мин от метро':''}${me?' · '+kmT(p):''}`};
-
-function paintSum(){document.getElementById('ccH').innerHTML='Копицентры <span>'+(IN_S[city]?`<span class="cc-full">${IN[city]}</span><span class="cc-short">${IN_S[city]}</span>`:IN[city])+'</span>'; // заголовок следует за городом из шапки
- const P=pts(),o=P.filter(p=>st(p).on).length;sum.textContent=`${P.length} ${plural(P.length,'копицентр','копицентра','копицентров')} ${IN[city]} · открыто сейчас ${o}`}
-
-function paintList(){
-  const P=pts();
-  // сколько строк влезает в высоту блока (с кнопкой «Показать все»): 64 + 8 на строку, колонок 1 или 2. Пока список скрыт — считаем по высоте карты
-  const H=list.offsetHeight||parseFloat(getComputedStyle(list).minHeight)||480,cols=getComputedStyle(list).gridTemplateColumns.split(' ').length,fit=Math.floor((H-48+8)/72)*cols;
-  const N=all||P.length<=Math.floor((H+8)/72)*cols?P.length:fit;
-  const row=p=>{const s=st(p),x=s.on?(s.t==='Круглосуточно'?'24/7':s.t.replace('Открыто ','')):until(p);
-    return `<button type="button" class="pt${s.on?'':' off'}" data-id="${p.id}">${line(p)}<span class="pt-n"><span>${nm(p)}</span>${walk(p)?`<span class="pt-m"> · ${walk(p)} мин<span class="vh"> пешком от метро</span></span>`:''}</span><span class="pt-s${x==='24/7'?' badge b-ok':s.on?' on':''}">${x}</span><span class="pt-a">${[me?kmT(p):'',p.a].filter(Boolean).join(' · ')}</span><svg class="pt-g" aria-hidden="true"><use href="#chr"/></svg></button>`};
-  list.innerHTML=P.slice(0,N).map(row).join('')
-    +(N<P.length?`<button type="button" class="btn btn-sm btn-s cc-more">Показать все ${P.length}</button>`:'');
-}
-list.onclick=e=>{
-  if(e.target.closest('.cc-more')){all=true;paintList();return}
-  const b=e.target.closest('.pt');if(!b)return;view('map');pick(CC.find(p=>p.id===b.dataset.id));
-};
-
-// группировка: пины ближе 40 px (вблизи — мини-карточки, что задели бы друг друга) сливаются в одну каплю с числом; тап по ней приближает карту, и группа раскрывается. Выбранная точка в группы не входит. Пересчёт после каждого изменения масштаба
-// часы для мини-карточки: «до 21:00» (зелёным — открыто, красным — закрыто), «24/7»
-const short=p=>{const t=st(p).t,on=st(p).on;const x=on?(t==='Круглосуточно'?'24/7':t.replace('Открыто ','')):until(p);return `<small class="${on?'on':''}">${x}</small>`};
-let cl=[];
-function cluster(){
-  if(!map)return;cl.forEach(m=>m.remove());cl=[];
-  const G=[];
-  pts().forEach(p=>{
-    const q=map.project(LL(p.ll));
-    const nr=map.getZoom()>=13,g=sel&&sel.id===p.id?null:G.find(g=>g.q&&(nr?Math.abs(g.q.x-q.x)<170&&Math.abs(g.q.y-q.y)<44:Math.hypot(g.q.x-q.x,g.q.y-q.y)<40)); // вблизи мини-карточки шире — и порог шире
-    if(g)g.push(p);else{const n=[p];if(!(sel&&sel.id===p.id))n.q=q;G.push(n)}
-  });
-  G.forEach(g=>{
-    g.forEach(p=>{const e=mk[p.id]?.getElement();if(e)e.classList.toggle('in-cl',g.length>1)});
-    if(g.length<2)return;
-    const el=document.createElement('div');
-    el.innerHTML=`<button type="button" class="cc-pin cc-grp" aria-label="${g.length} ${plural(g.length,'копицентр','копицентра','копицентров')} рядом — приблизить"><svg aria-hidden="true"><use href="#ccpin0"/></svg><b>${g.length}</b></button>`;
-    el.firstChild.onclick=e=>{e.stopPropagation();map.fitBounds(bounds(g),{padding:88,maxZoom:15,duration:500})};
-    const c=[g.reduce((a,p)=>a+p.ll[0],0)/g.length,g.reduce((a,p)=>a+p.ll[1],0)/g.length];
-    cl.push(new maplibregl.Marker({element:el,anchor:'bottom'}).setLngLat(LL(c)).addTo(map));
-  });
-}
-// режим работы одной строкой: «Без выходных, 9:00–21:00» или «Пн–Пт 8:00–21:00, Сб–Вс 9:00–21:00»; у круглосуточных пусто — хватает статуса
-const DN=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-// название точки: если точка названа просто городом (Нижний Новгород, Сочи…), называем её по улице — «Варварская», «Площадь Максима Горького»; полный адрес строкой ниже. Иначе две строки «Нижний Новгород» не отличить
-const byAddr=p=>p.n===p.c&&!!p.a,street=a=>{const x=a.split(',')[0].replace(/\s+\d\S*$/,'').replace(/^ул\.\s*/,'');return x[0].toUpperCase()+x.slice(1)},nm=p=>byAddr(p)?street(p.a):p.n;
-function hours(p){
-  const f=h=>!h?'выходной':h[0]===0&&h[1]===24?'круглосуточно':fmt(h[0])+'–'+fmt(h[1]),G=[];
-  p.h.forEach((h,i)=>{const v=f(h),g=G[G.length-1];g&&g.v===v?g.b=i:G.push({a:i,b:i,v})});
-  if(G.length===1)return G[0].v==='круглосуточно'?'':'Без выходных, '+G[0].v;
-  return G.map(g=>(g.a===g.b?DN[g.a]:DN[g.a]+'–'+DN[g.b])+' '+g.v).join(', ');
-}
-// мессенджеры в карточке — те же ссылки, что в строке связи под плитками
-const MS=document.querySelector('.ct-l')?.innerHTML||'';
-// выбор точки: капля плавно разворачивается в карточку над адресом (вместо карточки внизу карты)
-function fill(p){
-  const el=mk[p.id]?.getElement();if(!el)return null;
-  const route=`https://yandex.ru/maps/?rtext=${me?me.join(','):''}~${p.ll.join(',')}&rtt=pd`;
-  el.querySelector('.cc-pop').innerHTML=`<button class="x" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <div class="cc-n">${line(p)}${nm(p)}</div><p class="cc-st">${meta(p)}</p>${p.a?`<p class="cc-ad">${p.a}</p>`:''}
-    ${hours(p)?`<p class="cc-hr">${hours(p)}</p>`:''}
-    ${p.t||p.m?`<p class="cc-ct">${p.t?`<a href="tel:${p.tel}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>${p.t}</a>`:''}${p.m?`<a href="mailto:${p.m}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>${p.m}</a>`:''}</p>`:''}
-    <div class="cc-act"><a class="btn btn-p btn-sm" href="${route}" target="_blank" rel="noopener">Маршрут</a><div class="cc-ms">${MS}</div></div>
-    <a class="cc-link" href="${p.url}" data-todo="страница копицентра в новом дизайне">О копицентре →</a>`;
-  el.querySelector('.cc-pop .x').onclick=e=>{e.stopPropagation();pick(null)};
-  el.classList.add('open');el.querySelector('.cc-pin').setAttribute('aria-expanded','true');
-  return el;
-}
-function pick(p){
-  card.hidden=true;
-  if(sel&&mk[sel.id]){const o=mk[sel.id].getElement();o.classList.remove('open');o.querySelector('.cc-pin').setAttribute('aria-expanded','false')}
-  sel=p;cluster();if(!p)return;
-  const el=fill(p);if(!el||!map)return;
-  const h=el.querySelector('.cc-pop').offsetHeight;
-  map.easeTo({center:LL(p.ll),zoom:Math.min(Math.max(map.getZoom(),13),14.5),padding:{top:h+72,bottom:24,left:0,right:0},duration:600});
-  el.querySelector('.cc-pop .x').focus({preventScroll:true});
-}
-
-// карта: MapLibre (открытый форк Mapbox GL) + векторные плитки OpenFreeMap (стиль positron), перекрашены в палитру страницы.
-// В бою — Яндекс Карты API с теми же цветами (кастомизация стиля).
-const LL=a=>[a[1],a[0]];
-const isDark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches};
-const PAL={
-  light:{bg:'#ECEAE4',park:'#E1E3D6',water:'#D3DCE2',bld:'#E3E0D9',road:'#FFFFFF',cas:'#DDD9D0',rail:'#CFCBC2',txt:'#7A7972',halo:'#ECEAE4'},
-  dark:{bg:'#1F1E23',park:'#212622',water:'#192028',bld:'#27262C',road:'#313037',cas:'#1F1E23',rail:'#3A3940',txt:'#8E8C85',halo:'#1F1E23'}};
-let base=null;
-function styleFor(P){
-  const s=structuredClone(base);delete s.sources.ne2_shaded;
-  s.layers=s.layers.filter(l=>l.source!=='ne2_shaded'&&!/shield|airport|aeroway|boundary|ice_shelf|glacier|highway_path|pier|label_country|label_state|waterway_line_label|highway-name-path/.test(l.id));
-  for(const l of s.layers){const id=l.id,p=l.paint||(l.paint={});
-    if(id==='background')p['background-color']=P.bg;
-    else if(id==='park'||id==='landcover_wood'){p['fill-color']=P.park;p['fill-opacity']=1}
-    else if(id==='water')p['fill-color']=P.water;
-    else if(id==='waterway')p['line-color']=P.water;
-    else if(id==='landuse_residential'){p['fill-color']=P.bg;p['fill-opacity']=1}
-    else if(id==='building'){p['fill-color']=P.bld;delete p['fill-outline-color']}
-    else if(/casing/.test(id))p['line-color']=P.cas;
-    else if(/railway/.test(id))p['line-color']=P.rail;
-    else if(l.type==='line'&&/^(highway|tunnel)/.test(id))p['line-color']=P.road;
-    if(l.type==='symbol'){if(l.layout?.['text-field'])l.layout['text-field']=['coalesce',['get','name:ru'],['get','name']];p['text-color']=P.txt;p['text-halo-color']=P.halo;p['text-halo-width']=1.2}
-  }
-  // станции метро: кружок цвета ветки с белой «М», название одной подписью на пересадочный узел. С приближения 13, подписи в цвет надписей карты. Данные data/metro.js (в бою — станции Яндекс Карт)
-  if(window.METRO){
-    s.sources.metro={type:'geojson',data:METRO};s.sources.metroL={type:'geojson',data:METRO_LABELS};
-    s.layers.push({id:'metro-dot',type:'circle',source:'metro',minzoom:13,paint:{'circle-radius':7,'circle-color':['get','c'],'circle-stroke-width':1.5,'circle-stroke-color':P.halo}});
-    s.layers.push({id:'metro-m',type:'symbol',source:'metro',minzoom:13,layout:{'text-field':'М','text-font':['Noto Sans Bold'],'text-size':9,'text-allow-overlap':true,'text-ignore-placement':true},paint:{'text-color':['get','t']}});
-    s.layers.push({id:'metro-name',type:'symbol',source:'metroL',minzoom:13,filter:['!',['in',['get','n'],['literal',CC.map(p=>p.n)]]], /* станцию, у которой есть наш копицентр, подписывает его плашка — без дубля */layout:{'text-field':['get','n'],'text-font':['Noto Sans Regular'],'text-size':11,'text-anchor':'left','text-offset':[1.1,0],'text-optional':true},paint:{'text-color':P.txt,'text-halo-color':P.halo,'text-halo-width':1.2}});
-  }
-  return s;
-}
-const restyle=()=>{map&&base&&map.setStyle(styleFor(PAL[isDark()?'dark':'light']))};
-function bounds(P){const b=new maplibregl.LngLatBounds();P.forEach(p=>b.extend(LL(p.ll)));return b}
-// общий вид города: не ближе 12-го масштаба — в городах с 1–2 точками рядом карта иначе приближалась к домам и терялся город
-// поля при показе всех точек: на телефоне верх и низ карты растворяются (160) и справа колонка кнопок — точки держим в чистой части, иначе они уходят в туман и под кнопки (Сочи: Адлер внизу под «Где я»)
-const PAD=()=>matchMedia('(max-width:560px)').matches?{top:150,bottom:110,left:32,right:72}:{top:48,bottom:48,left:48,right:72};
-function fitAll(P){if(!map)return;P.length>1?map.fitBounds(bounds(P),{padding:PAD(),maxZoom:12,duration:0}):map.jumpTo({center:LL(P[0].ll),zoom:12})}
-
-async function paintMap(fit){
-  if(!window.maplibregl)return;
-  const P=pts();
-  if(!map){
-    if(!base){try{base=await (await fetch('https://tiles.openfreemap.org/styles/positron')).json()}catch(e){return}}
-    map=new maplibregl.Map({container:'ccMap',style:styleFor(PAL[isDark()?'dark':'light']),bounds:bounds(P),fitBoundsOptions:{padding:PAD(),maxZoom:12},
-      attributionControl:{compact:true},dragRotate:false,pitchWithRotate:false,cooperativeGestures:true,
-      locale:{'CooperativeGesturesHandler.WindowsHelpText':'Ctrl + колесо — приблизить','CooperativeGesturesHandler.MacHelpText':'⌘ + колесо — приблизить','CooperativeGesturesHandler.MobileHelpText':'Двигайте карту двумя пальцами','NavigationControl.ZoomIn':'Приблизить','NavigationControl.ZoomOut':'Отдалить'}});
-    map.touchZoomRotate.disableRotation();
-    map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-left');
-    map.on('click',()=>pick(null));
-    const near=()=>box.classList.toggle('near',map.getZoom()>=13);map.on('zoom',near);near(); // издалека точки, вблизи плашки со станцией
-    map.on('zoomend',cluster);map.on('resize',cluster);
-    map.once('load',()=>document.querySelector('#ccMap .maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show')); // подпись данных свёрнута в «i»
-    new MutationObserver(restyle).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change',restyle);
-  }
-  Object.values(mk).forEach(m=>m.remove());for(const k in mk)delete mk[k];
-  P.forEach(p=>{
-    const el=document.createElement('div');el.className='cc-mk';el.innerHTML=`<div class="cc-pop" role="dialog" aria-label="${p.n}"></div><button type="button" aria-expanded="false" class="cc-pin${st(p).on?'':' off'}${sel&&sel.id===p.id?' sel':''}" aria-label="${p.n}"><svg aria-hidden="true"><use href="#ccpin"/></svg><span class="tg">${line(p)}${p.n===p.c?(p.a||p.n).split(',')[0]:p.n}${short(p)}</span></button>`;
-    el.querySelector('.cc-pin').onclick=e=>{e.stopPropagation();pick(sel===p?null:p)};el.querySelector('.cc-pop').onclick=e=>e.stopPropagation();
-    mk[p.id]=new maplibregl.Marker({element:el,anchor:'bottom'}).setLngLat(LL(p.ll)).addTo(map);
-  });
-  if(sel)fill(sel);
-  cluster();
-  meMk&&meMk.remove();meMk=null;
-  if(me){const el=document.createElement('div');el.className='cc-me';meMk=new maplibregl.Marker({element:el}).setLngLat(LL(me)).addTo(map)}
-  if(fit)fitAll(P);
-}
-
-function view(v){
-  cc.dataset.view=v;document.querySelectorAll('#ctr .seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
-  try{localStorage.setItem('cc-view',v)}catch(e){}
-  if(v==='map'&&map){map.resize();if(!sel)fitAll(pts())}
-  if(v==='list')paintList();
-}
-document.querySelector('#ctr .seg').onclick=e=>{const b=e.target.closest('button');if(b)view(b.dataset.v)};
-
-// местоположение: спрашиваем только по кнопке. Если человек уже разрешал раньше — показываем его точку сразу, без окна браузера.
-// Город по местоположению меняем, только если человек не выбирал город сам, и не запоминаем: это не его выбор
-const near=()=>{let b=null,d=Infinity;for(const p of CC){const k=km(p);if(k<d){d=k;b=p}}return[b,d]};
-// сообщения про местоположение — тем же алертом, что подсказка про жест: то же место, исчезают так же (1 с + 1 с)
-const msg=document.getElementById('ccMsg');let msgT;
-function say(t){msg.textContent=t;msg.classList.add('on');clearTimeout(msgT);msgT=setTimeout(()=>msg.classList.remove('on'),100)}
-function locate(auto){
-  const fail=t=>{loc.removeAttribute('aria-busy');if(!auto)say(t)}; // ошибку пишем в строку над картой: у кнопки нет текста
-  if(!navigator.geolocation){fail('Браузер не умеет определять местоположение');return}
-  loc.setAttribute('aria-busy','true');
-  navigator.geolocation.getCurrentPosition(async g=>{
-    me=[g.coords.latitude,g.coords.longitude];loc.removeAttribute('aria-busy');loc.setAttribute('aria-pressed','true');
-    let chosen=null;try{chosen=localStorage.getItem('copy-city')}catch(e){}
-    const[n,d]=near();
-    if(n&&n.c!==city&&d<80&&(!auto||!chosen))document.dispatchEvent(new CustomEvent('copy:city-set',{detail:{c:n.c,save:false}}));
-    paintSum();paintList();await paintMap();
-    const P=pts();
-    if(auto){if(map&&P[0])map.fitBounds(bounds([{ll:me},P[0]]),{padding:64,maxZoom:15,duration:0})} // сами не открываем карточку: человек ещё ничего не просил
-    else pick(P.find(p=>st(p).on&&km(p)<km(P[0])+1.5)||P[0]); // ближайший открытый, если он не дальше ближайшего на 1,5 км
-  },e=>fail(e.code===1?(isSecureContext?'Нет доступа к местоположению. Разрешите его в настройках браузера':'Местоположение работает только на защищённой странице (https)'):'Не получилось определить местоположение. Попробуйте ещё раз'),
-  {timeout:10000,maximumAge:300000});
-}
-loc.onclick=()=>locate(false);
-navigator.permissions?.query({name:'geolocation'}).then(r=>{if(r.state==='granted')locate(true)}).catch(()=>{});
-
-function paintAll(fit){paintSum();paintList();paintMap(fit)}
-document.addEventListener('copy:city',e=>{city=IN[e.detail]?e.detail:city;sel=null;card.hidden=true;all=false;paintAll(true)});
-let v0='map';try{v0=localStorage.getItem('cc-view')==='list'?'list':'map'}catch(e){}
-view(v0);paintAll(true);
-})();
-// каталог: разделы и группы из catalog-data.js; на телефоне только разделы чипами-ссылками
 (()=>{const C=window.COPY_CATALOG,g=document.getElementById('catG'),t=document.getElementById('catT');if(!C)return;
 const e=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const allS=G=>{const n=G.reduce((a,x)=>a+x[2].length,0),a=n%10,b=n%100;return n?`Все ${n} ${a===1&&b!==11?'услуга':a>=2&&a<=4&&(b<12||b>14)?'услуги':'услуг'}`:'Весь раздел'};
-// у всех разделов одинаково строк — по разделу с наименьшим числом групп (сейчас 3); только группы, без добивки услугами
 const R=Math.min(...C.items.map(x=>x[2].length));
 g.innerHTML=C.items.map(([n,u,G],i)=>`<div><b>${e(n)}</b>${G.slice(0,R).map(([gn,gu])=>`<a href="${C.base+gu}">${e(gn)}</a>`).join('')}<a class="more" href="${C.base+u}">${allS(G)}</a></div>`).join('');
 const chev='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-// все разделы раскрываются; по умолчанию открыт первый; аккордеон — открыт не больше одного
 t.innerHTML=C.items.map(([n,u,G],i)=>`<div class="cat-x${i?'':' open'}"><button type="button" aria-expanded="${!i}" aria-controls="catX${i}"><span>${e(n)}</span>${chev}</button><div class="cat-xp" id="catX${i}"${i?' hidden':''}>${G.slice(0,R).map(([gn,gu])=>`<a href="${C.base+gu}">${e(gn)}</a>`).join('')}<a class="more" href="${C.base+u}">${allS(G)}<svg class="ico" aria-hidden="true"><use href="#chr"/></svg></a></div></div>`).join('');
 const X=[...t.children],set=(x,on)=>{x.classList.toggle('open',on);x.querySelector('.cat-xp').hidden=!on;x.querySelector('button').setAttribute('aria-expanded',on)};
-// глаза не бегают: нажатый чип остаётся на том же месте экрана (подкручиваем страницу на его сдвиг — когда выше сворачивается открытый, всё уезжает вверх);
-// раскрытый список не прячется за низом экрана — плавно докручиваем, но заголовок чипа не уводим под шапку
 const hdrB=()=>{const h=document.querySelector('.hdr');return h?Math.max(0,h.getBoundingClientRect().bottom):0};
-X.forEach(x=>x.onclick=ev=>{if(ev.target.closest('a'))return; // ссылки внутри ведут дальше; тап по подписи или пустому месту — свернуть/развернуть
+X.forEach(x=>x.onclick=ev=>{if(ev.target.closest('a'))return;
   const open=!x.classList.contains('open'),y0=x.getBoundingClientRect().top;
   const go=()=>{X.forEach(y=>set(y,y===x&&open));const d=x.getBoundingClientRect().top-y0;if(d)window.scrollBy(0,d)};
   const fit=()=>{if(!open)return;const r=x.getBoundingClientRect(),over=r.bottom-(innerHeight-16),room=r.top-hdrB()-16;if(over>0&&room>0)window.scrollBy({top:Math.min(over,room),behavior:'smooth'})};

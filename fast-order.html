@@ -4,40 +4,21 @@
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>/* демо: на компьютере только мобильная версия в рамке */if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
+<script>if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1B20" media="(prefers-color-scheme: dark)">
-<script>/* тема до отрисовки (Safari iOS 26 берёт цвет статус-бара с body при загрузке). По умолчанию — как в системе.
-   Выбор вручную (copy-theme) живёт, пока система не переключилась сама: copy-theme-sys — какой была система при выборе */
+<script>
 try{const L=localStorage,t=L.getItem('copy-theme'),s=L.getItem('copy-theme-sys'),now=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
 if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Быстрый заказ — COPY.RU (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=11">
 <style>
-:root{
-  --v:#4844D7;--v-hover:#3934B1;--v-900:#1B1C5A;--v-200:#CBD3FE;--v-100:#E5E9FE;--v-50:#F3F5FE;
-  --bg:#F8F7F4;--surface:#fff;--ink:#222220;--ink-2:#6B6A64;--line:#E8E6E1;--stage:#EFEDE8;
-  --r-xs:6px;--r-s:8px;--r-m:12px;--r-l:20px;--r-xl:28px;
-  --sans:Onest,system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
-}
-*{box-sizing:border-box}
-/* цвет фона body = цвет шапки: из него Safari iOS 26 красит статус-бар при загрузке (theme-color не читает).
-   Видимый фон страницы (--bg) рисует заливка поверх */
-body{margin:0;background:linear-gradient(var(--bg),var(--bg)) var(--surface);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-svg.wm{display:block;height:auto;fill:currentColor}
-.mono{font-family:var(--mono);font-weight:500}
-.muted{color:var(--ink-2)}
-.btn{font:600 16px/1 var(--sans);border-radius:var(--r-m);height:48px;box-sizing:border-box;padding:0 22px;border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .15s,transform .1s;white-space:nowrap;cursor:pointer}
-.btn:active{transform:scale(.98)}
-.btn-p{background:var(--v);color:#fff}.btn-p:hover{background:var(--v-hover)}
-.btn-s{background:var(--v-50);color:var(--v-text)}.btn-s:hover{background:var(--v-100)}
-.btn-w{background:#fff;color:var(--v-text)}
-.btn-g{box-shadow:inset 0 0 0 1px var(--line);background:transparent}
-.btn-sm{font-size:14px;height:40px;box-sizing:border-box;padding:0 16px;border-radius:var(--r-s)}
-/* TODO(перенос): стили формы — в общий файл компонентов, когда он появится. Размеры по ui-kit 04: поле и кнопка M 48, радиус 12, подпись 14/500 */
+
+
+
+
 .fo{max-width:560px;margin:0 auto;padding:32px 24px 64px}
 .fo h1{font:700 32px/1.15 var(--sans);letter-spacing:-.01em;margin:0 0 8px}
 .fo .lead{margin:0 0 32px;color:var(--ink-2)}
@@ -46,14 +27,14 @@ svg.wm{display:block;height:auto;fill:currentColor}
 .ff>label:not(.fbtn,.chk),.ff>legend{font:500 14px var(--sans);padding:0}
 .ff>legend{margin-bottom:8px}
 .ff :is(input[type=tel],input[type=text],input[type=email],select,textarea){font:400 16px var(--sans);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);height:48px;padding:0 14px;outline:none;width:100%;-webkit-appearance:none;appearance:none}
-.fo .ff textarea{ /* .fo — сильнее общего правила полей (у него :is(input[type=tel],…) даёт 0,2,1) */ height:auto;min-height:120px;padding:12px 14px;line-height:1.5;resize:vertical}
+.fo .ff textarea{  height:auto;min-height:120px;padding:12px 14px;line-height:1.5;resize:vertical}
 .ff select{padding-right:40px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B6A64' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center}
 .ff :is(input,select,textarea):focus{border-color:var(--v);box-shadow:0 0 0 3px color-mix(in srgb,var(--v) 22%,transparent)}
 .ff ::placeholder{color:var(--ink-2);opacity:1}
 .ff .hint{font-size:14px;color:var(--ink-2);margin:0}
 .ff .err{font-size:14px;color:#C62828;margin:0}
 .ff.bad :is(input,textarea){border-color:#C62828}
-/* выбор из 2–4 вариантов: сегменты в дорожке высотой поля 48, выбранный — светлая плашка с тенью (в тёмной теме плашка на 16% светлее, без тени). Без акцента: это выбор, а не действие */
+
 .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;background:color-mix(in srgb,var(--ink) 6%,transparent);border-radius:var(--r-m)}
 .seg label{position:relative;display:flex;align-items:center;justify-content:center;height:40px;border-radius:var(--r-s);font:500 14px var(--sans);cursor:pointer;white-space:nowrap}
 .seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
@@ -61,7 +42,7 @@ svg.wm{display:block;height:auto;fill:currentColor}
 :root[data-theme=dark] .seg label:has(:checked){background:color-mix(in srgb,var(--ink) 16%,var(--surface));box-shadow:none}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .seg label:has(:checked){background:color-mix(in srgb,var(--ink) 16%,var(--surface));box-shadow:none}}
 .seg label:has(:focus-visible){outline:2px solid var(--v-text);outline-offset:2px}
-/* файл: кнопка вида btn-g + список выбранных */
+
 .fbtn{position:relative;align-self:flex-start}
 .fbtn:has(:focus-visible){outline:2px solid var(--v-text);outline-offset:2px}
 .fbtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
@@ -71,27 +52,18 @@ svg.wm{display:block;height:auto;fill:currentColor}
 .chk input{flex:none;width:20px;height:20px;margin:0;accent-color:var(--v)}
 .chk a{color:var(--v-text)}
 .done{text-align:center;padding:48px 0}
-.done:focus{outline:none} /* фокус для читалок экрана, рамка вокруг всего блока не нужна */
+.done:focus{outline:none} 
 .done svg{width:48px;height:48px;color:var(--success,#1F8A55)}
 .done h1{margin-top:16px}
 .done .btn{margin-top:16px}
 
-@media (max-width:560px){.wrap{padding:0 16px}} /* как на главной: шапка берёт поля из .wrap страницы */
+@media (max-width:560px){.wrap{padding:0 16px}} 
 @media (max-width:980px){.fo{padding:24px 16px 48px}.fo h1{font-size:28px}}
 @media (max-width:359px){.seg label{font-size:13px}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-:root{--v-text:#4844D7;--stage:#EFEDE8;--inverse:#222220;--map:#ECEAE4;--road:#fff;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141316;--surface:#1C1B20;--ink:#F3F2EF;--ink-2:#9A9890;--line:#2C2B31;--stage:#232227;
-  --v:#5F64F3;--v-hover:#5354E5;--v-text:#7E8BFF;--v-50:#1D1F3B;--v-100:#272852;--inverse:#0E0D10;
-  --map:#1F1E23;--road:#2A2930;--success:#3BB57A;color-scheme:dark;}}
-:root[data-theme="dark"]{--bg:#141316;--surface:#1C1B20;--ink:#F3F2EF;--ink-2:#9A9890;--line:#2C2B31;--stage:#232227;
-  --v:#5F64F3;--v-hover:#5354E5;--v-text:#7E8BFF;--v-50:#1D1F3B;--v-100:#272852;--inverse:#0E0D10;
-  --map:#1F1E23;--road:#2A2930;--success:#3BB57A;color-scheme:dark;}
-[hidden]{display:none!important}
-:focus-visible{outline:2px solid var(--v-text);outline-offset:2px;border-radius:4px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
 </style>
-<link rel="stylesheet" href="hdr.css?v=188">
+<link rel="stylesheet" href="hdr.css?v=201">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
@@ -106,7 +78,7 @@ svg.wm{display:block;height:auto;fill:currentColor}
   <symbol id="up" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-<script src="hdr.js?v=119" data-svc="copy"></script>
+<script src="hdr.js?v=127" data-svc="copy"></script>
 
 <main class="fo">
 
@@ -173,7 +145,8 @@ svg.wm{display:block;height:auto;fill:currentColor}
 </div>
 </main>
 <script>
-{// копицентры Москвы — сняты с живой формы 2026-11-12 (value = id на сайте). В бою список отдаёт CMS по выбранному городу
+{const w=new URLSearchParams(location.search).get('need'),t=document.getElementById('foWhat');if(w&&t&&!t.value){t.value=w}}
+{
 const CC=[["200","Академическая","ул. Дмитрия Ульянова, 20к1"],["198","Бауманская","ул. Фридриха Энгельса, 3-5с1"],["1443","Улица 1905 года","Пресненский вал 8к3, 1 этаж"],["216","Фрунзенская","Комсомольский проспект, 28"],["220","Чистые пруды","ул. Мясницкая, 24/7 с 8"],["14764","Аэропорт","ул. Черняховского, 5, корп. 1"],["202","Беляево","ул. Миклухо-Маклая, 47А"],["203","Добрынинская","ул. Люсиновская, 4"],["3280","Кожуховская","ул. Южнопортовая, 18"],["6984","Курская","ул. Земляной Вал, 14/16"],["3193","Ленинский проспект","ул. Вавилова, 6"],["204","Митино","ул. Дубравная, 34/29, ТЦ Ладья, этаж -1"],["29577","Москва-Сити","Афимолл, Пресненская набережная, 2"],["205","Новослободская","Новослободская улица, 3"],["210","Павелецкая","ул. Кожевническая, 3 стр. 1"],["212","Семёновская","ул. Щербаковская, 35"],["3272","Смоленская","ул. Арбат, 54/2, стр. 1"],["213","Сокол","Ленинградский проспект, 74А"],["214","Сокольники","Сокольническая площадь, 4А"],["219","Университет","пл. Джавахарлала Неру, 1"],["10236","Шаболовская","ул. Шухова, 18"],["2854","Электрозаводская","ул. Большая Семёновская, 20"],["1453","Юго-Западная","ул. Покрышкина, 4, ТЦ «Звёздочка», 3 этаж"],["2925","Балашиха","ш. Энтузиастов, 48"],["40525","Мичуринский проспект","Мичуринский проспект, 16"],["35","Сходненская","Сходненская улица, 37"],["36","Савёловская","Бутырская улица, 7"]];
 const f=document.querySelector('#foForm form'),sel=document.getElementById('foCcIn');
 sel.insertAdjacentHTML('beforeend',CC.map(([v,n,a])=>`<option value="${v}">${n} · ${a}</option>`).join(''));
@@ -183,7 +156,6 @@ const sync=()=>{const m=radio('methodofcommunication');document.getElementById('
 f.addEventListener('change',sync);sync();
 const fl=document.getElementById('foFiles');
 f.fileattached.onchange=e=>{fl.innerHTML=[...e.target.files].map(x=>`<li>${x.name.replace(/</g,'&lt;')} · ${(x.size/1048576).toFixed(1)} МБ</li>`).join('')};
-// ошибки показываем после попытки отправить, кнопку не блокируем (моветон: неактивная кнопка без объяснения)
 const ok=b=>{const i=b.querySelector('input,textarea');return i.type==='checkbox'?i.checked:i.type==='tel'?i.value.replace(/\D/g,'').length>=10:i.value.trim().length>1};
 const check=b=>{const good=b.hidden||ok(b);b.classList.toggle('bad',!good);f.querySelector(`.err[data-for="${b.dataset.req}"]`).hidden=good;return good};
 f.addEventListener('input',e=>{const b=e.target.closest('[data-req]');if(b&&b.classList.contains('bad'))check(b)});
@@ -196,7 +168,7 @@ f.onsubmit=e=>{e.preventDefault();const bad=[...f.querySelectorAll('[data-req]')
 (()=>{const r=document.documentElement,b=document.getElementById('themeBtn');let t=null;try{t=localStorage.getItem('copy-theme')}catch(e){}
 if(t)r.dataset.theme=t;const cur=()=>r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
 const lbl=()=>{b.textContent=cur()==='dark'?'Светлая тема':'Тёмная тема'};lbl();
-b.onclick=()=>{r.dataset.theme=cur()==='dark'?'light':'dark';try{localStorage.setItem('copy-theme',r.dataset.theme)}catch(e){}lbl()}})(); // TODO(перенос): как на главной; переключатель темы — в hdr.js, а не в каждой странице
+b.onclick=()=>{r.dataset.theme=cur()==='dark'?'light':'dark';try{localStorage.setItem('copy-theme',r.dataset.theme)}catch(e){}lbl()}})();
 </script>
 </body>
 </html>
