@@ -192,10 +192,15 @@
 .cf-r .cf-ph{width:48px;height:48px;border-radius:var(--r-xs)}
 .cf-ph::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)} 
 .cf-ph img{display:block;width:100%;height:100%;object-fit:cover}
+
+.cf-ph[data-zoom]{cursor:zoom-in}
+.cf-ph[data-zoom]::before{content:"";position:absolute;right:2px;bottom:2px;z-index:1;width:14px;height:14px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141316' stroke-width='3' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='m15 15 5 5'/%3E%3C/svg%3E") center/9px no-repeat;box-shadow:0 1px 3px rgb(20 19 22/.25)}
 .cf-ph.w{width:100%;height:76px;background:none;border-radius:0} 
 .cf-ph.w::after{display:none}
 .cf-ph.w img{object-fit:contain;object-position:left bottom}
 
+
+.cf-r:not(:has(small,.cf-ph)){min-height:48px;padding-left:14px}
 
 .cf-r:focus-visible{outline-offset:-2px}
 

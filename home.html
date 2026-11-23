@@ -13,7 +13,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 <title>COPY.RU — главная (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=11">
+<link rel="stylesheet" href="base.css?v=24">
 <style>
 .ct{margin-top:16px} 
 
@@ -30,7 +30,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 
 
 
-.hero{padding:32px 0 0}
+.hero{padding:var(--top) 0 0} 
 .hero h1{font:800 68px/.95 var(--sans);letter-spacing:-.04em;margin:0 0 24px;text-wrap:balance}
 
 
@@ -154,101 +154,20 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 .post>svg{flex:none;width:20px;height:20px;color:var(--ink-2)}
 
 
-
-:root{--f-bg:var(--inverse);--f-ink:#F3F2EF;--f-ink-2:#8F8D86;--f-txt:#C9C7C1;--f-line:#3A3A38;--f-wm:var(--v);--f-on-bg:#fff;--f-on-ink:#222220}
-footer{background:var(--f-bg);color:var(--f-txt);padding:48px 0 0;font-size:14px;margin-top:88px;overflow:hidden;--line:var(--f-line)}
-footer .svcs{display:flex;gap:8px;flex-wrap:wrap}
-footer .svcs a{border:1px solid var(--f-line);border-radius:999px;padding:6px 12px;color:var(--f-ink);margin:0}
-footer .svcs a.on{background:var(--f-on-bg);color:var(--f-on-ink);border-color:var(--f-on-bg)}
-footer .fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--f-line);margin-top:32px;padding-top:18px;color:var(--f-ink-2);font-size:12px}
-footer .flegal{border-top:1px solid var(--f-line);margin-top:32px;padding-top:18px;color:var(--f-ink-2);font-size:12px}
-footer .docs{display:flex;flex-wrap:wrap;gap:4px 20px}
-footer .docs a{display:inline-flex;align-items:center;min-height:32px;margin:0;color:var(--f-txt)}
-
-.freq{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-top:16px}
-footer .req{margin:0;line-height:1.6}
-footer .req>span{display:block}
-footer .req .nw{white-space:nowrap} 
-footer .flegal .fbot{border:0;margin-top:12px;padding-top:0}
 .ck{position:fixed;left:24px;bottom:24px;z-index:50;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:0 16px 40px -14px rgba(34,34,32,.28);padding:14px 14px 14px 18px;display:flex;gap:14px;align-items:center;max-width:420px;font-size:14px}
-.ck p{margin:0;flex:1}.ck a{color:var(--v-text);font-weight:600}
-footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-footer b{color:var(--f-ink);display:block;margin-bottom:10px;font-weight:600}
-footer a{display:block;margin:6px 0}
-.fapp{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:32px}
-footer .stores{margin:0}
-footer .stores a{margin:0}
-
-.fsv{margin-top:32px;padding-top:24px;border-top:1px solid var(--f-line)}
-.fsv ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px 24px}
-footer .fsv a{display:block;margin:0;padding:6px 0;color:var(--f-ink);font-weight:500}
-.fsv-n{display:flex;align-items:center;gap:6px} 
-.fsv small{display:block;margin-top:2px;font-size:12px;line-height:1.35;font-weight:400;color:var(--f-ink-2)}
-.fsv-i{flex:none;width:16px;height:16px;color:var(--f-ink-2);transition:translate .15s}
-@media (hover:hover){footer .fsv a:hover .fsv-i{color:var(--f-ink);translate:2px -2px}}
-.fapp:has(.stores:only-child){justify-content:flex-start}
-
-.fbig{position:relative;margin-top:32px;padding:0 8px;line-height:0}
-.fbig-w{display:block;width:100%;height:auto;fill:var(--f-wm);margin-bottom:-9%}
-
-.fx-k{margin:0 0 8px;font:500 12px var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--f-ink-2)}
-
-:root[data-foot="a"]{--f-bg:var(--v);--f-ink:#fff;--f-ink-2:rgba(255,255,255,.66);--f-txt:rgba(255,255,255,.9);--f-line:rgba(255,255,255,.24);--f-wm:#fff;--f-on-bg:#fff;--f-on-ink:var(--v)}
-@media (prefers-color-scheme:dark){:root[data-foot="a"]:not([data-theme="light"]){--f-bg:var(--v-900)}}
-:root[data-foot="a"][data-theme="dark"]{--f-bg:var(--v-900)}
-.fa-tel{margin:0;font:700 32px/1.1 var(--sans);letter-spacing:-.01em}
-footer .fa-tel a,footer .fa-sub a{display:inline;margin:0;color:var(--f-ink)}
-.fa-sub{margin:10px 0 28px;font-size:16px}
-.fa-acc details{border-bottom:1px solid var(--f-line)} 
-.fa-acc summary{list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:56px;font:600 18px var(--sans);color:var(--f-ink);cursor:pointer}
-.fa-acc summary::-webkit-details-marker{display:none}
-.fa-acc summary::after{content:"";flex:none;width:20px;height:20px;background:var(--f-ink-2);-webkit-mask:var(--i-plus) center/contain no-repeat;mask:var(--i-plus) center/contain no-repeat} 
-.fa-acc details[open] summary::after{-webkit-mask-image:var(--i-minus);mask-image:var(--i-minus)}
-.fa-acc nav{padding:0 0 16px}
-footer .fa-acc nav a{font-size:16px;margin:0;padding:8px 0;color:var(--f-txt)}
-
-:root[data-foot="b"]{--f-bg:var(--bg);--f-ink:var(--ink);--f-ink-2:var(--ink-2);--f-txt:var(--ink);--f-line:var(--line);--f-wm:var(--ink);--f-on-bg:var(--ink);--f-on-ink:var(--bg)}
-:root[data-foot="b"] footer{border-top:1px solid var(--line);margin-top:64px}
-.fb-tel{margin:0;font:700 32px/1.1 var(--sans);letter-spacing:-.01em}
-.fb-mail{margin:6px 0 32px;font-size:18px}
-footer .fb-tel a,footer .fb-mail a{display:inline;margin:0;color:var(--f-ink)}
-.fb-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px}
-footer .fb-cols a{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;min-height:44px;border-bottom:1px dashed var(--f-line);font-size:15px;color:var(--f-ink)}
-.fb-cols svg{width:16px;height:16px;flex:none;color:var(--f-ink-2)}
-.fb-cells{display:grid;grid-template-columns:repeat(4,1fr);margin-top:32px;border:1px solid var(--f-line);border-radius:var(--r-m);overflow:hidden}
-footer .fb-cells a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:56px;margin:0;font-weight:600;color:var(--f-ink);border-left:1px solid var(--f-line)}
-footer .fb-cells a:first-child{border-left:0}
-.fb-cells img{width:18px;height:18px}
-
-:root[data-foot="c"]{--f-wm:#F3F2EF}
-:root[data-foot="c"] footer{padding-bottom:40px}
-:root[data-foot="0"] footer{padding-bottom:40px}
-:root[data-foot="0"] footer .flegal{border-top:0;padding-top:0} 
-.fc-wm{display:block;width:100%;height:auto;fill:var(--f-wm)}
-.fc-ct{margin:20px 0 20px;font:600 18px var(--sans)}
-footer .fc-ct a{display:inline;margin:0;color:var(--f-ink)}
-.fc-links{display:flex;flex-wrap:wrap;gap:4px 18px}
-footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
 
 @media (max-width:980px){
   .hero h1{font-size:44px}
   .cat{grid-template-columns:1fr 1fr}
   .promo{grid-template-columns:1fr}.promo .r{height:200px}
   .ctr{grid-template-columns:1fr}
-  footer .cols{grid-template-columns:1fr 1fr}
-  .fsv ul{grid-template-columns:repeat(3,1fr)}
-  .fb-cols{grid-template-columns:1fr 1fr}.fb-cols>:nth-child(3){grid-column:1/-1}.fb-cells{grid-template-columns:1fr 1fr}footer .fb-cells a:nth-child(3){border-left:0}footer .fb-cells a:nth-child(n+3){border-top:1px solid var(--f-line)}
   .sh{flex-direction:column;align-items:flex-start;gap:8px}
   .blog{grid-template-columns:1fr}
 }
-@media (max-width:560px){  .hero{padding-top:20px}
+@media (max-width:560px){
   .hero h1{font-size:36px;margin-bottom:16px}
   
   .ck{left:12px;right:12px;bottom:12px;max-width:none}
-  footer .cols a{display:flex;align-items:center;min-height:32px;margin:0} 
-  .fsv ul{grid-template-columns:1fr 1fr;gap:8px 16px} 
-  footer .docs{flex-direction:column;gap:0} 
-  footer .fsv a{min-height:48px}
   .eco-t{grid-template-columns:1fr 1fr}
   .tl{min-height:0;aspect-ratio:1/1.1}
   .tl-w{grid-row:auto;aspect-ratio:auto;min-height:176px} 
@@ -337,8 +256,8 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <link rel="stylesheet" href="cc.css?v=1">
-<script>{let f="0";try{f=new URLSearchParams(location.search).get("foot")||"0"}catch(e){}document.documentElement.dataset.foot=f;document.addEventListener("DOMContentLoaded",()=>document.querySelectorAll("footer[data-fv]").forEach(x=>x.dataset.fv!==f&&x.remove()))}</script>
-<link rel="stylesheet" href="hdr.css?v=201">
+<link rel="stylesheet" href="hdr.css?v=254">
+<link rel="stylesheet" href="ft.css?v=1">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
@@ -349,12 +268,11 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
   <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="chr" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="ext" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="up" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-<script src="hdr.js?v=127" data-svc="copy"></script>
+<script src="hdr.js?v=162" data-svc="copy"></script>
 
 <main>
 <div class="hero"><div class="wrap">
@@ -362,11 +280,11 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
   
   <nav class="hs" aria-label="Популярные услуги">
     <a href="vizitki.html"><b>Визитки</b><span class="tg" data-todo>При вас</span><img class="ob-img" src="img/vizitki.webp?v=1" alt="" width="144" height="144"></a>
-    <a href="#"><b>Плакаты</b><span class="tg" data-todo>Сегодня</span><img class="ob-img" src="img/plakaty.webp?v=1" alt="" width="144" height="144"></a>
-    <a href="#"><b>Футболки</b><span class="tg" data-todo>За 1 день</span><img class="ob-img" src="img/futbolki.webp?v=3" alt="" width="144" height="144"></a>
-    <a href="#"><b>Наклейки</b><span class="tg" data-todo>Сегодня</span><img class="ob-img" src="img/naklejki.webp?v=2" alt="" width="144" height="144"></a>
-    <a href="#"><b>Кружки</b><span class="tg" data-todo>За 1 день</span><img class="ob-img" src="img/kruzhki.webp?v=2" alt="" width="144" height="144"></a>
-    <a href="#"><b>Документы</b><span class="tg" data-todo>При вас</span><img class="ob-img" src="img/dokumenty.webp?v=1" alt="" width="144" height="144"></a>
+    <a href="catalog/pechat-plakatov/"><b>Плакаты</b><span class="tg" data-todo>Сегодня</span><img class="ob-img" src="img/plakaty.webp?v=1" alt="" width="144" height="144"></a>
+    <a href="catalog/pechat-na-futbolkah/"><b>Футболки</b><span class="tg" data-todo>За 1 день</span><img class="ob-img" src="img/futbolki.webp?v=3" alt="" width="144" height="144"></a>
+    <a href="catalog/pechat-nakleek/"><b>Наклейки</b><span class="tg" data-todo>Сегодня</span><img class="ob-img" src="img/naklejki.webp?v=2" alt="" width="144" height="144"></a>
+    <a href="catalog/pechat-na-kruzhkah/"><b>Кружки</b><span class="tg" data-todo>За 1 день</span><img class="ob-img" src="img/kruzhki.webp?v=2" alt="" width="144" height="144"></a>
+    <a href="catalog/pechat-dokumentov-a3-a4/"><b>Документы</b><span class="tg" data-todo>При вас</span><img class="ob-img" src="img/dokumenty.webp?v=1" alt="" width="144" height="144"></a>
   </nav>
   
   <div class="ct">
@@ -439,7 +357,7 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
       <p class="pr-c"><small>До Нового года</small>7 недель</p>
       <h3>Календари и подарки <br>с&nbsp;логотипом</h3>
       <p>Квартальные, настольные, перекидные. Корпоративные наборы для команды и клиентов. Чем раньше заказ, тем спокойнее декабрь.</p>
-      <div class="pr-b"><a class="btn btn-p" href="#">Календари</a><a class="btn btn-s" href="#">Подарки для команды</a></div>
+      <div class="pr-b"><a class="btn btn-p" href="catalog/pechat-kalendarej/">Календари</a><a class="btn btn-s" href="catalog/korporativnye-podarki/">Подарки для команды</a></div>
     </div>
     <div class="r"><img src="img/promo-calendars.webp?v=2" width="820" height="650" alt="" loading="lazy" decoding="async"></div>
   </div>
@@ -449,8 +367,8 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
 <section><div class="wrap">
   <div class="sh"><div><h2 class="h-eco">Больше, чем копицентр&nbsp;— экосистема наших сервисов</h2></div></div>
   <nav class="eco-t v-bento" aria-label="Сервисы COPY.RU">
-    <a class="tl tl-w" href="#"><b>Фото или рисунок <span class="tl-nw">в&nbsp;любимые&nbsp;вещи<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">ИИ сделает из него макет для печати</span><span class="badge b-ok b-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Макет 0 ₽</span><span class="tl-ba"><span class="tl-f"><img src="img/eco-ai-before.webp?v=9" width="480" height="480" alt="Ребёнок держит свой рисунок" loading="lazy" decoding="async"></span><svg class="tl-ar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><filter id="brush" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5" result="a"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="a" in2="n" scale="2" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.8 2.1" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#brush)"><g transform="matrix(0 -1 -1 0 48.5 48.5)"><path d="M6.5 42c.6-2.8 1.1-4.9 2.3-7.6 1.4-3.3 2.6-5.6 4.9-8.6 2.1-2.7 3.6-4.2 6.7-6.6 2.6-2 5.4-3.3 8.4-4.2 2.9-.9 5.1-1.2 8.3-1.6" stroke-width="3.6"/><path d="M9.2 37.6c1.2-3.6 2.9-7.2 5.6-10.3 1.7-2 3.4-3.6 6.4-5.6" stroke-width="2" opacity=".75"/><path d="M26.4 7.2c2.2.5 4.7 1.7 7.2 3 2.1 1.1 3.6 2 5.6 3.5" stroke-width="3.4"/><path d="M39.8 12.4c-1.4 1.6-2.7 3.9-3.6 6-.8 1.8-1.2 3.6-1.7 5.9" stroke-width="3"/></g></g></svg><span class="tl-f on"><img src="img/eco-ai-after.webp?v=7" width="480" height="480" alt="Футболка с этим рисунком" loading="lazy" decoding="async"></span></span></a>
-    <div class="eco-r"><a class="tl" href="#"><b>Сувениры и мерч с&nbsp;вашим <span class="tl-nw">логотипом<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для команды и&nbsp;клиентов</span><span class="tl-v"><img src="img/eco-gifts.webp?v=4" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
+    <a class="tl tl-w" href="catalog/suveniry/"><b>Фото или рисунок <span class="tl-nw">в&nbsp;любимые&nbsp;вещи<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">ИИ сделает из него макет для печати</span><span class="badge b-ok b-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Макет 0 ₽</span><span class="tl-ba"><span class="tl-f"><img src="img/eco-ai-before.webp?v=9" width="480" height="480" alt="Ребёнок держит свой рисунок" loading="lazy" decoding="async"></span><svg class="tl-ar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><filter id="brush" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5" result="a"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="a" in2="n" scale="2" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.8 2.1" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#brush)"><g transform="matrix(0 -1 -1 0 48.5 48.5)"><path d="M6.5 42c.6-2.8 1.1-4.9 2.3-7.6 1.4-3.3 2.6-5.6 4.9-8.6 2.1-2.7 3.6-4.2 6.7-6.6 2.6-2 5.4-3.3 8.4-4.2 2.9-.9 5.1-1.2 8.3-1.6" stroke-width="3.6"/><path d="M9.2 37.6c1.2-3.6 2.9-7.2 5.6-10.3 1.7-2 3.4-3.6 6.4-5.6" stroke-width="2" opacity=".75"/><path d="M26.4 7.2c2.2.5 4.7 1.7 7.2 3 2.1 1.1 3.6 2 5.6 3.5" stroke-width="3.4"/><path d="M39.8 12.4c-1.4 1.6-2.7 3.9-3.6 6-.8 1.8-1.2 3.6-1.7 5.9" stroke-width="3"/></g></g></svg><span class="tl-f on"><img src="img/eco-ai-after.webp?v=7" width="480" height="480" alt="Футболка с этим рисунком" loading="lazy" decoding="async"></span></span></a>
+    <div class="eco-r"><a class="tl" href="catalog/korporativnye-suveniry/"><b>Сувениры и мерч с&nbsp;вашим <span class="tl-nw">логотипом<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для команды и&nbsp;клиентов</span><span class="tl-v"><img src="img/eco-gifts.webp?v=4" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
     <a class="tl" href="#"><b>Для <span class="tl-nw">бизнеса<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Договор и НДС</span><span class="badge b-ok">До −15%</span><span class="tl-v"><img src="img/eco-b2b.webp?v=1" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
     <a class="tl" href="#"><b>Интеграции <span class="tl-nw">и&nbsp;API<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Печать для своего сайта</span><span class="tl-v"><img src="img/eco-api.webp?v=3" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
     <a class="tl" href="#"><b>PRO-<span class="tl-nw">калькулятор<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для агентств и&nbsp;дизайнеров</span><span class="tl-v"><img src="img/eco-pro.webp?v=2" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a></div>
@@ -504,144 +422,13 @@ footer .fc-links a{margin:0;padding:6px 0;font-size:15px;color:var(--f-txt)}
       <h3>Что печатаем</h3><p>Документы, чертежи, фото, в&nbsp;том числе фото на&nbsp;документы. Сканируем и&nbsp;ламинируем. Отчёты и&nbsp;брошюры скрепим на&nbsp;скобу или пружину, дипломы и&nbsp;диссертации переплетём.</p><p>Визитки, календари и&nbsp;каталоги напечатаем по&nbsp;вашему макету или сделаем дизайн сами. Большой формат тоже здесь: афиши, баннеры, плакаты, фотообои, печать на&nbsp;пенокартоне. Логотип нанесём на&nbsp;сувениры, текстиль и&nbsp;канцелярию.</p>
       <h3>Если нужно срочно или без визита</h3><p>Есть срочная печать. Заказать можно в&nbsp;копицентре, на&nbsp;сайте или письмом на&nbsp;get@copy.ru. По&nbsp;Москве привезёт курьер, в&nbsp;другие города отправим СДЭК или Почтой России, поэтому заказать можно и&nbsp;оттуда, где нашего копицентра нет. Как оплатить и&nbsp;получить, написано в&nbsp;разделе <a href="https://copy.ru/payment-delivery/">Оплата и&nbsp;доставка</a>.</p>
       <h3>Студентам и&nbsp;компаниям</h3><p>Для студентов есть скидки. Компаниям работаем по&nbsp;договору с&nbsp;НДС, а&nbsp;заказ печати можно встроить в&nbsp;свою систему через <a href="https://bridge.copy.ru/">API</a>. Подробности в&nbsp;разделе <a href="https://b2b.copy.ru/">для бизнеса</a>.</p>
-      <h3>Свой копицентр</h3><p>Хотите открыть COPY.RU в&nbsp;своём городе, посмотрите условия <a href="https://copy.ru/franchise/">франшизы</a>.</p>
+      <h3>Свой копицентр</h3><p>Хотите открыть COPY.RU в&nbsp;своём городе, посмотрите условия <a href="franchise/">франшизы</a>.</p>
     </details>
   </div>
 </div></section>
 </main>
 
-<footer data-fv="0">
-  
-  <div class="wrap">
-  <div class="cols">
-    <div><b>Заказ</b><a href="#">Каталог</a><a href="#status">Статус заказа</a><a href="https://copy.ru/payment-delivery/">Оплата и доставка</a><a href="https://copy.ru/technical-requirements/">Требования к макетам</a></div>
-    <div><b>Компания</b><a href="#">О нас</a><a href="#ctr">Копицентры</a><a href="#">Вакансии</a><a href="https://copy.ru/franchise/">Франшиза</a><a href="#">Написать директору</a></div>
-    <div><b>Клиентам</b><a href="https://copy.ru/club/">Клуб привилегий</a><a href="#">Генератор QR</a><a href="https://copy.ru/blog/">Статьи</a></div>
-    <div><b>Связь</b><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a><a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a><a href="https://vk.com/copyru">ВКонтакте</a><a href="https://t.me/copyru">Telegram-канал</a></div>
-  </div>
-  
-  <nav class="fsv" aria-label="Сервисы COPY.RU"><b>Сервисы COPY.RU</b><ul>
-    <li><a href="https://ai.copy.ru/"><span class="fsv-n">Нейродизайн<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>стикерпаки, футболки, кружки</small></a></li>
-    <li><a href="https://gifts.copy.ru/"><span class="fsv-n">Сувениры<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>с логотипом компании</small></a></li>
-    <li><a href="https://pro.copy.ru/"><span class="fsv-n">Дизайнерам<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>калькулятор и требования</small></a></li>
-    <li><a href="https://b2b.copy.ru/"><span class="fsv-n">Бизнесу<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>договор, НДС, скидки</small></a></li>
-    <li><a href="https://bridge.copy.ru/"><span class="fsv-n">Разработчикам<svg class="fsv-i" aria-hidden="true"><use href="#ext"/></svg></span><small>API и интеграции</small></a></li>
-  </ul></nav>
-  <div class="fapp">
-    <div class="stores">
-      <a href="https://apps.apple.com/ru/app/copy-ru/id6764291912"><img src="img/badge-appstore.svg?v=1" width="120" height="40" alt="Загрузите в App Store" loading="lazy"></a>
-      <a href="https://play.google.com/store/apps/details?id=com.copyru.loyaltyapp"><img src="img/badge-gplay.webp?v=1" width="135" height="40" alt="Доступно в Google Play" loading="lazy"></a>
-    </div>
-  </div>
-  
-  <div class="flegal">
-    <nav class="docs" aria-label="Документы">
-      
-      <a href="https://copy.ru/terms/">Публичная оферта</a>
-      <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
-      <a href="https://copy.ru/politika-konfidenczialnosti/">Политика обработки персональных данных</a>
-      <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
-      <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Файлы cookie</a>
-      <a href="https://copy.ru/rekomendatelnye-tehnologii/">Рекомендательные технологии</a>
-    </nav>
-    <div class="freq"><p class="req"><span>© 2012–2026 COPY.RU</span><span>ООО «ДЖЕНЕРАЛ МЕНЕДЖМЕНТ КОПИ.РУ»</span><span>ИНН&nbsp;7707283363</span><span>ОГРН&nbsp;1027739654469</span><span>109428, Москва, Рязанский пр-кт, <span class="nw">д.&nbsp;10, стр.&nbsp;18, оф.&nbsp;8.3/866, пом.&nbsp;10/8</span></span></p><span class="fdev">Разработка сайта: vea</span></div>
-  </div>
-  </div>
-</footer>
-<footer class="f-a" data-fv="a">
-  
-  <div class="wrap">
-  <p class="fx-k">Связаться</p>
-  <p class="fa-tel"><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a></p>
-  <p class="fa-sub"><a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a> · <a href="#ctr">Копицентры на&nbsp;карте</a></p>
-  <div class="fa-acc">
-    <details name="fnav"><summary>Заказ</summary><nav><a href="#">Каталог</a><a href="#status">Статус заказа</a><a href="https://copy.ru/payment-delivery/">Оплата и доставка</a><a href="https://copy.ru/technical-requirements/">Требования к макетам</a></nav></details>
-    <details name="fnav"><summary>Компания</summary><nav><a href="#">О нас</a><a href="#ctr">Копицентры</a><a href="#">Вакансии</a><a href="https://copy.ru/franchise/">Франшиза</a><a href="#">Написать директору</a></nav></details>
-    <details name="fnav"><summary>Клиентам</summary><nav><a href="https://copy.ru/club/">Клуб привилегий</a><a href="#">Генератор QR</a><a href="https://copy.ru/blog/">Статьи</a></nav></details>
-    <details name="fnav"><summary>Соцсети</summary><nav><a href="https://vk.com/copyru">ВКонтакте</a><a href="https://t.me/copyru">Telegram-канал</a></nav></details>
-  </div>
-  <div class="fapp">
-    <nav class="svcs" aria-label="Сервисы COPY.RU"><a class="on" href="#">Печать</a><a href="#">AI</a><a href="#">Подарки</a><a href="#">PRO</a><a href="#">Для бизнеса</a><a href="#">API</a></nav>
-    <div class="stores">
-      <a href="https://apps.apple.com/ru/app/copy-ru/id6764291912"><img src="img/badge-appstore.svg?v=1" width="120" height="40" alt="Загрузите в App Store" loading="lazy"></a>
-      <a href="https://play.google.com/store/apps/details?id=com.copyru.loyaltyapp"><img src="img/badge-gplay.webp?v=1" width="135" height="40" alt="Доступно в Google Play" loading="lazy"></a>
-    </div>
-  </div>
-  
-  <div class="flegal">
-    <nav class="docs" aria-label="Документы">
-      <a href="https://copy.ru/terms/">Публичная оферта</a>
-      <a href="https://copy.ru/politika-konfidenczialnosti/">Политика обработки персональных данных</a>
-      <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
-      <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Cookie</a>
-      <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
-      <a href="https://copy.ru/rekomendatelnye-tehnologii/">Рекомендательные технологии</a>
-    </nav>
-    <p class="req">ООО «ДЖЕНЕРАЛ МЕНЕДЖМЕНТ КОПИ.РУ» · ИНН 7707283363 · ОГРН 1027739654469 · 109428, Москва, Рязанский пр-кт, д. 10, стр. 18, оф. 8.3/866, пом. 10/8</p>
-    <div class="fbot"><span>© 2012–2026 COPY.RU</span><span>Разработка сайта: vea</span></div>
-  </div>
-  </div>
-  <div class="fbig" aria-hidden="true"><svg class="fbig-w" viewBox="0 0 618 196"><use href="#wm"/></svg></div>
-</footer>
-<footer class="f-b" data-fv="b">
-  
-  <div class="wrap">
-  <p class="fx-k">Связаться</p>
-  <p class="fb-tel"><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a></p>
-  <p class="fb-mail"><a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a></p>
-  <div class="fb-cols">
-    <div><p class="fx-k">Заказ</p><a href="#">Каталог<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="#status">Статус заказа<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="https://copy.ru/payment-delivery/">Оплата и доставка<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="https://copy.ru/technical-requirements/">Требования к макетам<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-    <div><p class="fx-k">Компания</p><a href="#">О нас<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="#ctr">Копицентры<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="#">Вакансии<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="https://copy.ru/franchise/">Франшиза<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="#">Написать директору<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-    <div><p class="fx-k">Клиентам</p><a href="https://copy.ru/club/">Клуб привилегий<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="#">Генератор QR<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><a href="https://copy.ru/blog/">Статьи<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
-  </div>
-  <div class="fb-cells"><a href="https://vk.com/copyru">ВКонтакте</a><a href="https://t.me/copyru"><img src="icons/telegram.svg" alt="" width="20" height="20">Канал</a><a href="https://apps.apple.com/ru/app/copy-ru/id6764291912">App Store</a><a href="https://play.google.com/store/apps/details?id=com.copyru.loyaltyapp">Google Play</a></div>
-  <div class="fapp">
-    <nav class="svcs" aria-label="Сервисы COPY.RU"><a class="on" href="#">Печать</a><a href="#">AI</a><a href="#">Подарки</a><a href="#">PRO</a><a href="#">Для бизнеса</a><a href="#">API</a></nav>
-  </div>
-  
-  <div class="flegal">
-    <nav class="docs" aria-label="Документы">
-      <a href="https://copy.ru/terms/">Публичная оферта</a>
-      <a href="https://copy.ru/politika-konfidenczialnosti/">Политика обработки персональных данных</a>
-      <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
-      <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Cookie</a>
-      <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
-      <a href="https://copy.ru/rekomendatelnye-tehnologii/">Рекомендательные технологии</a>
-    </nav>
-    <p class="req">ООО «ДЖЕНЕРАЛ МЕНЕДЖМЕНТ КОПИ.РУ» · ИНН 7707283363 · ОГРН 1027739654469 · 109428, Москва, Рязанский пр-кт, д. 10, стр. 18, оф. 8.3/866, пом. 10/8</p>
-    <div class="fbot"><span>© 2012–2026 COPY.RU</span><span>Разработка сайта: vea</span></div>
-  </div>
-  </div>
-  <div class="fbig" aria-hidden="true"><svg class="fbig-w" viewBox="0 0 618 196"><use href="#wm"/></svg></div>
-</footer>
-<footer class="f-c" data-fv="c">
-  
-  <div class="wrap">
-  <svg class="fc-wm" viewBox="0 0 618 196" aria-label="COPY.RU" role="img"><use href="#wm"/></svg>
-  <p class="fc-ct"><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a> · <a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a></p>
-  <nav class="fc-links" aria-label="Разделы"><a href="#">Каталог</a><a href="#status">Статус заказа</a><a href="https://copy.ru/payment-delivery/">Оплата и доставка</a><a href="https://copy.ru/technical-requirements/">Требования к макетам</a><a href="#">О нас</a><a href="#ctr">Копицентры</a><a href="#">Вакансии</a><a href="https://copy.ru/franchise/">Франшиза</a><a href="#">Написать директору</a><a href="https://copy.ru/club/">Клуб привилегий</a><a href="#">Генератор QR</a><a href="https://copy.ru/blog/">Статьи</a><a href="https://vk.com/copyru">ВКонтакте</a><a href="https://t.me/copyru">Telegram-канал</a></nav>
-  <div class="fapp">
-    <nav class="svcs" aria-label="Сервисы COPY.RU"><a class="on" href="#">Печать</a><a href="#">AI</a><a href="#">Подарки</a><a href="#">PRO</a><a href="#">Для бизнеса</a><a href="#">API</a></nav>
-    <div class="stores">
-      <a href="https://apps.apple.com/ru/app/copy-ru/id6764291912"><img src="img/badge-appstore.svg?v=1" width="120" height="40" alt="Загрузите в App Store" loading="lazy"></a>
-      <a href="https://play.google.com/store/apps/details?id=com.copyru.loyaltyapp"><img src="img/badge-gplay.webp?v=1" width="135" height="40" alt="Доступно в Google Play" loading="lazy"></a>
-    </div>
-  </div>
-  
-  <div class="flegal">
-    <nav class="docs" aria-label="Документы">
-      <a href="https://copy.ru/terms/">Публичная оферта</a>
-      <a href="https://copy.ru/politika-konfidenczialnosti/">Политика обработки персональных данных</a>
-      <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
-      <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Cookie</a>
-      <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
-      <a href="https://copy.ru/rekomendatelnye-tehnologii/">Рекомендательные технологии</a>
-    </nav>
-    <p class="req">ООО «ДЖЕНЕРАЛ МЕНЕДЖМЕНТ КОПИ.РУ» · ИНН 7707283363 · ОГРН 1027739654469 · 109428, Москва, Рязанский пр-кт, д. 10, стр. 18, оф. 8.3/866, пом. 10/8</p>
-    <div class="fbot"><span>© 2012–2026 COPY.RU</span><span>Разработка сайта: vea</span></div>
-  </div>
-  </div>
-</footer>
+<script src="ft.js?v=3"></script>
 <div class="ck" id="ck"><p>Используем cookie, чтобы сайт работал и запоминал город. <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Подробнее</a></p><button class="btn btn-s btn-sm" id="ckOk">Принять</button></div>
 
 <script>
@@ -653,22 +440,19 @@ ckOk.onclick=()=>{ck.hidden=true;try{localStorage.setItem('copy-ck','1')}catch(e
 function halftone(el){const r=el.getBoundingClientRect(),w=Math.max(1,r.width),h=Math.max(1,r.height),step=+el.dataset.step||14,mode=el.dataset.ht,col=el.dataset.color,op=el.dataset.op;let c='';for(let y=step/2;y<h+step;y+=step)for(let x=step/2;x<w+step;x+=step){let t;if(mode==='lr')t=x/w;else if(mode==='bottom')t=Math.pow(y/h,1.6);else{const dx=(x-w)/w,dy=(y-h)/h;t=1-Math.min(1,Math.hypot(dx*1.1,dy*1.4))}t=Math.max(0,Math.min(1,t));const rad=step*.5*Math.pow(t,1.15);if(rad>.35)c+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(2)}"/>`}el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><g fill="${col}" fill-opacity="${op}">${c}</g></svg>`}
 window.draw=()=>document.querySelectorAll('[data-ht]').forEach(halftone);window.draw();addEventListener('resize',()=>{clearTimeout(window._t);window._t=setTimeout(window.draw,150)});
 
-(()=>{const r=document.documentElement,b=document.getElementById('themeBtn');let t=null;try{t=localStorage.getItem('copy-theme')}catch(e){}
-if(t)r.dataset.theme=t;const cur=()=>r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-const lbl=()=>{b.textContent=cur()==='dark'?'Светлая тема':'Тёмная тема'};lbl();
-b.onclick=()=>{r.dataset.theme=cur()==='dark'?'light':'dark';try{localStorage.setItem('copy-theme',r.dataset.theme)}catch(e){}lbl();if(window.draw)draw()}})();
+addEventListener('copy:theme',()=>window.draw&&draw());
 </script>
-<script src="catalog-data.js?v=2"></script><script src="data/copycenters.js?v=4"></script><script src="data/metro.js?v=3"></script>
+<script src="catalog-data.js?v=3"></script><script src="data/copycenters.js?v=4"></script><script src="data/metro.js?v=3"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
-<script src="cc.js?v=1"></script>
+<script src="cc.js?v=6"></script>
 <script>
 (()=>{const C=window.COPY_CATALOG,g=document.getElementById('catG'),t=document.getElementById('catT');if(!C)return;
 const e=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const allS=G=>{const n=G.reduce((a,x)=>a+x[2].length,0),a=n%10,b=n%100;return n?`Все ${n} ${a===1&&b!==11?'услуга':a>=2&&a<=4&&(b<12||b>14)?'услуги':'услуг'}`:'Весь раздел'};
 const R=Math.min(...C.items.map(x=>x[2].length));
-g.innerHTML=C.items.map(([n,u,G],i)=>`<div><b>${e(n)}</b>${G.slice(0,R).map(([gn,gu])=>`<a href="${C.base+gu}">${e(gn)}</a>`).join('')}<a class="more" href="${C.base+u}">${allS(G)}</a></div>`).join('');
+g.innerHTML=C.items.map(([n,u,G],i)=>`<div><b>${e(n)}</b>${G.slice(0,R).map(([gn,gu])=>`<a href="${C.url(gu)}">${e(gn)}</a>`).join('')}<a class="more" href="catalog/${u.split('/').filter(Boolean).pop()}/">${allS(G)}</a></div>`).join('');
 const chev='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-t.innerHTML=C.items.map(([n,u,G],i)=>`<div class="cat-x${i?'':' open'}"><button type="button" aria-expanded="${!i}" aria-controls="catX${i}"><span>${e(n)}</span>${chev}</button><div class="cat-xp" id="catX${i}"${i?' hidden':''}>${G.slice(0,R).map(([gn,gu])=>`<a href="${C.base+gu}">${e(gn)}</a>`).join('')}<a class="more" href="${C.base+u}">${allS(G)}<svg class="ico" aria-hidden="true"><use href="#chr"/></svg></a></div></div>`).join('');
+t.innerHTML=C.items.map(([n,u,G],i)=>`<div class="cat-x${i?'':' open'}"><button type="button" aria-expanded="${!i}" aria-controls="catX${i}"><span>${e(n)}</span>${chev}</button><div class="cat-xp" id="catX${i}"${i?' hidden':''}>${G.slice(0,R).map(([gn,gu])=>`<a href="${C.url(gu)}">${e(gn)}</a>`).join('')}<a class="more" href="catalog/${u.split('/').filter(Boolean).pop()}/">${allS(G)}<svg class="ico" aria-hidden="true"><use href="#chr"/></svg></a></div></div>`).join('');
 const X=[...t.children],set=(x,on)=>{x.classList.toggle('open',on);x.querySelector('.cat-xp').hidden=!on;x.querySelector('button').setAttribute('aria-expanded',on)};
 const hdrB=()=>{const h=document.querySelector('.hdr');return h?Math.max(0,h.getBoundingClientRect().bottom):0};
 X.forEach(x=>x.onclick=ev=>{if(ev.target.closest('a'))return;

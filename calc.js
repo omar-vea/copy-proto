@@ -28,13 +28,13 @@ function kindOf(f){
 }
 const VIEW={radiobox:'seg',carousel:'tiles',select_block:'list'};
 const SEG={2:18,3:12,4:8};
-const pic=v=>v.image?`<span class="cf-ph"><img src="${esc(v.image)}" alt="" loading="lazy"></span>`:'';
+const pic=v=>v.image?`<span class="cf-ph" data-zoom="${esc(v.zoom||v.image)}" title="Увеличить"><img src="${esc(v.image)}" alt="" loading="lazy"></span>`:'';
 const wide=v=>v.image&&v.imageW/v.imageH>=1.5;
-const picT=v=>wide(v)?`<span class="cf-ph w"><img src="${esc(v.image)}" alt="" loading="lazy"></span>`:pic(v);
+const picT=v=>wide(v)?`<span class="cf-ph w" data-zoom="${esc(v.zoom||v.image)}" title="Увеличить"><img src="${esc(v.image)}" alt="" loading="lazy"></span>`:pic(v);
 const OK='<svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 const NONE='none';
 const vars=n=>n+' '+(n%10===1&&n%100!==11?'вариант':n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?'варианта':'вариантов');
-const ok=(w,st)=>!w||[].concat(st[w.f]).some(x=>w.v.includes(x));
+const ok=(w,st)=>!w||(w.any?w.any.some(g=>Object.entries(g).every(([f,v])=>[].concat(st[f]).some(x=>v.includes(x)))):[].concat(st[w.f]).some(x=>w.v.includes(x)));
 function view(f,st){if(!ok(f.when,st))return null;return f.values?{...f,values:f.values.filter(v=>ok(v.when,st))}:f}
 const opts=f=>{const v=f.values.filter(x=>x.enabled!==false);return f.required||!['tiles','list','seg'].includes(kindOf(f))?v:[{id:NONE,title:f.noneLabel||'Без'},...v]};
 
@@ -122,6 +122,8 @@ const tile=(f,v0,on,sub0)=>{const v=split(v0),sub=sub0??v.comment;return `<butto
   const F=id=>p.fields.find(f=>String(f.id)===String(id));
   function setNum(key,val){const [id,wh]=String(key).split('.');const f=F(id);
     if(wh){st[f.id]={...st[f.id],[wh]:clamp({min:wh==='w'?f.minW:f.minH,max:wh==='w'?f.maxW:f.maxH},val)}}else st[f.id]=clamp(f,val);render()}
+  root.addEventListener('click',e=>{const z=e.target.closest('[data-zoom]');if(!z)return;e.preventDefault();e.stopPropagation();const t=z.closest('[data-v],[data-open]');
+    root.dispatchEvent(new CustomEvent('calc:zoom',{bubbles:true,detail:{src:z.dataset.zoom,title:t?.querySelector('span:not(.cf-ph)')?.firstChild?.textContent||'',text:t?.querySelector('small')?.textContent||'',pick:t?.dataset.v?()=>t.click():null}}))},true);
   root.addEventListener('click',e=>{const b=e.target.closest('button,[data-close]');if(!b)return;const d=b.dataset;
     if('close' in d){closePop(render);return}
     if(d.open){if(open===d.open){closePop(render);return}open=d.open;render();if(open)root.querySelector(`[data-open="${open}"]`).parentElement.querySelector('[aria-selected="true"]')?.focus({focusVisible:e.detail===0});return}

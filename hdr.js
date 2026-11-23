@@ -1,14 +1,15 @@
 (()=>{
 const SVC={
-  copy: {tab:'Печать',tag:'',search:'Визитки, фото, переплёт',nav:[['Копицентры','https://copy.ru/contacts/','map'],['Статус заказа','home.html#status','box']],icons:['user','cart'],cta:''},
+  copy: {tab:'Печать',tag:'',search:'Визитки, фото, переплёт',nav:[['Копицентры','contacts/','map'],['Статус заказа','home.html#status','box']],icons:['user','cart'],cta:''},
   ai:   {tab:'Нейродизайн',tag:'AI',nav:[['Стикерпак'],['3D-стикеры'],['Футболка'],['Кружка'],['Реставрация']],icons:['user'],cta:'Попробовать бесплатно'},
   gifts:{tab:'Сувениры',tag:'ПОДАРКИ',search:'Поиск по каталогу',nav:[['Новинки'],['Виды нанесения'],['Портфолио']],icons:['heart','user','cart'],cta:'Оставить заявку'},
   pro:  {tab:'Дизайнерам',tag:'PRO',nav:[['Требования к макетам'],['Оплата и доставка'],['Контакты']],icons:['user'],cta:'Рассчитать'},
   b2b:  {tab:'Бизнесу',tag:'B2B',nav:[['Преимущества'],['Калькулятор'],['Скидки'],['С кем работаем']],icons:[],cta:'Стать B2B-клиентом'},
   api:  {tab:'Разработчикам',tag:'API',nav:[['Документация']],icons:['user'],cta:'Оставить заявку'},
+  fr:   {tab:'Франшиза',tag:'Франшиза',nav:[['Условия','#usl'],['Что входит','#sost'],['Партнёры','#prt'],['Города','#goroda']],icons:[],cta:'',lp:true,tel:['+7 495 156-10-00','+74951561000']},
 };
 const CITIES=[
-  ['Москва',28,'M12.00 1.10L13.06 3.94L16.09 4.07L13.71 5.96L14.53 8.88L12.00 7.20L9.47 8.88L10.29 5.96L7.91 4.07L10.94 3.94ZM12 10v1.5M12 11.5 8 22h8z'],
+  ['Москва',25, 'M12.00 1.10L13.06 3.94L16.09 4.07L13.71 5.96L14.53 8.88L12.00 7.20L9.47 8.88L10.29 5.96L7.91 4.07L10.94 3.94ZM12 10v1.5M12 11.5 8 22h8z'],
   ['Екатеринбург',2,'m8 3 4 8 5-5 5 15H2L8 3zM4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19'],
   ['Нижний Новгород',2,'M9 22V10l3-7 3 7v12M9 10h6M2 22v-8h2v1.5h1.5V14h1.5v1.5H9M22 22v-8h-2v1.5h-1.5V14H17v1.5h-2M1.5 22h21'],
   ['Сочи',2,'M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14'],
@@ -49,7 +50,7 @@ const mBtn=(n,id)=>`<button class="m" id="${id}" type="button">${ico(n)}<span cl
 
 const me=document.currentScript, k=me.dataset.svc||'copy', s=SVC[k];
 me.insertAdjacentHTML('beforebegin',`<div class="eco"><div class="wrap">
-  <nav>${Object.keys(SVC).map(o=>`<a href="#"${o===k?' class="on" aria-current="page"':''}>${SVC[o].tab}</a>`).join('')}</nav>
+  <nav>${Object.keys(SVC).filter(o=>!SVC[o].lp).map(o=>`<a href="#"${o===k?' class="on" aria-current="page"':''}>${SVC[o].tab}</a>`).join('')}</nav>
   <div class="r">
     <button class="cty" id="cityBtn" type="button" aria-haspopup="dialog" aria-expanded="false">${ico('pin','')}<span data-city>Москва</span>${ico('down','chev')}</button>
     <a class="elogo" href="home.html" aria-label="COPY.RU"><svg class="wm" viewBox="69 0 480 196" aria-hidden="true"><use href="#wm" width="618" height="196"/></svg></a>
@@ -58,11 +59,13 @@ me.insertAdjacentHTML('beforebegin',`<div class="eco"><div class="wrap">
     <button class="theme" id="themeBtn" type="button">Тёмная тема</button>
   </div>
 </div></div>
-<header class="hdr"><div class="wrap">
-  <a class="logo" href="home.html" aria-label="COPY.RU${s.tag?' '+s.tag:''}"><svg class="wm" viewBox="69 0 480 196"><use href="#wm" width="618" height="196"/></svg>${s.tag?`<span class="tag">${s.tag}</span>`:''}</a>
+<header class="hdr${s.lp?' lp':''}"><div class="wrap">
+  <a class="logo" href="home.html" aria-label="${s.lp?'COPY.RU, на главную':'COPY.RU'+(s.tag?' '+s.tag:'')}">${s.lp?ico('back'):''}<svg class="wm" viewBox="69 0 480 196"><use href="#wm" width="618" height="196"/></svg>${s.tag&&!s.lp?`<span class="tag">${s.tag}</span>`:''}</a>
+  ${s.lp?`<span class="ltitle">${s.tag}</span>`:''}
   ${s.search?`<button class="btn btn-p btn-sm" id="catBtn" type="button" aria-haspopup="dialog" aria-expanded="false">${ico('menu','kb')}Каталог</button><form class="search" role="search" action="#" data-todo>${ico('search')}<input type="search" name="q" placeholder="${s.search}" aria-label="Поиск по сайту" autocomplete="off" enterkeyhint="search"><button class="clr" type="reset" aria-label="Очистить">${ico('x','')}</button></form><button class="scl" type="button">Отмена</button>`:''}
   <nav class="links">${s.nav.map(([t,h,i])=>`<a href="${h||'#'}">${i?ico(i):''}${t}</a>`).join('')}</nav>
   <div class="hicons">${s.search?mBtn('search','sBtn'):''}${s.icons.map(iconLink).join('')}${mBtn('menu','mnBtn')}</div>
+  ${s.tel?`<a class="ltel" data-ct="tel" href="tel:${s.tel[1]}" aria-label="Позвонить ${s.tel[0]}">${ico('phone')}<span class="n">${s.tel[0]}</span><span class="c">Позвонить</span></a>`:''}
   ${s.cta?`<a class="btn btn-p btn-sm cta" href="#">${s.cta}</a>`:''}
 </div></header>`);
 
@@ -70,6 +73,9 @@ const sf=document.querySelector('.hdr .search');if(sf)sf.onreset=()=>setTimeout(
 
 const th=document.getElementById('themeBtn'), tip=()=>th.title=th.textContent;
 tip();new MutationObserver(tip).observe(th,{childList:true});
+{const r=document.documentElement,cur=()=>r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),
+  lbl=()=>{th.textContent=cur()==='dark'?'Светлая тема':'Тёмная тема'};lbl();
+  th.onclick=()=>{r.dataset.theme=cur()==='dark'?'light':'dark';try{localStorage.setItem('copy-theme',r.dataset.theme)}catch(e){}lbl();dispatchEvent(new Event('copy:theme'))}}
 
 const paintBar=()=>{const c=getComputedStyle(document.body).backgroundColor;
   document.querySelectorAll('meta[name=theme-color]').forEach(m=>{m.content=c;m.removeAttribute('media')})};
@@ -122,7 +128,7 @@ const KICO={
   'laptop':'<path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>'
 };
 const needCat=cb=>{if(window.COPY_CATALOG)return cb();
-  const sc=document.createElement('script');sc.src=new URL('catalog-data.js?v=2',me.src).href;sc.onload=cb;document.head.append(sc)};
+  const sc=document.createElement('script');sc.src=new URL('catalog-data.js?v=3',me.src).href;sc.onload=cb;document.head.append(sc)};
 const kBtn=document.getElementById('catBtn');
 if(kBtn){
   const kp=document.createElement('div');kp.className='kpop';kp.id='catPop';kp.hidden=true;
@@ -132,7 +138,7 @@ if(kBtn){
   const side=kp.querySelector('.kside'),main=kp.querySelector('.kmain'),MORE=5;
   let C=null,act=-1,tm;
   const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  const url=h=>C.base+h;
+  const url=h=>C.url(h);
   const pick=i=>{if(i===act)return;act=i;
     side.querySelectorAll('a').forEach((a,j)=>a.setAttribute('aria-current',j===i));
     const [t,h,g]=C.items[i];
@@ -198,7 +204,7 @@ const ctPaint=()=>{const ok=!!CT[cur],[t,m]=CT[cur]||['номер уточняе
   document.querySelectorAll('[data-ct="mail"]').forEach(a=>a.href=ok?'mailto:'+m:'#');
   document.querySelectorAll('[data-ct="mail-t"]').forEach(e=>e.textContent=m);
   document.querySelectorAll('[data-ct="city"]').forEach(e=>e.textContent=cur)};
-ctPaint();document.addEventListener('copy:city',ctPaint);
+ctPaint();document.addEventListener('DOMContentLoaded',ctPaint);document.addEventListener('copy:city',ctPaint);
 
 const sBtn=document.getElementById('sBtn');
 if(sBtn){const h=document.querySelector('.hdr'),f=h.querySelector('.search'),sc=h.querySelector('.scl');
@@ -207,7 +213,7 @@ if(sBtn){const h=document.querySelector('.hdr'),f=h.querySelector('.search'),sc=
   const B='https://copy.ru',esc=t=>t.replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';');
   const norm=t=>t.toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/g,' ').trim();
   let IX=null;const index=()=>{const C=window.COPY_CATALOG,seen=new Set(),a=[];
-    const add=(t,u,k,w)=>{const n=norm(t);if(seen.has(n))return;seen.add(n);a.push({t,u:C.base+u,k,w:n.split(' ')})};
+    const add=(t,u,k,w)=>{const n=norm(t);if(seen.has(n))return;seen.add(n);a.push({t,u:C.url(u),k,w:n.split(' ')})};
     C.items.forEach(([t,u,g])=>{add(t,u,'Раздел');g.forEach(([gt,gu,it])=>{add(gt,gu,'');it.forEach(([st,su])=>add(st,su,''))})});return a};
   const ed1=(a,b)=>{if(a===b)return true;if(Math.abs(a.length-b.length)>1)return false;let i=0,j=0,d=0;
     while(i<a.length&&j<b.length){if(a[i]===b[j]){i++;j++;continue}if(++d>1)return false;
@@ -235,7 +241,7 @@ if(sBtn){const h=document.querySelector('.hdr'),f=h.querySelector('.search'),sc=
     const top=[];
     if(ORDER.test(q))top.push(row('home.html?order='+encodeURIComponent(q.replace(/\D+/g,m=>m==='-'?'-':''))+'#status','Статус заказа',{i:'box',m:esc(q.replace(/^№?\s*/,'№ '))}));
     const cq=norm(q),city=cq.length>=3&&CITIES.find(([c])=>norm(c).startsWith(cq));
-    if(city||/^(копи|адрес|где )/.test(cq))top.push(row(B+'/contacts/','Копицентры',{i:'map',m:esc((city||CITIES.find(x=>x[0]===cur)||[cur])[0])}));
+    if(city||/^(копи|адрес|где )/.test(cq))top.push(row('contacts/','Копицентры',{i:'map',m:esc((city||CITIES.find(x=>x[0]===cur)||[cur])[0])}));
     let r=find(q,true),fix='';
     if(!r.length&&/[a-z\[\];',.`]/i.test(q)){const sq=swap(q),sr=find(sq,true);if(sr.length){r=sr;fix=sq}}
     if(r.length){res.innerHTML=(top.length?list(top):'')+(fix?`<p class="hfix">Показаны результаты по «${esc(fix)}»</p>`:'')+
@@ -272,7 +278,7 @@ document.addEventListener('DOMContentLoaded',()=>{const p=new URLSearchParams(lo
     ['Кружки','/catalog/pechat-na-kruzhkah/'],['Визитки','/catalog/pechat-vizitok/'],['Чертежи','/catalog/pechat-proektnoj-dokumentaczii/']]};
   const h=document.querySelector('.hdr'),ql=document.createElement('nav');ql.className='qlinks';ql.setAttribute('aria-label','Быстрые ссылки');
   const ic=d=>`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
-  ql.innerHTML=s.nav.map(([t,hr,i])=>`<a href="${hr||'#'}">${i?ic(I[i]):''}${i==='map'?`<span data-cc>${t}</span>`:t}</a>`).join('')+(TOP[k]||[]).map(([t,u])=>`<a href="https://copy.ru${u}">${t}</a>`).join('');
+  ql.innerHTML=s.nav.map(([t,hr,i])=>`<a href="${hr||'#'}">${i?ic(I[i]):''}${i==='map'?`<span data-cc>${t}</span>`:t}</a>`).join('')+(TOP[k]||[]).map(([t,u])=>`<a href="${window.COPY_CATALOG?.url?window.COPY_CATALOG.url(u):u==='/catalog/pechat-vizitok/'?'vizitki.html':'catalog/'+u.split('/')[2]+'/'}">${t}</a>`).join('');
   h.append(ql);
   const ccW=n=>{const a=n%10,b=n%100;return a===1&&b!==11?'копицентр':a>=2&&a<=4&&(b<12||b>14)?'копицентра':'копицентров'};
   const cc=()=>ql.querySelectorAll('[data-cc]').forEach(e=>{const n=(CITIES.find(x=>x[0]===cur)||[])[1];e.textContent=n?n+' '+ccW(n):'Копицентры'});cc();document.addEventListener('copy:city',cc);
@@ -295,27 +301,28 @@ if(mn){
   const go=(t,inner,ico)=>`<li><button type="button" data-go="${t}">${ico?svg(ico):''}${inner}${svg(I.chev,' ch')}</button></li>`;
   const lnk=(href,inner,ico,cur)=>`<li><a href="${href}"${cur?' aria-current="page"':''}>${ico?svg(ico):''}${inner}</a></li>`;
   const DESC={copy:'копицентры и типография',ai:'стикерпаки, футболки, кружки',gifts:'с логотипом компании',pro:'калькулятор и требования',b2b:'для компаний',api:'API и интеграции'};
-  const BUY=[['Требования к макетам','/technical-requirements/',I.file],['Оплата и доставка','/payment-delivery/',I.truck],['Приложение','/app/',I.mobile]];
+  const BUY=[['Требования к макетам','technical-requirements/',I.file],
+    ['Оплата и доставка','/payment-delivery/',I.truck],['Приложение','/app/',I.mobile]];
   const MORE=[['Компания',[['О нас','/about/'],['Новости','/news/'],['Блог','/blog/'],['Портфолио','/portfolio/'],['Управляющая компания','/upravlyayushhaya-kompania/']]],
     ['Клиентам',[['Клуб привилегий','/club/'],['Генератор QR-кодов','/qr/'],['Написать директору','/director/']]],
-    ['Партнёрам',[['Франшиза','/franchise/'],['Арендодателям','/landlord/']]],
+    ['Партнёрам',[['Франшиза','franchise/'], ['Арендодателям','/landlord/']]],
     ['Работа и учёба',[['Вакансии','/vakansii/'],['Записаться на практику','/zapisatsya-na-praktiku/'],['Записаться на экскурсию','/zapisatsya-na-ekskursiyu/']]]];
   const TOP=[['Плакаты','pechat-plakatov'],['Листовки','pechat-listovok'],['Фото','pechat-fotografij'],['Кружки','pechat-na-kruzhkah'],['Визитки','pechat-vizitok'],['Проектная документация','pechat-proektnoj-dokumentaczii'],['Наклейки','pechat-nakleek'],['Футболки','pechat-na-futbolkah']];
   const th=document.getElementById('themeBtn');
   const isDark=()=>(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
-  const hd=(t,href)=>`<div class="mh"><h2>${esc(t)}</h2><a href="${href}">Все услуги</a></div>`;
+  const hd=(t,href,go,bt)=>`<button class="mbk" type="button" data-go="${go}">${svg(I.back)}${esc(bt)}</button><div class="mh"><h2>${href?`<a href="${href}">${esc(t).replace(/(\S+)$/,'<span class="nw">$1'+svg(I.chev,' ch')+'</span>')}</a>`:esc(t)}</h2></div>`;
   const views={
-    root:()=>{const C=window.COPY_CATALOG;return `<div class="mtop2"><b>${svg(I.flame)}Топ</b>${TOP.map(([t,u])=>`<a href="${C.base}/catalog/${u}/">${t}</a>`).join('')}</div><ul class="mcat">${C.items.map(([t,,,k],i)=>go('s'+i,esc(t),KICO[k])).join('')}</ul>`+
-      `<ul class="mgrp"><li><a class="mfast" href="fast-order.html">${svg(I.zap)}Быстрый заказ</a></li>${s.nav.map(([t,hr,ic])=>lnk(hr||'#',t,I[ic])).join('')}${BUY.map(([t,u,ic])=>lnk(B+u,t,ic)).join('')}${go('svc','Сервисы COPY.RU',I.grid)}</ul>`+
+    root:()=>{const C=window.COPY_CATALOG;return `<div class="mtop2"><b>${svg(I.flame)}Топ</b>${TOP.map(([t,u])=>`<a href="${C.url('/catalog/'+u+'/')}">${t}</a>`).join('')}</div><ul class="mcat">${C.items.map(([t,,,k],i)=>go('s'+i,esc(t),KICO[k])).join('')}</ul>`+
+      `<ul class="mgrp"><li><a class="mfast" href="fast-order.html">${svg(I.zap)}Быстрый заказ</a></li>${s.nav.map(([t,hr,ic])=>lnk(hr||'#',t,I[ic])).join('')}${BUY.map(([t,u,ic])=>lnk(u[0]==='/'?B+u:u,t,ic)).join('')}${go('svc','Сервисы COPY.RU',I.grid)}</ul>`+
       `<ul>${go('co','О компании',I.bld)}<li><button type="button" role="switch" aria-checked="${isDark()}" data-theme>${svg(I.moon)}Тёмная тема<i class="tsw" aria-hidden="true"></i></button></li></ul>`},
-    co:()=>`<button class="mback" type="button" data-go="root">${svg(I.back)}Меню</button><h2>О компании</h2>${MORE.map(([h,l])=>`<h3>${h}</h3><ul>${l.map(([t,u])=>lnk(B+u,t)).join('')}</ul>`).join('')}`,
-    svc:()=>`<button class="mback" type="button" data-go="root">${svg(I.back)}Меню</button><h2>Сервисы COPY.RU</h2><ul>${Object.keys(SVC).map(o=>`<li><a class="msvc" href="#"${o===k?' aria-current="page"':''}><b>${SVC[o].tab}<small>${DESC[o]}</small></b>${o===k?svg(I.check,' mchk'):''}</a></li>`).join('')}</ul>`,
+    co:()=>hd('О компании','','root','Меню')+`${MORE.map(([h,l])=>`<h3>${h}</h3><ul>${l.map(([t,u])=>lnk(u[0]==='/'?B+u:u,t)).join('')}</ul>`).join('')}`,
+    svc:()=>hd('Сервисы COPY.RU','','root','Меню')+`<ul>${Object.keys(SVC).filter(o=>!SVC[o].lp).map(o=>`<li><a class="msvc" href="#"${o===k?' aria-current="page"':''}><b>${SVC[o].tab}<small>${DESC[o]}</small></b>${o===k?svg(I.check,' mchk'):''}</a></li>`).join('')}</ul>`,
     sec:i=>{const C=window.COPY_CATALOG,[t,hr,g]=C.items[i];
-      return `<button class="mback" type="button" data-go="root">${svg(I.back)}Меню</button>`+hd(t,C.base+hr)+'<ul>'+
-        g.map(([gt,gh,it],j)=>it.length?go(`g${i}_${j}`,`${esc(gt)}<span>${it.length}</span>`):lnk(C.base+gh,esc(gt))).join('')+'</ul>'},
+      return hd(t,C.url(hr),'root','Меню')+'<ul>'+
+        g.map(([gt,gh,it],j)=>it.length?go(`g${i}_${j}`,esc(gt)):lnk(C.url(gh),esc(gt))).join('')+'</ul>'},
     grp:(i,j)=>{const C=window.COPY_CATALOG,[t,,g]=C.items[i],[gt,gh,it]=g[j];
-      return `<button class="mback" type="button" data-go="s${i}">${svg(I.back)}${esc(t)}</button>`+hd(gt,C.base+gh)+'<ul>'+
-        it.map(([n,u])=>lnk(C.base+u,esc(n))).join('')+'</ul>'}};
+      return hd(gt,C.url(gh),'s'+i,t)+'<ul>'+
+        it.map(([n,u])=>lnk(C.url(u),esc(n))).join('')+'</ul>'}};
   const show=(v,kb)=>{mp.innerHTML=/^s\d+$/.test(v)?views.sec(+v.slice(1)):/^g\d+_\d+$/.test(v)?views.grp(...v.slice(1).split('_').map(Number)):views[v]();scrollTo(0,0);
     const f=mp.querySelector('[aria-current="true"]')||mp.querySelector('a,button');f&&f.focus({focusVisible:kb})};
   let y=0;
@@ -335,9 +342,11 @@ if(mn){
   matchMedia('(max-width:980px)').addEventListener('change',q=>{if(!q.matches&&!mp.hidden)open(false)});
 }
 {const fInit=()=>{const ft=document.querySelector('footer');if(!ft)return;const R=document.documentElement;let q=0;
-  const upd=()=>{q=0;const t=ft.getBoundingClientRect().top,hb=parseFloat(getComputedStyle(R).getPropertyValue('--hb'))||document.querySelector('.hdr')?.getBoundingClientRect().bottom||0;
-    R.classList.toggle('at-foot',t<innerHeight);R.classList.toggle('hdr-foot',t<hb)};
-  addEventListener('scroll',()=>{if(!q)q=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);upd()};
+  const upd=()=>{q=0;const fr=ft.getBoundingClientRect(),t=fr.top,hb=parseFloat(getComputedStyle(R).getPropertyValue('--hb'))||document.querySelector('.hdr')?.getBoundingClientRect().bottom||0;
+    const typing=document.activeElement?.matches('input:not([type=checkbox],[type=radio]),textarea,select');
+    R.classList.toggle('at-foot',(t<hb||fr.bottom<=innerHeight+1)&&!typing);R.classList.toggle('hdr-foot',t<hb)};
+  addEventListener('scroll',()=>{if(!q)q=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);
+  addEventListener('focusin',upd);addEventListener('focusout',()=>setTimeout(upd));upd()};
   document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fInit):fInit()}
 
 
