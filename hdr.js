@@ -304,7 +304,7 @@ if(mn){
   const BUY=[['Требования к макетам','technical-requirements/',I.file],
     ['Оплата и доставка','payment-delivery/',I.truck] ,['Приложение','/app/',I.mobile]];
   const MORE=[['Компания',[['О нас','/about/'],['Новости','/news/'],['Блог','/blog/'],['Портфолио','/portfolio/'],['Управляющая компания','/upravlyayushhaya-kompania/']]],
-    ['Клиентам',[['Клуб привилегий','club/'] ,['Генератор QR-кодов','/qr/'],['Написать директору','/director/']]],
+    ['Клиентам',[['Клуб привилегий','club/'] ,['Генератор QR-кодов','qr/'] ,['Написать директору','/director/']]],
     ['Партнёрам',[['Франшиза','franchise/'], ['Арендодателям','/landlord/']]],
     ['Работа и учёба',[['Вакансии','vakansii/'] ,['Записаться на практику','/zapisatsya-na-praktiku/'],['Записаться на экскурсию','/zapisatsya-na-ekskursiyu/']]]];
   const TOP=[['Плакаты','pechat-plakatov'],['Листовки','pechat-listovok'],['Фото','pechat-fotografij'],['Кружки','pechat-na-kruzhkah'],['Визитки','pechat-vizitok'],['Проектная документация','pechat-proektnoj-dokumentaczii'],['Наклейки','pechat-nakleek'],['Футболки','pechat-na-futbolkah']];

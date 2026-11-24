@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<base href="../">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1B20" media="(prefers-color-scheme: dark)">
+<script>
+try{const L=localStorage,t=L.getItem('copy-theme'),s=L.getItem('copy-theme-sys'),now=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Генератор QR-кодов — COPY.RU (прототип)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=26">
+<style>
+
+.qr-top h1{margin:0 0 12px}
+.qr-lead{max-width:640px;margin:0 0 32px;color:var(--ink-2);font-size:18px;line-height:1.5}
+.qr-g{display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-areas:"what p" "look p";gap:32px 64px;align-items:start;max-width:1120px}
+.qr-what{grid-area:what}.qr-look{grid-area:look}.qr-p{grid-area:p;position:sticky;top:96px}
+.qr-g h2{margin:0 0 12px;font:600 16px/1.25 var(--sans)} 
+.qr-f{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px;margin-top:20px}
+.qr-f[hidden]{display:none}
+.qr-f .w{grid-column:1/-1}
+.ff input[type=datetime-local]{padding-right:8px}
+.qr-c{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px;align-items:end}
+.qr-col{display:flex;align-items:center;gap:10px;height:48px;padding:0 6px 0 14px;border-radius:var(--r-m);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-size:16px}
+.qr-col input[type=color]{all:unset;width:32px;height:32px;margin-left:auto;border-radius:var(--r-s);cursor:pointer;box-shadow:inset 0 0 0 1px var(--line)}
+.qr-col input[type=color]::-webkit-color-swatch-wrapper{padding:0}.qr-col input[type=color]::-webkit-color-swatch{border:0;border-radius:var(--r-s);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 18%,transparent)} 
+.qr-col input[type=color]::-moz-color-swatch{border:0;border-radius:var(--r-s)}
+.qr-col input:disabled{opacity:.35;cursor:default}
+.qr-look .chk{margin-top:16px}
+.qr-warn{grid-column:1/-1;margin:0;font-size:14px;line-height:1.4;color:#B4570A}
+.qr-logo{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+.fbtn{position:relative}
+.fbtn:has(:focus-visible){outline:2px solid var(--v-text);outline-offset:2px}
+.fbtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.fbtn svg{width:18px;height:18px}
+.qr-logo .hint{margin:0;font-size:14px;color:var(--ink-2)}
+.qr-logo button.lnk{all:unset;cursor:pointer;font-size:14px;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+
+.qr-box{display:grid;place-items:center;aspect-ratio:1;padding:24px;border-radius:var(--r-l);background:var(--surface)}
+.qr-box svg{display:block;width:100%;height:auto;transition:opacity .2s}
+.qr-box.empty svg{opacity:.12}
+.qr-st{margin:12px 0 0;min-height:20px;font-size:14px;line-height:1.4;color:var(--ink-2);text-align:center}
+.qr-dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}
+.qr-dl svg{width:18px;height:18px}
+.qr-dl .btn:disabled{opacity:.4;cursor:default;transform:none}
+.qr-pr{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px;font:600 16px/1.3 var(--sans);color:var(--v-text);text-decoration:none}
+.qr-pr svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.qr-pr:hover{text-decoration:underline;text-underline-offset:3px}}
+#pechat{scroll-margin-top:96px}
+.pq-n{margin:-12px 0 24px;color:var(--ink-2);max-width:640px}
+@media (max-width:980px){
+  .qr-g{grid-template-columns:minmax(0,640px);grid-template-areas:"what" "p" "look";gap:40px}
+  .qr-p{position:static;max-width:360px;width:100%;justify-self:center}
+}
+@media (max-width:560px){.qr-lead{font-size:16px;margin-bottom:24px}.qr-f,.qr-c{grid-template-columns:minmax(0,1fr)}.qr-p{max-width:none}}
+</style>
+<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="ft.css?v=3">
+<link rel="stylesheet" href="calc.css?v=71"> 
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wm" viewBox="0 0 618 196"><path d="M227.34,36.79c0-.87.73-1.6,1.6-1.6h25.7c6.24,0,11.62,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.77,10.01,3.77,15.66v20.02c0,5.66-1.31,10.88-3.77,15.66-2.47,4.79-6.1,8.41-10.89,11.31-4.79,2.76-10.16,4.21-16.41,4.21h-5.52v42.06c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6V36.79ZM254.05,96.55c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-18.86c0-3.34-.73-5.95-2.32-7.98-1.6-2.03-4.07-3.05-7.26-3.05h-4.94v40.76h4.94v.15Z"></path><path d="M364.24,36.21l-25.99,69.91v53.08c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-53.08l-25.99-69.91c-.15-.58.15-1.16.87-1.16h21.63c.73,0,1.45.44,1.6,1.16l12.78,41.92,12.78-41.92c.15-.73.87-1.16,1.6-1.16h21.63c.58,0,1.02.73.87,1.16Z"></path><path d="M366.13,134.7h21.78c.87,0,1.6.72,1.6,1.6v22.92c0,.87-.73,1.6-1.6,1.6h-21.78c-.87,0-1.6-.72-1.6-1.6v-22.92c0-.87.73-1.6,1.6-1.6Z"></path><path d="M448.74,159.79l-14.95-44.38h-3.05v43.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.72-1.6-1.6V36.79c0-.87.73-1.6,1.6-1.6h26.57c6.24,0,11.61,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.78,10.01,3.78,15.66v18.13c0,5.8-1.31,11.17-3.92,15.95-2.61,4.79-6.24,8.56-11.03,11.31l19.6,48.01c.29.58-.15,1.16-.87,1.16h-21.49c-.87,0-1.6-.44-1.74-1.16ZM430.73,94.66h5.81c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-16.97c0-3.34-.73-5.95-2.32-7.98s-4.07-3.05-7.26-3.05h-5.81v39.02Z"></path><path d="M487.5,35.05h18.58c.87,0,1.6.73,1.6,1.6v89.2c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.07,4.21,7.26,4.21s5.52-1.45,7.26-4.21c1.6-2.76,2.47-6.67,2.47-11.46V36.79c0-.87.73-1.6,1.6-1.6h18.58c.87,0,1.6.73,1.6,1.6v89.78c0,6.96-1.31,13.05-3.92,18.42-2.61,5.37-6.24,9.57-11.03,12.76-4.79,3.05-10.31,4.64-16.55,4.64s-11.61-1.6-16.41-4.64c-4.79-3.05-8.42-7.4-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42V36.79c-.15-1.02.58-1.74,1.45-1.74Z"></path><path d="M209.04,69.43v57.15c0,6.82-1.31,12.91-4.07,18.42-2.76,5.51-6.53,9.72-11.47,12.76-4.94,3.05-10.74,4.64-17.13,4.64s-12.05-1.6-17.13-4.64c-4.94-3.05-8.86-7.4-11.47-12.76-2.32-4.5-3.63-9.57-3.92-14.94,0-.29,0-.58.14-.87l20.62-43.22c.29-.44,1.02-.29,1.02.29v39.89c0,4.79,1.02,8.56,2.9,11.31,1.89,2.9,4.65,4.21,7.98,4.21s6.24-1.45,8.13-4.21c1.89-2.9,2.76-6.67,2.76-11.31v-56.13c0-4.79-.87-8.56-2.76-11.31-1.89-2.9-4.5-4.35-8.13-4.35-3.34,0-6.1,1.45-7.98,4.35-.73,1.16-1.45,2.47-1.89,3.92l-22.79,48.15-14.23,29.88-3.77,7.98v.14c-2.32,3.63-5.37,6.67-8.86,8.99-4.79,3.05-10.31,4.64-16.55,4.64s-11.76-1.6-16.41-4.64c-4.79-3.05-8.42-7.25-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42v-57.15c0-6.96,1.31-13.05,3.92-18.42,2.61-5.37,6.24-9.57,11.03-12.76,4.79-3.05,10.31-4.64,16.41-4.64s11.61,1.6,16.26,4.79c4.65,3.19,8.28,7.4,10.89,12.76,2.61,5.37,3.77,11.46,3.77,18.27v5.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-5.22c0-4.93-.73-8.85-2.32-11.6-1.45-2.76-3.77-4.06-6.82-4.06s-5.52,1.45-7.11,4.21c-1.6,2.76-2.47,6.67-2.47,11.46v55.99c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.06,4.21,7.11,4.21s5.52-1.45,7.11-4.21c.44-.73.73-1.45,1.02-2.32l8.42-17.84,29.91-64.11,1.02-2.18c2.76-5.51,6.53-9.72,11.47-12.76,4.94-3.05,10.6-4.64,17.13-4.64s12.2,1.6,17.13,4.64c4.94,3.05,8.86,7.4,11.47,12.76,2.61,5.51,3.92,11.6,3.92,18.42Z"></path></symbol>
+  <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
+</svg>
+
+<script src="hdr.js?v=166" data-svc="copy"></script>
+
+<main class="wrap qr-top"><div class="crumbs"><a href="home.html">Главная</a><span>/</span><span>Генератор QR-кодов</span></div>
+  <h1>Генератор QR-кодов</h1>
+  <p class="qr-lead">Бесплатно и&nbsp;без регистрации. Код не&nbsp;устаревает и&nbsp;ведёт прямо на&nbsp;ваш адрес, а&nbsp;мы напечатаем его на&nbsp;наклейках, визитках или листовках.</p>
+  <div class="qr-g">
+    <div class="qr-what">
+      <h2>Что будет в&nbsp;коде</h2>
+      <div class="cf-tiles" data-n="5" role="radiogroup" aria-label="Что будет в коде" id="qrT"><button type="button" class="cf-o" role="radio" aria-checked="true" data-t="url">Ссылка<small>сайт, соцсеть, отзыв</small><svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" class="cf-o" role="radio" aria-checked="false" data-t="text">Текст<small>любая надпись</small><svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" class="cf-o" role="radio" aria-checked="false" data-t="wifi">Wi‑Fi<small>гости подключатся без пароля</small><svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" class="cf-o" role="radio" aria-checked="false" data-t="vcard">Визитка<small>контакт сохранится в телефон</small><svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" class="cf-o" role="radio" aria-checked="false" data-t="event">Событие<small>добавится в календарь</small><svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
+      <div class="qr-f" data-t="url"><div class="ff w"><label for="qUrl">Адрес</label><input id="qUrl" type="url" placeholder="Например, mysite.ru" inputmode="url" autocomplete="url"></div></div><div class="qr-f" data-t="text" hidden><div class="ff w"><label for="qText">Текст</label><textarea id="qText" rows="4" maxlength="900"></textarea></div></div><div class="qr-f" data-t="wifi" hidden><div class="ff"><label for="qSsid">Название сети</label><input id="qSsid" type="text" placeholder="Например, Copy_Guest" autocomplete="off"></div><div class="ff"><label for="qPass">Пароль</label><input id="qPass" type="text" autocomplete="off"></div><div class="ff"><label for="qEnc">Защита</label><select id="qEnc"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">Без пароля</option></select></div></div><div class="qr-f" data-t="vcard" hidden><div class="ff"><label for="qFn">Имя</label><input id="qFn" type="text" autocomplete="given-name"></div><div class="ff"><label for="qLn">Фамилия</label><input id="qLn" type="text" autocomplete="family-name"></div><div class="ff"><label for="qOrg">Компания</label><input id="qOrg" type="text" autocomplete="organization"></div><div class="ff"><label for="qTitle">Должность</label><input id="qTitle" type="text" autocomplete="organization-title"></div><div class="ff"><label for="qTel">Телефон</label><input id="qTel" type="tel" placeholder="+7 999 123-45-67" inputmode="tel" autocomplete="tel"></div><div class="ff"><label for="qMail">Почта</label><input id="qMail" type="email" placeholder="name@mail.ru" inputmode="email" autocomplete="email"></div><div class="ff w"><label for="qSite">Сайт</label><input id="qSite" type="url" inputmode="url"></div></div><div class="qr-f" data-t="event" hidden><div class="ff w"><label for="qEv">Название</label><input id="qEv" type="text" placeholder="Например, открытие магазина"></div><div class="ff"><label for="qStart">Начало</label><input id="qStart" type="datetime-local"></div><div class="ff"><label for="qEnd">Конец</label><input id="qEnd" type="datetime-local"></div><div class="ff w"><label for="qLoc">Место</label><input id="qLoc" type="text" placeholder="Адрес или ссылка"></div></div>
+    </div>
+    <div class="qr-look">
+      <h2>Вид</h2>
+      <div class="qr-c">
+        <label class="qr-col">Цвет кода<input type="color" id="qFg" value="#000000" aria-label="Цвет кода"></label>
+        <label class="qr-col">Фон<input type="color" id="qBg" value="#ffffff" aria-label="Цвет фона"></label>
+        <p class="qr-warn" id="qWarn" hidden>Код светлее фона или почти сливается с ним: многие камеры такой не прочитают.</p>
+      </div>
+      <label class="chk"><input type="checkbox" id="qTr"><span>Прозрачный фон (для&nbsp;PNG и&nbsp;SVG)</span></label>
+      <div class="qr-logo">
+        <label class="btn btn-g fbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Логотип в&nbsp;центре<input type="file" id="qLogo" accept="image/png,image/jpeg,image/svg+xml,image/webp"></label>
+        <p class="hint" id="qLogoN">PNG, JPG или SVG</p>
+        <button type="button" class="lnk" id="qLogoX" hidden>Убрать</button>
+      </div>
+    </div>
+    <div class="qr-p" aria-live="polite">
+      <div class="qr-box empty" id="qBox"></div>
+      <p class="qr-st" id="qSt">Введите ссылку, и&nbsp;код появится здесь</p>
+      <div class="qr-dl">
+        <button type="button" class="btn btn-p" id="qPng" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 10l5 5 5-5M5 21h14"/></svg>PNG</button>
+        <button type="button" class="btn btn-s" id="qSvg" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 10l5 5 5-5M5 21h14"/></svg>SVG</button>
+      </div>
+      <a class="qr-pr" href="qr/#pechat">Напечатать с&nbsp;этим кодом<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+    </div>
+  </div>
+</main>
+
+<section id="pechat"><div class="wrap">
+  
+  <div class="sh"><h2>Напечатать QR-код</h2></div>
+  <p class="pq-n">Скачайте код и&nbsp;прикрепите к&nbsp;заказу. Проверим, что он читается после печати.</p>
+  <nav class="hs" aria-label="Печать с QR-кодом">
+    <a href="https://copy.ru/catalog/naklejki-s-qr-kodom/"><b>Наклейки с&nbsp;QR-кодом</b><img class="ob-img" src="img/naklejki.webp?v=2" alt="" width="144" height="144" loading="lazy"></a>
+    <a href="vizitki.html"><b>Визитки</b><img class="ob-img" src="img/vizitki.webp" alt="" width="144" height="144" loading="lazy"></a>
+    <a href="catalog/pechat-listovok/"><b>Листовки</b></a>
+    <a href="https://copy.ru/catalog/pechat-etiketok/"><b>Этикетки</b></a>
+    <a href="https://copy.ru/catalog/pechat-plakatov/"><b>Плакаты</b><img class="ob-img" src="img/plakaty.webp" alt="" width="144" height="144" loading="lazy"></a>
+    <a href="https://copy.ru/catalog/pechat-bannerov/"><b>Баннеры</b></a>
+  </nav>
+</div></section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+{const $=id=>document.getElementById(id),box=$('qBox'),st=$('qSt'),tiles=$('qrT');let t='url',logo=null,svg='';
+ qrcode.stringToBytes=qrcode.stringToBytesFuncs['UTF-8'];
+ const esc=s=>s.replace(/([\;,:"])/g,'\\$1'),v=id=>$(id).value.trim();
+ const ical=s=>s?s.replace(/[-:]/g,'')+'00':'';
+ const build={
+  url:()=>{let u=v('qUrl');if(!u)return'';if(!/^[a-z][a-z0-9+.-]*:/i.test(u))u='https://'+u;return u},
+  text:()=>v('qText'),
+  wifi:()=>{const s=v('qSsid');if(!s)return'';const e=$('qEnc').value;return`WIFI:T:${e};S:${esc(s)};${e==='nopass'?'':'P:'+esc($('qPass').value)+';'};`},
+  vcard:()=>{const f=v('qFn'),l=v('qLn');if(!f&&!l&&!v('qTel')&&!v('qMail'))return'';
+   return['BEGIN:VCARD','VERSION:3.0',`N:${l};${f};;;`,`FN:${(f+' '+l).trim()}`,v('qOrg')&&`ORG:${v('qOrg')}`,v('qTitle')&&`TITLE:${v('qTitle')}`,v('qTel')&&`TEL;TYPE=CELL:${v('qTel')}`,v('qMail')&&`EMAIL:${v('qMail')}`,v('qSite')&&`URL:${v('qSite')}`,'END:VCARD'].filter(Boolean).join('\n')},
+  event:()=>{const n=v('qEv'),s=v('qStart');if(!n||!s)return'';
+   return['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT',`SUMMARY:${n}`,`DTSTART:${ical(s)}`,v('qEnd')&&`DTEND:${ical(v('qEnd'))}`,v('qLoc')&&`LOCATION:${v('qLoc')}`,'END:VEVENT','END:VCALENDAR'].filter(Boolean).join('\n')}};
+ const hint={url:'Введите ссылку, и код появится здесь',text:'Напишите текст, и код появится здесь',wifi:'Введите название сети',vcard:'Заполните имя, телефон или почту',event:'Нужны название и начало'};
+ const lum=h=>{const n=parseInt(h.slice(1),16),c=[n>>16,n>>8&255,n&255].map(x=>{x/=255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+ function draw(){
+  const data=build[t](),fg=$('qFg').value,tr=$('qTr').checked,bg=tr?'none':$('qBg').value;
+  $('qBg').disabled=tr;
+  const L1=lum(fg),L2=tr?1:lum($('qBg').value);$('qWarn').hidden=!(L1>L2||(Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05)<3);
+  const empty=!data;box.classList.toggle('empty',empty);$('qPng').disabled=$('qSvg').disabled=empty;
+  let q;try{q=qrcode(0,logo?'H':'M');q.addData(empty?'https://copy.ru':data);q.make()}catch(e){st.textContent='Слишком много данных для одного кода. Сократите текст.';box.classList.add('empty');$('qPng').disabled=$('qSvg').disabled=true;return}
+  const n=q.getModuleCount(),m=4,S=n+m*2;let d='';
+  for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))d+=`M${c+m} ${r+m}h1v1h-1z`;
+  let lg='';if(logo&&!empty){const k=Math.round(n*.22),o=(S-k)/2,p=.6;lg=`<rect x="${o-p}" y="${o-p}" width="${k+p*2}" height="${k+p*2}" rx="1" fill="${tr?'#fff':bg}"/><image href="${logo}" x="${o}" y="${o}" width="${k}" height="${k}" preserveAspectRatio="xMidYMid meet"/>`}
+  svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}" shape-rendering="crispEdges">${bg==='none'?'':`<rect width="${S}" height="${S}" fill="${bg}"/>`}<path d="${d}" fill="${fg}"/>${lg}</svg>`;
+  box.innerHTML=svg;st.textContent=empty?hint[t]:(t==='url'?data.replace(/^https?:\/\//,''):'Код готов. Проверьте камерой телефона');
+ }
+ tiles.addEventListener('click',e=>{const b=e.target.closest('.cf-o');if(!b)return;t=b.dataset.t;
+  tiles.querySelectorAll('.cf-o').forEach(x=>x.setAttribute('aria-checked',x===b));
+  document.querySelectorAll('.qr-f').forEach(f=>f.hidden=f.dataset.t!==t);draw()});
+ document.querySelector('.qr-g').addEventListener('input',draw);document.querySelector('.qr-g').addEventListener('change',e=>{if(e.target.id!=='qLogo')draw()});
+ $('qLogo').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{logo=r.result;$('qLogoN').textContent=f.name;$('qLogoX').hidden=false;draw()};r.readAsDataURL(f)});
+ $('qLogoX').onclick=()=>{logo=null;$('qLogo').value='';$('qLogoN').textContent='PNG, JPG или SVG';$('qLogoX').hidden=true;draw()};
+ const save=(href,name)=>{const a=document.createElement('a');a.href=href;a.download=name;document.body.append(a);a.click();a.remove()};
+ $('qSvg').onclick=()=>{const u=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));save(u,'qr-code.svg');setTimeout(()=>URL.revokeObjectURL(u),1000)};
+ $('qPng').onclick=()=>{const img=new Image(),c=document.createElement('canvas');c.width=c.height=1024;
+  img.onload=()=>{const x=c.getContext('2d');x.imageSmoothingEnabled=false;x.drawImage(img,0,0,1024,1024);save(c.toDataURL('image/png'),'qr-code.png')};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)};
+ draw()}
+</script>
+<script>
+{const goal=t=>{const h=document.querySelector('.hdr');return t.getBoundingClientRect().top+scrollY+(parseFloat(getComputedStyle(t).paddingTop)||0)-(h?h.getBoundingClientRect().height:0)-24};
+ let run=0;const stop=()=>run=0;['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,stop,{passive:true}));
+ document.addEventListener('click',e=>{const a=e.target.closest('a[href*="#"]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;const id=a.hash.slice(1),t=id&&document.getElementById(id);if(!t)return;e.preventDefault();
+  try{history.pushState(null,'','#'+id)}catch(_){}
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){scrollTo(0,goal(t));return}
+  const y0=scrollY,dist=Math.abs(goal(t)-y0),dur=Math.min(900,Math.max(500,dist*.15)),t0=performance.now(),me=++run;
+  const ease=x=>1-Math.pow(1-x,4);
+  const step=now=>{if(run!==me)return;const k=Math.min(1,(now-t0)/dur);scrollTo(0,y0+(goal(t)-y0)*ease(k));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
+</script>
+<script src="ft.js?v=5"></script>
+</body>
+</html>
