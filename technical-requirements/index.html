@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<base href="../">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1B20" media="(prefers-color-scheme: dark)">
+<script>
+try{const L=localStorage,t=L.getItem('copy-theme'),s=L.getItem('copy-theme-sys'),now=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Требования к макетам — COPY.RU (прототип)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=24">
+<style>
+
+button{font:inherit;color:inherit;cursor:pointer}
+.tr-top h1{margin:0 0 12px}
+.tr-lead{max-width:640px;margin:0;color:var(--ink-2);font-size:18px;line-height:1.5}
+
+.scheme{margin:0}
+.scheme svg{display:block;width:100%;height:auto;max-height:220px;margin:0 0 20px} 
+.s-bleed{fill:var(--v-100)}.s-trim{fill:var(--surface);stroke:var(--ink);stroke-width:.4}.s-safe{fill:none;stroke:var(--v-text);stroke-width:.4;stroke-dasharray:1.5 1.2}
+.scheme figcaption{display:grid;gap:12px}
+.scheme figcaption div{display:grid;grid-template-columns:20px 1fr;column-gap:12px;font-size:14px}
+.scheme figcaption i{width:16px;height:16px;border-radius:4px;margin-top:2px;box-sizing:border-box}
+.k-bleed{background:var(--v-100)}.k-trim{border:1.5px solid var(--ink)}.k-safe{border:1.5px dashed var(--v-text)}
+.scheme figcaption b{font-weight:600;font-size:16px}.scheme figcaption span{color:var(--ink-2);grid-column:2}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:12px} 
+.rules li{display:grid;grid-template-columns:20px 1fr;column-gap:12px;font-size:14px}
+.rules li:not(.more)::before{content:"";width:18px;height:18px;margin-top:2px;background:var(--success);-webkit-mask:var(--i-check) center/contain no-repeat;mask:var(--i-check) center/contain no-repeat}
+.rules{--i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")} 
+.rules .more{display:block;padding-left:32px}
+.rules b{display:block;font-weight:600;font-size:16px}.rules span{color:var(--ink-2)}
+.rules .more a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+#korotko{padding-top:40px}
+.tr-k{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:24px 64px;align-items:start;max-width:1000px}
+.tr-k .scheme svg{max-width:420px;max-height:none}
+.tr-k .rules span{grid-column:2;font-size:14px;line-height:1.4} 
+.tr-no{margin:20px 0 0;padding-left:32px;font-size:14px;color:var(--ink-2)}
+
+.tr-g{display:grid;grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start}
+.tr-nav{position:sticky;top:96px;max-height:calc(100vh - 120px);overflow:auto}
+.tr-nav b{display:block;font-size:14px;color:var(--ink-2);font-weight:500;margin-bottom:8px}
+.tr-nav ul{list-style:none;margin:0;padding:0}
+.tr-nav a{display:flex;align-items:center;min-height:36px;padding-top:6px;padding-bottom:6px;font-size:15px;line-height:1.3;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line);padding-left:14px}
+.tr-nav a[aria-current]{color:var(--ink);border-color:var(--v);font-weight:600}
+@media (hover:hover){.tr-nav a:hover{color:var(--ink)}}
+.tr-cur{display:none}
+.tr-a{max-width:760px;min-width:0}
+.tr-s{padding-top:0;scroll-margin-top:96px}
+.tr-s+.tr-s{margin-top:72px}
+.tr-a h2{margin:0 0 20px}
+.tr-a h3,.tr-a h4{scroll-margin-top:96px}
+.tr-a h3{font:600 22px/1.25 var(--sans);margin:40px 0 12px}
+.tr-a h2+h3{margin-top:0}
+.tr-a h4{font:600 18px/1.3 var(--sans);margin:28px 0 8px}
+.tr-a p{margin:0 0 12px;line-height:1.55}
+.tr-a ul{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:8px}
+.tr-a li{position:relative;padding-left:20px;line-height:1.5}
+.tr-a li::before{content:"";position:absolute;left:4px;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--ink-2)}
+.tr-a a{color:var(--v-text);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.tr-warn{padding:12px 16px;border-radius:var(--r-m);background:var(--v-50)} 
+
+.tr-fig{margin:16px 0 24px;max-width:640px;background:#fff;border-radius:var(--r-l);padding:12px;overflow:hidden}
+.tr-fig img{display:block;width:100%;height:auto;border-radius:var(--r-s)}
+#help{scroll-margin-top:96px}
+.tr-help{max-width:760px}
+.tr-help p{margin:0 0 20px;color:var(--ink-2)}
+@media (max-width:980px){
+  .tr-g{grid-template-columns:1fr;gap:40px}
+  
+  .tr-nav{min-width:0;top:var(--hb,0px);transition:top .3s var(--ios,ease);z-index:20;max-height:none;overflow:visible;margin-top:-4px;padding:4px 0} 
+  @media (prefers-reduced-motion:reduce){.tr-nav{transition:none}}
+  .tr-nav>b,.tr-nav>ul{display:none}
+  .tr-cur{display:flex;align-items:center;gap:10px;width:100%;height:40px;padding:0 12px;border:0;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,color-mix(in srgb,var(--surface) 70%,transparent));-webkit-backdrop-filter:blur(16px) saturate(1.8);backdrop-filter:blur(16px) saturate(1.8);font:600 16px/1.2 var(--sans);text-align:left} 
+  .tr-cur span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tr-cur svg{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .tr-cur svg:first-child{color:var(--ink-2)}
+  .tr-k{grid-template-columns:1fr}
+  .tr-s,.tr-a h3,.tr-a h4,#help{scroll-margin-top:calc(var(--hb,154px) + 96px)} 
+}
+@media (max-width:560px){
+  .tr-lead{font-size:16px}
+  .tr-a h3{font-size:20px;margin-top:32px}
+  .tr-s+.tr-s{margin-top:56px}
+  .tr-fig{padding:8px}
+}
+</style>
+<link rel="stylesheet" href="hdr.css?v=254">
+<link rel="stylesheet" href="ft.css?v=1">
+<link rel="stylesheet" href="calc.css?v=71"> 
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wm" viewBox="0 0 618 196"><path d="M227.34,36.79c0-.87.73-1.6,1.6-1.6h25.7c6.24,0,11.62,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.77,10.01,3.77,15.66v20.02c0,5.66-1.31,10.88-3.77,15.66-2.47,4.79-6.1,8.41-10.89,11.31-4.79,2.76-10.16,4.21-16.41,4.21h-5.52v42.06c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6V36.79ZM254.05,96.55c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-18.86c0-3.34-.73-5.95-2.32-7.98-1.6-2.03-4.07-3.05-7.26-3.05h-4.94v40.76h4.94v.15Z"></path><path d="M364.24,36.21l-25.99,69.91v53.08c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-53.08l-25.99-69.91c-.15-.58.15-1.16.87-1.16h21.63c.73,0,1.45.44,1.6,1.16l12.78,41.92,12.78-41.92c.15-.73.87-1.16,1.6-1.16h21.63c.58,0,1.02.73.87,1.16Z"></path><path d="M366.13,134.7h21.78c.87,0,1.6.72,1.6,1.6v22.92c0,.87-.73,1.6-1.6,1.6h-21.78c-.87,0-1.6-.72-1.6-1.6v-22.92c0-.87.73-1.6,1.6-1.6Z"></path><path d="M448.74,159.79l-14.95-44.38h-3.05v43.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.72-1.6-1.6V36.79c0-.87.73-1.6,1.6-1.6h26.57c6.24,0,11.61,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.78,10.01,3.78,15.66v18.13c0,5.8-1.31,11.17-3.92,15.95-2.61,4.79-6.24,8.56-11.03,11.31l19.6,48.01c.29.58-.15,1.16-.87,1.16h-21.49c-.87,0-1.6-.44-1.74-1.16ZM430.73,94.66h5.81c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-16.97c0-3.34-.73-5.95-2.32-7.98s-4.07-3.05-7.26-3.05h-5.81v39.02Z"></path><path d="M487.5,35.05h18.58c.87,0,1.6.73,1.6,1.6v89.2c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.07,4.21,7.26,4.21s5.52-1.45,7.26-4.21c1.6-2.76,2.47-6.67,2.47-11.46V36.79c0-.87.73-1.6,1.6-1.6h18.58c.87,0,1.6.73,1.6,1.6v89.78c0,6.96-1.31,13.05-3.92,18.42-2.61,5.37-6.24,9.57-11.03,12.76-4.79,3.05-10.31,4.64-16.55,4.64s-11.61-1.6-16.41-4.64c-4.79-3.05-8.42-7.4-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42V36.79c-.15-1.02.58-1.74,1.45-1.74Z"></path><path d="M209.04,69.43v57.15c0,6.82-1.31,12.91-4.07,18.42-2.76,5.51-6.53,9.72-11.47,12.76-4.94,3.05-10.74,4.64-17.13,4.64s-12.05-1.6-17.13-4.64c-4.94-3.05-8.86-7.4-11.47-12.76-2.32-4.5-3.63-9.57-3.92-14.94,0-.29,0-.58.14-.87l20.62-43.22c.29-.44,1.02-.29,1.02.29v39.89c0,4.79,1.02,8.56,2.9,11.31,1.89,2.9,4.65,4.21,7.98,4.21s6.24-1.45,8.13-4.21c1.89-2.9,2.76-6.67,2.76-11.31v-56.13c0-4.79-.87-8.56-2.76-11.31-1.89-2.9-4.5-4.35-8.13-4.35-3.34,0-6.1,1.45-7.98,4.35-.73,1.16-1.45,2.47-1.89,3.92l-22.79,48.15-14.23,29.88-3.77,7.98v.14c-2.32,3.63-5.37,6.67-8.86,8.99-4.79,3.05-10.31,4.64-16.55,4.64s-11.76-1.6-16.41-4.64c-4.79-3.05-8.42-7.25-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42v-57.15c0-6.96,1.31-13.05,3.92-18.42,2.61-5.37,6.24-9.57,11.03-12.76,4.79-3.05,10.31-4.64,16.41-4.64s11.61,1.6,16.26,4.79c4.65,3.19,8.28,7.4,10.89,12.76,2.61,5.37,3.77,11.46,3.77,18.27v5.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-5.22c0-4.93-.73-8.85-2.32-11.6-1.45-2.76-3.77-4.06-6.82-4.06s-5.52,1.45-7.11,4.21c-1.6,2.76-2.47,6.67-2.47,11.46v55.99c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.06,4.21,7.11,4.21s5.52-1.45,7.11-4.21c.44-.73.73-1.45,1.02-2.32l8.42-17.84,29.91-64.11,1.02-2.18c2.76-5.51,6.53-9.72,11.47-12.76,4.94-3.05,10.6-4.64,17.13-4.64s12.2,1.6,17.13,4.64c4.94,3.05,8.86,7.4,11.47,12.76,2.61,5.51,3.92,11.6,3.92,18.42Z"></path></symbol>
+  <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
+</svg>
+
+<script src="hdr.js?v=162" data-svc="copy"></script>
+
+<main class="wrap tr-top"><div class="crumbs"><a href="home.html">Главная</a><span>/</span><span>Требования к макетам</span></div>
+  <h1>Требования к макетам</h1>
+  <p class="tr-lead">Файл по этим правилам печатается без доработки. Допечатники проверяют каждый макет, но могут пропустить ошибку, поэтому сверьтесь заранее.</p>
+</main>
+
+<section id="korotko"><div class="wrap">
+  <div class="sh"><h2>Коротко</h2></div>
+  <div class="tr-k">
+    <figure class="scheme" aria-label="Схема размеров макета на примере визитки">
+      <svg viewBox="0 0 96 56" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><rect class="s-bleed" width="96" height="56"/><rect class="s-trim" x="3" y="3" width="90" height="50"/><rect class="s-safe" x="6" y="6" width="84" height="44"/></svg>
+      <figcaption>
+        <div><i class="k-bleed"></i><b>Вылеты по 3 мм</b><span>визитка 90 × 50 — файл 96 × 56 мм</span></div>
+        <div><i class="k-trim"></i><b>Линия реза</b><span>размер готового изделия</span></div>
+        <div><i class="k-safe"></i><b>Текст и логотип в 3 мм от реза</b><span>у брошюр и книг — 5 мм</span></div>
+      </figcaption>
+    </figure>
+    <div>
+      <ul class="rules">
+        <li><b>PDF, PSD, TIFF или JPEG</b><span>лучше PDF; AI, CDR, EPS сохраните в PDF</span></li>
+        <li><b>Цвета в CMYK</b><span>чёрно-белое в Grayscale</span></li>
+        <li><b>Картинки от 300 dpi</b><span>фон от 200, мелкий текст от 400, не больше 600</span></li>
+        <li><b>Шрифты в кривых</b><span>не меньше 6–7 pt</span></li>
+        <li><b>Масштаб 1:1</b><span>каждое изделие — отдельная страница</span></li>
+        <li><b>Без рамки по краю</b><span>после резки она выйдет кривой</span></li>
+      </ul>
+      <p class="tr-no">Word, Excel и Publisher — не макет: такой файл допечатники дорабатывают за отдельную плату.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="tr"><div class="wrap tr-g">
+  <nav class="tr-nav" aria-label="Разделы"><b>Разделы</b>
+  <button class="tr-cur" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="trD"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span id="trCur">Разделы</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+  <ul>
+    <li><a href="technical-requirements/#korotko">Коротко</a></li>
+    <li><a href="technical-requirements/#section-1">Общие требования</a></li>
+    <li><a href="technical-requirements/#section-4">Частые ошибки</a></li>
+    <li><a href="technical-requirements/#section-2">Файлы AI, PDF, CDR, PSD</a></li>
+    <li><a href="technical-requirements/#section-3">Широкоформатная печать</a></li>
+    <li><a href="technical-requirements/#section-6">Стикерпаки, конверты, буклеты, бланки</a></li>
+    <li><a href="technical-requirements/#section-7">Брошюры и книги</a></li>
+    <li><a href="technical-requirements/#section-8">Кружки, ручки, одежда</a></li>
+    <li><a href="technical-requirements/#section-5">Фольга и выборочный лак (MGI)</a></li>
+    <li><a href="technical-requirements/#section-9">UV DTF</a></li>
+    <li><a href="technical-requirements/#section-10">Объёмные наклейки со смолой</a></li>
+    <li><a href="technical-requirements/#help">Не получается подготовить</a></li>
+  </ul></nav>
+  
+  <div class="cf-dim" id="trDim" data-close hidden></div><div class="cf-pop" id="trD" role="listbox" aria-label="Разделы" hidden><div class="cf-hd"><span class="cf-gl" aria-hidden="true"><i></i><i></i><i></i><i></i></span><h3>Разделы</h3><button type="button" class="cf-x" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><div class="cf-ls"></div></div>
+  <article class="tr-a">
+<section class="tr-s" id="section-1" aria-labelledby="section-1-h"><h2 id="section-1-h">Общие требования</h2>
+<p>Предполагается, что все оригинал-макеты подготовлены с учетом данных технических требований и не требуют правок. Поэтому, обращаем Ваше внимание, что материалы, не соответствующие требованиям, могут привести к браку в процессе печати или послепечатной обработки.</p>
+<p>Отдел допечатной подготовки производит проверку файлов на соответствие техническим требованиям, но не гарантирует обнаружение всех ошибок и несоответствий. Дополнительно возможна доработка макета до соответствия техническим требованиям, сроки и стоимость доработки обговариваются отдельно.</p>
+<h3 id="format-fayla">Формат файла</h3>
+<ul>
+<li>Форматы в порядке предпочтения: PDF → PSD → Tiff → Jpeg</li>
+<li>Для остальных расширений файлов автоматическая проверка не производится</li>
+</ul>
+<p>Если Вы используете Eps, Ai (Illustrator), Cdr (CorelDraw), Id (InDesign), то Вам необходимо перевести файл в формат PDF или оформить заказ прислав его на почту.</p>
+<p>Обращаем Ваше внимание, что файлы линейки Microsoft Office (Word, Excel, Publisher) не являются оригинал-макетами и требуют доработки за отдельную плату.</p>
+<h3 id="vylety">Вылеты</h3>
+<p>Вылеты — это припуски к обрезному формату, которые необходимо создавать, когда часть изображения уходит «под обрез» (то есть линия реза проходит по картинке).</p>
+<ul>
+<li>3 мм (со всех сторон) – для листовой продукции</li>
+<li>5 мм (со всех сторон) – для многополосной продукции</li>
+</ul>
+<p>При отсутствии вылетов после резки по краям продукции могут образоваться белые поля разных размеров.</p>
+<p>Влёты — отступы от линии реза и/или сгиба до содержимого (для учета погрешности печати и реза).</p>
+<ul>
+<li>Не менее 3 мм (со всех сторон) – для листовой продукции</li>
+<li>Не менее 5 мм (со всех сторон) – для многополосной продукции</li>
+</ul>
+<p>При отсутствии необходимого размера влёта, может происходить «зарезание» значимых элементов макета (слова, номера телефонов, логотипы и пр.)</p>
+<p class="tr-warn">Не надо отображать в макете линии скругления, биговки и прочих вспомогательных элементов (необходимо размещать данные элементы в отдельном слое или прикладывать превью файл).</p>
+<h3 id="ramki">Рамки</h3>
+<ul>
+<li>Не используйте в дизайне рамки по периметру</li>
+<li>Отступ для рамки от края реза должен быть не менее 5-7 мм (но и в этом случае при печати и резке будет отклонение, а значит допустимые отклонения становятся визуально очень заметны)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka.jpg" width="2080" height="1200" alt="Пример: Рамки" loading="lazy" decoding="async"></figure>
+<h3 id="tsvet">Цвет</h3>
+<ul>
+<li>Цветовая модель: CMYK (нельзя использовать RGB и другие цветовые модели, это приведет к искажению цвета)</li>
+<li>Профиль: лучше не внедрять цветовые профили (т.к. они создаются под каждую конкретную печатную машину и материал)</li>
+</ul>
+<p>При необходимости используйте профиль FOGRA 39.</p>
+<p>Заполнение цветом:</p>
+<ul>
+<li>Менее 3% — не воспроизводится</li>
+<li>Менее 5 % — не гарантируется</li>
+</ul>
+<p>Максимальная плотность красок:</p>
+<ul>
+<li>230% — для печати на немелованной бумаге</li>
+<li>270% — на мелованной бумаге</li>
+</ul>
+<p>В противном случае возможно небольшое искажение цвета.</p>
+<p>Печать черно-белым или серым цветом:</p>
+<ul>
+<li>Серые и черно-белые изображения должны быть переведены в режим Grayscale (иначе при печати могут быть отклонения в другой оттенок. Например: в голубой или пурпурный)</li>
+<li>Самый светлый пропечатываемый серый цвет – 12%</li>
+<li>Черные и серые плашки лучше делать составным цветом (для цифровой печати: С=20, М=20, Y=20, К=100; для офсетной печати: С=50, М=50 Y=50, К=100)</li>
+</ul>
+<p>Данный «составной» цвет будет выглядеть более насыщенно, но не забывайте, что в этом случае печать будет полноцветная (в 4 краски).</p>
+<p class="tr-warn">В цифровом способе печати нельзя печатать пантонами, а так же в 1, 2 или 3 краски. Печать или полноцветная – CMYK (печать в 4 цвета), или печать в 1 черную краску – Grayscale.</p>
+<p>Макеты, которые не соответствуют требованию, переформатируются, чтобы с ними могла работать наша типография. В результате оттенки могут измениться.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/rgb-smyk.jpg" width="900" height="516" alt="Пример: Цвет" loading="lazy" decoding="async"></figure>
+<h3 id="razresheniye">Разрешение</h3>
+<p>Растровые форматы и связанные с макетом файлы (линки):</p>
+<ul>
+<li>Фон и подложки от 200dpi</li>
+<li>Логотипы и картинки от 300dpi</li>
+<li>Мелкий текст и схемы от 400dpi</li>
+<li>Максимальное разрешение всех объектов не должно превышать 600dpi</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/300-75dpi.jpg" width="900" height="344" alt="Пример: Разрешение" loading="lazy" decoding="async"></figure>
+<h3 id="razmer">Размер</h3>
+<ul>
+<li>Масштаб 1:1</li>
+<li>Необходимо задать послеобрезной формат плюс вылеты</li>
+<li>Развороты и спуски полос: не принимаются (исключение для разворотов: обложки брошюр на термоклее и евробуклеты)</li>
+<li>Каждое изделие в отдельном файле (отдельная страница в редакторе)</li>
+<li>Все служебные метки не должны заходить на изображение, в том числе на вылеты</li>
+<li>Прозрачность, тени, структуры — растрированы</li>
+</ul>
+<h3 id="shrift">Шрифт</h3>
+<ul>
+<li>Весь текст необходимо перевести в кривые.</li>
+<li>Не рекомендуется делать составным черным цветом текст и тонкие линии (используйте К=100). Составной цвет может привести к появлению цветных ореолов вокруг покрашенных им объектов</li>
+<li>Минимальный размер шрифта (задаваемого в несколько красок):</li>
+<li>6 pt — для рубленных гарнитур и полужирных начертаний</li>
+<li>7 pt – для шрифтов с засечками, декоративных и тонких шрифтов</li>
+</ul>
+<p>В случае корректировки текста в типографии прикрепите к заказу все используемые в дизайн макете шрифты.</p>
+<p>Обращаем внимание, чем меньше размер шрифта, тем сложнее его читать. Поэтому при просмотре макета используйте реальное отображение размера файла.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka2.jpg" width="2080" height="1200" alt="Пример: Шрифт" loading="lazy" decoding="async"></figure>
+<h3 id="lichnyye-i-melkiye-obyekty">Линии и мелкие объекты</h3>
+<p>Мелкие объекты и тонкие линии выглядят лучше, если они окрашены только одной из четырех составляющих CMYK. Составной цвет может приводить к появлению цветных ореолов вокруг покрашенных им объектов.</p>
+<p>Не рекомендуется делать мелкие белые объекты, мелкий белый текст и тонкие белые линии на фоне, состоящем из нескольких красок, т.к. они могут не пропечататься или пропечататься частично</p>
+<p>Минимальные толщины линий:</p>
+<ul>
+<li>0,2 pt — для одноцветных линий</li>
+<li>0,5 pt — толщина многоцветной линии или белой линии на составном фоне</li>
+</ul>
+<h3 id="obrashchayem-vashe-vnimaniye">Обращаем ваше внимание</h3>
+<ul>
+<li>При приемке макетов осуществляется проверка файлов, которая не всегда выявляет вышеперечисленные ошибки. В связи с этим, мы не гарантируем их 100% отслеживание.</li>
+<li>При возникновении брака ввиду несоблюдения технических требований вся ответственность ложится на сторону предоставившую некорректный макет.</li>
+</ul>
+<p>Макеты, не соответствующие данным требованиям, могут быть автоматически доработаны в типографии без согласования с заказчиком.</p>
+<p>Цвет при печати может отличаться от экранного из-за особенностей монитора. В связи с этим рекомендуется делать цветопробу.</p>
+<p>Без цветопробы претензии по цвету не принимаются.</p>
+</section>
+<section class="tr-s" id="section-4" aria-labelledby="section-4-h"><h2 id="section-4-h">Частые ошибки</h2>
+<h3 id="razmer-produktsii-ch">Размер продукции</h3>
+<ul>
+<li>Размер продукции должен быть задан форматом листа в программе верстки</li>
+<li>Разные макеты продукции создавайте в отдельных файлах, лицо — на одном листе файла, оборот- на другом листе файла</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka3-1.jpg" width="2080" height="1200" alt="Пример: Размер продукции" loading="lazy" decoding="async"></figure>
+<h3 id="otsutstviye-vyletov-ch">Отсутствие вылетов</h3>
+<ul>
+<li>Вылеты (припуски к обрезному формату) обязательны, когда часть изображения уходит под обрез (линия реза проходит по картинке)</li>
+<li>Размер вылетов — по 3 мм с каждой стороны</li>
+<li>При отсутствии вылетов после резки по краям продукции могут быть белые поля разных размеров</li>
+<li>Расстояние от значимых элементов макета (слова, номера телефонов, логотип и пр.) до линии реза должно быть не менее 2 мм, иначе элементы могут «зарезаться»</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka-1.jpg" width="2080" height="1200" alt="Пример: Отсутствие вылетов" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Задайте вылеты при создании документа</li>
+<li>Проставьте вылеты при сохранении макета</li>
+</ul>
+<h3 id="ramki-ch">Рамки</h3>
+<ul>
+<li>Не делайте рамки вокруг макета</li>
+<li>Не создавайте рамки близко к краю макета (старайтесь вообще не использовать рамки в макете)</li>
+</ul>
+<h3 id="nevernaya-tsvetovaya-model-ch">Неверная цветовая модель</h3>
+<ul>
+<li>Все элементы макета должны быть в цветовой модели CMYK, т.к. печать производится только в этой модели</li>
+<li>Переведите все элементы из RGB в CMYK. Вы увидите изменения цветов макета и получите более ясное представление, как будет выглядеть макет при печати (при условии, что у Вас откалиброван монитор)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/rgb-smyk.jpg" width="900" height="516" alt="Пример: Неверная цветовая модель" loading="lazy" decoding="async"></figure>
+<h3 id="nizkoye-razresheniye-izobrazheniy-ch">Низкое разрешение изображений</h3>
+<ul>
+<li>Для печати листовой продукции необходимо разрешение не менее 220-300 dpi в масштабе 1:1</li>
+<li>Низкое разрешение изображений приводит к потере качества печати</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/300-75dpi.jpg" width="900" height="344" alt="Пример: Низкое разрешение изображений" loading="lazy" decoding="async"></figure>
+<h3 id="format-izobrazheniy-ch">Формат изображений</h3>
+<ul>
+<li>Использование изображения в формате JPEG  может приводить к потере качества изображения (на границах цветов и на плавных переходах оттенков могут быть JPEG-артефакты – посторонний шум)</li>
+<li>По возможности используйте в макете изображения в форматах: TIFF без компрессии, TIFF с компрессией LZW или ZIP</li>
+<li>На иллюстрации можно увидеть разницу между хорошей картинкой и картинкой, испорченной JPEG-сжатием</li>
+</ul>
+<h3 id="poteryannyye-linki-ch">Потерянные линки</h3>
+<ul>
+<li>Все изображения в макете должны быть высланы в типографию вместе с файлом верстки (во избежание ошибки «потерянные линки»)</li>
+<li>Соберите файлы с изображением в единый архив и вышлите нам на почту zakaz@copy.ru</li>
+<li>Если вёрстка производится в Adobe InDesign, используйте для сборки команду Package (File -&gt;Package)</li>
+</ul>
+</section>
+<section class="tr-s" id="section-2" aria-labelledby="section-2-h"><h2 id="section-2-h">Файлы AI, PDF, CDR, PSD</h2>
+<h3 id="adobe-illustrator">Adobe Illustrator - файлы формата AI</h3>
+<ul>
+<li>Все шрифты переведены в кривые</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka4.jpg" width="2080" height="1200" alt="Пример: Adobe Illustrator - файлы формата AI" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Макеты расположены на странице обрезного формата. 1 макет – 1 область (нельзя располагать на 1 области несколько макетов)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka3.jpg" width="2080" height="1200" alt="Пример: Adobe Illustrator - файлы формата AI" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Указаны вылеты – по 3 мм с каждой стороны</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2026/03/rabota_s_maketom.webp" width="900" height="274" alt="Пример: Adobe Illustrator - файлы формата AI" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Вставляя растровые изображения желательно приложить все изображения к заказу</li>
+<li>Не рекомендуется использовать последние версии программ</li>
+<li>Эффекты наложения и прозрачности растрированы (Object-Rasterize)</li>
+<li>Количество узлов в кривых не больше 10 000</li>
+</ul>
+<h3 id="adobe-pdf">Adobe PDF - файлы формата PDF</h3>
+<ul>
+<li>Разрешение растровых элементов не менее 300 dpi и не более 600 dpi</li>
+<li>Штриховых — не менее 600 dpi и не более 1200 dpi</li>
+<li>Прозрачности переведены в битмап до сохранения в PDF</li>
+<li>Все картинки в файле имеют достаточное разрешение для печати</li>
+<li>Все шрифты, использованные в макете, включены в файл</li>
+<li>Файл не имеет защит (для возможности нормальной подготовки файла для печати)</li>
+</ul>
+<h3 id="corel-draw">Corel Draw - файлы формата CDR</h3>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/oiginal_maket_shrift_corel.png" width="1063" height="253" alt="Пример: Corel Draw - файлы формата CDR" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Прозрачность, тени и текстуры растрированы</li>
+<li>Толщина линий не менее 0,13 мм. (не используйте Hairline)</li>
+<li>Для заливки объектов использована палитра CMYK</li>
+<li>Количество узлов в кривых не больше 10 000</li>
+<li>В макете отсутствуют встроенные в него файлы формата PSD, содержащие прозрачные области и файлы TIFF с альфа-каналами</li>
+<li>Каждый макет располагается на отдельной странице (не располагайте на одной странице все макеты – это неверно)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka5.jpg" width="2080" height="1200" alt="Пример: Corel Draw - файлы формата CDR" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Заданная область соответствует размеру готового изделия (послеобрезного), дополнительно сделаны вылеты. При сохранении файла выставлены настройки «Сохранить с вылетами».</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2026/03/dopechat.webp" width="900" height="386" alt="Пример: Corel Draw - файлы формата CDR" loading="lazy" decoding="async"></figure>
+<h3 id="adobe-photoshop">Adobe Photoshop - файлы формата PSD</h3>
+<ul>
+<li>Разрешение растрового изображения – не менее 300 dpi (для листовой печати)</li>
+<li>Разрешение 1:1</li>
+<li>Цветовая модель CMYK</li>
+<li>Все слои в изображении слиты</li>
+<li>Размер изображения соответствует формату изделия + вылеты (по 3 мм с каждой стороны)</li>
+</ul>
+</section>
+<section class="tr-s" id="section-3" aria-labelledby="section-3-h"><h2 id="section-3-h">Широкоформатная печать</h2>
+<h3 id="obyem-fayla-sh">Объём файла</h3>
+<p>Оптимальный объем файла от 200 до 400 Мб.</p>
+<h3 id="razresheniye-sh">Разрешение</h3>
+<p>Следует учитывать, что разрешение макета и разрешение печати – разные вещи.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_shf3.jpg" width="2080" height="1200" alt="Пример: Разрешение" loading="lazy" decoding="async"></figure>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_shf2.jpg" width="2080" height="1200" alt="Пример: Разрешение" loading="lazy" decoding="async"></figure>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_shf.jpg" width="2080" height="1200" alt="Пример: Разрешение" loading="lazy" decoding="async"></figure>
+<h3 id="format-sh">Формат</h3>
+<ul>
+<li>TIFF</li>
+<li>PSD</li>
+<li>PDF</li>
+<li>Ai</li>
+<li>EPS</li>
+<li>CDR</li>
+<li>Одно изображение</li>
+<li>Один файл (или одна страница в файле)</li>
+</ul>
+<h3 id="rastrovyye-fayly-sh">Растровые файлы</h3>
+<p>При подготовке растровых файлов:</p>
+<ul>
+<li>Свести все слои в один фоновый слой (Background)</li>
+<li>Не должно быть альфа-каналов (Channels) и путей (Paths)</li>
+<li>Эффекты и тени растрированы</li>
+</ul>
+<p>Цветовое пространство: CMYK, 8 bits</p>
+<p>Цветовой профиль: Coated FOGRA39 или без внедрения цветового профиля</p>
+<p>Размер: 1:1</p>
+<h3 id="vektornyye-fayly-sh">Векторные файлы</h3>
+<p>При подготовке векторных файлов:</p>
+<ul>
+<li>Растровые изображения внедрены в файл</li>
+<li>Все шрифты переведены в кривые</li>
+<li>Эффекты и тени растрированы (т.к. нерастрированные эффекты и тени могут привести к некорректной печати и искажению изображения)</li>
+<li>Элементы макета сгруппированы и находятся внутри макета для печати</li>
+</ul>
+<p>В случае предоставления макета в уменьшенном формате (например, 1:10) обязательно проверьте, чтобы в контурах была установлена опция – «Scale with image» (масштабировать с изображением).</p>
+<p>Векторный файл НЕ СЛЕДУЕТ готовить в натуральную величину. При масштабировании качество векторного файла никак не меняется и не производится каких-либо изменений с включенными в файл растровыми изображениями.</p>
+<p>Однако, если Вы попытаетесь сохранить векторный макет плаката размером 6х3 метра на диск в формате EPS, то процесс сохранения займет значительное время, а размер файла на диске будет неоправданно велик.</p>
+<h3 id="tsvet-sh">Цвет</h3>
+<p>Цветовая модель: СМYK</p>
+<p>Жёстко-заданные цвета: понимаются пантонные и корпоративные. При использовании таких цветов, необходимо учитывать, что оборудование для широкоформатной печати не дает 100% передачу и попадания в нужный цвет.</p>
+<p>Речь может идти только о приближенном цвете с высокой степенью совпадения.</p>
+<p>При наличии в Ваших макетах фирменных цветов модели Pantone и RGB, необходимо перевести их в CMYK самостоятельно. Или это будет сделано автоматически перед печатью, что может привести к искажению цветов.</p>
+<ul>
+<li>Черный цвет должен быть составным (например : C75, M68, Y67, K90), в противном случае цвет получится не черным, а темно-серым с заметными горизонтальными полосами. В несоставном сером цвет так же будет «полосить»</li>
+<li>При печати ч/б (черно-белого) изображения требуется подготовить файл в палитре CMYK с рабочим только чёрным каналом. Все остальные каналы — по нулям! В случае если черно- белый цвет составной (состоит из 4-х цветов CMYK), то при печати возможен уход цвета в синеву, красноту или желтизну</li>
+<li>Если по краям файла есть светлые поля – сделайте рамку черного цвета толщиной в 1 мм</li>
+</ul>
+<p>Для корректной цветопередачи рекомендуем делать цветопробу. Цветопроба – это образец печати, изготовленный на том  материале и оборудовании, на котором планируется выполнить весь тираж.</p>
+<p>Без цветопробы претензии по цвету не принимаются.</p>
+<h4>Примечания</h4>
+<ul>
+<li>Прикладывайте к макету просмотровый файл (в формате jpeg), а также сопроводительное письмо с указанием точных параметров заказа</li>
+<li>Размер, материал, кол-во экземпляров и описание послепечатной обработки (если таковая предусмотрена)</li>
+</ul>
+<p>Наилучшее решение — предоставлять макеты для широкоформатной печати в растровом формате TIFF. В TIFF файле все слои свести в один слой Background и удалить дополнительные каналы и пути.</p>
+<p>В этом случае Вы будете застрахованы от неожиданностей в процессе печати. Хотя понятна трудность, возникающая в данном случае – передача файла большого объема.</p>
+</section>
+<section class="tr-s" id="section-6" aria-labelledby="section-6-h"><h2 id="section-6-h">Стикерпаки, конверты, буклеты, бланки</h2>
+<h3 id="stikerpaki">Стикерпаки</h3>
+<ul>
+<li>Принимаемые форматы: Pdf, Ai, Eps, Cdr. Мы не принимаем макеты, выполненные в приложении Microsoft Office</li>
+<li>Рабочая область должна соответствовать точному размеру изделия на выходе</li>
+<li>Шрифты переведены в кривые</li>
+<li>Все растровые изображения должны быть с разрешением 300 dpi и масштабе 1:1 и иметь цветовую модель CMYK</li>
+<li>Если у стикерпака есть фоновое изображение, вылеты должны быть по 3мм с каждой стороны</li>
+<li>Безопасная зона от обрезного края до ближайших контуров должна быть 5мм</li>
+<li>Расстояние между ближайшими контурами реза 3мм</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copy_ru_stikerpak.jpg" width="2080" height="1200" alt="Пример: Стикерпаки" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Расстояние между изображением и контуром реза — 3мм</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copy_ru_stikerpak2.jpg" width="2080" height="1200" alt="Пример: Стикерпаки" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Изображения самих наклеек могут быть и растровыми и векторными, но контур для надсечки должен быть обязательно векторным</li>
+<li>Контур должен быть сделан линией с атрибутом Обводка из центра в отдельном верхнем слое и покрашен в плашечный цвет с названием «CUT»</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copy_ru_stikerpak3.jpg" width="2080" height="1200" alt="Пример: Стикерпаки" loading="lazy" decoding="async"></figure>
+<h3 id="konverti">Конверты</h3>
+<p>В нашей типографии возможна как печать на готовых конвертах, так и создание уникальных различной формы конвертных изделий.</p>
+<p>Печать на готовых конвертах является более бюджетной и быстрой по времени. Но для создания пригласительных конвертов мы рекомендуем сделать вырубку конверта (что позволит Вам использовать различную дизайнерскую бумагу, а так же наносить изображение не только с внешней стороны, но и внутри конверта).</p>
+<h4>Печать на готовых конвертах</h4>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_konvert.jpg" width="2080" height="1200" alt="Пример: Печать на готовых конвертах" loading="lazy" decoding="async"></figure>
+<p>Особенности печати на готовых конвертах:</p>
+<ul>
+<li>Запечатка производится только внешней стороны ( оборот и клапан не запечатываются – см. схему)</li>
+<li>Печать «вкрай» невозможна – по 5 мм. С каждой стороны присутствуют рабочие поля, т.е. эта часть будет не запечатана ( см. схему)</li>
+<li>Печать только полноцветная ( цветовая модель CMYK). Нельзя использовать пантонные цвета или металлизированные краски</li>
+</ul>
+<p>Требования к макету:</p>
+<ul>
+<li>Цветовая модель CMYK</li>
+<li>Все шрифты – переведены в кривые</li>
+<li>Размер файла в макете равен размеру конверта ( вылеты не нужны)</li>
+<li>Не используйте рамки по периметру макета, т.к. при печати будет небольшое отклонение конверта в печатной машине ( перекос), что будет очень заметно на рамках</li>
+</ul>
+<h3 id="bukleti">Буклеты</h3>
+<p>Буклет — это сфальцованный в два и более сгибов лист бумаги, на обеих сторонах которого размещена текстовая и/или графическая информация.</p>
+<p>Требования:</p>
+<ul>
+<li>Принимаемые форматы: Ai, Eps, Cdr, Tiff, Pdf. Мы не принимаем макеты, выполненные в приложении Microsoft Office</li>
+<li>Рабочая область должна соответствовать точному размеру изделия на выходе</li>
+<li>Вылеты – по 3 мм. с каждой стороны ( <a href="technical-requirements/#vylety">подробнее про вылеты</a>)</li>
+<li>Шрифты переведены в кривые</li>
+<li>Все растровые изображения должны быть с разрешением 300 dpi и масштабе 1:1 и иметь цветовую модель CMYK</li>
+</ul>
+
+<h3 id="samokopiruyuschiesya-blanki">Самокопирующиеся бланки</h3>
+<p>Самокопирующиеся бланки — это несколько листов, изготовленных из самокопирующей бумаги, скреплённых с одной стороны специальным клеем, позволяющим достаточно легко, при необходимости, разделять эти листы.</p>
+<p>Требования:</p>
+<ul>
+<li>Рабочая область должна соответствовать точному размеру изделия на выходе</li>
+<li>Вылеты по 3 мм. с каждой стороны (если у вас есть изображения в край или под обрез)</li>
+<li>Обращаем Ваше внимание, что печать или черно-белая или полностью цветная (даже если у Вас полностью черно-белый макет, но логотип цветной , то и печать будет цветная)</li>
+<li>Все шрифты переведены в кривые</li>
+<li>Со стороны склейки не должно быть фоновой запечатки.Если есть фон плотностью выше 50-40%, то для улучшения качества склейки рекомендуется делать незапечатанную полоску шириной 2-3 мм.</li>
+<li>Принимаемые форматы Ai, Eps, Cdr, Tiff, Pdf. Если Вы создаете макет в Microsoft Office, то перед отправкой макета, сохраните его в PdF так вы обезопасите себя от «слетевших» шрифтов и прочих неприятных ситуаций</li>
+<li>Цвета самокопирки: белая, розовая, зеленая (салатовая), голубая, желтая. Что позволяет легче контролировать делооборот (например: зеленый-заказчику, белый-в бухгалтерию)</li>
+<li>Плотность слоев колеблется от 55 до 60 г/кв.м. Это необходимо, чтобы увеличить количество слоев, на которые передается рисунок</li>
+<li>Склейка в слипы – между собой скрепляются только листы комплекта, склейка в книжки по 50, 100, 200 штук – между собой объединяются комплекты соответственно по 50, 100, 200 шт.</li>
+<li>Дополнительно на самокопирующихся бланках может быть нанесена сквозная нумерация</li>
+</ul>
+</section>
+<section class="tr-s" id="section-7" aria-labelledby="section-7-h"><h2 id="section-7-h">Брошюры и книги</h2>
+<h3 id="broshyuri-na-prujinku">Брошюры на пружинку</h3>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki4.jpg" width="2080" height="1200" alt="Пример: Брошюры на пружинку" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Максимальная толщина – 40 мм.</li>
+<li>Важно, чтобы информация не попадала на отверстия при брошюровке – 6-8 мм. (от края изделия). Желательный отступ от края листа до важной информации – 13-18 мм. (от края брошюровки).</li>
+<li>Поля четных и нечетных полос должны быть различными ( зеркальными).</li>
+<li>Выступ обложки за блок: при одинаковом размере обложки и блока, продукция имеет неэстетичный вид ( блок выглядывает из под обложки/подложки). В случае увеличения размера обложки/подложки по ширине, блок будет закрыт.Не является обязательным техническим требований , делается при желании Заказчика.</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki.jpg" width="2080" height="599" alt="Пример: Брошюры на пружинку" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Количество полос кратно 2</li>
+<li>Каждая полоса должна быть на отдельной странице PDF-файла. Нельзя предоставлять полосы разворотами (например 1-2, 3-4, 5-6 и т.д.) или спуском (8-1, 7-2, 6-3 и т.д.). Последовательность полос должна быть верной, т.к. спуск для печати будет создаваться исходя из последовательности , представленном в файле заказчика</li>
+<li>Размер страницы – 1:1 (требуемого конечного формата) плюс вылеты (по 3 мм. с каждой стороны)</li>
+</ul>
+<h3 id="broshyuri-na-skobu">Брошюры на скобу</h3>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki2.jpg" width="2006" height="714" alt="Пример: Брошюры на скобу" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Максимальное количество полос – 60 (при бумаге блока 80 гр., обл. – 130-170 гр.)</li>
+<li>Количество полос кратно 4</li>
+<li>При большом объеме необходимо учитывать компенсацию бига. В центральной части брошюры листы будут смещены из-за толщины корешка (см. картинку)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki2_2.jpg" width="2026" height="498" alt="Пример: Брошюры на скобу" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Каждая полоса должна быть на отдельной странице PDF-файла. Нельзя предоставлять полосы разворотами (например 1-2, 3-4, 5-6 и т.д.) или спуском (8-1, 7-2, 6-3 и т.д.). Последовательность полос должна быть верной, т.к. спуск для печати будет создаваться исходя из последовательности , представленном в файле заказчика</li>
+<li>Размер страницы – 1:1 (требуемого конечного формата) плюс вылеты ( по 3 мм. с каждой стороны). Для скобы допустимо использовать на вылеты следующую страницу блока у корешковой части, но если Вы не уверены, в правильности , то лучше сделать вылеты по 3 мм. с каждой стороны</li>
+</ul>
+<h3 id="kbs">КБС (клеевое бесшвейное скрепление)</h3>
+<p>Данный тип переплета отличается от других изданий тем, что скрепление предварительно подобранных листов блока с обложкой происходит путем склеивания их по корешку полиуретановым клеем.</p>
+<p>Для дополнительного увеличения прочности издания применяют комбинацию клеевого скрепления с шитьем нитками листов блока – предварительно тетради блока прошиваются нитками, а затем на сшитый блок приклеивается обложка. Такой тип скрепления называют КШС — клеевое швейное скрепление.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki3.jpg" width="2080" height="1200" alt="Пример: КБС (клеевое бесшвейное скрепление)" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Минимальная толщина корешка – 5мм.</li>
+<li>Максимальная толщина (при толщине больше 30 мм. желательно использовать шитье блока для лучшего раскрытия и увеличения прочности изделия) – 50 мм.</li>
+<li>Для скрепления обложки с блоком используются технологические поля 6 мм. шириной (см. на схеме «зона проклейки»)</li>
+<li>Обложки предоставляются разворотами ( 1-4, 2-3 стр. обложки ) с учетом толщины корешка ( толщину корешка можно уточнить у менеджера типографии)</li>
+<li>Блок — каждая полоса должна быть на отдельной странице. Нельзя предоставлять полосы разворотами или спуском . Последовательность полос должна быть верной, т.к. спуск для печати будет создаваться исходя из последовательности , представленном в файле заказчика</li>
+<li>Не забывайте про зеркальность полос для блока. Т.е. поле у корешка должно быть больше , чем у обрезного края изделия (чтобы в готовом изделии поля зрительно выглядели ровными) Совет: Если Вы создаете блок изделия в Microsoft Word (мы не рекомендуем данную программу для верстки каких-либо изделий, но ввиду наличия подобных случаев со стороны заказчиков вынуждены предупредить) , то делайте ровные поля – по 20 мм. с каждой стороны</li>
+<li>При термоклеевом скреплении раскрытие изделий невысокое. Это необходимо учитывать при верстке блока. У корешка будет «невидимая зона» порядка 3-5 мм.</li>
+<li>Бумага для блока – от 80 до 130 гр.</li>
+<li>Бумага для обложки – 250 гр. ( желательно также использовать сверху матовую или глянцевую ламинацию, чтобы исключить ломания тонера на сгибе при открытии обложки)</li>
+</ul>
+<h3 id="7bc">7БЦ</h3>
+<p>Самый распространённый вид твердого переплета . Книга состоит из внутреннего блока (сшитых тетрадей) и обложки (крышки). Обложка изготавливается из картонной основы (2 – 2,5 мм.), обтянутых предварительно запечатанной и отламинированной бумагой. Внутренние стороны обложки соединены с блоком форзацами — они могут быть как запечатанными, так и выполнены из дизайнерской бумаги.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki5.jpg" width="2080" height="1200" alt="Пример: 7БЦ" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Обложка:</li>
+<li>обложка предоставляется разворотом</li>
+<li>обложка обязательно покрывается тонкой ламинацией. Поэтому необходимо учитывать , что цвет макета изменится (для матовой ламинации цвета станут менее насыщенными)</li>
+<li>Блок:</li>
+<li>каждая полоса должна быть на отдельной странице. Нельзя предоставлять полосы разворотами или спуском . Последовательность полос должна быть верной, т.к. спуск для печати будет создаваться исходя из последовательности , представленном в файле заказчика</li>
+<li>Не забывайте про зеркальность полос для блока. Т.е. поле у корешка должно быть больше , чем у обрезного края изделия (чтобы в готовом изделии поля зрительно выглядели ровными)</li>
+<li>Размер страницы – 1:1 (требуемого конечного формата) плюс вылеты (по 3 мм. с каждой стороны)</li>
+<li>Количество полос кратно 4</li>
+<li>Бумага для блока — от 80 до 130 гр.</li>
+<li>Форзац, нахзац — предоставляются отдельным файлом постранично, каждая полоса на отдельной странице. Если не предполагается запечатка, то необходимо это указать в задание</li>
+</ul>
+<h3 id="kreplenie-na-boltah">Крепление на болтах</h3>
+<p>Альтернативным способом скрепления брошюр является крепление на болтах (соединение блока и крышки болтами). Болты могут быть как металлическими, так и пластиковыми.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki6.jpg" width="2080" height="1200" alt="Пример: Крепление на болтах" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Обложка: Обложка может быть 2-х типов: мягкая и твердая обложка.</li>
+<li>твердая обложка: обложка изготавливается из картонной основы (2 – 2,5 мм.), обтянутой предварительно запечатанной и отламинированной бумагой.</li>
+<li>мягкая обложка: используется бумага 250-350 гр. с последующей ламинацией. В этом случае не нужно добавлять в макете по 20 мм. (технологические поля на загибку).</li>
+<li>для изделий на болтах обложка делится на две части и имеет разные наименования (как и для брошюр на пружинке) : «обложкой называют верхнюю часть, а «подложкой» — нижнюю часть.</li>
+<li>если используется твердая обложка, то для улучшения эстетичного вида лучше делать блок меньше, чем обложка (чтобы блок был скрыт обложкой в собранном виде)</li>
+<li>Блок:</li>
+<li>для блока так же добавляется к макету 20 мм. с корешковой стороны. Это является технологическим полем для скрепления болтами</li>
+<li>для лучшего раскрытия необходимо делать биговку блока . При большом количестве полос необходимо делать компенсацию биговку для хорошего раскрытия , т.е. немного смещать линию бига ( см. рис.)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_bloki_1.jpg" width="2080" height="563" alt="Пример: Крепление на болтах" loading="lazy" decoding="async"></figure>
+<ul>
+<li>вылеты по 3 мм. с каждой стороны</li>
+<li>Болтовое крепление:</li>
+<li>минимальная длина болтов – 5 мм. Следовательно толщина скрепляемого блока не должна быть меньше 3-4 мм. (иначе такая конструкция будет выглядеть непривлекательно)</li>
+<li>диаметр болта – 5 мм. , шляпка болта – 10 мм.</li>
+</ul>
+</section>
+<section class="tr-s" id="section-8" aria-labelledby="section-8-h"><h2 id="section-8-h">Кружки, ручки, одежда</h2>
+<h3 id="krujki">Кружки</h3>
+<ul>
+<li>Размер запечатываемой области на кружке – 80 на 200 мм.</li>
+<li>Предоставляйте макеты в PDF, Tiff, PSD. Файлы из программ пакета Microsoft office (Word, Excel, Publisher) не являются оригинал-макетами и требуют доработки за отдельную плату</li>
+<li>Масштаб изображения в макете должен быть 1:1, а разрешение — 300 dpi</li>
+<li>Важную информацию необходимо размещать не ближе 2–3 мм к краю</li>
+<li>Цветовая модель — CMYK (нельзя использовать RGB и другие цветовые модели, это приведет к искажению цвета)</li>
+<li>Цветовой профиль FOGRA 39. Минимальная толщина линий 0,15 мм. Минимальная плотность растра 8 %</li>
+<li>В макете не должно быть эффектов, невидимых или заблокированных слоев и объектов</li>
+<li>Все шрифты и обводки необходимо перевести в кривые</li>
+</ul>
+<h3 id="ruchki">Ручки</h3>
+<p>Общие требования к файлу</p>
+<ul>
+<li>Формат — векторный PDF</li>
+<li>Цветовая модель файлов — CMYK</li>
+<li>Цветовой профиль — FOGRA 39</li>
+<li>В макете не должно быть эффектов, невидимых или заблокированных слоев и объектов</li>
+<li>Все шрифты и обводки необходимо перевести в кривые</li>
+</ul>
+<p>Нанесение — УФ-печать</p>
+<ul>
+<li>Минимальная толщина линий 0,15 мм</li>
+<li>Вылеты — 2 мм</li>
+<li>Минимальная плотность растра 10%</li>
+<li>Нанесение только на светлую основу</li>
+<li>Сумма красок CMYK не более 330 %</li>
+</ul>
+<p>Цвет нанесения — палитра CMYK</p>
+<p>Нанесение — Лазерная гравировка по металлу</p>
+<p>Минимальная толщина:</p>
+<ul>
+<li>горизонтальных линий 0,12 мм</li>
+<li>вертикальных линий 0,15 мм</li>
+<li>инверсных линий 0,25 мм</li>
+</ul>
+<p>Расстояние между соседними линиями не менее 0,3 мм</p>
+<p>Цвет нанесения — зависит от материала изделия</p>
+<h3 id="odejda">Одежда</h3>
+<h4>Футболки, поло, свитшоты</h4>
+<ul>
+<li>Максимальный размер запечатываемой области на груди и спине – 300 на 420 мм, на рукаве футболки и поло 105 на 148 мм, на рукаве свитшота 100 на 300 мм.</li>
+<li>Предоставляйте макеты в PDF, Tiff, PSD, Png. Для футболок поло из-за особенностей печатного процесса принимаются макеты только в векторных форматах ai, eps, cdr или векторный pdf. Файлы из программ пакета Microsoft office (Word, Excel, Publisher) не являются оригинал-макетами и требуют доработки за отдельную плату, если это возможно.</li>
+<li>Не предоставляйте векторные макеты со вставленными в них картинками расширения .jpg – в этом случае мы не можем гарантировать качество печати.</li>
+<li>Масштаб изображения в макете должен быть 1:1, а разрешение — 300 dpi</li>
+<li>Цветовая модель — CMYK (нельзя использовать RGB и другие цветовые модели, это приведет к искажению цвета).</li>
+<li>Цветовой профиль FOGRA 39. Минимальная толщина линий 0,5 мм.</li>
+<li>В макете не должно быть эффектов, невидимых или заблокированных слоев и объектов.</li>
+<li>Все шрифты и обводки необходимо перевести в кривые для векторных форматов, или они должны быть растрированы для растровых форматов.</li>
+<li>Будьте внимательны при работе с фонами. Учитывайте нужны ли они, или фоном будет естественный цвет изделия.</li>
+<li>Не размещайте элементы дизайна на пуговицах поло или слишком близко к ним. К сожалению, в этих областях печать технически невозможна.</li>
+<li>Будет здорово, если вы приложите к макетам для печати изображения небольшого размера («превью»), чтобы показать точнее места размещения и пропорции.</li>
+</ul>
+</section>
+<section class="tr-s" id="section-5" aria-labelledby="section-5-h"><h2 id="section-5-h">Фольга и выборочный лак (MGI)</h2>
+<ul>
+<li>Если в изделии присутствует белый цвет, то для него необходимо подготовить отдельный макет. Цвет запечатываемого белого элемента в макете — 100% чёрный.</li>
+<li>Вместе с макетом рекомендуется прислать визуализацию (превью) будущего макета.</li>
+</ul>
+<h3 id="obshchiye-trebovaniya-tr">Общие требования</h3>
+<ul>
+<li>Формат</li>
+<li>Минимальный формат материала 210х210 мм</li>
+<li>Минимальная рабочая область 200х200 мм</li>
+<li>Максимальный формат материала 364х1020 мм</li>
+<li>Максимальная рабочая область 354х1010 мм</li>
+<li>Плотность / Толщина</li>
+<li>Минимальная плотность 135 г/м², не менее 150 мкм</li>
+<li>Поверхность</li>
+<li>MGI работает как на гладких материалах, так и на рыхлых (с праймированием)</li>
+<li>Если на изделии делается резка, вырубка, биговка по лаку или фольге, то обязательно нужна Soft Touch ламинация</li>
+</ul>
+<h3 id="rasshireniye-fayla-tr">Расширение файла</h3>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/formaty-faylov.png" width="1110" height="292" alt="Пример: Расширение файла" loading="lazy" decoding="async"></figure>
+<h3 id="masshtab-tr">Масштаб</h3>
+<ul>
+<li>Масштаб файла должен быть 1:1</li>
+</ul>
+<h3 id="soderzhimoye-i-shrifty-tr">Содержимое и шрифты</h3>
+<ul>
+<li>Макет может содержать растровые и векторные элементы</li>
+<li>Весь текст необходимо перевести в кривые</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka2-1.jpg" width="2080" height="1200" alt="Пример: Содержимое и шрифты" loading="lazy" decoding="async"></figure>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/06/instrukcziya_copu_ru_vizitka4.jpg" width="2080" height="1200" alt="Пример: Содержимое и шрифты" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Элементы, выделяемые фольгой / лаком, окрасить в чёрный цвет (CMYK 0.0.0.100)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/cherniy.png" width="1110" height="163" alt="Пример: Содержимое и шрифты" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Минимальная толщина линий:</li>
+<li>0,5 мм — для фольги</li>
+<li>0,3 мм — для выборочного лака</li>
+</ul>
+<p>Между линиями для фольги должно быть не меньше 0,5 мм, чтобы буквы не сливались как внутри, так и друг с другом.</p>
+<h3 id="rekomendatsii-po-podgotovke-fayla-tr">Рекомендации по подготовке файла</h3>
+<ul>
+<li>Всё в одном файле формата PDF</li>
+<li>Последовательность: превью, файл для печати, фольга, лак</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/vse-v-odnom-pdf-min.png" width="1110" height="453" alt="Пример: Рекомендации по подготовке файла" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Если на макете предусмотрена не одна фольга, а несколько (разные цвета), необходимо:</li>
+<li>Каждый цвет вынести на отдельную монтажную область</li>
+<li>Сделать схематичное превью в JPEG с подписями, где и какая фольга</li>
+<li>Если файл сложный, то превью — отдельный JPEG</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/slozhnyy-fayl-min.png" width="1110" height="412" alt="Пример: Рекомендации по подготовке файла" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Требования для превью</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/formaty-tablica-min.png" width="1110" height="569" alt="Пример: Рекомендации по подготовке файла" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Если есть биговка, необходимо исключить лак / фольгу из под линии бига, в противном случае лак /фольга ломаются и крошатся</li>
+<li>Если на конкретные элементы растрового изображения необходимо нанести лак, нужно отрисовать эти элементы в векторе, чтобы они точно совпадали с печатью</li>
+</ul>
+<h3 id="dopolnitelnaya-informatsiya-tr">Дополнительная информация</h3>
+<p>Информация в данном разделе носит ознакомительный характер. Все пункты из этого раздела будут учтены на этапе препресса.</p>
+<ul>
+<li>Процент чёрного (К) для фольги и для лака по умолчанию выставляется 100%, однако оператор при печати сам корректирует необходимый процент лака</li>
+<li>При подготовке сложных макетов дизайнер может регулировать процент заливки как лака, так и фольги (не рекомендуется на начальных уровнях подготовки дизайна)</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/procent-chyornogo.png" width="1147" height="336" alt="Пример: Дополнительная информация" loading="lazy" decoding="async"></figure>
+<ul>
+<li>Лак растекается, поэтому чем больше процент лака (черного) в макете, тем ощутимее объём и тем больше капля растекается. То есть для тонких линий больше подходит маленький процент лака, а для плашек — большой.</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/lak-rastekaetsya.png" width="1110" height="361" alt="Пример: Дополнительная информация" loading="lazy" decoding="async"></figure>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2023/01/obemnyy-effekt.png" width="1110" height="252" alt="Пример: Дополнительная информация" loading="lazy" decoding="async"></figure>
+<h3 id="obrashchayem-vnimaniye-tr">Обращаем внимание</h3>
+<ul>
+<li>При возникновении брака ввиду несоблюдения технических требований вся ответственность ложится на сторону предоставляющую некорректный макет.</li>
+<li>Макеты, не соответствующие данным требованиям, могут быть автоматически доработаны типографией без согласования с заказчиком.</li>
+<li>Цвет при печати может отличаться от экранного из-за особенностей вашего монитора. В связи с этим мы рекомендуем сделать цветопробу. Без цветопробы претензии по цвету не принимаются.</li>
+</ul>
+</section>
+<section class="tr-s" id="section-9" aria-labelledby="section-9-h"><h2 id="section-9-h">UV DTF</h2>
+<ul>
+<li>Масштаб 1:1</li>
+<li>Цветовое пространство RGB, профиль sRGB встроенный</li>
+<li>Все элементы должны быть на прозрачном фоне</li>
+<li>Для растровых макетов разрешение не менее 300 dpi</li>
+<li>Для растровых макетов, содержащих мелкий текст, разрешение 600 dpi или 1200 dpi</li>
+<li>Растровые макеты должны быть с чётким краем и заливкой цветом 100%, не допускаются полупрозрачные края и любого вида «распушенка» (рваные края)</li>
+<li>Для УФ DTF минимальная толщина линий 0,6 мм, при наличии более тонких линий заказчик берёт на себя письменную ответственность</li>
+</ul>
+</section>
+<section class="tr-s" id="section-10" aria-labelledby="section-10-h"><h2 id="section-10-h">Объёмные наклейки со смолой</h2>
+<ul>
+<li>формат макета — Cdr, Ai, Pdf</li>
+<li>максимальный формат листа с наклейками — 487х330 мм.</li>
+<li>в макете должно быть 2 слоя — слой с изображениями и слой с контурами резки. Цвет контура любой,</li>
+</ul>
+<p>толщина контура — 0.25-1 pt.</p>
+<ul>
+<li>острые углы в контурах реза объемных наклеек не допускаются.</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2026/03/smola_1.webp" width="1024" height="1024" alt="Пример: " loading="lazy" decoding="async"></figure>
+<ul>
+<li>все внешние углы в контурах реза объемных наклеек должны быть скруглены радиусом от 3 мм. Внутренние</li>
+<li>радиусом от 5 мм.</li>
+</ul>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2026/03/smola_2.webp" width="1024" height="1024" alt="Пример: " loading="lazy" decoding="async"></figure>
+<ul>
+<li>для сквозной резки в макете должен быть дополнительный слой, на котором должен находиться контур,</li>
+</ul>
+<p>расположенный не менее чем в 2 мм от основного контура.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2026/03/smola_3.webp" width="953" height="456" alt="Пример: " loading="lazy" decoding="async"></figure>
+<ul>
+<li>возможно изготовление объемных стикерпаков форматом А4, А5, А6. Расстояние между стикерами должно</li>
+</ul>
+<p>быть не менее 10 мм.</p>
+<p>Если у стикерпака имеется фоновая заливка или логотип, которые после удаления облоя должны остаться,</p>
+<p>необходимо также добавить еще один контур, расположенный не менее чем в 2 мм от основного контура.</p>
+<p>Перед заливкой облой между этими контурами удаляется.</p>
+<figure class="tr-fig"><img src="https://copy.ru/wp-content/uploads/2026/03/smola_4.webp" width="1031" height="505" alt="Пример: " loading="lazy" decoding="async"></figure>
+<ul>
+<li>объекты на каждом слое должны быть сгруппированы.</li>
+<li>все шрифты должны быть переведены в кривые.</li>
+<li>каждое изображение должно иметь вылеты 2-3 мм за пределы контура реза.</li>
+<li>минимальный размер объемного стикера — 13х13 мм.</li>
+<li>вместе с макетом просим присылать превью в формате JPEG.</li>
+<li>по умолчанию плоские наклейки выдаются на листах, с которых их можно отклеить. Если вы хотите, чтобы</li>
+</ul>
+<p>мы нарезали наклейки поштучно, просим указывать это в техническом задании.</p>
+<ul>
+<li>каждую наклейку можно упаковать в отдельный пакетик с заклеивающимся клапаном.</li>
+</ul>
+</section>
+  </article>
+</div></section>
+
+<section id="help"><div class="wrap tr-help">
+  <div class="sh"><h2>Не получается подготовить файл?</h2></div>
+  <p>Пришлите что есть, менеджер подскажет, что поправить. Доработку макета допечатники делают за отдельную плату, срок и цену назовут до начала работы.</p>
+  <div class="ct">
+    <a class="btn btn-p" data-ct="tel" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="w">Позвонить</span><span class="n" data-ct="tel-t">+7 495 156-10-00</span></a>
+    <div class="ct-l">
+      <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+      <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+      <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a>
+    </div>
+  </div>
+</div></section>
+
+<script src="ft.js?v=3"></script>
+<script>
+{const R=document.documentElement,nav=document.querySelector('.tr-nav'),L=[...nav.querySelectorAll('ul a')],S=L.map(a=>document.getElementById(a.hash.slice(1))),
+  cur=document.getElementById('trCur'),btn=nav.querySelector('.tr-cur'),D=document.getElementById('trD'),
+  hb=()=>parseFloat(getComputedStyle(R).getPropertyValue('--hb'))||document.querySelector('.hdr').getBoundingClientRect().bottom;
+let c=null;
+const on=()=>{const mob=btn.offsetParent!==null,line=mob?hb()+120:160;let k=null;S.forEach(s=>{if(s.getBoundingClientRect().top<line)k=s});
+  const r=nav.getBoundingClientRect(),H=hb(),gb=nav.parentElement.getBoundingClientRect().bottom,cl=v=>Math.max(0,Math.min(r.height,v)),
+    x=!mob?0:gb<H+r.height?cl(gb-H):cl(H+r.height-r.top);R.style.setProperty('--hx',Math.round(x)+'px');
+  if(k===c)return;c=k;L.forEach(a=>a.toggleAttribute('aria-current',!!k&&a.hash==='#'+k.id));cur.textContent=k?L[S.indexOf(k)].textContent:'Разделы'};
+addEventListener('scroll',()=>requestAnimationFrame(on),{passive:true});addEventListener('resize',on);on();
+nav.addEventListener('transitionend',on);
+const dim=document.getElementById('trDim'),LS=D.querySelector('.cf-ls'),
+  ok='<svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+const shut=then=>{btn.setAttribute('aria-expanded','false');const end=()=>{D.hidden=dim.hidden=true;D.classList.remove('out','sc');dim.classList.remove('out');then&&then()};
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return end();D.classList.add('out');dim.classList.add('out');setTimeout(end,200)};
+btn.addEventListener('click',()=>{LS.innerHTML=L.map(a=>`<button type="button" class="cf-r" role="option" aria-selected="${a.hasAttribute('aria-current')}" data-h="${a.hash}"><span>${a.textContent}</span>${ok}</button>`).join('');
+  D.hidden=dim.hidden=false;btn.setAttribute('aria-expanded','true');LS.querySelector('[aria-selected="true"]')?.scrollIntoView({block:'nearest'});LS.scrollTop>4&&D.classList.add('sc')});
+dim.addEventListener('click',()=>shut());
+D.addEventListener('click',e=>{if(e.target.closest('[data-close]'))return shut();const r=e.target.closest('.cf-r');if(!r)return;const h=r.dataset.h;
+  LS.querySelectorAll('.cf-r').forEach(x=>x.setAttribute('aria-selected',x===r));
+  shut(()=>{history.replaceState(null,'',location.pathname+location.search+h);document.getElementById(h.slice(1)).scrollIntoView()})});
+LS.addEventListener('scroll',()=>D.classList.toggle('sc',LS.scrollTop>4),{passive:true});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!D.hidden){shut();btn.focus()}})}
+</script>
+</body>
+</html>
