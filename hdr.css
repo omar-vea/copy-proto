@@ -453,7 +453,7 @@
 
 :root.at-foot:not(:has(.hdr:is(.mopen,.sopen))) body{background-color:var(--f-bg,var(--inverse))}
 
-:root.hdr-foot:not(:has(.hdr:is(.mopen,.sopen))) :is(.eco,.hdr,.pblur){--surface:var(--f-bg,var(--inverse));--bg:color-mix(in srgb,#fff 10%,var(--f-bg,var(--inverse)));--ink:#F3F2EF;--ink-2:#A3A19A;--line:#3A3A38;--v-text:#7E8BFF;color-scheme:dark;color:var(--ink)}
+:root.hdr-foot:not(:has(.hdr:is(.mopen,.sopen))) :is(.eco,.hdr,.pblur){--surface:var(--f-bg,var(--surface));--bg:var(--f-bg,var(--bg))}
 
 
 

@@ -24,9 +24,10 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 @media (max-width:980px){.hero h1{font-size:44px}}
 @media (max-width:560px){.hero h1{font-size:36px;margin-bottom:16px}}
 
+:root:root{--f-page:var(--surface)} 
 body{background-image:linear-gradient(var(--surface),var(--surface))} 
-.fr-hero{padding-bottom:56px}
-@media (max-width:560px){.fr-hero{padding-bottom:40px}}
+.fr-hero{padding-bottom:0} 
+
 
 @media (max-width:980px){.fr-hero{padding-top:calc(var(--top) + 12px)}}
 
@@ -53,29 +54,53 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 
 .terms h2{margin-bottom:24px}
 .pl{position:relative;top:.08em} 
-.cmp{width:100%;border-collapse:collapse;table-layout:fixed;font-variant-numeric:tabular-nums}
-.cmp th,.cmp td{text-align:left;padding:16px 16px 16px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
-.cmp thead th{font:700 24px/1.1 var(--sans);letter-spacing:-.01em;padding-top:0}
-.cmp tbody th{font:400 16px/1.3 var(--sans);color:var(--ink-2)}
-.cmp td{font:700 20px/1.2 var(--sans);white-space:nowrap}
-.cmp tbody tr:last-child>*{border-bottom:0}
 
-.cmp .fi td{padding:0 16px 16px 0;border:0}
-.cmp .fi i{display:grid;place-items:center;aspect-ratio:4/3;border:1.5px dashed var(--line);border-radius:var(--r-m);font:500 12px var(--sans);font-style:normal;color:var(--ink-2)}
-.cmp .fi img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-m)}
-@media (max-width:760px){
-  .cmp,.cmp tbody{display:block}
-  .cmp thead tr,.cmp tbody tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:8px;border-bottom:1px solid var(--line)}
-  .cmp thead{display:block}
-  .cmp th,.cmp td{border:0;padding:0}
-  .cmp thead tr:not(.fi) td:first-child,.cmp .fi td:first-child{display:none}
-  .cmp .fi{border:0}.cmp .fi td{padding:0 0 12px}
-  .cmp thead th{font-size:18px;padding-bottom:12px}
-  .cmp tbody tr{padding:12px 0}
-  .cmp tbody tr:last-child{border-bottom:0}
-  .cmp tbody th{grid-column:1/-1;font-size:14px;margin-bottom:4px}
-  .cmp td{font-size:18px}
+.fmts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(7,auto);column-gap:16px;font-variant-numeric:tabular-nums}
+.fmt,.fmt-l{grid-row:1/-1;display:grid;grid-template-rows:subgrid;align-items:baseline}
+.fmt-l span{padding:10px 0;font:400 16px/24px var(--sans);color:var(--ink-2)}
+.fmt img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;margin-bottom:16px;align-self:start} 
+.fmt h3{margin:0;padding-bottom:22px;font:700 24px/1.1 var(--sans);letter-spacing:-.01em;align-self:start}
+.fmt h3 small{display:block;margin-top:8px;font:400 16px/1.35 var(--sans);letter-spacing:0;color:var(--ink);text-wrap:balance} 
+.fmt h3 small span{display:block}
+.fmt .kv{display:contents}
+.fmt .kv div{display:block;padding:10px 0}
+.fmt .kv dt{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap} 
+.fmt .kv dd{font:700 20px/24px var(--sans)}
+.fmt .u{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap} 
+.fmt-n{margin:16px 0 0;font-size:14px;line-height:1.4;color:var(--ink-2)} 
+.terms .ct,.etp .ct{margin-top:32px}
+
+.sost .cl:last-child{margin-bottom:-48px} 
+@media (max-width:760px){.sost .cl:last-child{margin-bottom:-14px}.facts div:last-child{padding-bottom:0}} 
+.pts li:last-child,.press li:last-child a{padding-bottom:0}
+.cf-seg.fmt-sw{display:none} 
+@media (max-width:1100px){
+  
+  .cf-seg.fmt-sw{display:grid;margin-bottom:16px;max-width:640px}
+  .fmts{display:grid;grid-template:auto/minmax(0,1fr);max-width:640px} 
+  .fmt-l{display:none}
+  .fmt{display:block;grid-area:1/1;visibility:hidden} 
+  .fmts[data-i="0"] .fmt:nth-of-type(1),.fmts[data-i="1"] .fmt:nth-of-type(2),.fmts[data-i="2"] .fmt:nth-of-type(3){visibility:visible}
+  .fmt h3{padding-bottom:8px}
+  .fmt h3 .nm{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap} 
+  .fmt h3 small{font-size:16px;margin-top:0}
+  .fmt .kv{display:block}
+  .fmt .kv div{display:flex;padding:8px 0}
+  .fmt .kv dt{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal}
+  .fmt .kv dd{font:700 18px/1.2 var(--sans)}
+  .fmt .u{position:static;width:auto;height:auto;overflow:visible;clip-path:none}
   }
+@media (max-width:374px){.fmt .kv dt{white-space:nowrap}.fmt .kv dt::after{min-width:4px}.fmt .kv dd{font-size:16px}} 
+
+.rv{opacity:0;translate:0 16px;transition:opacity .6s cubic-bezier(.2,.8,.2,1),translate .6s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;translate:none}
+@media print{.rv{opacity:1;translate:none}}
+@media (max-width:1100px){
+  
+  .fmts .fmt{opacity:0;transition:opacity .25s,visibility 0s .25s}
+  .fmts[data-i="0"] .fmt:nth-of-type(1),.fmts[data-i="1"] .fmt:nth-of-type(2),.fmts[data-i="2"] .fmt:nth-of-type(3){opacity:1;transition:opacity .25s .05s,visibility 0s}
+  }
+@media (prefers-reduced-motion:reduce){.fmts .fmt{transition:none}}
 
 .prt h2{margin-bottom:24px}
 .pts{max-width:640px;margin:0;padding:0;list-style:none} 
@@ -89,17 +114,34 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 .pts .tg{grid-column:3;grid-row:1/3;gap:6px;padding:0 14px 0 10px;font-weight:500;background:color-mix(in srgb,var(--ink) 6%,transparent);color:var(--ink)}.pts .tg img{width:20px;height:20px}@media (hover:hover){.pts .tg:hover{background:color-mix(in srgb,var(--ink) 10%,transparent)}} 
 @media (max-width:760px){.pts li{grid-template-columns:76px minmax(0,1fr);column-gap:14px}.pts i{width:76px;height:76px;grid-row:1/4;align-self:start}.pts li>span{font-size:14px}.pts .tg{grid-column:2;grid-row:3;justify-self:start;margin-top:8px;height:32px;padding:0 10px 0 8px;font-size:13px;gap:5px}.pts .tg img{width:16px;height:16px}} 
 
-.go{margin-bottom:88px}
-.go-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:32px 64px;align-items:start}
+.go{margin-bottom:0} 
+.go-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:32px 64px;align-items:start}
 .go h2{margin:0;max-width:520px;text-wrap:balance} 
-.go form{display:grid;gap:24px} 
+.go form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px} 
+.go form>.ff:nth-of-type(n+5),.go form>.btn{grid-column:1/-1}
+.go-l{margin:24px 0 0;max-width:300px;font-size:14px;line-height:1.45;color:var(--ink-2);text-wrap:pretty} 
+.go-c{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:6px 12px 6px 10px;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:var(--ink);text-decoration:none} 
+@media (hover:hover){.go-c:hover{background:color-mix(in srgb,var(--ink) 10%,transparent)}}
+.go-c svg{width:18px;height:18px;flex:none;color:var(--ink)}
+.go-c span{display:grid;gap:0}.go-c small{font-size:12px;line-height:1.3;color:var(--ink-2)}.go-c b{font:600 14px/1.3 var(--sans);white-space:nowrap}
+.go-g>div:first-child{position:relative;isolation:isolate}
+.go-ph{position:absolute;z-index:-1;right:-64px;top:64px;width:min(340px,60%);margin:0}  
+.go-ph img{display:block;width:100%;height:auto}
+@media (max-width:1100px){.go-g>div:first-child{display:grid;grid-template-columns:minmax(0,1fr) 44%;align-items:start;isolation:isolate}.go-g h2{grid-column:1/-1}.go-l{grid-column:1;grid-row:2;max-width:none}.go-ph{position:relative;z-index:-1;grid-column:2;grid-row:2;width:auto;top:auto;right:auto;margin:24px calc(-1*max(24px,(100vw - 640px)/2)) -48px -32px}.go-c{grid-column:1/-1;justify-self:start}} 
+@media (max-width:760px){.go-ph{margin-right:-16px}}
+.go-ph img{--m:linear-gradient(to right,transparent,#000 30%),linear-gradient(to left,transparent,#000 22%),linear-gradient(transparent,#000 30%);-webkit-mask-image:var(--m);mask-image:var(--m);-webkit-mask-composite:source-in,source-in;mask-composite:intersect} 
 .go .btn{width:100%}
 .go-ok{display:grid;justify-items:start;gap:8px}
+.go-ok:not([hidden]){animation:go-in .6s cubic-bezier(.2,.8,.2,1)} 
+@keyframes go-in{from{opacity:0;translate:0 16px}}
+@media (prefers-reduced-motion:reduce){.go-ok:not([hidden]){animation:none}}
 .go-ok:focus{outline:none} 
 .go-ok svg{width:40px;height:40px;color:var(--success)}
 .go-ok h3{margin:8px 0 0;font:700 24px/1.2 var(--sans)}
 .go-ok p{margin:0;font-size:16px;line-height:1.45;color:var(--ink-2)}
-@media (max-width:760px){.go{margin-bottom:56px}.go-g{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1100px){.go-g{grid-template-columns:minmax(0,640px);row-gap:48px}}  
+
+@media (max-width:560px){.go form{grid-template-columns:minmax(0,1fr)}}
 
 .sost h2{margin-bottom:32px}
 
@@ -146,8 +188,8 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 .fnd h2,.smi h2{margin-bottom:24px}
 .fnd figure,.fnd blockquote{margin:0}.fnd blockquote{max-width:860px}
 .fnd blockquote p{position:relative;margin:0;font:500 clamp(24px,2.8vw,36px)/1.3 var(--sans);letter-spacing:-.02em;color:var(--ink-2);text-wrap:pretty}
-.fnd blockquote p b{font-weight:inherit;color:var(--ink)}
-.fnd blockquote p::before{content:"«";position:absolute;right:100%}.fnd blockquote p::after{content:"»"} 
+.fnd blockquote p b{font-weight:inherit;color:var(--ink)}.fnd blockquote p b.shine{color:transparent} 
+.fnd blockquote p::before{content:"«"} .fnd blockquote p::after{content:"»"} 
 .fnd figcaption{display:flex;align-items:center;gap:12px;margin-top:24px}
 .fnd figcaption i{flex:none;display:block;width:64px;height:64px;overflow:hidden;border-radius:50%;background:var(--line)} 
 .fnd figcaption img{display:block;width:100%;height:100%;object-fit:cover;scale:1.5;transform-origin:62% 0} 
@@ -167,20 +209,23 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 
 .fr-hero .lbl{display:flex;width:fit-content;align-items:center;height:32px;font:600 16px/1 var(--sans);margin:0 auto 20px;padding:0 12px;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,transparent)}
 
-.shine{background:linear-gradient(90deg,var(--ink) 0 30%,var(--v) 42% 58%,var(--ink) 70% 100%) 100% 0/300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s ease-in-out infinite}
+.shine{background:linear-gradient(90deg,var(--ink) 0 30%,var(--v) 42% 58%,var(--ink) 70% 100%) 100% 0/300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3s ease-in-out infinite}
 
-.btn-lp{--a:#222220;--b:var(--v);color:#fff;background:linear-gradient(90deg,var(--a) 0 30%,var(--b) 50%,var(--a) 70% 100%) 100% 0/300% 100%;animation:shine 4s ease-in-out infinite}
+.btn-lp{--a:#222220;--b:var(--v);color:#fff;background:linear-gradient(90deg,var(--a) 0 30%,var(--b) 50%,var(--a) 70% 100%) 100% 0/300% 100%;animation:shine 3s ease-in-out infinite}
 
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-lp{--a:var(--v);--b:#8E93FF}}
 :root[data-theme="dark"] .btn-lp{--a:var(--v);--b:#8E93FF}
 @media (prefers-reduced-motion:reduce){.btn-lp{animation:none;background:var(--a)}}
-@keyframes shine{0%{background-position:100% 0}55%,100%{background-position:0 0}}
+@media (max-width:374px){.btn-lp{max-width:100%;height:auto;min-height:48px;padding-block:12px;white-space:normal;text-align:center;line-height:1.25}} 
+@keyframes shine{0%{background-position:100% 0}50%,100%{background-position:0 0}} 
+.rv:not(.in) .shine,.rv:not(.in) .btn-lp{animation-play-state:paused} 
 @media (prefers-reduced-motion:reduce){.shine{animation:none;background:none;color:inherit}}
 </style>
-<link rel="stylesheet" href="hdr.css?v=254">
-<link rel="stylesheet" href="ft.css?v=1">
+<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="ft.css?v=3">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <link rel="stylesheet" href="cc.css?v=1">
+<link rel="stylesheet" href="calc.css?v=71"> 
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
@@ -196,7 +241,7 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
   <h1>Станьте партнёром федеральной сети копицентров</h1>
   
   <p class="lead"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>Помещение</span>, <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>оборудование</span>, <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>обучение</span> и <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>поток клиентов</span> даёт сеть. Вам остаётся управлять точкой.</p>
-  <div class="ct"><a class="btn btn-lp" href="franchise/#go">Получить презентацию</a></div>
+  <div class="ct"><a class="btn btn-lp" href="franchise/#go">Получить презентацию и&nbsp;финмодель</a></div>
   
   <dl class="facts kv" data-todo="цифры франшизы">
     <div><dt>Вложения</dt><dd>от 3,39 млн ₽</dd></div>
@@ -208,14 +253,15 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 <section class="terms" id="usl"><div class="wrap">
   
   <h2>Условия</h2>
-  <table class="cmp" data-todo="форматы франшизы">
-    <thead><tr class="fi"><td></td><td><i data-todo="фото формата Экспресс, суперфотореализм">фото</i></td><td><i data-todo="фото формата Экспресс+, суперфотореализм">фото</i></td><td><i data-todo="фото формата Прайм, суперфотореализм">фото</i></td></tr><tr><td></td><th scope="col">Экспресс</th><th scope="col">Экспресс<span class="pl">+</span></th><th scope="col">Прайм</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Вложения, млн&nbsp;₽</th><td>от&nbsp;3,39</td><td>от&nbsp;4,44</td><td>от&nbsp;7</td></tr>
-      <tr><th scope="row">Прибыль в месяц, тыс.&nbsp;₽</th><td>100–250</td><td>150–300</td><td>от&nbsp;400</td></tr>
-      <tr><th scope="row">Окупаемость, мес.</th><td>15–35</td><td>16–31</td><td>до&nbsp;19</td></tr>
-    </tbody>
-  </table>
+  <div class="cf-seg fmt-sw" data-n="3" data-i="0" role="radiogroup" aria-label="Формат"><i class="cf-th" aria-hidden="true"></i><button type="button" role="radio" aria-checked="true">Экспресс</button><button type="button" role="radio" aria-checked="false">Экспресс+</button><button type="button" role="radio" aria-checked="false">Прайм</button></div>
+  <div class="fmts" data-i="0" data-todo="форматы франшизы">
+    <div class="fmt-l" aria-hidden="true"><span></span><span></span><span>Площадь, м²</span><span>Вложения, млн&nbsp;₽</span><span>Паушальный взнос, млн&nbsp;₽</span><span>Прибыль в месяц, тыс.&nbsp;₽</span><span>Окупаемость, мес.</span></div>
+    <article class="fmt"><img src="img/fr/fr-fmt-ex.webp" alt="" loading="lazy" width="997" height="665" data-todo="фото формата Экспресс: Gemini на белой циклораме, 1200 px (исходник _research/covers/fr-fmt-ex-1200.jpg), обработка tools/fr-fmt-white.py 250 240 975 820"><h3><span class="nm">Экспресс</span><small><span>Печать и&nbsp;копии на&nbsp;месте.</span> <span>Сложные заказы делает сеть.</span></small></h3><dl class="kv"><div><dt>Площадь</dt><dd>15–25<span class="u">&nbsp;м²</span></dd></div><div><dt>Вложения</dt><dd>от&nbsp;3,39<span class="u">&nbsp;млн&nbsp;₽</span></dd></div><div><dt>Паушальный взнос</dt><dd>0,69–1<span class="u">&nbsp;млн&nbsp;₽</span></dd></div><div><dt>Прибыль в месяц</dt><dd>100–250<span class="u">&nbsp;тыс.&nbsp;₽</span></dd></div><div><dt>Окупаемость</dt><dd>15–35<span class="u">&nbsp;мес.</span></dd></div></dl></article>
+    <article class="fmt"><img src="img/fr/fr-fmt-ep.webp" alt="" loading="lazy" width="1055" height="703" data-todo="фото формата Экспресс+: Gemini на белой циклораме, 1200 px (исходник _research/covers/fr-fmt-ep-1200.jpg), обработка tools/fr-fmt-white.py 140 265 1075 790"><h3><span class="nm">Экспресс<span class="pl">+</span></span><small><span>Большую часть делаете сами.</span> <span>Сети отдаёте самое сложное.</span></small></h3><dl class="kv"><div><dt>Площадь</dt><dd>26–50<span class="u">&nbsp;м²</span></dd></div><div><dt>Вложения</dt><dd>от&nbsp;4,44<span class="u">&nbsp;млн&nbsp;₽</span></dd></div><div><dt>Паушальный взнос</dt><dd>0,89–1,5<span class="u">&nbsp;млн&nbsp;₽</span></dd></div><div><dt>Прибыль в месяц</dt><dd>150–300<span class="u">&nbsp;тыс.&nbsp;₽</span></dd></div><div><dt>Окупаемость</dt><dd>16–31<span class="u">&nbsp;мес.</span></dd></div></dl></article>
+    <article class="fmt"><img src="img/fr/fr-fmt-pr.webp" alt="" loading="lazy" width="1176" height="784" data-todo="фото формата Прайм: Gemini на белой циклораме, 1200 px (исходник _research/covers/fr-fmt-pr-1200.jpg), обработка tools/fr-fmt-white.py 175 225 1115 790"><h3><span class="nm">Прайм</span><small><span>Своё производство на&nbsp;точке.</span> <span>Любые заказы делаете сами.</span></small></h3><dl class="kv"><div><dt>Площадь</dt><dd>от&nbsp;51<span class="u">&nbsp;м²</span></dd></div><div><dt>Вложения</dt><dd>от&nbsp;7<span class="u">&nbsp;млн&nbsp;₽</span></dd></div><div><dt>Паушальный взнос</dt><dd>1,5–2<span class="u">&nbsp;млн&nbsp;₽</span></dd></div><div><dt>Прибыль в месяц</dt><dd>от&nbsp;400<span class="u">&nbsp;тыс.&nbsp;₽</span></dd></div><div><dt>Окупаемость</dt><dd>до&nbsp;19<span class="u">&nbsp;мес.</span></dd></div></dl></article>
+  </div>
+  <p class="fmt-n">В регионах взнос меньше, в&nbsp;Москве и&nbsp;Петербурге больше.</p>
+  <div class="ct"><a class="btn btn-lp" href="franchise/#go">Получить презентацию и&nbsp;финмодель</a></div>
 </div></section>
 <section class="sost" id="sost"><div class="wrap">
   
@@ -239,10 +285,10 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 </div></section>
 <section class="etp" id="etapy"><div class="wrap">
   
-  <h2>Как открыть копицентр за&nbsp;28&nbsp;дней</h2>
+  <h2>Как открыть копицентр <span class="shine">за&nbsp;28&nbsp;дней</span></h2>
   <ol class="etp-l">
       <li><span class="no">1</span>Заявка на сайте или звонок</li>
-      <li><span class="no">2</span>Презентация франшизы и&nbsp;ответы на&nbsp;вопросы</li>
+      <li><span class="no">2</span>Презентация, финмодель и&nbsp;ответы на&nbsp;вопросы</li>
       <li><span class="no">3</span>Подбор помещения и&nbsp;расчёт окупаемости</li>
       <li><span class="no">4</span>Договор</li>
       <li><span class="no">5</span>Утверждение локации и дизайн-макет</li>
@@ -252,12 +298,13 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
       <li><span class="no">9</span>Установка оборудования, мониторинг и&nbsp;ПО</li>
       <li><span class="no">10</span>Оформление точки и открытие</li>
   </ol>
+  <div class="ct"><a class="btn btn-lp" href="franchise/#go">Получить презентацию и&nbsp;финмодель</a></div>
 </div></section>
 
 <section class="fnd"><div class="wrap">
   
   <h2>Нам выгоден ваш успех</h2>
-  <figure><blockquote><p><b>В&nbsp;хорошей франшизе выигрывают все.</b> Клиенты получают качество, партнёры строят свой бизнес, а&nbsp;сеть растёт вместе с ними.</p></blockquote>
+  <figure><blockquote><p><b class="shine">В&nbsp;хорошей франшизе выигрывают все.</b> Клиенты получают качество, партнёры строят свой бизнес, а&nbsp;сеть растёт вместе с ними.</p></blockquote>
     <figcaption><i><img src="img/fr/galifanov.webp" alt="" loading="lazy" width="600" height="600"></i><div><b>Руслан Галифанов</b><span>Основатель сети</span></div></figcaption></figure>
 </div></section>
 <section class="prt" id="prt"><div class="wrap">
@@ -288,22 +335,44 @@ body{background-image:linear-gradient(var(--surface),var(--surface))}
 </div></section>
 <section class="go" id="go"><div class="wrap go-g">
   <div>
-    <h2>Позвоним и&nbsp;пришлём презентацию</h2>
+    <h2>Ответим на&nbsp;вопросы и&nbsp;пришлём презентацию с&nbsp;финмоделью</h2>
+    <p class="go-l" data-todo="состав презентации и финмодели — подтвердить у заказчика (_research/client-questions.md)">Узнаете вложения, прибыль и&nbsp;другие показатели по&nbsp;каждому формату, требования к&nbsp;помещению и&nbsp;план запуска.</p>
+    <a class="go-c" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span><small>Не любите формы? Позвоните</small><b>+7&nbsp;495&nbsp;156-10-00</b></span></a>
+    <figure class="go-ph" data-todo="фото: рука передаёт другой руке презентацию с финмоделью (генерация Gemini, знак CO наложен вручную фольгой по перспективе обложки; исходник _scratch/gen/prezentaciya-src.jpg)"><img src="img/fr/zayavka-prezentaciya.webp" alt="" loading="lazy" width="1264" height="848"></figure>
   </div>
   <div id="goF">
     <form novalidate>
       <div class="ff" data-req="name"><label for="goName">Имя</label><input id="goName" class="ym-disable-keys" name="name" type="text" autocomplete="name"><p class="err" data-for="name" hidden>Как к вам обращаться?</p></div>
       <div class="ff" data-req="phone"><label for="goPhone">Телефон</label><input id="goPhone" class="ym-disable-keys" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 999 123-45-67"><p class="err" data-for="phone" hidden>Нужен телефон, чтобы позвонить</p></div>
-      <div class="ff" data-req="mail"><label for="goMail">Почта</label><input id="goMail" class="ym-disable-keys" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@mail.ru"><p class="err" data-for="mail" hidden>Нужна почта, чтобы прислать презентацию</p></div>
+      <div class="ff" data-req="mail"><label for="goMail">Почта</label><input id="goMail" class="ym-disable-keys" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@mail.ru"><p class="err" data-for="mail" hidden>Нужна почта, чтобы прислать презентацию и&nbsp;финмодель</p></div>
       <div class="ff"><label for="goCity">Город, где хотите открыться</label><input id="goCity" name="city" type="text" autocomplete="address-level2" placeholder="Например, Краснодар"></div>
       <div class="ff"><label class="chk" data-req="ok"><input type="checkbox" name="acceptance"><span>Даю <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/" target="_blank">согласие</a> на обработку персональных данных по <a href="https://copy.ru/politika-konfidenczialnosti/" target="_blank">политике</a></span></label><p class="err" data-for="ok" hidden>Без согласия не сможем принять заявку</p></div>
-      <button class="btn btn-lp" type="submit">Получить презентацию</button>
+      <button class="btn btn-lp" type="submit">Получить презентацию и&nbsp;финмодель</button>
     </form>
-    <div class="go-ok" id="goOk" hidden tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3>Заявка принята</h3><p>Менеджер по франшизе позвонит в рабочее время, презентацию пришлём на почту.</p></div>
+    <div class="go-ok" id="goOk" hidden tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3><span class="shine">Заявка принята</span></h3><p>Менеджер по франшизе позвонит в рабочее время, презентацию и&nbsp;финмодель пришлём на&nbsp;почту.</p></div>
   </div>
 </div></section>
 <script src="ft.js?v=3"></script>
 <script src="data/copycenters.js?v=4"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script><script src="cc.js?v=6"></script><script src="fr-map.js?v=11"></script>
+<script>
+{const g=document.querySelector('.fmt-sw'),bs=[...g.querySelectorAll('button')],f=document.querySelector('.fmts');
+ g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.dataset.i=f.dataset.i=bs.indexOf(b);bs.forEach(x=>x.setAttribute('aria-checked',x===b))})}
+</script>
+<script>
+{if(matchMedia('(prefers-reduced-motion:no-preference)').matches&&'IntersectionObserver' in window){
+ const one=matchMedia('(max-width:1100px)').matches;
+ const sel=['main~section h2',one?'.fmt-sw,.fmts':'.fmt','.terms .fmt-n','.terms .ct','.etp .ct','.cl>div','.cl figure','.etp-l li','.fnd figure','.pts li','.geo-m','.press li','.go-g>div','.go-ph'].join(',');
+ const io=new IntersectionObserver(es=>{let k=0;es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.style.transitionDelay=Math.min(k++,6)*70+'ms';t.classList.add('in');io.unobserve(t);t.addEventListener('transitionend',()=>t.style.transitionDelay='',{once:true})})},{rootMargin:'0px 0px -8% 0px'});
+ document.querySelectorAll(sel).forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight)return;el.classList.add('rv');io.observe(el)})}}
+{const goal=t=>{const h=document.querySelector('.hdr');return t.getBoundingClientRect().top+scrollY+(parseFloat(getComputedStyle(t).paddingTop)||0)-(h?h.getBoundingClientRect().height:0)-24};
+ let run=0;const stop=()=>run=0;['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,stop,{passive:true}));
+ document.addEventListener('click',e=>{const a=e.target.closest('a[href*="#"]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;const id=a.hash.slice(1),t=id&&document.getElementById(id);if(!t)return;e.preventDefault();
+  try{history.pushState(null,'','#'+id)}catch(_){}
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){scrollTo(0,goal(t));return}
+  const y0=scrollY,dist=Math.abs(goal(t)-y0),dur=Math.min(900,Math.max(500,dist*.15)),t0=performance.now(),me=++run;
+  const ease=x=>1-Math.pow(1-x,4);
+  const step=now=>{if(run!==me)return;const k=Math.min(1,(now-t0)/dur);scrollTo(0,y0+(goal(t)-y0)*ease(k));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
+</script>
 <script>
 {const f=document.querySelector('#goF form');
  const ok=b=>{const i=b.querySelector('input');return i.type==='checkbox'?i.checked:i.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim()):i.type==='tel'?i.value.replace(/\D/g,'').length>=10:i.value.trim().length>1};
