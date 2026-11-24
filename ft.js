@@ -4,8 +4,8 @@ const li=(h,t)=>`<li><a href="${h}">${t}</a></li>`;
 const col=(n,items)=>`<nav aria-label="${n}"><b>${n}</b><ul>${items.join('')}</ul></nav>`;
 document.currentScript.insertAdjacentHTML('beforebegin',`<footer><div class="wrap">
 <div class="f-cols">
-  ${col('Заказ',[li('catalog.html','Каталог'),li('home.html#status','Статус заказа'),li('https://copy.ru/payment-delivery/','Оплата и доставка'),li('technical-requirements/','Требования к макетам')])}
-  ${col('Компания',[li('#','О нас'),li('contacts/','Копицентры'),li('#','Вакансии'),li('franchise/','Франшиза')])}
+  ${col('Заказ',[li('catalog.html','Каталог'),li('home.html#status','Статус заказа'),li('payment-delivery/','Оплата и доставка'),li('technical-requirements/','Требования к макетам')])}
+  ${col('Компания',[li('#','О нас'),li('contacts/','Копицентры'),li('vakansii/','Вакансии'),li('franchise/','Франшиза')])}
   ${col('Сервисы',[['ai','Нейродизайн'],['gifts','Сувениры'],['pro','Дизайнерам'],['b2b','Бизнесу'],['bridge','Разработчикам']].map(([d,t])=>li(`https://${d}.copy.ru/`,t+ext)))}
   ${col('Связь',['<li><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a></li>','<li><a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a></li>',li('https://vk.com/copyru','ВКонтакте'),li('https://t.me/copyru','Telegram-канал')])}
 </div>

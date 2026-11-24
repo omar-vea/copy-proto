@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>if(window.top===window&&matchMedia("(min-width:601px)").matches)location.replace("./?p="+encodeURIComponent(location.pathname.split("/").pop()+location.search+location.hash))</script>
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1B20" media="(prefers-color-scheme: dark)">
+<script>
+try{const L=localStorage,t=L.getItem('copy-theme'),s=L.getItem('copy-theme-sys'),now=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Вакансии — COPY.RU (прототип)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=24">
+<style>
+
+.vk-top h1{margin:0 0 12px}
+.vk-lead{max-width:640px;margin:0;color:var(--ink-2);font-size:18px;line-height:1.5}
+.get{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px;max-width:1000px;margin:32px 0 0;padding:0;list-style:none}
+.get li{display:grid;grid-template-columns:20px 1fr;column-gap:12px;align-content:start;font-size:14px;line-height:1.4}
+.get svg{width:20px;height:20px;grid-row:span 2;margin-top:1px;color:var(--ink-2);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.get b{display:block;font-weight:600;font-size:16px;line-height:1.35}
+.get span{color:var(--ink-2)}
+.get a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.vk-top .btn{margin-top:32px}
+section>.wrap>h2{margin:0 0 24px}
+.vk-sub{margin:-12px 0 24px;color:var(--ink-2)}
+
+.kv{margin:0;max-width:560px}
+.kv div{display:flex;align-items:baseline;gap:8px;padding:8px 0}
+.kv dt{flex:1;display:flex;align-items:baseline;gap:8px;font-size:16px;line-height:1.3;color:var(--ink-2)}
+.kv dt::after{content:"";flex:1;min-width:16px;border-bottom:2px dotted color-mix(in srgb,var(--ink) 25%,transparent)}
+.kv dd{margin:0;font:700 20px/1.2 var(--sans);white-space:nowrap}
+.kv .u{font-weight:400;font-size:16px;color:var(--ink-2)}
+.vk-kh{margin:0 0 4px;font:600 16px/1.35 var(--sans)}
+.vk-n{max-width:560px;margin:8px 0 0;font-size:14px;line-height:1.45;color:var(--ink-2)}
+
+.vk-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 48px;max-width:1000px;margin-top:48px}
+.vk-2 h3{margin:0 0 12px;font:600 20px/1.3 var(--sans)}
+.vk-2 ul{margin:0;padding:0 0 0 20px;display:grid;gap:8px;font-size:16px;line-height:1.45}
+.vk-2 li::marker{color:var(--ink-2)}
+.vk-2 p{margin:16px 0 0;font-size:16px;line-height:1.45}
+
+.no{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:color-mix(in srgb,var(--ink) 6%,transparent);color:var(--ink);font:600 13px/1 var(--sans);font-variant-numeric:tabular-nums}
+.vk-st{margin-top:48px}
+.vk-st h3{margin:0 0 16px;font:600 20px/1.3 var(--sans)}
+.etp-l{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 32px;max-width:1000px;margin:0;padding:0;list-style:none}
+.etp-l li{display:flex;align-items:baseline;gap:12px;font-size:16px;line-height:1.35;text-wrap:pretty}
+.etp-l .no{transform:translateY(-1px)}
+
+.vk-acc{max-width:760px}
+.vk-acc summary small{display:block;margin-top:4px;font:400 14px/1.4 var(--sans);color:var(--ink-2)}
+.vk-acc details h4{margin:16px 0 6px;font:600 16px/1.35 var(--sans)}
+.vk-acc details ul{margin:0;padding-left:20px;display:grid;gap:4px;color:var(--ink-2)}
+.vk-acc details p{margin:16px 0 0}
+.vk-acc .btn{margin-top:20px}
+.go{margin-bottom:0} 
+.go-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:32px 64px;align-items:start}
+.go h2{margin:0;max-width:520px;text-wrap:balance} 
+.go form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px} 
+.go form>.ff:nth-of-type(n+5),.go form>.btn{grid-column:1/-1}
+.go-l{margin:24px 0 0;max-width:300px;font-size:14px;line-height:1.45;color:var(--ink-2);text-wrap:pretty} 
+.go-c{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:6px 12px 6px 10px;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:var(--ink);text-decoration:none} 
+@media (hover:hover){.go-c:hover{background:color-mix(in srgb,var(--ink) 10%,transparent)}}
+.go-c svg{width:18px;height:18px;flex:none;color:var(--ink)}
+.go-c span{display:grid;gap:0}.go-c small{font-size:12px;line-height:1.3;color:var(--ink-2)}.go-c b{font:600 14px/1.3 var(--sans);white-space:nowrap}
+.go-g>div:first-child{position:relative;isolation:isolate}
+.go .btn{width:100%}
+.go-ok{display:grid;justify-items:start;gap:8px}
+.go-ok:not([hidden]){animation:go-in .6s cubic-bezier(.2,.8,.2,1)} 
+@keyframes go-in{from{opacity:0;translate:0 16px}}
+@media (prefers-reduced-motion:reduce){.go-ok:not([hidden]){animation:none}}
+.go-ok:focus{outline:none} 
+.go-ok svg{width:40px;height:40px;color:var(--success)}
+.go-ok h3{margin:8px 0 0;font:700 24px/1.2 var(--sans)}
+.go-ok p{margin:0;font-size:16px;line-height:1.45;color:var(--ink-2)}
+@media (max-width:1100px){.go-g{grid-template-columns:minmax(0,640px);row-gap:48px}}  
+@media (max-width:560px){.go form{grid-template-columns:minmax(0,1fr)}}
+.go-l{max-width:360px}
+#oper,#drugie,#otklik{scroll-margin-top:96px}
+@media (max-width:980px){.etp-l{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.vk-lead{font-size:16px}.get{grid-template-columns:minmax(0,1fr);gap:16px}.vk-2{grid-template-columns:minmax(0,1fr);margin-top:40px}.vk-st{margin-top:40px}.etp-l{grid-template-columns:minmax(0,1fr)}.kv dd{font-size:18px}}
+@media (max-width:560px){.vk-top .btn{width:100%}}
+</style>
+<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="ft.css?v=3">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wm" viewBox="0 0 618 196"><path d="M227.34,36.79c0-.87.73-1.6,1.6-1.6h25.7c6.24,0,11.62,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.77,10.01,3.77,15.66v20.02c0,5.66-1.31,10.88-3.77,15.66-2.47,4.79-6.1,8.41-10.89,11.31-4.79,2.76-10.16,4.21-16.41,4.21h-5.52v42.06c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6V36.79ZM254.05,96.55c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-18.86c0-3.34-.73-5.95-2.32-7.98-1.6-2.03-4.07-3.05-7.26-3.05h-4.94v40.76h4.94v.15Z"></path><path d="M364.24,36.21l-25.99,69.91v53.08c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-53.08l-25.99-69.91c-.15-.58.15-1.16.87-1.16h21.63c.73,0,1.45.44,1.6,1.16l12.78,41.92,12.78-41.92c.15-.73.87-1.16,1.6-1.16h21.63c.58,0,1.02.73.87,1.16Z"></path><path d="M366.13,134.7h21.78c.87,0,1.6.72,1.6,1.6v22.92c0,.87-.73,1.6-1.6,1.6h-21.78c-.87,0-1.6-.72-1.6-1.6v-22.92c0-.87.73-1.6,1.6-1.6Z"></path><path d="M448.74,159.79l-14.95-44.38h-3.05v43.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.72-1.6-1.6V36.79c0-.87.73-1.6,1.6-1.6h26.57c6.24,0,11.61,1.45,16.41,4.21,4.79,2.76,8.28,6.53,10.89,11.31,2.47,4.79,3.78,10.01,3.78,15.66v18.13c0,5.8-1.31,11.17-3.92,15.95-2.61,4.79-6.24,8.56-11.03,11.31l19.6,48.01c.29.58-.15,1.16-.87,1.16h-21.49c-.87,0-1.6-.44-1.74-1.16ZM430.73,94.66h5.81c3.34,0,5.66-1.02,7.26-3.05,1.6-2.03,2.32-4.64,2.32-7.98v-16.97c0-3.34-.73-5.95-2.32-7.98s-4.07-3.05-7.26-3.05h-5.81v39.02Z"></path><path d="M487.5,35.05h18.58c.87,0,1.6.73,1.6,1.6v89.2c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.07,4.21,7.26,4.21s5.52-1.45,7.26-4.21c1.6-2.76,2.47-6.67,2.47-11.46V36.79c0-.87.73-1.6,1.6-1.6h18.58c.87,0,1.6.73,1.6,1.6v89.78c0,6.96-1.31,13.05-3.92,18.42-2.61,5.37-6.24,9.57-11.03,12.76-4.79,3.05-10.31,4.64-16.55,4.64s-11.61-1.6-16.41-4.64c-4.79-3.05-8.42-7.4-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42V36.79c-.15-1.02.58-1.74,1.45-1.74Z"></path><path d="M209.04,69.43v57.15c0,6.82-1.31,12.91-4.07,18.42-2.76,5.51-6.53,9.72-11.47,12.76-4.94,3.05-10.74,4.64-17.13,4.64s-12.05-1.6-17.13-4.64c-4.94-3.05-8.86-7.4-11.47-12.76-2.32-4.5-3.63-9.57-3.92-14.94,0-.29,0-.58.14-.87l20.62-43.22c.29-.44,1.02-.29,1.02.29v39.89c0,4.79,1.02,8.56,2.9,11.31,1.89,2.9,4.65,4.21,7.98,4.21s6.24-1.45,8.13-4.21c1.89-2.9,2.76-6.67,2.76-11.31v-56.13c0-4.79-.87-8.56-2.76-11.31-1.89-2.9-4.5-4.35-8.13-4.35-3.34,0-6.1,1.45-7.98,4.35-.73,1.16-1.45,2.47-1.89,3.92l-22.79,48.15-14.23,29.88-3.77,7.98v.14c-2.32,3.63-5.37,6.67-8.86,8.99-4.79,3.05-10.31,4.64-16.55,4.64s-11.76-1.6-16.41-4.64c-4.79-3.05-8.42-7.25-11.03-12.76-2.61-5.37-3.92-11.6-3.92-18.42v-57.15c0-6.96,1.31-13.05,3.92-18.42,2.61-5.37,6.24-9.57,11.03-12.76,4.79-3.05,10.31-4.64,16.41-4.64s11.61,1.6,16.26,4.79c4.65,3.19,8.28,7.4,10.89,12.76,2.61,5.37,3.77,11.46,3.77,18.27v5.8c0,.87-.73,1.6-1.6,1.6h-18.58c-.87,0-1.6-.73-1.6-1.6v-5.22c0-4.93-.73-8.85-2.32-11.6-1.45-2.76-3.77-4.06-6.82-4.06s-5.52,1.45-7.11,4.21c-1.6,2.76-2.47,6.67-2.47,11.46v55.99c0,4.79.87,8.7,2.47,11.46,1.6,2.76,4.06,4.21,7.11,4.21s5.52-1.45,7.11-4.21c.44-.73.73-1.45,1.02-2.32l8.42-17.84,29.91-64.11,1.02-2.18c2.76-5.51,6.53-9.72,11.47-12.76,4.94-3.05,10.6-4.64,17.13-4.64s12.2,1.6,17.13,4.64c4.94,3.05,8.86,7.4,11.47,12.76,2.61,5.51,3.92,11.6,3.92,18.42Z"></path></symbol>
+  <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
+</svg>
+
+<script src="hdr.js?v=165" data-svc="copy"></script>
+
+<main class="wrap vk-top"><div class="crumbs"><a href="home.html">Главная</a><span>/</span><span>Вакансии</span></div>
+  <h1>Работа в&nbsp;COPY.RU</h1>
+  <p class="vk-lead">Ищем операторов в&nbsp;копицентры Москвы. Опыт не&nbsp;нужен, научим всему на&nbsp;оплачиваемой стажировке.</p>
+  <ul class="get">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><b>Обучение с&nbsp;нуля</b><span>10&nbsp;дней оплачиваемой стажировки с&nbsp;наставником, потом своя Школа</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><b>Гибкий график</b><span>можно совмещать с&nbsp;учёбой</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><b>Рядом с&nbsp;домом</b><span><a href="contacts/">больше 20&nbsp;копицентров</a> в&nbsp;Москве у&nbsp;метро</span></li>
+  </ul>
+  <a class="btn btn-p" href="vakansii/#otklik">Откликнуться</a>
+</main>
+
+<section id="oper"><div class="wrap">
+  <h2>Оператор копицентра</h2>
+  <p class="vk-sub" data-todo="график смен оператора на проде не указан (_research/client-questions.md)">Москва, гибкий график</p>
+  <h3 class="vk-kh">Оплата за&nbsp;смену</h3>
+  <dl class="kv">
+    <div><dt>На&nbsp;старте</dt><dd>3&nbsp;000–3&nbsp;500<span class="u">&nbsp;₽</span></dd></div>
+    <div><dt>Через 2–3&nbsp;месяца</dt><dd>от&nbsp;4&nbsp;000<span class="u">&nbsp;₽</span></dd></div>
+    <div><dt>Опытным</dt><dd>до&nbsp;5&nbsp;000<span class="u">&nbsp;₽</span></dd></div>
+  </dl>
+  <p class="vk-n">Опытные получают до&nbsp;90&nbsp;000&nbsp;₽ в&nbsp;месяц. Платим два раза в&nbsp;месяц.</p>
+  <div class="vk-2">
+    <div>
+      <h3>Что делать</h3>
+      <ul>
+        <li>Подсказывать клиентам цену и&nbsp;сроки</li>
+        <li>Печатать, копировать, сканировать, делать фото и&nbsp;визитки</li>
+        <li>Общаться с&nbsp;клиентами на&nbsp;месте, по&nbsp;телефону и&nbsp;в&nbsp;мессенджерах</li>
+        <li>Работать с&nbsp;оборудованием</li>
+      </ul>
+      <p>Опыт не&nbsp;нужен. Нужны общительность, ответственность и&nbsp;желание учиться.</p>
+    </div>
+    <div>
+      <h3>Что даём</h3>
+      <ul>
+        <li>Оплачиваемую стажировку с&nbsp;наставником</li>
+        <li>Оформление по&nbsp;ТК&nbsp;РФ: отпуск, больничный</li>
+        <li>Тренинги и&nbsp;корпоративную библиотеку</li>
+        <li>Рост до&nbsp;управляющего копицентром</li>
+      </ul>
+    </div>
+  </div>
+  <div class="vk-st">
+    <h3>Как попасть в&nbsp;команду</h3>
+    <ol class="etp-l">
+      <li><span class="no">1</span><span>Отклик на&nbsp;сайте</span></li>
+      <li><span class="no">2</span><span>Собеседование</span></li>
+      <li><span class="no">3</span><span>Оплачиваемое обучение 10&nbsp;дней</span></li>
+      <li><span class="no">4</span><span>Выход в&nbsp;команду</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<section id="drugie"><div class="wrap">
+  <h2>Другие вакансии</h2>
+  <div class="faq vk-acc">
+    <details name="vk" data-todo="зарплата СММ на проде не указана; Instagram из задач убран — запрещён в РФ, сверить (_research/client-questions.md)"><summary><span>СММ-менеджер<small>Офис у&nbsp;м.&nbsp;Ленинский проспект, 5/2, можно гибрид</small></span></summary><h4>Задачи</h4><ul><li>Контент-план и&nbsp;ведение соцсетей: VK, YouTube, Telegram</li><li>Email, SMS и&nbsp;push-рассылки</li><li>Модерация комментариев и&nbsp;отзывов</li><li>Задачи креативной команде и&nbsp;контроль</li><li>Чат-боты для соцсетей</li><li>Таргет и&nbsp;ретаргет</li><li>Анализ конкурентов и&nbsp;своих пабликов</li><li>Онлайн- и&nbsp;офлайн-мероприятия</li></ul>
+<h4>Будет плюсом</h4><ul><li>Работа с&nbsp;анонсерами, фото- и&nbsp;видеосъёмка, базовое SEO</li><li>Яндекс Метрика, Unisender, SendPulse, SMM-planner, Livedune, Popsters, Tilda, Wordstat, Photoshop и&nbsp;похожие</li></ul>
+<h4>Условия</h4><ul><li>Оформление по&nbsp;ТК&nbsp;РФ, график 5/2</li><li>На&nbsp;испытательном сроке в&nbsp;офисе, потом можно гибрид</li><li>Внутреннее обучение, чай и&nbsp;кофе</li></ul><a class="btn btn-s" href="vakansii/#otklik" data-vk="smm">Откликнуться</a></details>
+  </div>
+</div></section>
+
+<section class="go" id="otklik"><div class="wrap go-g">
+  <div>
+    <h2>Откликнуться</h2>
+    <p class="go-l">Перезвоним, расскажем про график и&nbsp;позовём на&nbsp;собеседование. Резюме не&nbsp;нужно.</p>
+    <a class="go-c" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg><span><small>Не любите формы? Позвоните</small><b>+7&nbsp;495&nbsp;156-10-00</b></span></a>
+  </div>
+  <div id="goF">
+    <form novalidate>
+      <div class="ff" data-req="name"><label for="goName">Имя</label><input id="goName" class="ym-disable-keys" name="name" type="text" autocomplete="name"><p class="err" data-for="name" hidden>Как к вам обращаться?</p></div>
+      <div class="ff" data-req="phone"><label for="goPhone">Телефон</label><input id="goPhone" class="ym-disable-keys" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 999 123-45-67"><p class="err" data-for="phone" hidden>Нужен телефон, чтобы позвонить</p></div>
+      <div class="ff"><label for="vkPos">Вакансия</label><select id="vkPos" name="position"><option value="oper">Оператор копицентра</option><option value="smm">СММ-менеджер</option></select></div>
+      <div class="ff" id="vkMetroF"><label for="vkMetro">Удобное метро</label><input id="vkMetro" name="metro" type="text" placeholder="Например, Бауманская"></div>
+      <div class="ff"><label class="chk" data-req="ok"><input type="checkbox" name="acceptance"><span>Даю <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/" target="_blank">согласие</a> на обработку персональных данных по <a href="https://copy.ru/politika-konfidenczialnosti/" target="_blank">политике</a></span></label><p class="err" data-for="ok" hidden>Без согласия не сможем принять отклик</p></div>
+      <button class="btn btn-p" type="submit">Откликнуться</button>
+    </form>
+    <div class="go-ok" id="goOk" hidden tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3>Отклик отправлен</h3><p>Позвоним в&nbsp;рабочее время и&nbsp;договоримся о&nbsp;собеседовании.</p></div>
+  </div>
+</div></section>
+
+<script>
+{const f=document.querySelector('#goF form');
+ const ok=b=>{const i=b.querySelector('input');return i.type==='checkbox'?i.checked:i.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim()):i.type==='tel'?i.value.replace(/\D/g,'').length>=10:i.value.trim().length>1};
+ const check=b=>{const good=ok(b);b.classList.toggle('bad',!good);f.querySelector(`.err[data-for="${b.dataset.req}"]`).hidden=good;return good};
+ const re=e=>{const b=e.target.closest('[data-req]');if(b&&b.classList.contains('bad'))check(b)};
+ f.addEventListener('input',re);f.addEventListener('change',re);
+ f.onsubmit=e=>{e.preventDefault();const bad=[...f.querySelectorAll('[data-req]')].filter(b=>!check(b));if(bad.length){bad[0].querySelector('input').focus();return}
+  f.hidden=true;const d=document.getElementById('goOk');d.hidden=false;d.focus()}}
+</script>
+<script>
+{const pos=document.getElementById('vkPos'),m=document.getElementById('vkMetroF'),sync=()=>m.hidden=pos.value!=='oper';
+ pos.addEventListener('change',sync);document.querySelectorAll('[data-vk]').forEach(a=>a.addEventListener('click',()=>{pos.value=a.dataset.vk;sync()}))}
+</script>
+<script>
+{const goal=t=>{const h=document.querySelector('.hdr');return t.getBoundingClientRect().top+scrollY+(parseFloat(getComputedStyle(t).paddingTop)||0)-(h?h.getBoundingClientRect().height:0)-24};
+ let run=0;const stop=()=>run=0;['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,stop,{passive:true}));
+ document.addEventListener('click',e=>{const a=e.target.closest('a[href*="#"]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;const id=a.hash.slice(1),t=id&&document.getElementById(id);if(!t)return;e.preventDefault();
+  try{history.pushState(null,'','#'+id)}catch(_){}
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){scrollTo(0,goal(t));return}
+  const y0=scrollY,dist=Math.abs(goal(t)-y0),dur=Math.min(900,Math.max(500,dist*.15)),t0=performance.now(),me=++run;
+  const ease=x=>1-Math.pow(1-x,4);
+  const step=now=>{if(run!==me)return;const k=Math.min(1,(now-t0)/dur);scrollTo(0,y0+(goal(t)-y0)*ease(k));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
+</script>
+<script src="ft.js?v=5"></script>
+</body>
+</html>

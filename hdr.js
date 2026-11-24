@@ -302,11 +302,11 @@ if(mn){
   const lnk=(href,inner,ico,cur)=>`<li><a href="${href}"${cur?' aria-current="page"':''}>${ico?svg(ico):''}${inner}</a></li>`;
   const DESC={copy:'копицентры и типография',ai:'стикерпаки, футболки, кружки',gifts:'с логотипом компании',pro:'калькулятор и требования',b2b:'для компаний',api:'API и интеграции'};
   const BUY=[['Требования к макетам','technical-requirements/',I.file],
-    ['Оплата и доставка','/payment-delivery/',I.truck],['Приложение','/app/',I.mobile]];
+    ['Оплата и доставка','payment-delivery/',I.truck] ,['Приложение','/app/',I.mobile]];
   const MORE=[['Компания',[['О нас','/about/'],['Новости','/news/'],['Блог','/blog/'],['Портфолио','/portfolio/'],['Управляющая компания','/upravlyayushhaya-kompania/']]],
-    ['Клиентам',[['Клуб привилегий','/club/'],['Генератор QR-кодов','/qr/'],['Написать директору','/director/']]],
+    ['Клиентам',[['Клуб привилегий','club/'] ,['Генератор QR-кодов','/qr/'],['Написать директору','/director/']]],
     ['Партнёрам',[['Франшиза','franchise/'], ['Арендодателям','/landlord/']]],
-    ['Работа и учёба',[['Вакансии','/vakansii/'],['Записаться на практику','/zapisatsya-na-praktiku/'],['Записаться на экскурсию','/zapisatsya-na-ekskursiyu/']]]];
+    ['Работа и учёба',[['Вакансии','vakansii/'] ,['Записаться на практику','/zapisatsya-na-praktiku/'],['Записаться на экскурсию','/zapisatsya-na-ekskursiyu/']]]];
   const TOP=[['Плакаты','pechat-plakatov'],['Листовки','pechat-listovok'],['Фото','pechat-fotografij'],['Кружки','pechat-na-kruzhkah'],['Визитки','pechat-vizitok'],['Проектная документация','pechat-proektnoj-dokumentaczii'],['Наклейки','pechat-nakleek'],['Футболки','pechat-na-futbolkah']];
   const th=document.getElementById('themeBtn');
   const isDark=()=>(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
