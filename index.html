@@ -49,7 +49,7 @@ p{margin:12px 0 0;text-align:center}
 </div>
 <script>
 {const fr=document.getElementById("fr"),ph=document.getElementById("ph");
-const p=new URLSearchParams(location.search).get("p");if(p&&/^[\w.-]+\.html([?#].*)?$/.test(p))fr.src=p;
+const p=new URLSearchParams(location.search).get("p");if(p&&/^[\w-]+(\/[\w-]+)*(\.html|\/)([?#].*)?$/.test(p))fr.src=p;
 // цвет полос = фон body страницы (его же Safari красит в статус-бар), текст — по яркости
 let last="";const sync=()=>{try{const d=fr.contentDocument;if(d&&d.body){const c=getComputedStyle(d.body).backgroundColor;if(c!==last){last=c;const m=c.match(/[\d.]+/g)||[255,255,255];const l=(.299*m[0]+.587*m[1]+.114*m[2])/255;ph.style.setProperty("--bar",c);ph.style.setProperty("--on",l>.55?"#000":"#fff")}}}catch(e){}requestAnimationFrame(sync)};sync()}
 </script>
