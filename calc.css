@@ -105,10 +105,10 @@
   .cf-pop::after{bottom:0;height:calc(32px + env(safe-area-inset-bottom));background:linear-gradient(color-mix(in srgb,var(--bg) 0%,transparent),var(--bg) 85%)} 
   .cf-hd h3{margin:0;font:600 18px/1.2 var(--sans)}
   
-  .cf-x{position:relative;width:40px;height:40px;flex:none;display:grid;place-items:center;border:0;border-radius:var(--r-s);background:var(--plate);color:var(--ink);cursor:pointer}
-  .cf-x::before{content:"";position:absolute;inset:-2px}
+  .cf-x{position:relative;width:32px;height:32px;flex:none;display:grid;place-items:center;border:0;border-radius:var(--r-s);background:var(--plate);color:var(--ink);cursor:pointer}
+  .cf-x::before{content:"";position:absolute;inset:-6px} 
   .cf-x:hover{background:var(--plate-h)}
-  .cf-x svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+  .cf-x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
   .cf-r{min-height:64px;padding:8px 14px 8px 8px}
   .cf-dim{z-index:59;background:rgb(20 19 22/.4)} 
 }

@@ -1,6 +1,6 @@
 (()=>{
 const SVC={
-  copy: {tab:'Печать',tag:'',search:'Визитки, фото, переплёт',nav:[['Копицентры','contacts/','map'],['Статус заказа','home.html#status','box']],icons:['user','cart'],cta:''},
+  copy: {tab:'Печать',tag:'',search:'Визитки, фото, переплёт',nav:[['Копицентры','contacts/','map'],['Статус заказа','status-zakaza/','box']],icons:['user','cart'],cta:''},
   ai:   {tab:'Нейродизайн',tag:'AI',nav:[['Стикерпак'],['3D-стикеры'],['Футболка'],['Кружка'],['Реставрация']],icons:['user'],cta:'Попробовать бесплатно'},
   gifts:{tab:'Сувениры',tag:'ПОДАРКИ',search:'Поиск по каталогу',nav:[['Новинки'],['Виды нанесения'],['Портфолио']],icons:['heart','user','cart'],cta:'Оставить заявку'},
   pro:  {tab:'Дизайнерам',tag:'PRO',nav:[['Требования к макетам'],['Оплата и доставка'],['Контакты']],icons:['user'],cta:'Рассчитать'},
@@ -239,7 +239,7 @@ if(sBtn){const h=document.querySelector('.hdr'),f=h.querySelector('.search'),sc=
     if(q.length<2){res.innerHTML=chips();return}
     if(!IX){needCat(()=>{IX=index();render()});return}
     const top=[];
-    if(ORDER.test(q))top.push(row('home.html?order='+encodeURIComponent(q.replace(/\D+/g,m=>m==='-'?'-':''))+'#status','Статус заказа',{i:'box',m:esc(q.replace(/^№?\s*/,'№ '))}));
+    if(ORDER.test(q))top.push(row('status-zakaza/?order='+encodeURIComponent(q.replace(/\D+/g,m=>m==='-'?'-':'')),'Статус заказа',{i:'box',m:esc(q.replace(/^№?\s*/,'№ '))}));
     const cq=norm(q),city=cq.length>=3&&CITIES.find(([c])=>norm(c).startsWith(cq));
     if(city||/^(копи|адрес|где )/.test(cq))top.push(row('contacts/','Копицентры',{i:'map',m:esc((city||CITIES.find(x=>x[0]===cur)||[cur])[0])}));
     let r=find(q,true),fix='';
@@ -282,7 +282,8 @@ document.addEventListener('DOMContentLoaded',()=>{const p=new URLSearchParams(lo
   h.append(ql);
   const ccW=n=>{const a=n%10,b=n%100;return a===1&&b!==11?'копицентр':a>=2&&a<=4&&(b<12||b>14)?'копицентра':'копицентров'};
   const cc=()=>ql.querySelectorAll('[data-cc]').forEach(e=>{const n=(CITIES.find(x=>x[0]===cur)||[])[1];e.textContent=n?n+' '+ccW(n):'Копицентры'});cc();document.addEventListener('copy:city',cc);
-  let y0=scrollY;addEventListener('scroll',()=>{const y=scrollY;if(Math.abs(y-y0)<10)return;h.classList.toggle('qhide',y>y0&&y>120);y0=y},{passive:true});}
+  const Y=()=>Math.min(Math.max(scrollY,0),document.documentElement.scrollHeight-innerHeight);
+  let y0=Y();addEventListener('scroll',()=>{const y=Y();if(Math.abs(y-y0)<10)return;h.classList.toggle('qhide',y>y0&&y>120);y0=y},{passive:true});}
 
 {const pb=document.createElement('div');pb.className='pblur';pb.setAttribute('aria-hidden','true');pb.innerHTML='<i></i>'.repeat(5);
   document.body.prepend(pb);const hh=document.querySelector('.hdr'),ql=hh.querySelector('.qlinks');let last='';
@@ -302,10 +303,10 @@ if(mn){
   const lnk=(href,inner,ico,cur)=>`<li><a href="${href}"${cur?' aria-current="page"':''}>${ico?svg(ico):''}${inner}</a></li>`;
   const DESC={copy:'копицентры и типография',ai:'стикерпаки, футболки, кружки',gifts:'с логотипом компании',pro:'калькулятор и требования',b2b:'для компаний',api:'API и интеграции'};
   const BUY=[['Требования к макетам','technical-requirements/',I.file],
-    ['Оплата и доставка','payment-delivery/',I.truck] ,['Приложение','/app/',I.mobile]];
-  const MORE=[['Компания',[['О нас','/about/'],['Новости','/news/'],['Блог','/blog/'],['Портфолио','/portfolio/'],['Управляющая компания','/upravlyayushhaya-kompania/']]],
+    ['Оплата и доставка','payment-delivery/',I.truck] ,['Приложения','app/',I.mobile] ];
+  const MORE=[['Компания',[['О нас','about/'] ,['Новости','news/'],['Блог','blog/'] ,['Портфолио','portfolio/'] ,['Управляющая компания','about/#rekvizity'] ]],
     ['Клиентам',[['Клуб привилегий','club/'] ,['Генератор QR-кодов','qr/'] ,['Написать директору','/director/']]],
-    ['Партнёрам',[['Франшиза','franchise/'], ['Арендодателям','/landlord/']]],
+    ['Партнёрам',[['Франшиза','franchise/'], ['Арендодателям','landlord/'] ]],
     ['Работа и учёба',[['Вакансии','vakansii/'] ,['Записаться на практику','/zapisatsya-na-praktiku/'],['Записаться на экскурсию','/zapisatsya-na-ekskursiyu/']]]];
   const TOP=[['Плакаты','pechat-plakatov'],['Листовки','pechat-listovok'],['Фото','pechat-fotografij'],['Кружки','pechat-na-kruzhkah'],['Визитки','pechat-vizitok'],['Проектная документация','pechat-proektnoj-dokumentaczii'],['Наклейки','pechat-nakleek'],['Футболки','pechat-na-futbolkah']];
   const th=document.getElementById('themeBtn');
@@ -344,7 +345,7 @@ if(mn){
 {const fInit=()=>{const ft=document.querySelector('footer');if(!ft)return;const R=document.documentElement;let q=0;
   const upd=()=>{q=0;const fr=ft.getBoundingClientRect(),t=fr.top,hb=parseFloat(getComputedStyle(R).getPropertyValue('--hb'))||document.querySelector('.hdr')?.getBoundingClientRect().bottom||0;
     const typing=document.activeElement?.matches('input:not([type=checkbox],[type=radio]),textarea,select');
-    R.classList.toggle('at-foot',(t<hb||fr.bottom<=innerHeight+1)&&!typing);R.classList.toggle('hdr-foot',t<hb)};
+    R.classList.toggle('at-foot',(t<hb||fr.bottom<=innerHeight+1)&&!typing);};
   addEventListener('scroll',()=>{if(!q)q=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);
   addEventListener('focusin',upd);addEventListener('focusout',()=>setTimeout(upd));upd()};
   document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fInit):fInit()}

@@ -14,7 +14,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 <title>Вакансии — COPY.RU (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=26">
+<link rel="stylesheet" href="base.css?v=37">
 <style>
 
 .vk-top h1{margin:0 0 12px}
@@ -85,7 +85,7 @@ section>.wrap>h2{margin:0 0 24px}
 @media (max-width:760px){.vk-lead{font-size:16px}.get{grid-template-columns:minmax(0,1fr);gap:16px}.vk-2{grid-template-columns:minmax(0,1fr);margin-top:40px}.vk-st{margin-top:40px}.etp-l{grid-template-columns:minmax(0,1fr)}.kv dd{font-size:18px}}
 @media (max-width:560px){.vk-top .btn{width:100%}}
 </style>
-<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="hdr.css?v=259">
 <link rel="stylesheet" href="ft.css?v=3">
 </head>
 <body>
@@ -95,7 +95,7 @@ section>.wrap>h2{margin:0 0 24px}
   <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
 </svg>
 
-<script src="hdr.js?v=166" data-svc="copy"></script>
+<script src="hdr.js?v=174" data-svc="copy"></script>
 
 <main class="wrap vk-top"><div class="crumbs"><a href="home.html">Главная</a><span>/</span><span>Вакансии</span></div>
   <h1>Работа в&nbsp;COPY.RU</h1>
@@ -110,7 +110,7 @@ section>.wrap>h2{margin:0 0 24px}
 
 <section id="oper"><div class="wrap">
   <h2>Оператор копицентра</h2>
-  <p class="vk-sub" data-todo="график смен оператора на проде не указан (_research/client-questions.md)">Москва, гибкий график</p>
+  <p class="vk-sub">Москва, гибкий график</p>
   <h3 class="vk-kh">Оплата за&nbsp;смену</h3>
   <dl class="kv">
     <div><dt>На&nbsp;старте</dt><dd>3&nbsp;000–3&nbsp;500<span class="u">&nbsp;₽</span></dd></div>
@@ -153,7 +153,7 @@ section>.wrap>h2{margin:0 0 24px}
 <section id="drugie"><div class="wrap">
   <h2>Другие вакансии</h2>
   <div class="faq vk-acc">
-    <details name="vk" data-todo="зарплата СММ на проде не указана; Instagram из задач убран — запрещён в РФ, сверить (_research/client-questions.md)"><summary><span>СММ-менеджер<small>Офис у&nbsp;м.&nbsp;Ленинский проспект, 5/2, можно гибрид</small></span></summary><h4>Задачи</h4><ul><li>Контент-план и&nbsp;ведение соцсетей: VK, YouTube, Telegram</li><li>Email, SMS и&nbsp;push-рассылки</li><li>Модерация комментариев и&nbsp;отзывов</li><li>Задачи креативной команде и&nbsp;контроль</li><li>Чат-боты для соцсетей</li><li>Таргет и&nbsp;ретаргет</li><li>Анализ конкурентов и&nbsp;своих пабликов</li><li>Онлайн- и&nbsp;офлайн-мероприятия</li></ul>
+    <details name="vk"><summary><span>СММ-менеджер<small>Офис у&nbsp;м.&nbsp;Ленинский проспект, 5/2, можно гибрид</small></span></summary><h4>Задачи</h4><ul><li>Контент-план и&nbsp;ведение соцсетей: VK, YouTube, Telegram</li><li>Email, SMS и&nbsp;push-рассылки</li><li>Модерация комментариев и&nbsp;отзывов</li><li>Задачи креативной команде и&nbsp;контроль</li><li>Чат-боты для соцсетей</li><li>Таргет и&nbsp;ретаргет</li><li>Анализ конкурентов и&nbsp;своих пабликов</li><li>Онлайн- и&nbsp;офлайн-мероприятия</li></ul>
 <h4>Будет плюсом</h4><ul><li>Работа с&nbsp;анонсерами, фото- и&nbsp;видеосъёмка, базовое SEO</li><li>Яндекс Метрика, Unisender, SendPulse, SMM-planner, Livedune, Popsters, Tilda, Wordstat, Photoshop и&nbsp;похожие</li></ul>
 <h4>Условия</h4><ul><li>Оформление по&nbsp;ТК&nbsp;РФ, график 5/2</li><li>На&nbsp;испытательном сроке в&nbsp;офисе, потом можно гибрид</li><li>Внутреннее обучение, чай и&nbsp;кофе</li></ul><a class="btn btn-s" href="vakansii/#otklik" data-vk="smm">Откликнуться</a></details>
   </div>
@@ -171,7 +171,7 @@ section>.wrap>h2{margin:0 0 24px}
       <div class="ff" data-req="phone"><label for="goPhone">Телефон</label><input id="goPhone" class="ym-disable-keys" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 999 123-45-67"><p class="err" data-for="phone" hidden>Нужен телефон, чтобы позвонить</p></div>
       <div class="ff"><label for="vkPos">Вакансия</label><select id="vkPos" name="position"><option value="oper">Оператор копицентра</option><option value="smm">СММ-менеджер</option></select></div>
       <div class="ff" id="vkMetroF"><label for="vkMetro">Удобное метро</label><input id="vkMetro" name="metro" type="text" placeholder="Например, Бауманская"></div>
-      <div class="ff"><label class="chk" data-req="ok"><input type="checkbox" name="acceptance"><span>Даю <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/" target="_blank">согласие</a> на обработку персональных данных по <a href="https://copy.ru/politika-konfidenczialnosti/" target="_blank">политике</a></span></label><p class="err" data-for="ok" hidden>Без согласия не сможем принять отклик</p></div>
+      <div class="ff"><label class="chk" data-req="ok"><input type="checkbox" name="acceptance"><span>Даю <a href="soglasie-na-obrabotku-personalnyh-dannyh/" target="_blank">согласие</a> на обработку персональных данных по <a href="politika-konfidenczialnosti/" target="_blank">политике</a></span></label><p class="err" data-for="ok" hidden>Без согласия не сможем принять отклик</p></div>
       <button class="btn btn-p" type="submit">Откликнуться</button>
     </form>
     <div class="go-ok" id="goOk" hidden tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><h3>Отклик отправлен</h3><p>Позвоним в&nbsp;рабочее время и&nbsp;договоримся о&nbsp;собеседовании.</p></div>
@@ -201,6 +201,6 @@ section>.wrap>h2{margin:0 0 24px}
   const ease=x=>1-Math.pow(1-x,4);
   const step=now=>{if(run!==me)return;const k=Math.min(1,(now-t0)/dur);scrollTo(0,y0+(goal(t)-y0)*ease(k));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
 </script>
-<script src="ft.js?v=5"></script>
+<script src="ft.js?v=9"></script>
 </body>
 </html>

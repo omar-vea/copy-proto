@@ -14,7 +14,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 <title>Печать визиток — COPY.RU (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=26">
+<link rel="stylesheet" href="base.css?v=37">
 <style>
 
 
@@ -23,7 +23,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 
 
-.btn-g:hover{box-shadow:inset 0 0 0 1px var(--ink-2)}
+.btn-g:hover{background:color-mix(in srgb,var(--ink) 10%,transparent)}
 
 
 
@@ -33,6 +33,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ttl{display:flex;align-items:center;flex-wrap:wrap;column-gap:12px;margin:0 0 14px}.ttl h1{margin:0!important} 
 .slides{display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.slides::-webkit-scrollbar{display:none}
 .slides>img{flex:0 0 100%;width:100%;height:100%;object-fit:contain;scroll-snap-align:center}
+.slides>img.var-ph{padding:8%;box-sizing:border-box} 
 
 .info h1{margin:0 0 14px}
 @media (min-width:981px){.info h1{font-size:52px}} 
@@ -62,21 +63,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 .calc-h{margin:48px 0 20px;scroll-margin-top:100px}  
 
-.prep{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;max-width:960px} 
-.scheme{margin:0}
-.scheme svg{display:block;width:100%;height:auto;max-height:220px;margin:0 0 20px} 
-.s-bleed{fill:var(--v-100)}.s-trim{fill:var(--surface);stroke:var(--ink);stroke-width:.4}.s-safe{fill:none;stroke:var(--v-text);stroke-width:.4;stroke-dasharray:1.5 1.2}
-.scheme figcaption{display:grid;gap:12px}
-.scheme figcaption div{display:grid;grid-template-columns:20px 1fr;column-gap:12px;font-size:14px}
-.scheme figcaption i{width:16px;height:16px;border-radius:4px;margin-top:2px;box-sizing:border-box}
-.k-bleed{background:var(--v-100)}.k-trim{border:1.5px solid var(--ink)}.k-safe{border:1.5px dashed var(--v-text)}
-.scheme figcaption b{font-weight:600;font-size:16px}.scheme figcaption span{color:var(--ink-2);grid-column:2}
-.rules{list-style:none;margin:0;padding:0;display:grid;gap:12px} 
-.rules li{display:grid;grid-template-columns:20px 1fr;column-gap:12px;font-size:14px}
-.rules li:not(.more)::before{content:"";width:18px;height:18px;margin-top:2px;background:var(--success);-webkit-mask:var(--i-check) center/contain no-repeat;mask:var(--i-check) center/contain no-repeat}
-.rules{--i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")} 
-.rules .more{display:block;padding-left:32px}
-.rules b{display:block;font-weight:600;font-size:16px}.rules span{color:var(--ink-2)}
+
 #ctr .sh p a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;white-space:nowrap}
 
 .pf{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 16px}
@@ -97,8 +84,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pf-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 16px}
 .pf-hd h3{margin:0;min-width:0;font:600 18px/1.3 var(--sans)}
 .pf-x,.pf-a{position:relative;width:40px;height:40px;flex:none;display:grid;place-items:center;border:0;padding:0;border-radius:var(--r-s);color:var(--ink);cursor:pointer}
-.pf-x{background:var(--plate)}.pf-x::before{content:"";position:absolute;inset:-2px}
-.pf-x svg,.pf-a svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pf-x{width:32px;height:32px;background:var(--plate)}.pf-x::before{content:"";position:absolute;inset:-6px} 
+.pf-x svg,.pf-a svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.pf-x svg{width:18px;height:18px}
 .pf-w{position:relative}
 .pf-s{display:flex;align-items:center;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain;padding:0 16px;scroll-padding:0 16px}.pf-s::-webkit-scrollbar{display:none}
 .pf-s>img{flex:0 0 100%;min-width:0;width:100%;height:auto;max-height:calc(100svh - 260px);object-fit:contain;border-radius:var(--r-l);scroll-snap-align:start} 
@@ -131,7 +118,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 }
 @media (prefers-reduced-motion:reduce){.pf-d,.pf-d::backdrop{animation:none!important}}
 .nolay{margin:-4px 0 32px;color:var(--ink-2)}.nolay a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-.rules .more a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 
 
 
@@ -144,8 +130,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 @media (max-width:980px){
   .prod{grid-template-columns:1fr;gap:20px}
   .gal{position:static}
-  .prep{grid-template-columns:1fr}
-  .prep{gap:24px}
   .calc-h{margin:36px 0 16px} 
   .stage{aspect-ratio:4/3}
 }
@@ -193,17 +177,18 @@ a.way:active>*{opacity:.5}
 .way-c .ct-l{gap:6px;margin-left:32px;flex-basis:100%}
 .way-c .ct-l a{width:40px;height:40px;background:var(--surface);border-radius:var(--r-s)}
 .way-c .ct-l svg{width:22px;height:22px}.way-c .m-wa svg{width:20px;height:20px}
-.way-c .ct-l a.m-tel{background:var(--v);color:#fff;width:auto;display:flex;gap:6px;padding:0 14px;font:600 14px/1 var(--sans)} 
+.way-c .ct-l a.m-tel{background:var(--pg);box-shadow:none;color:#fff;width:auto;display:flex;gap:6px;padding:0 14px;font:600 14px/1 var(--sans)} 
 .way-c{container-type:inline-size}@container (max-width:300px){.way-c .ct-l a.m-tel span{display:none}.way-c .ct-l a.m-tel{width:40px;padding:0}} 
 @media (hover:hover){.way-c .ct-l a.m-tel:hover{background:var(--v-hover)}}.m-tel svg{width:20px!important;height:20px!important}
 @media (hover:hover){.way-c .ct-l a:hover{background:color-mix(in srgb,var(--ink) 6%,var(--surface))}}
 @media (max-width:980px){.alt{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="hdr.css?v=259">
 <link rel="stylesheet" href="ft.css?v=3">
-<link rel="stylesheet" href="calc.css?v=71">
+<link rel="stylesheet" href="calc.css?v=72">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <link rel="stylesheet" href="cc.css?v=1">
+<link rel="stylesheet" href="blocks.css?v=79">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
@@ -212,7 +197,7 @@ a.way:active>*{opacity:.5}
   <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
 </svg>
 
-<script src="hdr.js?v=166" data-svc="copy"></script>
+<script src="hdr.js?v=174" data-svc="copy"></script>
 
 <main class="wrap">
   <div class="crumbs" id="crumbs"></div>
@@ -268,7 +253,7 @@ a.way:active>*{opacity:.5}
   <div class="alt">
     <a class="way" href="fast-order.html" data-ct="fast"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg><span><b>Быстрый заказ</b><small>Оставьте телефон, менеджер перезвонит</small></span><svg class="way-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     <a class="way" href="home.html#ctr" data-ct="ctr"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg><span><b>Принесите файл в копицентр</b><small>Напечатаем при вас</small></span><svg class="way-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
-    <div class="way way-c"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span><b>Написать или позвонить</b><small>Менеджер посчитает и проверит макет</small></span><div class="ct-l"> <a class="m-tel" data-ct="tel" href="tel:+74951561000" aria-label="Позвонить +7 495 156-10-00"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Позвонить</span></a> <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div></div>
+    <div class="way way-c"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span><b>Написать или позвонить</b><small>Менеджер посчитает и проверит макет</small></span><div class="ct-l"> <a class="m-tel" data-ct="tel" href="tel:+74951561000" aria-label="Позвонить +7 495 156-10-00"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Позвонить</span></a> <a class="m-tg" href="#" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div></div>
   </div>
 </div></section>
 
@@ -292,6 +277,19 @@ a.way:active>*{opacity:.5}
             <li class="more"><a href="technical-requirements/" target="_blank" rel="noopener">Все требования к макетам</a></li>
     </ul>
   </div>
+  
+  <div class="prep-x">
+    <div class="deck" aria-roledescription="презентация" aria-label="Как подготовить макет по шагам">
+      <h3>Пошагово</h3>
+      <div class="deck-s"><div role="group" aria-roledescription="слайд" aria-label="1 из 5"><span>Шаг 1</span><b>Размер файла больше готового изделия</b><p>С каждой стороны добавьте по 3 мм на вылеты. Фон тяните до края файла, иначе после резки останется белая полоса.</p></div><div role="group" aria-roledescription="слайд" aria-label="2 из 5"><span>Шаг 2</span><b>Текст не ближе 3 мм к резу</b><p>Нож может уйти на миллиметр. Всё важное держите внутри безопасной зоны, она размечена в шаблоне.</p></div><div role="group" aria-roledescription="слайд" aria-label="3 из 5"><span>Шаг 3</span><b>Цвета в CMYK</b><p>Принтер печатает четырьмя красками. Яркие RGB-цвета с экрана на бумаге выйдут темнее.</p></div><div role="group" aria-roledescription="слайд" aria-label="4 из 5"><span>Шаг 4</span><b>Картинки от 300 dpi</b><p>Фото из мессенджеров и с сайтов обычно меньше и на печати выйдут мыльными.</p></div><div role="group" aria-roledescription="слайд" aria-label="5 из 5"><span>Шаг 5</span><b>Шрифты в кривые, файл в PDF</b><p>Так макет откроется у нас так же, как у вас. Не уверены — пришлите как есть, проверим бесплатно.</p></div></div>
+      <div class="deck-n"><div class="deck-dots"></div><div class="deck-a"><button type="button" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><button type="button" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+    </div>
+    <div class="tpl">
+      <h3>Шаблон для макета</h3>
+      <p id="tplN">90 × 50 мм, вылеты 3 мм и безопасная зона уже размечены</p>
+      <div class="tpl-f"><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>PDF</a><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>CDR</a><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>AI</a><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>PSD</a></div>
+    </div>
+  </div>
 </div></section>
 
 <section id="ctr"><div class="wrap">
@@ -311,7 +309,7 @@ a.way:active>*{opacity:.5}
 
 <section id="pf"><div class="wrap">
   
-  <div class="sh"><div><h2><a class="sh-link" href="https://copy.ru/portfolio/">Портфолио<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
+  <div class="sh"><div><h2><a class="sh-link" href="portfolio/">Портфолио<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
   <div class="pf" id="pfL"></div>
   <dialog class="pf-d" id="pfD" aria-labelledby="pfT" tabindex="-1">
     <div class="pf-hd"><h3 id="pfT"></h3><button type="button" class="pf-x" data-x aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
@@ -328,9 +326,17 @@ a.way:active>*{opacity:.5}
   <nav class="hs" aria-label="Другие услуги" id="moreL"></nav>
 </div></section>
 
+
+<section data-g="promo"></section>
+
+<section data-g="eco"></section>
+
+<section data-posts></section>
+
 <section id="seoS"><div class="wrap"><div class="seo" id="seo"></div></div></section>
 
-<script src="ft.js?v=5"></script>
+<script src="ft.js?v=9"></script>
+<script src="data/posts.js?v=4"></script><script src="post.js?v=11"></script><script src="blocks.js?v=24"></script>
 
 
 
@@ -346,7 +352,7 @@ document.title=PDP.h1+' — COPY.RU (прототип)';
 $('crumbs').innerHTML=['<a href="home.html">Главная</a>',...PDP.crumbs.map(([t,u])=>`<a href="${u}">${E(t)}</a>`),`<span>${E(PDP.name)}</span>`].join('<span>/</span>');
 $('h1').textContent=PDP.h1;
 if(PDP.lead)$('lead').innerHTML=PDP.lead;else $('lead').remove();
-const G=PDP.gal,sl=$('slides'),gn=$('galN');
+const VPH=PRODUCT&&PRODUCT.fields.some(f=>f.photo),G=VPH?['',...PDP.gal]:PDP.gal,sl=$('slides'),gn=$('galN');
 if(!G.length){document.querySelector('.gal').remove();document.querySelector('.prod').classList.add('nog')}
 else{sl.innerHTML=G.map((u,i)=>`<img src="${u}" alt="${E(PDP.h1)}, фото ${i+1}" width="1200" height="1200" decoding="async"${i?' loading="lazy"':' fetchpriority="high"'}>`).join('');
   if(G.length>1){gn.innerHTML=G.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Фото ${i+1}"></button>`).join('');
@@ -371,6 +377,8 @@ if(PRODUCT&&ERR==='tpl'){
   const SZ=/(\d+(?:[.,]\d+)?)\s*[xх×Х]\s*(\d+(?:[.,]\d+)?)\s*(мм|см)?/;
   let last,onR;
   Calc.mount(calcEl,PRODUCT,onR=r=>{last=r;
+    if(VPH){const ph=PRODUCT.fields.filter(f=>f.photo&&(!f.when||[].concat(r.st[f.when.f]).some(x=>f.when.v.includes(x)))).map(f=>(f.values.find(v=>v.id===r.st[f.id])||{}).image).filter(Boolean).pop(),im=sl.firstElementChild;
+      if(ph&&im&&!im.src.endsWith(ph)){im.src=ph;im.classList.add('var-ph');if(sl.scrollLeft)sl.scrollTo({left:0,behavior:'smooth'})}}
     price.textContent=r.fmt(r.fin);old.textContent=r.fmt(r.full);
     per.textContent=r.q+' '+PRODUCT.unit+' · '+r.per1(r.per).replace('⁠₽',' ₽')+' за штуку';
     readyAt.textContent=r.ready||'Срок назовёт менеджер';readySub.textContent=r.readySub;
@@ -379,7 +387,7 @@ if(PRODUCT&&ERR==='tpl'){
       const m=!wh&&v.title.match(SZ);if(m){const k=m[3]==='см'?10:1;wh=[parseFloat(m[1].replace(',','.'))*k,parseFloat(m[2].replace(',','.'))*k]}
       if(/4\+4|двусторон|1\+1/i.test(v.title))two=true})});
     $('prep').hidden=!wh;
-    if(wh){const [w,hh]=wh;szFile.textContent=`Размер файла ${w+6} × ${hh+6} мм`;szTrim.textContent=`После резки ${w} × ${hh} мм`;
+    if(wh){const [w,hh]=wh;szFile.textContent=`Размер файла ${w+6} × ${hh+6} мм`;window.copyTpl&&copyTpl(w,hh);szTrim.textContent=`После резки ${w} × ${hh} мм`;
       schemeSvg.setAttribute('viewBox',`0 0 ${w+6} ${hh+6}`);schemeSvg.innerHTML=`<rect class="s-bleed" width="${w+6}" height="${hh+6}"/><rect class="s-trim" x="3" y="3" width="${w}" height="${hh}"/><rect class="s-safe" x="6" y="6" width="${w-6}" height="${hh-6}"/>`;
       pages.textContent=two?'Две страницы: лицо и оборот':'Одна страница'}
     const [t,h]=CTA[r.st.mode||'upload'];cta.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true">${CI[r.st.mode||'upload']}</svg>${t}`;cta.href=h;delete cta.dataset.ct;
@@ -398,7 +406,7 @@ if(PRODUCT&&ERR==='tpl'){
   $('steps').innerHTML=[['Оставьте заявку','Опишите задачу, приложите макет или пример. Можно без точного названия услуги.'],['Менеджер свяжется','Уточнит детали, назовёт цену и срок.'],['Оплатите','После того как согласуете заказ.'],['Заберите или получите','В одном из шести пунктов выдачи или доставкой.']]
     .map(([b,p],i)=>`<div class="stp"><span class="n">0${i+1}</span><b>${b}</b><p>${p}</p></div>`).join('');
 }
-if(PDP.pf.length)$('pfL').innerHTML=PDP.pf.map(([t,u,im])=>`<a class="pf-i" href="${u}" data-ph="${im}"><img src="${im}" alt="" loading="lazy" decoding="async"><b>${E(t)}</b><span></span></a>`).join('');
+if(PDP.pf.length)$('pfL').innerHTML=PDP.pf.map(([t,u,im])=>`<a class="pf-i" href="${u.replace('https://copy.ru/portfolio/','portfolio/')}" data-ph="${im}"><img src="${im}" alt="" loading="lazy" decoding="async"><b>${E(t)}</b><span></span></a>`).join('');
 else{document.body.append($('pfD'));$('pf').remove()}
 if(PDP.more.length)$('moreL').innerHTML=PDP.more.map(([t,u,im])=>`<a href="${u}"><b>${E(t)}</b>${im?`<img class="ob-img" src="${im}" alt="" width="144" height="144">`:''}</a>`).join('');
 else $('more').remove();

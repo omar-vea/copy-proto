@@ -13,7 +13,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 <title>Печать визиток — COPY.RU (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=26">
+<link rel="stylesheet" href="base.css?v=37">
 <style>
 
 
@@ -22,7 +22,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 
 
-.btn-g:hover{box-shadow:inset 0 0 0 1px var(--ink-2)}
+.btn-g:hover{background:color-mix(in srgb,var(--ink) 10%,transparent)}
 
 
 
@@ -58,74 +58,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 .calc-h{margin:48px 0 20px;scroll-margin-top:100px}  
 
-.prep{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;max-width:960px} 
-.scheme{margin:0}
-.scheme svg{display:block;width:100%;height:auto;max-height:220px;margin:0 0 20px} 
-.s-bleed{fill:var(--v-100)}.s-trim{fill:var(--surface);stroke:var(--ink);stroke-width:.4}.s-safe{fill:none;stroke:var(--v-text);stroke-width:.4;stroke-dasharray:1.5 1.2}
-.scheme figcaption{display:grid;gap:12px}
-.scheme figcaption div{display:grid;grid-template-columns:20px 1fr;column-gap:12px;font-size:14px}
-.scheme figcaption i{width:16px;height:16px;border-radius:4px;margin-top:2px;box-sizing:border-box}
-.k-bleed{background:var(--v-100)}.k-trim{border:1.5px solid var(--ink)}.k-safe{border:1.5px dashed var(--v-text)}
-.scheme figcaption b{font-weight:600;font-size:16px}.scheme figcaption span{color:var(--ink-2);grid-column:2}
-.rules{list-style:none;margin:0;padding:0;display:grid;gap:12px} 
-.rules li{display:grid;grid-template-columns:20px 1fr;column-gap:12px;font-size:14px}
-.rules li:not(.more)::before{content:"";width:18px;height:18px;margin-top:2px;background:var(--success);-webkit-mask:var(--i-check) center/contain no-repeat;mask:var(--i-check) center/contain no-repeat}
-.rules{--i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")} 
-.rules .more{display:block;padding-left:32px}
-.rules b{display:block;font-weight:600;font-size:16px}.rules span{color:var(--ink-2)}
+
 #ctr .sh p a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;white-space:nowrap}
-
-.pf{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 16px}
-.pf-i{display:flex;flex-direction:column;gap:4px;min-width:0}
-.pf-i img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-l);margin-bottom:8px}
-.pf-i b{font:600 16px/1.3 var(--sans)}
-.pf-i span{font-size:14px;line-height:1.4;color:var(--ink-2)}
-@media (hover:hover){.pf-i:hover b{text-decoration:underline;text-underline-offset:3px}}
-.pf-i:active>*{opacity:.5}
-@media (max-width:980px){.pf{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.pf{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -16px;padding:0 16px;scroll-padding:0 16px}.pf::-webkit-scrollbar{display:none}.pf-i{flex:0 0 80%;scroll-snap-align:start}}
-
-.pf-d{position:fixed;inset:auto 0 0;width:100%;max-width:none;height:auto;max-height:calc(100svh - 24px);margin:0;padding:0;border:0;border-radius:var(--r-xl) var(--r-xl) 0 0;background:var(--bg);color:var(--ink);overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);animation:cf-up .3s var(--ios,ease)}
-.pf-d:not([open]){display:none!important}.pf-d:focus{outline:none} 
-.pf-d.out{animation:cf-down .2s var(--ios,ease) forwards}
-.pf-d::backdrop{background:rgb(20 19 22/.4);animation:cf-fade .3s var(--ios,ease)}
-.pf-d.out::backdrop{animation:cf-fade-out .2s var(--ios,ease) forwards}
-.pf-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 16px}
-.pf-hd h3{margin:0;min-width:0;font:600 18px/1.3 var(--sans)}
-.pf-x,.pf-a{position:relative;width:40px;height:40px;flex:none;display:grid;place-items:center;border:0;padding:0;border-radius:var(--r-s);color:var(--ink);cursor:pointer}
-.pf-x{background:var(--plate)}.pf-x::before{content:"";position:absolute;inset:-2px}
-.pf-x svg,.pf-a svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.pf-w{position:relative}
-.pf-s{display:flex;align-items:center;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain;padding:0 16px;scroll-padding:0 16px}.pf-s::-webkit-scrollbar{display:none}
-.pf-s>img{flex:0 0 100%;min-width:0;width:100%;height:auto;max-height:calc(100svh - 260px);object-fit:contain;border-radius:var(--r-l);scroll-snap-align:start} 
-.pf-a{position:absolute;top:50%;translate:0 -50%;background:var(--surface);box-shadow:0 2px 8px rgb(20 19 22/.16)} 
-.pf-prev{left:28px}.pf-next{right:28px}
-@media (hover:hover){.pf-x:hover{background:var(--plate-h)}.pf-a:hover{background:var(--bg)}}
-@media (hover:none){.pf-a{display:none}}
-.pf-bot{display:flex;flex-direction:column;gap:12px;padding:12px 16px calc(16px + env(safe-area-inset-bottom))}
-.pf-dots{display:flex;justify-content:center;gap:6px}
-.pf-dots:empty{display:none}
-.pf-dots button{position:relative;width:6px;height:6px;padding:0;border:0;border-radius:3px;background:var(--ink);opacity:.2;cursor:pointer;transition:width .2s var(--ios,ease),opacity .2s}
-.pf-dots button::before{content:"";position:absolute;inset:-8px -3px}
-.pf-dots button[aria-current]{width:16px;opacity:1}
-.pf-bot p{margin:0;font-size:14px;line-height:1.4;color:var(--ink-2)}
-.pf-bot .btn{width:100%}
-@media (min-width:981px){
-  
-  .pf-d{inset:0;margin:auto;width:min(1200px,calc(100% - 48px));height:fit-content;max-height:calc(100svh - 48px);border-radius:var(--r-xl);grid-template-columns:minmax(0,1fr) 360px;grid-template-rows:auto 1fr;animation:cf-drop .2s var(--ios,ease)}
-  .pf-d.out{animation:cf-drop-out .2s var(--ios,ease) forwards}
-  .pf-w{grid-column:1;grid-row:1/3;padding:24px 0 24px 24px}
-  .pf-s{padding:0;scroll-padding:0}
-  .pf-s>img{max-height:calc(100svh - 96px)}
-  .pf-prev{left:36px}.pf-next{right:12px}
-  .pf-hd{grid-column:2;align-items:flex-start;padding:24px 24px 0}
-  .pf-hd h3{font-size:20px;line-height:1.25;padding-top:8px}
-  .pf-bot{grid-column:2;align-self:end;padding:0 24px 24px}
-  .pf-dots{justify-content:flex-start}
-}
-@media (prefers-reduced-motion:reduce){.pf-d,.pf-d::backdrop{animation:none!important}}
 .nolay{margin:-4px 0 32px;color:var(--ink-2)}.nolay a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-.rules .more a{color:var(--v-text);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 
 
 
@@ -138,8 +73,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 @media (max-width:980px){
   .prod{grid-template-columns:1fr;gap:20px}
   .gal{position:static}
-  .prep{grid-template-columns:1fr}
-  .prep{gap:24px}
   .calc-h{margin:36px 0 16px} 
   .stage{aspect-ratio:4/3}
 }
@@ -187,17 +120,19 @@ a.way:active>*{opacity:.5}
 .way-c .ct-l{gap:6px;margin-left:32px;flex-basis:100%}
 .way-c .ct-l a{width:40px;height:40px;background:var(--surface);border-radius:var(--r-s)}
 .way-c .ct-l svg{width:22px;height:22px}.way-c .m-wa svg{width:20px;height:20px}
-.way-c .ct-l a.m-tel{background:var(--v);color:#fff;width:auto;display:flex;gap:6px;padding:0 14px;font:600 14px/1 var(--sans)} 
+.way-c .ct-l a.m-tel{background:var(--pg);box-shadow:none;color:#fff;width:auto;display:flex;gap:6px;padding:0 14px;font:600 14px/1 var(--sans)} 
 .way-c{container-type:inline-size}@container (max-width:300px){.way-c .ct-l a.m-tel span{display:none}.way-c .ct-l a.m-tel{width:40px;padding:0}} 
 @media (hover:hover){.way-c .ct-l a.m-tel:hover{background:var(--v-hover)}}.m-tel svg{width:20px!important;height:20px!important}
 @media (hover:hover){.way-c .ct-l a:hover{background:color-mix(in srgb,var(--ink) 6%,var(--surface))}}
 @media (max-width:980px){.alt{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="hdr.css?v=259">
 <link rel="stylesheet" href="ft.css?v=3">
-<link rel="stylesheet" href="calc.css?v=71">
+<link rel="stylesheet" href="calc.css?v=72">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <link rel="stylesheet" href="cc.css?v=1">
+<link rel="stylesheet" href="blocks.css?v=79">
+<link rel="stylesheet" href="pfw.css?v=12">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
@@ -206,7 +141,7 @@ a.way:active>*{opacity:.5}
   <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
 </svg>
 
-<script src="hdr.js?v=166" data-svc="copy"></script>
+<script src="hdr.js?v=174" data-svc="copy"></script>
 
 <main class="wrap">
   <div class="crumbs"><a href="home.html">Главная</a><span>/</span><a href="catalog/operativnaya-poligrafiya/">Оперативная полиграфия</a><span>/</span><span>Визитки</span></div>
@@ -263,7 +198,7 @@ a.way:active>*{opacity:.5}
   <div class="alt">
     <a class="way" href="fast-order.html" data-ct="fast"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg><span><b>Быстрый заказ</b><small>Оставьте телефон, менеджер перезвонит</small></span><svg class="way-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     <a class="way" href="home.html#ctr" data-ct="ctr"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg><span><b>Принесите файл в копицентр</b><small>Напечатаем при вас</small></span><svg class="way-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
-    <div class="way way-c"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span><b>Написать или позвонить</b><small>Менеджер посчитает и проверит макет</small></span><div class="ct-l"> <a class="m-tel" data-ct="tel" href="tel:+74951561000" aria-label="Позвонить +7 495 156-10-00"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Позвонить</span></a> <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div></div>
+    <div class="way way-c"><svg class="way-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span><b>Написать или позвонить</b><small>Менеджер посчитает и проверит макет</small></span><div class="ct-l"> <a class="m-tel" data-ct="tel" href="tel:+74951561000" aria-label="Позвонить +7 495 156-10-00"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Позвонить</span></a> <a class="m-tg" href="#" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div></div>
   </div>
 </div></section>
 
@@ -287,6 +222,19 @@ a.way:active>*{opacity:.5}
             <li class="more"><a href="technical-requirements/" target="_blank" rel="noopener">Все требования к макетам</a></li>
     </ul>
   </div>
+  
+  <div class="prep-x">
+    <div class="deck" aria-roledescription="презентация" aria-label="Как подготовить макет по шагам">
+      <h3>Пошагово</h3>
+      <div class="deck-s"><div role="group" aria-roledescription="слайд" aria-label="1 из 5"><span>Шаг 1</span><b>Размер файла больше готового изделия</b><p>С каждой стороны добавьте по 3 мм на вылеты. Фон тяните до края файла, иначе после резки останется белая полоса.</p></div><div role="group" aria-roledescription="слайд" aria-label="2 из 5"><span>Шаг 2</span><b>Текст не ближе 3 мм к резу</b><p>Нож может уйти на миллиметр. Всё важное держите внутри безопасной зоны, она размечена в шаблоне.</p></div><div role="group" aria-roledescription="слайд" aria-label="3 из 5"><span>Шаг 3</span><b>Цвета в CMYK</b><p>Принтер печатает четырьмя красками. Яркие RGB-цвета с экрана на бумаге выйдут темнее.</p></div><div role="group" aria-roledescription="слайд" aria-label="4 из 5"><span>Шаг 4</span><b>Картинки от 300 dpi</b><p>Фото из мессенджеров и с сайтов обычно меньше и на печати выйдут мыльными.</p></div><div role="group" aria-roledescription="слайд" aria-label="5 из 5"><span>Шаг 5</span><b>Шрифты в кривые, файл в PDF</b><p>Так макет откроется у нас так же, как у вас. Не уверены — пришлите как есть, проверим бесплатно.</p></div></div>
+      <div class="deck-n"><div class="deck-dots"></div><div class="deck-a"><button type="button" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><button type="button" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+    </div>
+    <div class="tpl">
+      <h3>Шаблон для макета</h3>
+      <p id="tplN">90 × 50 мм, вылеты 3 мм и безопасная зона уже размечены</p>
+      <div class="tpl-f"><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>PDF</a><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>CDR</a><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>AI</a><a href="#" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>PSD</a></div>
+    </div>
+  </div>
 </div></section>
 
 <section id="ctr"><div class="wrap">
@@ -304,23 +252,23 @@ a.way:active>*{opacity:.5}
   </div>
 </div></section>
 
-<section id="pf"><div class="wrap">
+<section id="pf" data-need="Визитки как в портфолио"><div class="wrap">
   
-  <div class="sh"><div><h2><a class="sh-link" href="https://copy.ru/portfolio/">Портфолио<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
-  <div class="pf">
-    <a class="pf-i" href="https://copy.ru/portfolio/pechat_mnogosloinyh_vizitok/" data-ph="img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_4-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_2-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_1-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio-972x540.webp"><img src="img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-972x540.webp" alt="" loading="lazy" decoding="async"><b>Дизайнерские визитки «Nord»</b><span>Три слоя дизайнерской фактурной бумаги</span></a>
-    <a class="pf-i" href="https://copy.ru/portfolio/22681/" data-ph="img/pf/img-6027-ss158o.webp img/pf/img-6029-m33klo.webp img/pf/img-6030-87mx5v.webp img/pf/img-6032-wgcv7a.webp"><img src="img/pf/img-6027-ss158o.webp" alt="" loading="lazy" decoding="async"><b>Визитки с лаком</b><span>Кашировка 2 × 300 г, объёмный лак и фольга с двух сторон</span></a>
-    <a class="pf-i" href="https://copy.ru/portfolio/kashirovannye-vizitki/" data-ph="img/pf/img_3788-972x540.webp img/pf/img-3779-9ujr4i.webp img/pf/img-3780-f6k5da.webp img/pf/img-3782-i68p66.webp img/pf/img-3784-a3x75g.webp img/pf/img-3785-ijck9y.webp img/pf/img-3790-zdxmr9.webp"><img src="img/pf/img_3788-972x540.webp" alt="" loading="lazy" decoding="async"><b>Кашированные визитки для «СБЕР»</b><span>Кашировка двух бумаг, тиснение серебряной фольгой</span></a>
-    <a class="pf-i" href="https://copy.ru/portfolio/vizitki/" data-ph="img/pf/photo_2025-04-11_11-46-20-1024x1024.webp img/pf/photo_2025-04-11_11-46-22-972x540.webp img/pf/photo_2025-04-11_11-46-21-972x540.webp img/pf/photo_2025-04-11_11-46-23-e1744362820719-972x540.webp"><img src="img/pf/photo_2025-04-11_11-46-20-1024x1024.webp" alt="" loading="lazy" decoding="async"><b>Визитки с матовой ламинацией</b><span>Матовая ламинация</span></a>
-    <a class="pf-i" href="https://copy.ru/portfolio/kvadratnye-vizitki/" data-ph="img/pf/photo_2025-03-20_13-17-42-1024x1024.webp img/pf/photo_2025-03-20_13-17-44-972x540.webp img/pf/photo_2025-03-20_13-17-43-972x540.webp img/pf/photo_2025-03-20_13-17-43-2-972x540.webp img/pf/photo_2025-03-20_13-17-45-2-972x540.webp img/pf/photo_2025-03-20_13-17-46-972x540.webp"><img src="img/pf/photo_2025-03-20_13-17-42-1024x1024.webp" alt="" loading="lazy" decoding="async"><b>Квадратные визитки</b><span>50 × 50 мм на плотной бумаге</span></a>
-    <a class="pf-i" href="https://copy.ru/portfolio/kashirovannye-plotnye-vizitki/" data-ph="img/pf/photo_2024-10-22_15-21-25-640x640.webp"><img src="img/pf/photo_2024-10-22_15-21-25-640x640.webp" alt="" loading="lazy" decoding="async"><b>Кашированные визитки на плотной бумаге</b><span>Две цветные дизайнерские бумаги, склеенные вместе</span></a>
+  <div class="sh"><div><h2><a class="sh-link" href="portfolio/?g=vizitki">Портфолио<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
+  <div class="pf pf-gl">
+    <a class="pf-i" href="portfolio/pechat_mnogosloinyh_vizitok/" data-tt="d" data-ph="img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_4-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_2-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_1-972x540.webp img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio-972x540.webp" data-tone="d"><img src="img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-972x540.webp" alt="" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="img/pf/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-972x540.webp" alt="" loading="lazy" decoding="async"></i><b>Дизайнерские визитки «Nord»</b><span>Три слоя дизайнерской фактурной бумаги</span></i></a>
+    <a class="pf-i" href="portfolio/22681/" data-tt="d" data-ph="img/pf/img-6027-ss158o.webp img/pf/img-6029-m33klo.webp img/pf/img-6030-87mx5v.webp img/pf/img-6032-wgcv7a.webp" data-tone="d"><img src="img/pf/img-6027-ss158o.webp" alt="" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="img/pf/img-6027-ss158o.webp" alt="" loading="lazy" decoding="async"></i><b>Визитки с лаком</b><span>Кашировка 2 × 300 г, объёмный лак и фольга с двух сторон</span></i></a>
+    <a class="pf-i" href="portfolio/kashirovannye-vizitki/" data-tt="d" data-ph="img/pf/img_3788-972x540.webp img/pf/img-3779-9ujr4i.webp img/pf/img-3780-f6k5da.webp img/pf/img-3782-i68p66.webp img/pf/img-3784-a3x75g.webp img/pf/img-3785-ijck9y.webp img/pf/img-3790-zdxmr9.webp" data-tone="d"><img src="img/pf/img_3788-972x540.webp" alt="" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="img/pf/img_3788-972x540.webp" alt="" loading="lazy" decoding="async"></i><b>Кашированные визитки для «СБЕР»</b><span>Кашировка двух бумаг, тиснение серебряной фольгой</span></i></a>
+    <a class="pf-i" href="portfolio/vizitki/" data-tt="d" data-ph="img/pf/photo_2025-04-11_11-46-20-1024x1024.webp img/pf/photo_2025-04-11_11-46-22-972x540.webp img/pf/photo_2025-04-11_11-46-21-972x540.webp img/pf/photo_2025-04-11_11-46-23-e1744362820719-972x540.webp" data-tone="d"><img src="img/pf/photo_2025-04-11_11-46-20-1024x1024.webp" alt="" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="img/pf/photo_2025-04-11_11-46-20-1024x1024.webp" alt="" loading="lazy" decoding="async"></i><b>Визитки с матовой ламинацией</b><span>Матовая ламинация</span></i></a>
+    <a class="pf-i" href="portfolio/kvadratnye-vizitki/" data-tt="l" data-ph="img/pf/photo_2025-03-20_13-17-42-1024x1024.webp img/pf/photo_2025-03-20_13-17-44-972x540.webp img/pf/photo_2025-03-20_13-17-43-972x540.webp img/pf/photo_2025-03-20_13-17-43-2-972x540.webp img/pf/photo_2025-03-20_13-17-45-2-972x540.webp img/pf/photo_2025-03-20_13-17-46-972x540.webp" data-tone="l"><img src="img/pf/photo_2025-03-20_13-17-42-1024x1024.webp" alt="" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="img/pf/photo_2025-03-20_13-17-42-1024x1024.webp" alt="" loading="lazy" decoding="async"></i><b>Квадратные визитки</b><span>50 × 50 мм на плотной бумаге</span></i></a>
+    <a class="pf-i" href="portfolio/kashirovannye-plotnye-vizitki/" data-tt="l" data-ph="img/pf/photo_2024-10-22_15-21-25-640x640.webp" data-tone="l"><img src="img/pf/photo_2024-10-22_15-21-25-640x640.webp" alt="" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="img/pf/photo_2024-10-22_15-21-25-640x640.webp" alt="" loading="lazy" decoding="async"></i><b>Кашированные визитки на плотной бумаге</b><span>Две цветные дизайнерские бумаги, склеенные вместе</span></i></a>
   </div>
   <dialog class="pf-d" id="pfD" aria-labelledby="pfT" tabindex="-1">
-    <div class="pf-hd"><h3 id="pfT"></h3><button type="button" class="pf-x" data-x aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="pf-hd"><div class="pblur pf-pb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><h3 id="pfT"></h3><button type="button" class="pf-x" data-x aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <div class="pf-w"><div class="pf-s" id="pfS"></div>
       <button type="button" class="pf-a pf-prev" data-d="-1" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
       <button type="button" class="pf-a pf-next" data-d="1" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div>
-    <div class="pf-bot"><div class="pf-dots" id="pfN"></div><p id="pfK"></p><a class="btn btn-p" id="pfGo" href="fast-order.html" data-ct="fast">Хочу такие же</a></div>
+    <div class="pf-bot"><div class="pblur pf-pb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="pf-dots" id="pfN"></div><p id="pfK"></p><a class="btn btn-p" id="pfGo" href="fast-order.html" data-ct="fast">Хочу такие же</a><a class="pf-more-l" id="pfPg" href="portfolio/">Подробнее о&nbsp;работе<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></div>
   </dialog>
 </div></section>
 
@@ -336,6 +284,13 @@ a.way:active>*{opacity:.5}
     <a href="catalog/listovaya-poligrafiya/"><b>Фирменные бланки</b></a>
   </nav>
 </div></section>
+
+
+<section data-g="promo"></section>
+
+<section data-g="eco"></section>
+
+<section data-posts="pechat-vizitok"></section>
 
 <section><div class="wrap two">
   <div>
@@ -358,7 +313,8 @@ a.way:active>*{opacity:.5}
   </div>
 </div></section>
 
-<script src="ft.js?v=5"></script>
+<script src="ft.js?v=9"></script>
+<script src="data/posts.js?v=4"></script><script src="post.js?v=11"></script><script src="blocks.js?v=24"></script>
 
 
 
@@ -495,7 +451,7 @@ Calc.mount(calcEl,PRODUCT,r=>{
   per.textContent=r.q+' шт · '+r.per1(r.per).replace('⁠₽',' ₽')+' за штуку';
   readyAtEl.textContent=r.ready;readySub.textContent=r.readySub;
   const [w,hh]=PRODUCT.fields.find(f=>f.id===69260).values.find(v=>v.id===r.st[69260]).title.match(/\d+/g).map(Number),two=r.st[69228]===19992;
-  szFile.textContent=`Размер файла ${w+6} × ${hh+6} мм`;szTrim.textContent=`После резки ${w} × ${hh} мм`;
+  szFile.textContent=`Размер файла ${w+6} × ${hh+6} мм`;window.copyTpl&&copyTpl(w,hh);szTrim.textContent=`После резки ${w} × ${hh} мм`;
   schemeSvg.setAttribute('viewBox',`0 0 ${w+6} ${hh+6}`);schemeSvg.innerHTML=`<rect class="s-bleed" width="${w+6}" height="${hh+6}"/><rect class="s-trim" x="3" y="3" width="${w}" height="${hh}"/><rect class="s-safe" x="6" y="6" width="${w-6}" height="${hh-6}"/>`;
   pages.textContent=two?'Две страницы: лицо и оборот':'Одна страница';
   const [t,h]=CTA[r.st.mode];cta.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true">${CI[r.st.mode]}</svg>${t}`;cta.href=h});
@@ -504,28 +460,6 @@ Calc.mount(calcEl,PRODUCT,r=>{
 </script>
 <script>
 document.addEventListener('click',e=>{const a=e.target.closest('a[data-mode]');if(!a)return;e.preventDefault();const b=document.querySelector(`#calc .cf-o[data-f="mode"][data-v="${a.dataset.mode}"]`);b?.click();document.querySelector('.calc-h').scrollIntoView({behavior:'smooth'})});</script>
-<script>
-(()=>{const d=document.getElementById('pfD');if(!d||!d.showModal)return;const s=document.getElementById('pfS'),n=document.getElementById('pfN');let k=0,N=0;
-const st=()=>s.children.length>1?s.children[1].offsetLeft-s.children[0].offsetLeft:s.clientWidth,
-at=()=>Math.round(s.scrollLeft/st()),upd=()=>{if(n.childElementCount!==N)n.innerHTML=N>1?Array.from({length:N},(_,i)=>`<button type="button" data-i="${i}" aria-label="Фото ${i+1}"></button>`).join(''):'';[...n.children].forEach((b,i)=>b.toggleAttribute('aria-current',i===at()));};
-s.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});
-document.querySelectorAll('.pf-i').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const ph=a.dataset.ph.split(' ');N=ph.length;
-  s.innerHTML=ph.map((u,i)=>`<img src="${u}" alt="${a.querySelector('b').textContent}, фото ${i+1}" decoding="async">`).join('');
-  document.getElementById('pfT').textContent=a.querySelector('b').textContent;document.getElementById('pfK').textContent=a.querySelector('span').textContent;
-  document.getElementById('pfGo').href='fast-order.html?need='+encodeURIComponent('Визитки как в портфолио: '+a.querySelector('b').textContent+' ('+a.querySelector('span').textContent.toLowerCase()+'). Тираж: ');
-  d.querySelectorAll('.pf-a').forEach(b=>b.hidden=N<2);d.showModal();d.focus({preventScroll:true});s.scrollLeft=0;upd()}));
-const go=document.getElementById('pfGo'),goH=go.outerHTML;
-document.addEventListener('calc:zoom',e=>{const z=e.detail;N=1;s.innerHTML=`<img src="${z.src}" alt="${z.title}" decoding="async">`;
-  document.getElementById('pfT').textContent=z.title;document.getElementById('pfK').textContent=z.text;
-  const b=document.createElement('button');b.type='button';b.className='btn btn-p';b.id='pfGo';b.textContent='Выбрать';b.onclick=()=>{z.pick();shut()};b.hidden=!z.pick;
-  document.getElementById('pfGo').replaceWith(b);d.querySelectorAll('.pf-a').forEach(b=>b.hidden=true);d.showModal();d.focus({preventScroll:true});upd()});
-d.addEventListener('close',()=>{const g=document.getElementById('pfGo');if(g.tagName==='BUTTON')g.outerHTML=goH});
-const shut=()=>{if(d.classList.contains('out'))return;d.classList.add('out');const end=()=>{d.classList.remove('out');d.close()};matchMedia('(prefers-reduced-motion:reduce)').matches?end():d.addEventListener('animationend',end,{once:true})};
-d.addEventListener('cancel',e=>{e.preventDefault();shut()});
-n.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)s.scrollTo({left:b.dataset.i*st(),behavior:'smooth'})});
-d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-x]'))return shut();const b=e.target.closest('.pf-a');if(b)s.scrollTo({left:(at()+ +b.dataset.d)*st(),behavior:'smooth'})});
-d.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();s.scrollTo({left:(at()+(e.key==='ArrowRight'?1:-1))*st(),behavior:'smooth'})}});
-})();
-</script>
+<script src="pfw.js?v=2"></script>
 </body>
 </html>

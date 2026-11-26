@@ -4,8 +4,8 @@ const li=(h,t)=>`<li><a href="${h}">${t}</a></li>`;
 const col=(n,items)=>`<nav aria-label="${n}"><b>${n}</b><ul>${items.join('')}</ul></nav>`;
 document.currentScript.insertAdjacentHTML('beforebegin',`<footer><div class="wrap">
 <div class="f-cols">
-  ${col('Заказ',[li('catalog.html','Каталог'),li('home.html#status','Статус заказа'),li('payment-delivery/','Оплата и доставка'),li('technical-requirements/','Требования к макетам')])}
-  ${col('Компания',[li('#','О нас'),li('contacts/','Копицентры'),li('vakansii/','Вакансии'),li('franchise/','Франшиза')])}
+  ${col('Заказ',[li('catalog.html','Каталог'),li('status-zakaza/','Статус заказа'),li('payment-delivery/','Оплата и доставка'),li('technical-requirements/','Требования к макетам')])}
+  ${col('Компания',[li('about/','О нас'),li('contacts/','Копицентры'),li('vakansii/','Вакансии'),li('franchise/','Франшиза'),li('blog/','Блог'),li('news/','Новости')])}
   ${col('Сервисы',[['ai','Нейродизайн'],['gifts','Сувениры'],['pro','Дизайнерам'],['b2b','Бизнесу'],['bridge','Разработчикам']].map(([d,t])=>li(`https://${d}.copy.ru/`,t+ext)))}
   ${col('Связь',['<li><a data-ct="tel" href="tel:+74951561000"><span data-ct="tel-t">+7 495 156-10-00</span></a></li>','<li><a data-ct="mail" href="mailto:zakaz@copy.ru"><span data-ct="mail-t">zakaz@copy.ru</span></a></li>',li('https://vk.com/copyru','ВКонтакте'),li('https://t.me/copyru','Telegram-канал')])}
 </div>
@@ -15,11 +15,11 @@ document.currentScript.insertAdjacentHTML('beforebegin',`<footer><div class="wra
 </div>
 <div class="f-legal">
   <nav class="f-docs" aria-label="Документы">
-    <a href="https://copy.ru/terms/">Публичная оферта</a>
+    <a href="terms/">Публичная оферта</a>
     <a href="https://copy.ru/vozvrat/">Возврат и претензии</a>
-    <a href="https://copy.ru/politika-konfidenczialnosti/">Политика обработки персональных данных</a>
-    <a href="https://copy.ru/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
-    <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Файлы cookie</a>
+    <a href="politika-konfidenczialnosti/">Политика обработки персональных данных</a>
+    <a href="soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
+    <a href="polozhenie-ob-obrabotke-fajlov-cookies/">Файлы cookie</a>
     <a href="https://copy.ru/rekomendatelnye-tehnologii/">Рекомендательные технологии</a>
   </nav>
   <div class="f-req">

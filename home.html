@@ -13,13 +13,12 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 <title>COPY.RU — главная (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=26">
+<link rel="stylesheet" href="base.css?v=37">
 <style>
 .ct{margin-top:16px} 
 
 
 
-.ht{position:absolute;inset:0;pointer-events:none}.ht svg{width:100%;height:100%;display:block}
 
  
 
@@ -38,20 +37,14 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 
 
 
-.h-eco{text-wrap:balance}
 .sh a{color:var(--v-text);font-weight:600;white-space:nowrap}
 
 
 
 
 
-.how-t{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 24px;padding:0 16px}
-.how-t::-webkit-scrollbar{display:none}
-.how-t button{all:unset;cursor:pointer;flex:none;display:flex;align-items:center;height:40px;box-sizing:border-box;padding:0 16px;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,transparent);font:400 14px var(--sans);color:var(--ink);white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s}
-.how-t button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .how-t button{gap:6px}.how-d{padding:4px 6px} 
 .how-t button[aria-pressed="true"] .how-d{background:var(--success);color:#fff}
-.how-t button:focus-visible{outline:2px solid var(--v);outline-offset:2px}
 
 .steps[id] .stp .n{color:var(--ink-2)}.steps[id] .stp b{font-weight:500}
 .how-a{grid-column:1/-1;justify-self:start;margin-top:8px} 
@@ -89,69 +82,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 .cat a:hover{color:var(--v-text)}
 
 
-.promo{border-radius:var(--r-xl);overflow:hidden;position:relative;background:var(--inverse);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;min-height:300px}
-.promo .l{padding:44px;position:relative;z-index:2;display:flex;flex-direction:column}
-.promo h3{font:800 44px/.98 var(--sans);letter-spacing:-.03em;margin:0}
-.promo p{color:#C9C7C1;max-width:420px;margin:14px 0 26px}
-.promo .r{position:relative}
-.promo .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:right bottom} 
-.pr-b{display:flex;gap:10px;flex-wrap:wrap}
 
-.pr-c{margin:0 0 16px;font:800 56px/1 var(--sans);letter-spacing:-.03em;color:#fff}
-.pr-c small{display:block;margin-bottom:6px;font:600 14px/1.2 var(--sans);letter-spacing:0}
-
-
-
-.eco-t{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.tl{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:220px;padding:16px;border-radius:var(--r-l);background:var(--stage);color:inherit;text-decoration:none;overflow:hidden}
-.tl b{font:600 16px/1.3 var(--sans);max-width:100%}
-.tl-nw{white-space:nowrap}.tl-go{display:inline-block;width:1.1em;height:1.1em;margin-left:.1em;vertical-align:-.2em;color:var(--ink-2)} 
-.tl-s{font-size:14px;line-height:1.3;color:var(--ink-2);max-width:100%;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;text-wrap:balance} 
-.tl .badge{margin-top:8px;position:relative;z-index:3}
-.tl b,.tl .tl-s{position:relative;z-index:3}  
-.tl-v{position:absolute;right:8px;bottom:8px;width:104px;height:104px;display:grid;place-items:center;color:var(--v-text)}
-.tl-v svg{width:48px;height:48px}.tl-v img{width:100%;height:100%;object-fit:contain}
-.tl-v:has(img){width:min(140px,78%);height:auto;aspect-ratio:1;right:-14px;bottom:-20px} 
-.tl .b-ok{background:color-mix(in srgb,var(--success) 12%,var(--stage))} 
-.tl-w{grid-column:span 2;grid-row:span 2}
-.tl-w b{font-size:20px}
-
-
-.tl-w{min-height:176px}
-.tl-w>b,.tl-w>.tl-s{max-width:56%;white-space:normal;position:relative;z-index:3}
-.tl-w .badge{margin-top:8px}
-.tl-ba{position:absolute;top:0;right:0;bottom:0;width:52%;pointer-events:none}
-.tl-f{position:absolute}.tl-f img{display:block;width:100%;height:auto} 
-.tl-f:first-child img{filter:drop-shadow(6px 6px 10px rgb(0 0 0/.22))} 
-.tl-f:first-child{left:5%;bottom:0;width:62%;z-index:2}  
-.tl-f.on{right:-6%;top:0;width:72%;z-index:1}  
-
-.tl-ar{position:absolute;left:49%;top:71%;transform:rotate(18deg);width:22%;max-width:56px;aspect-ratio:1;color:var(--v-text);z-index:2} 
-@media (hover:hover){.tl:hover{background:color-mix(in srgb,var(--ink) 6%,var(--stage))}}
-.tl:active{opacity:.5}
-.eco-r{display:contents} 
-@media (max-width:359px){.tl:not(.tl-w){padding-inline:12px}.tl:not(.tl-w) b{font-size:15px}} 
-
-
-
-.club{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center} 
-.club-h{margin:0 0 8px}
-.club-t>p{margin:0;color:var(--ink-2);max-width:420px}
-.club-f{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:420px}
-.club-f li{display:flex;flex-direction:column;gap:2px}
-.club-f b{font:700 24px/1.1 var(--sans);letter-spacing:-.01em;color:var(--v-text)}
-.club-f span{font-size:14px;line-height:1.3;color:var(--ink-2)}
-.stores{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.stores a{display:block;border-radius:8px}
-.stores img{display:block;height:40px;width:auto}
-.club-v img{display:block;width:100%;height:auto}
-
-
-.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
-.post{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:16px 0} 
-.post .k{display:block;margin-top:4px;font:500 12px var(--sans);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2)} 
-.post h3{font:600 18px/1.3 var(--sans);margin:0}
-.post>svg{flex:none;width:20px;height:20px;color:var(--ink-2)}
 
 
 .ck{position:fixed;left:24px;bottom:24px;z-index:50;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:0 16px 40px -14px rgba(34,34,32,.28);padding:14px 14px 14px 18px;display:flex;gap:14px;align-items:center;max-width:420px;font-size:14px}
@@ -159,70 +90,14 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 @media (max-width:980px){
   .hero h1{font-size:44px}
   .cat{grid-template-columns:1fr 1fr}
-  .promo{grid-template-columns:1fr}.promo .r{height:200px}
   .ctr{grid-template-columns:1fr}
   .sh{flex-direction:column;align-items:flex-start;gap:8px}
-  .blog{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .hero h1{font-size:36px;margin-bottom:16px}
   
   .ck{left:12px;right:12px;bottom:12px;max-width:none}
-  .eco-t{grid-template-columns:1fr 1fr}
-  .tl{min-height:0;aspect-ratio:1/1.1}
-  .tl-w{grid-row:auto;aspect-ratio:auto;min-height:176px} 
   
-  .eco-t.v-bento{grid-template-columns:repeat(5,1fr)}
-  .v-bento .tl-w{grid-column:1/-1;grid-row:1}
-  .v-bento .eco-r>.tl:nth-child(1){grid-column:1/span 3;grid-row:2}
-  .v-bento .eco-r>.tl:nth-child(2){grid-column:4/span 2;grid-row:2}
-  .v-bento .eco-r>.tl:nth-child(3){grid-column:1/span 2;grid-row:3}
-  .v-bento .eco-r>.tl:nth-child(4){grid-column:3/span 3;grid-row:3}
-  .v-bento .tl:not(.tl-w){aspect-ratio:auto;gap:2px;padding:16px} 
-  .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)){justify-content:flex-start}
-  .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)) .tl-v:has(img){position:absolute;margin:0;width:64%;height:auto;aspect-ratio:1;right:-12px;left:auto;bottom:-16px;top:auto;pointer-events:none}
-  .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)) .tl-v img{width:100%;height:100%}
-  .v-bento .eco-r>.tl:nth-child(1) .tl-v:has(img){width:80%;left:50%;right:auto;bottom:-34px;transform:translateX(-50%)} 
-  .v-bento .eco-r>.tl:nth-child(4) .tl-v:has(img){width:70%;right:16px;bottom:-8px} 
-  .v-bento .eco-r>.tl:is(:nth-child(2),:nth-child(3)) .tl-v:has(img){position:relative;order:-1;right:auto;bottom:auto;aspect-ratio:auto;height:92px;margin:-8px -8px 4px;width:calc(100% + 16px)}
-  .v-bento .eco-r>.tl:is(:nth-child(2),:nth-child(3)) .tl-v img{width:100%;height:92px;object-fit:cover}
-  .v-bento .eco-r>.tl:nth-child(3) .tl-v img{transform:scale(1.35)} 
-  .v-bento .eco-r>.tl:nth-child(2) .tl-v img{object-position:50% 72%;transform:scale(1.2);transform-origin:50% 100%} 
-  @media (max-width:359px){ 
-    .eco-t.v-bento{grid-template-columns:1fr 1fr}
-    .v-bento .tl:not(.tl-w){padding:12px} 
-    .v-bento .eco-r>.tl:nth-child(1),.v-bento .eco-r>.tl:nth-child(3){grid-column:1}
-    .v-bento .eco-r>.tl:nth-child(2),.v-bento .eco-r>.tl:nth-child(4){grid-column:2}
-    .v-bento .eco-r>.tl:is(:nth-child(1),:nth-child(4)) .tl-v:has(img){width:96%;right:-14px;bottom:-26px}
-    .v-bento .eco-r>.tl:nth-child(1) .tl-v:has(img){width:76%;bottom:-28px}
-    .v-bento .eco-r>.tl:nth-child(4) .tl-v:has(img){width:74%;right:8px;bottom:-12px} 
-  }
-  .promo .l{padding:28px}.promo h3{font-size:28px}
-  
-  #promo{padding-top:24px}
-  .promo{margin:0 -16px;border-radius:0;overflow:visible;color:var(--ink);background:linear-gradient(180deg,color-mix(in srgb,var(--v-50) 0.0%,var(--bg)) 0.0px,color-mix(in srgb,var(--v-50) 0.1%,var(--bg)) 3.3px,color-mix(in srgb,var(--v-50) 0.5%,var(--bg)) 6.7px,color-mix(in srgb,var(--v-50) 1.6%,var(--bg)) 10.0px,color-mix(in srgb,var(--v-50) 3.5%,var(--bg)) 13.3px,color-mix(in srgb,var(--v-50) 6.5%,var(--bg)) 16.7px,color-mix(in srgb,var(--v-50) 10.4%,var(--bg)) 20.0px,color-mix(in srgb,var(--v-50) 15.2%,var(--bg)) 23.3px,color-mix(in srgb,var(--v-50) 21.0%,var(--bg)) 26.7px,color-mix(in srgb,var(--v-50) 27.5%,var(--bg)) 30.0px,color-mix(in srgb,var(--v-50) 34.7%,var(--bg)) 33.3px,color-mix(in srgb,var(--v-50) 42.2%,var(--bg)) 36.7px,color-mix(in srgb,var(--v-50) 50.0%,var(--bg)) 40.0px,color-mix(in srgb,var(--v-50) 57.8%,var(--bg)) 43.3px,color-mix(in srgb,var(--v-50) 65.3%,var(--bg)) 46.7px,color-mix(in srgb,var(--v-50) 72.5%,var(--bg)) 50.0px,color-mix(in srgb,var(--v-50) 79.0%,var(--bg)) 53.3px,color-mix(in srgb,var(--v-50) 84.8%,var(--bg)) 56.7px,color-mix(in srgb,var(--v-50) 89.6%,var(--bg)) 60.0px,color-mix(in srgb,var(--v-50) 93.5%,var(--bg)) 63.3px,color-mix(in srgb,var(--v-50) 96.5%,var(--bg)) 66.7px,color-mix(in srgb,var(--v-50) 98.4%,var(--bg)) 70.0px,color-mix(in srgb,var(--v-50) 99.5%,var(--bg)) 73.3px,color-mix(in srgb,var(--v-50) 99.9%,var(--bg)) 76.7px,color-mix(in srgb,var(--v-50) 100.0%,var(--bg)) 80.0px,var(--v-50) 80px calc(100% - 80px),color-mix(in srgb,var(--v-50) 100.0%,var(--bg)) calc(100% - 80.0px),color-mix(in srgb,var(--v-50) 99.9%,var(--bg)) calc(100% - 76.7px),color-mix(in srgb,var(--v-50) 99.5%,var(--bg)) calc(100% - 73.3px),color-mix(in srgb,var(--v-50) 98.4%,var(--bg)) calc(100% - 70.0px),color-mix(in srgb,var(--v-50) 96.5%,var(--bg)) calc(100% - 66.7px),color-mix(in srgb,var(--v-50) 93.5%,var(--bg)) calc(100% - 63.3px),color-mix(in srgb,var(--v-50) 89.6%,var(--bg)) calc(100% - 60.0px),color-mix(in srgb,var(--v-50) 84.8%,var(--bg)) calc(100% - 56.7px),color-mix(in srgb,var(--v-50) 79.0%,var(--bg)) calc(100% - 53.3px),color-mix(in srgb,var(--v-50) 72.5%,var(--bg)) calc(100% - 50.0px),color-mix(in srgb,var(--v-50) 65.3%,var(--bg)) calc(100% - 46.7px),color-mix(in srgb,var(--v-50) 57.8%,var(--bg)) calc(100% - 43.3px),color-mix(in srgb,var(--v-50) 50.0%,var(--bg)) calc(100% - 40.0px),color-mix(in srgb,var(--v-50) 42.2%,var(--bg)) calc(100% - 36.7px),color-mix(in srgb,var(--v-50) 34.7%,var(--bg)) calc(100% - 33.3px),color-mix(in srgb,var(--v-50) 27.5%,var(--bg)) calc(100% - 30.0px),color-mix(in srgb,var(--v-50) 21.0%,var(--bg)) calc(100% - 26.7px),color-mix(in srgb,var(--v-50) 15.2%,var(--bg)) calc(100% - 23.3px),color-mix(in srgb,var(--v-50) 10.4%,var(--bg)) calc(100% - 20.0px),color-mix(in srgb,var(--v-50) 6.5%,var(--bg)) calc(100% - 16.7px),color-mix(in srgb,var(--v-50) 3.5%,var(--bg)) calc(100% - 13.3px),color-mix(in srgb,var(--v-50) 1.6%,var(--bg)) calc(100% - 10.0px),color-mix(in srgb,var(--v-50) 0.5%,var(--bg)) calc(100% - 6.7px),color-mix(in srgb,var(--v-50) 0.1%,var(--bg)) calc(100% - 3.3px),color-mix(in srgb,var(--v-50) 0.0%,var(--bg)) calc(100% - 0.0px))}
-  .promo .l{padding:64px 16px 0}
-  .promo h3{color:var(--ink)}
-  .promo p{color:var(--ink-2)}
-  .promo .pr-c{color:var(--v-text)}.pr-c small{color:var(--ink)}
-  .promo .btn-s{background:transparent;box-shadow:inset 0 0 0 1.5px var(--v);color:var(--v-text)} 
-  
-  .promo{position:relative}
-  .promo .r{position:absolute;top:56px;right:0;width:48%;height:auto;z-index:2}.promo .r img{position:static;height:auto}
-  .promo .pr-c{font-size:clamp(34px,11vw,44px);white-space:nowrap}
-  .promo h3{max-width:54%;font-size:clamp(22px,7vw,28px);text-wrap:balance}.promo h3 br{display:none}
-  .promo .pr-b .btn{flex:1}
-  .promo .l{padding-bottom:56px} 
-  .promo .ht{display:none} 
-  
-  .club{grid-template-columns:minmax(0,1fr) 150px;grid-template-areas:"h v" "p v" "f f" "s s";column-gap:8px;gap:0 8px}
-  .club-t{display:contents}
-  .club-h{grid-area:h;align-self:end}
-  .club-t>p{grid-area:p;align-self:start}
-  .club-f{grid-area:f}.stores{grid-area:s}
-  .club-v{grid-area:v;height:230px;margin:16px -16px 0 0;overflow:hidden;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)} 
-  .club-v img{width:250px;max-width:none;margin-left:-58px}
-  @media (max-width:360px){.club{grid-template-areas:"h h" "p v" "f f" "s s"}} 
   
   .cat-t{display:flex;flex-wrap:wrap;gap:8px;overflow-anchor:none} 
   .cat{display:none}
@@ -256,7 +131,9 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <link rel="stylesheet" href="cc.css?v=1">
-<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="blocks.css?v=79">
+<link rel="stylesheet" href="pfw.css?v=12">
+<link rel="stylesheet" href="hdr.css?v=259">
 <link rel="stylesheet" href="ft.css?v=3">
 </head>
 <body>
@@ -272,7 +149,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
   <symbol id="up" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-<script src="hdr.js?v=166" data-svc="copy"></script>
+<script src="hdr.js?v=174" data-svc="copy"></script>
 
 <main>
 <div class="hero"><div class="wrap">
@@ -290,9 +167,9 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
   <div class="ct">
     <a class="btn btn-p" data-ct="tel" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="w">Позвонить</span><span class="n" data-ct="tel-t">+7 495 156-10-00</span></a>
     <div class="ct-l">
-      <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-      <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
-      <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a>
+      <a class="m-tg" href="#" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+      <a class="m-wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+      <a class="m-mx" href="#" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a>
     </div>
   </div>
   </div>
@@ -325,6 +202,26 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
   <div class="cat" id="catG"></div>
 </div></section>
 
+<section id="pf" data-need="Как в портфолио"><div class="wrap">
+  
+  <div class="sh"><div><h2><a class="sh-link" href="portfolio/">Портфолио<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
+  <div class="pf pf-gl">
+    <a class="pf-i" href="portfolio/fartuki-dlya-pekarni-flour-oat/" data-g="odezhda" data-tone="l" data-tt="l" data-ph="https://copy.ru/wp-content/uploads/2026/08/fartuki-dlya-pekarni-flour-oat-01-1024x576.webp"><img src="https://copy.ru/wp-content/uploads/2026/08/fartuki-dlya-pekarni-flour-oat-01-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="https://copy.ru/wp-content/uploads/2026/08/fartuki-dlya-pekarni-flour-oat-01-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"></i><b>Фартуки для пекарни FLOUR &amp; OAT</b><span>ДТФ-печать · Халаты и фартуки</span></i></a>
+    <a class="pf-i" href="portfolio/etiketki-dlya-kondiczionera-spreya/" data-g="etiketki" data-tone="d" data-tt="d" data-ph="https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru_2-1024x569.webp https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru_1-972x540.webp https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru_3-972x540.webp https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru_4-972x540.webp https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru-972x540.webp"><img src="https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru_2-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="https://copy.ru/wp-content/uploads/2026/06/etiketka-dlya-kondiczionera-spreya-pechat-v-kopi.ru_2-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"></i><b>Этикетки для кондиционера-спрея 💜</b><span>Этикетки</span></i></a>
+    <a class="pf-i" href="portfolio/sertifikat-s-belilami/" data-g="otkrytki" data-tone="d" data-tt="d" data-ph="https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_6-1024x569.webp https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_4-972x540.webp https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_5-972x540.webp https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_3-972x540.webp https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_2-972x540.webp https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_1-972x540.webp https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru-972x540.webp"><img src="https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_6-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="https://copy.ru/wp-content/uploads/2026/06/podarochnyj-sertifikat-pechat-v-kopi.ru_6-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"></i><b>Подарочный сертификат с белилами</b><span>Сертификаты</span></i></a>
+    <a class="pf-i" href="portfolio/pechat_mnogosloinyh_vizitok/" data-g="vizitki" data-tone="d" data-tt="d" data-ph="https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-1024x569.webp https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-972x540.webp https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_4-972x540.webp https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_2-972x540.webp https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_1-972x540.webp https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio-972x540.webp"><img src="https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="https://copy.ru/wp-content/uploads/2026/04/pechat-mnogoslojnyh-vizitok-v-kopi.ru-portfolio_3-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"></i><b>Дизайнерские визитки «Nord»</b><span>Визитки</span></i></a>
+    <a class="pf-i" href="portfolio/folgirovanie-2/" data-g="drugoe" data-tone="l" data-tt="l" data-ph="https://copy.ru/wp-content/uploads/2026/02/folgirovanie_5-1024x569.webp https://copy.ru/wp-content/uploads/2026/02/folgirovanie_5-972x540.webp https://copy.ru/wp-content/uploads/2026/02/folgirovanie_4-972x540.webp https://copy.ru/wp-content/uploads/2026/02/folgirovanie_2-972x540.webp https://copy.ru/wp-content/uploads/2026/02/folgirovanie_3-972x540.webp https://copy.ru/wp-content/uploads/2026/02/folgirovanie_1-972x540.webp https://copy.ru/wp-content/uploads/2026/02/folgirovanie-972x540.webp"><img src="https://copy.ru/wp-content/uploads/2026/02/folgirovanie_5-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="https://copy.ru/wp-content/uploads/2026/02/folgirovanie_5-528x389.webp" alt="" width="528" height="389" loading="lazy" decoding="async"></i><b>Фольгирование</b><span>Отделка фольгой</span></i></a>
+    <a class="pf-i" href="portfolio/shuber/" data-g="upakovka" data-tone="d" data-tt="d" data-ph="https://copy.ru/wp-content/uploads/2025/09/img_3350_5_11zon-1024x569.webp https://copy.ru/wp-content/uploads/2025/09/img_3365-1_2_11zon-972x540.webp https://copy.ru/wp-content/uploads/2025/09/img_3371_8_11zon-972x540.webp https://copy.ru/wp-content/uploads/2025/09/img_3367-1-1_1_11zon-972x540.webp https://copy.ru/wp-content/uploads/2025/09/img_3361_3_11zon-972x540.webp https://copy.ru/wp-content/uploads/2025/09/img_3356_4_11zon-972x540.webp https://copy.ru/wp-content/uploads/2025/09/img_3349_6_11zon-972x540.webp https://copy.ru/wp-content/uploads/2025/09/img_3347_7_11zon-972x540.webp"><img src="https://copy.ru/wp-content/uploads/2025/09/img_3350_5_11zon-1024x569.webp" alt="" width="1024" height="569" loading="lazy" decoding="async"><i class="pf-t"><i class="pf-rw"><img class="pf-rf" src="https://copy.ru/wp-content/uploads/2025/09/img_3350_5_11zon-1024x569.webp" alt="" width="1024" height="569" loading="lazy" decoding="async"></i><b>Шубер</b><span>Упаковка для продукции</span></i></a>
+  </div>
+  <dialog class="pf-d" id="pfD" aria-labelledby="pfT" tabindex="-1">
+    <div class="pf-hd"><div class="pblur pf-pb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><h3 id="pfT"></h3><button type="button" class="pf-x" data-x aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="pf-w"><div class="pf-s" id="pfS"></div>
+      <button type="button" class="pf-a pf-prev" data-d="-1" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button type="button" class="pf-a pf-next" data-d="1" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div>
+    <div class="pf-bot"><div class="pblur pf-pb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="pf-dots" id="pfN"></div><p id="pfK"></p><a class="btn btn-p" id="pfGo" href="fast-order.html" data-ct="fast">Хочу такие же</a><a class="pf-more-l" id="pfPg" href="portfolio/">Подробнее о&nbsp;работе<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></div>
+  </dialog>
+</div></section>
+
 <section id="how"><div class="wrap">
   <div class="sh"><div><h2>Как заказать</h2></div></div>
   
@@ -332,7 +229,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
   <div class="steps" id="hw1"><div class="stp"><span class="n">01</span><b>Посчитайте и загрузите макет</b><p>На странице услуги. Онлайн дешевле на 5%.</p></div><div class="stp"><span class="n">02</span><b>Оформите заказ</b><p>Контакты и способ получения. Платить пока не нужно.</p></div><div class="stp"><span class="n">03</span><b>Менеджер проверит макет</b><p>И подтвердит срок. После этого оплата.</p></div><div class="stp"><span class="n">04</span><b>Заберите или получите</b><p>Самовывоз бесплатно, доставка от 375 ₽.</p></div><a class="btn btn-p how-a" href="#cat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-menu"/></svg>В каталог</a></div>
   <div class="steps" id="hw2" hidden><div class="stp"><span class="n">01</span><b>Опишите задачу</b><p>Имя, телефон и файл, если есть.</p></div><div class="stp"><span class="n">02</span><b>Выберите, как связаться</b><p>Звонок, Telegram, WhatsApp или MAX.</p></div><div class="stp"><span class="n">03</span><b>Менеджер ответит</b><p>Посчитает цену и проверит макет.</p></div><div class="stp"><span class="n">04</span><b>Оплатите и заберите</b><p>Самовывоз бесплатно или доставка.</p></div><a class="btn btn-p how-a" href="fast-order.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>Оставить заявку</a></div>
   <div class="steps" id="hw3" hidden><div class="stp"><span class="n">01</span><b>Найдите ближайший</b><p>На карте выше.</p></div><div class="stp"><span class="n">02</span><b>Приходите с файлом</b><p>Часть услуг сделаем при вас.</p></div><div class="stp"><span class="n">03</span><b>Оплатите на месте</b><p>Наличными, картой или по QR. Студентам −10%.</p></div><a class="btn btn-p how-a" href="#ctr"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>Копицентры на карте</a></div>
-  <div class="steps" id="hw4" hidden><div class="stp"><span class="n">01</span><b>Напишите или позвоните</b><p>Telegram, WhatsApp, MAX или почта.</p></div><div class="stp"><span class="n">02</span><b>Менеджер посчитает</b><p>И проверит макет до печати.</p></div><div class="stp"><span class="n">03</span><b>Оплатите и заберите</b><p>Самовывоз бесплатно или доставка.</p></div><div class="ct"> <a class="btn btn-p" data-ct="tel" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="w">Позвонить</span><span class="n" data-ct="tel-t">+7 495 156-10-00</span></a> <div class="ct-l"> <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div> </div></div>
+  <div class="steps" id="hw4" hidden><div class="stp"><span class="n">01</span><b>Напишите или позвоните</b><p>Telegram, WhatsApp, MAX или почта.</p></div><div class="stp"><span class="n">02</span><b>Менеджер посчитает</b><p>И проверит макет до печати.</p></div><div class="stp"><span class="n">03</span><b>Оплатите и заберите</b><p>Самовывоз бесплатно или доставка.</p></div><div class="ct"> <a class="btn btn-p" data-ct="tel" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="w">Позвонить</span><span class="n" data-ct="tel-t">+7 495 156-10-00</span></a> <div class="ct-l"> <a class="m-tg" href="#" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a> <a class="m-wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a> <a class="m-mx" href="#" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a> </div> </div></div>
 </div></section>
 
 
@@ -350,57 +247,19 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 </div></section>
 
 
-<section id="promo"><div class="wrap">
-  <div class="promo">
-    <div class="ht" data-ht="corner" data-color="#4844D7" data-op=".55" data-step="12"></div>
-    <div class="l">
-      <p class="pr-c"><small>До Нового года</small>7 недель</p>
-      <h3>Календари и подарки <br>с&nbsp;логотипом</h3>
-      <p>Квартальные, настольные, перекидные. Корпоративные наборы для команды и клиентов. Чем раньше заказ, тем спокойнее декабрь.</p>
-      <div class="pr-b"><a class="btn btn-p" href="catalog/pechat-kalendarej/">Календари</a><a class="btn btn-s" href="catalog/korporativnye-podarki/">Подарки для команды</a></div>
-    </div>
-    <div class="r"><img src="img/promo-calendars.webp?v=2" width="820" height="650" alt="" loading="lazy" decoding="async"></div>
-  </div>
-</div></section>
+<section data-g="promo"></section>
+
+
+<section data-g="eco"></section>
 
 
 <section><div class="wrap">
-  <div class="sh"><div><h2 class="h-eco">Больше, чем копицентр&nbsp;— экосистема наших сервисов</h2></div></div>
-  <nav class="eco-t v-bento" aria-label="Сервисы COPY.RU">
-    <a class="tl tl-w" href="catalog/suveniry/"><b>Фото или рисунок <span class="tl-nw">в&nbsp;любимые&nbsp;вещи<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">ИИ сделает из него макет для печати</span><span class="badge b-ok b-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>Макет 0 ₽</span><span class="tl-ba"><span class="tl-f"><img src="img/eco-ai-before.webp?v=9" width="480" height="480" alt="Ребёнок держит свой рисунок" loading="lazy" decoding="async"></span><svg class="tl-ar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><filter id="brush" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="5" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="5" result="a"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="a" in2="n" scale="2" result="d"/><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.8 2.1" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#brush)"><g transform="matrix(0 -1 -1 0 48.5 48.5)"><path d="M6.5 42c.6-2.8 1.1-4.9 2.3-7.6 1.4-3.3 2.6-5.6 4.9-8.6 2.1-2.7 3.6-4.2 6.7-6.6 2.6-2 5.4-3.3 8.4-4.2 2.9-.9 5.1-1.2 8.3-1.6" stroke-width="3.6"/><path d="M9.2 37.6c1.2-3.6 2.9-7.2 5.6-10.3 1.7-2 3.4-3.6 6.4-5.6" stroke-width="2" opacity=".75"/><path d="M26.4 7.2c2.2.5 4.7 1.7 7.2 3 2.1 1.1 3.6 2 5.6 3.5" stroke-width="3.4"/><path d="M39.8 12.4c-1.4 1.6-2.7 3.9-3.6 6-.8 1.8-1.2 3.6-1.7 5.9" stroke-width="3"/></g></g></svg><span class="tl-f on"><img src="img/eco-ai-after.webp?v=7" width="480" height="480" alt="Футболка с этим рисунком" loading="lazy" decoding="async"></span></span></a>
-    <div class="eco-r"><a class="tl" href="catalog/korporativnye-suveniry/"><b>Сувениры и мерч с&nbsp;вашим <span class="tl-nw">логотипом<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для команды и&nbsp;клиентов</span><span class="tl-v"><img src="img/eco-gifts.webp?v=4" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
-    <a class="tl" href="#"><b>Для <span class="tl-nw">бизнеса<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Договор и НДС</span><span class="badge b-ok">До −15%</span><span class="tl-v"><img src="img/eco-b2b.webp?v=1" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
-    <a class="tl" href="#"><b>Интеграции <span class="tl-nw">и&nbsp;API<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Печать для своего сайта</span><span class="tl-v"><img src="img/eco-api.webp?v=3" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a>
-    <a class="tl" href="#"><b>PRO-<span class="tl-nw">калькулятор<svg class="tl-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></b><span class="tl-s">Для агентств и&nbsp;дизайнеров</span><span class="tl-v"><img src="img/eco-pro.webp?v=2" width="480" height="480" alt="" loading="lazy" decoding="async"></span></a></div>
-  </nav>
-</div></section>
-
-<section><div class="wrap">
-  
-  <div class="club">
-    <div class="club-t">
-      <h2 class="club-h">Клуб привилегий</h2>
-      <p>Карта клуба в&nbsp;приложении COPY.RU. Бонусами можно оплатить до&nbsp;15% заказа.</p>
-      <ul class="club-f">
-        <li><b>1 000&nbsp;₽</b><span>бонусами<br>за&nbsp;регистрацию</span></li>
-        <li><b>15%</b><span>кэшбэк бонусами с&nbsp;заказа</span></li>
-      </ul>
-      <div class="stores">
-        <a href="https://apps.apple.com/ru/app/copy-ru/id6764291912"><img src="img/badge-appstore.svg?v=1" width="120" height="40" alt="Загрузите в App Store"></a>
-        <a href="https://play.google.com/store/apps/details?id=com.copyru.loyaltyapp"><img src="img/badge-gplay.webp?v=1" width="135" height="40" alt="Доступно в Google Play"></a>
-      </div>
-    </div>
-    <div class="club-v"><img src="img/club.webp?v=2" width="480" height="480" alt="" loading="lazy" decoding="async"></div>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sh"><div><h2><a class="sh-link" href="https://copy.ru/blog/">Статьи<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
+  <div class="sh"><div><h2><a class="sh-link" href="blog/">Статьи<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></h2></div></div>
   <div class="blog">
     
-    <a class="post" href="https://copy.ru/blog/razvertka-korobki-iz-kartona-podgotovka-fajla-dlya-pechati-i-bigovki/"><span><h3>Развертка коробки из&nbsp;картона: подготовка файла для печати и&nbsp;биговки</h3><span class="k">3 мин чтения</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
-    <a class="post" href="https://copy.ru/blog/kak-sdelat-buklet-poshagovaya-instrukcziya-ot-idei-do-pechati/"><span><h3>Как сделать буклет: пошаговая инструкция от&nbsp;идеи до&nbsp;печати</h3><span class="k">2 мин чтения</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
-    <a class="post" href="https://copy.ru/blog/kak-sozdat-maket-v-figma/"><span><h3>Как подготовить макет для печати в&nbsp;Figma</h3><span class="k">2 мин чтения</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+    <a class="post" href="blog/razvertka-korobki-iz-kartona-podgotovka-fajla-dlya-pechati-i-bigovki/"><span class="post-i" title="FAQ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="FAQ"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span><span class="post-b"><h3>Развертка коробки из картона: подготовка файла для печати и <span class="tl-nw">биговки<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></h3><span class="x">Правильно подготовленная развертка — основа качественной упаковки. Даже если дизайн выглядит эффектно на экране, без точного чертежа линии сгиба могут «уплыть», а клапаны — не совпасть при сборке. В этой статье…</span><span class="k"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Время чтения"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>3 мин</span><span class="mi" title="3463 просмотра"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Просмотры"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>3 463</span></span></span></a>
+    <a class="post" href="blog/kak-sdelat-buklet-poshagovaya-instrukcziya-ot-idei-do-pechati/"><span class="post-i" title="FAQ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="FAQ"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span><span class="post-b"><h3>Как сделать буклет: пошаговая инструкция от идеи до <span class="tl-nw">печати<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></h3><span class="x">Буклет — один из самых универсальных форматов полиграфии. Он подходит для рекламы, инструкций, презентаций, мероприятий и информационных материалов. Ниже — подробная, практическая инструкция, как сделать буклет с нуля…</span><span class="k"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Время чтения"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>2 мин</span><span class="mi" title="747 просмотров"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Просмотры"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>747</span></span></span></a>
+    <a class="post" href="blog/kak-sozdat-maket-v-figma/"><span class="post-i" title="Другое"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Другое"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span><span class="post-b"><h3>Как подготовить макет для печати в <span class="tl-nw">Figma<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></h3><span class="x">Создали для вас пошаговую инструкцию, как сделать макет в Figma 🔥 Сразу оговоримся, что подготавливать макеты в Figma для печати — неправильно. Figma предназначена для web дизайна. При печати очень важно видеть…</span><span class="k"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Время чтения"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>2 мин</span><span class="mi" title="10551 просмотр"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Просмотры"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>10 551</span></span></span></a>
   </div>
 </div></section>
 
@@ -428,8 +287,10 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 </div></section>
 </main>
 
-<script src="ft.js?v=5"></script>
-<div class="ck" id="ck"><p>Используем cookie, чтобы сайт работал и запоминал город. <a href="https://copy.ru/polozhenie-ob-obrabotke-fajlov-cookies/">Подробнее</a></p><button class="btn btn-s btn-sm" id="ckOk">Принять</button></div>
+<script src="ft.js?v=9"></script>
+<script src="post.js?v=11"></script><script src="blocks.js?v=24"></script>
+<script src="pfw.js?v=2"></script>
+<div class="ck" id="ck"><p>Используем cookie, чтобы сайт работал и запоминал город. <a href="polozhenie-ob-obrabotke-fajlov-cookies/">Подробнее</a></p><button class="btn btn-s btn-sm" id="ckOk">Принять</button></div>
 
 <script>
 
@@ -437,10 +298,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 stForm.onsubmit=e=>{e.preventDefault();const t=stTel.value.replace(/\D/g,'').length>=10,n=stNum.value.trim();stRes.textContent=!t&&!n?'Введите телефон и номер заказа.':!t?'Проверьте телефон: нужен тот, что указали при заказе.':!n?'Введите номер заказа из СМС или письма.':'В прототипе статус не приходит. На сайте здесь будет этап заказа и копицентр выдачи.'};
 try{if(localStorage.getItem('copy-ck'))ck.hidden=true}catch(e){}
 ckOk.onclick=()=>{ck.hidden=true;try{localStorage.setItem('copy-ck','1')}catch(e){}};
-function halftone(el){const r=el.getBoundingClientRect(),w=Math.max(1,r.width),h=Math.max(1,r.height),step=+el.dataset.step||14,mode=el.dataset.ht,col=el.dataset.color,op=el.dataset.op;let c='';for(let y=step/2;y<h+step;y+=step)for(let x=step/2;x<w+step;x+=step){let t;if(mode==='lr')t=x/w;else if(mode==='bottom')t=Math.pow(y/h,1.6);else{const dx=(x-w)/w,dy=(y-h)/h;t=1-Math.min(1,Math.hypot(dx*1.1,dy*1.4))}t=Math.max(0,Math.min(1,t));const rad=step*.5*Math.pow(t,1.15);if(rad>.35)c+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(2)}"/>`}el.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><g fill="${col}" fill-opacity="${op}">${c}</g></svg>`}
-window.draw=()=>document.querySelectorAll('[data-ht]').forEach(halftone);window.draw();addEventListener('resize',()=>{clearTimeout(window._t);window._t=setTimeout(window.draw,150)});
 
-addEventListener('copy:theme',()=>window.draw&&draw());
 </script>
 <script src="catalog-data.js?v=3"></script><script src="data/copycenters.js?v=4"></script><script src="data/metro.js?v=3"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>

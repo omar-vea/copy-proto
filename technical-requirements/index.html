@@ -14,7 +14,7 @@ if(t&&s!==now){L.removeItem('copy-theme');L.removeItem('copy-theme-sys')}else if
 <title>Требования к макетам — COPY.RU (прототип)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=26">
+<link rel="stylesheet" href="base.css?v=37">
 <style>
 
 button{font:inherit;color:inherit;cursor:pointer}
@@ -43,14 +43,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tr-k .rules span{grid-column:2;font-size:14px;line-height:1.4} 
 .tr-no{margin:20px 0 0;padding-left:32px;font-size:14px;color:var(--ink-2)}
 
-.tr-g{display:grid;grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start}
-.tr-nav{position:sticky;top:96px;max-height:calc(100vh - 120px);overflow:auto}
-.tr-nav b{display:block;font-size:14px;color:var(--ink-2);font-weight:500;margin-bottom:8px}
-.tr-nav ul{list-style:none;margin:0;padding:0}
-.tr-nav a{display:flex;align-items:center;min-height:36px;padding-top:6px;padding-bottom:6px;font-size:15px;line-height:1.3;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line);padding-left:14px}
-.tr-nav a[aria-current]{color:var(--ink);border-color:var(--v);font-weight:600}
-@media (hover:hover){.tr-nav a:hover{color:var(--ink)}}
-.tr-cur{display:none}
 .tr-a{max-width:760px;min-width:0}
 .tr-s{padding-top:0;scroll-margin-top:96px}
 .tr-s+.tr-s{margin-top:72px}
@@ -73,15 +65,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 #help{scroll-margin-top:96px}
 .tr-help p{max-width:640px;margin:0 0 20px;color:var(--ink-2)} 
 @media (max-width:980px){
-  .tr-g{grid-template-columns:1fr;gap:40px}
-  
-  .tr-nav{min-width:0;top:var(--hb,0px);transition:top .3s var(--ios,ease);z-index:20;max-height:none;overflow:visible;margin-top:-4px;padding:4px 0} 
-  @media (prefers-reduced-motion:reduce){.tr-nav{transition:none}}
-  .tr-nav>b,.tr-nav>ul{display:none}
-  .tr-cur{display:flex;align-items:center;gap:10px;width:100%;height:40px;padding:0 12px;border:0;border-radius:var(--r-s);background:color-mix(in srgb,var(--ink) 6%,color-mix(in srgb,var(--surface) 70%,transparent));-webkit-backdrop-filter:blur(16px) saturate(1.8);backdrop-filter:blur(16px) saturate(1.8);font:600 16px/1.2 var(--sans);text-align:left} 
-  .tr-cur span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .tr-cur svg{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .tr-cur svg:first-child{color:var(--ink-2)}
   .tr-k{grid-template-columns:1fr}
   .tr-s,.tr-a h3,.tr-a h4,#help{scroll-margin-top:calc(var(--hb,154px) + 96px)} 
 }
@@ -92,9 +75,10 @@ button{font:inherit;color:inherit;cursor:pointer}
   .tr-fig{padding:8px}
 }
 </style>
-<link rel="stylesheet" href="hdr.css?v=255">
+<link rel="stylesheet" href="hdr.css?v=259">
 <link rel="stylesheet" href="ft.css?v=3">
-<link rel="stylesheet" href="calc.css?v=71"> 
+<link rel="stylesheet" href="calc.css?v=72"> 
+<link rel="stylesheet" href="toc.css?v=2">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs></svg>
@@ -103,7 +87,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   <symbol id="pin" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="currentColor"/><circle cx="15" cy="15" r="7" fill="none" stroke="#fff" stroke-width="2"/><path d="M15 4v22M4 15h22" stroke="#fff" stroke-width="2"/></symbol>
 </svg>
 
-<script src="hdr.js?v=166" data-svc="copy"></script>
+<script src="hdr.js?v=174" data-svc="copy"></script>
 
 <main class="wrap tr-top"><div class="crumbs"><a href="home.html">Главная</a><span>/</span><span>Требования к макетам</span></div>
   <h1>Требования к макетам</h1>
@@ -762,37 +746,14 @@ button{font:inherit;color:inherit;cursor:pointer}
   <div class="ct">
     <a class="btn btn-p" data-ct="tel" href="tel:+74951561000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="w">Позвонить</span><span class="n" data-ct="tel-t">+7 495 156-10-00</span></a>
     <div class="ct-l">
-      <a class="m-tg" href="#" data-todo="бот Telegram" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-      <a class="m-wa" href="#" data-todo="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
-      <a class="m-mx" href="#" data-todo="чат MAX" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a>
+      <a class="m-tg" href="#" aria-label="Telegram"><svg viewBox="3 4.4 16 16" aria-hidden="true"><path fill="currentColor" d="M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+      <a class="m-wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+      <a class="m-mx" href="#" aria-label="MAX"><svg viewBox="17 17 66 66" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1591FF"/><stop offset="1" stop-color="#3C22FE"/></linearGradient></defs><path transform="translate(21 21) scale(.58)" fill-rule="evenodd" fill="url(#mxg)" d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg></a>
     </div>
   </div>
 </div></section>
 
-<script src="ft.js?v=5"></script>
-<script>
-{const R=document.documentElement,nav=document.querySelector('.tr-nav'),L=[...nav.querySelectorAll('ul a')],S=L.map(a=>document.getElementById(a.hash.slice(1))),
-  cur=document.getElementById('trCur'),btn=nav.querySelector('.tr-cur'),D=document.getElementById('trD'),
-  hb=()=>parseFloat(getComputedStyle(R).getPropertyValue('--hb'))||document.querySelector('.hdr').getBoundingClientRect().bottom;
-let c=null;
-const on=()=>{const mob=btn.offsetParent!==null,line=mob?hb()+120:160;let k=null;S.forEach(s=>{if(s.getBoundingClientRect().top<line)k=s});
-  const r=nav.getBoundingClientRect(),H=hb(),gb=nav.parentElement.getBoundingClientRect().bottom,cl=v=>Math.max(0,Math.min(r.height,v)),
-    x=!mob?0:gb<H+r.height?cl(gb-H):cl(H+r.height-r.top);R.style.setProperty('--hx',Math.round(x)+'px');
-  if(k===c)return;c=k;L.forEach(a=>a.toggleAttribute('aria-current',!!k&&a.hash==='#'+k.id));cur.textContent=k?L[S.indexOf(k)].textContent:'Разделы'};
-addEventListener('scroll',()=>requestAnimationFrame(on),{passive:true});addEventListener('resize',on);on();
-nav.addEventListener('transitionend',on);
-const dim=document.getElementById('trDim'),LS=D.querySelector('.cf-ls'),
-  ok='<svg class="cf-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
-const shut=then=>{btn.setAttribute('aria-expanded','false');const end=()=>{D.hidden=dim.hidden=true;D.classList.remove('out','sc');dim.classList.remove('out');then&&then()};
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return end();D.classList.add('out');dim.classList.add('out');setTimeout(end,200)};
-btn.addEventListener('click',()=>{LS.innerHTML=L.map(a=>`<button type="button" class="cf-r" role="option" aria-selected="${a.hasAttribute('aria-current')}" data-h="${a.hash}"><span>${a.textContent}</span>${ok}</button>`).join('');
-  D.hidden=dim.hidden=false;btn.setAttribute('aria-expanded','true');LS.querySelector('[aria-selected="true"]')?.scrollIntoView({block:'nearest'});LS.scrollTop>4&&D.classList.add('sc')});
-dim.addEventListener('click',()=>shut());
-D.addEventListener('click',e=>{if(e.target.closest('[data-close]'))return shut();const r=e.target.closest('.cf-r');if(!r)return;const h=r.dataset.h;
-  LS.querySelectorAll('.cf-r').forEach(x=>x.setAttribute('aria-selected',x===r));
-  shut(()=>{history.replaceState(null,'',location.pathname+location.search+h);document.getElementById(h.slice(1)).scrollIntoView()})});
-LS.addEventListener('scroll',()=>D.classList.toggle('sc',LS.scrollTop>4),{passive:true});
-addEventListener('keydown',e=>{if(e.key==='Escape'&&!D.hidden){shut();btn.focus()}})}
-</script>
+<script src="ft.js?v=9"></script>
+<script src="toc.js?v=1"></script>
 </body>
 </html>
